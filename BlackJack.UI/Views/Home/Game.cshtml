@@ -1,0 +1,11 @@
+﻿@model BlackJack.ViewModels.GameViewModel
+
+@{
+    ViewBag.Title = "Game";
+}
+
+
+ @foreach(var a in Model.CardDeck)
+ {
+<p>@a.Name</p>
+ }
