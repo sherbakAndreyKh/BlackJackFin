@@ -27,10 +27,11 @@ namespace BlackJack.BLL.Logic
 
         public void Add(Game GameItem, Player PlayerName)
         {
-             _game.Add(GameItem);
+            var playerId = _player.CreateWithId(PlayerName);
 
-            _round.Add(new Round { NumberRound = "1"});
+            _game.Add(new Game { AmountPlayers = GameItem.AmountPlayers,  PlayerId = playerId});
 
+            _round.Add(new Round { NumberRound = "1", });
 
             _player.Save();
         }

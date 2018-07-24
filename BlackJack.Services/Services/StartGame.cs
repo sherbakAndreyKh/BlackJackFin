@@ -25,6 +25,7 @@ namespace BlackJack.Services.Services
         public GameViewModel Start()
         {
             model.CardDeck = game.AddDeck();
+
             return model;
         }
 

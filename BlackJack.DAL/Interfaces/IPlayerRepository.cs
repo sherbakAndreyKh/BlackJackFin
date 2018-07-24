@@ -14,6 +14,7 @@ namespace BlackJack.DAL.Interfaces
         Player Get(int id);
         IEnumerable<Player> Find(Func<Player, Boolean> predicate);
         void Create(Player item);
+        int CreateWithId(Player item);
         void Update(Player item);
         void Delete(int id);
         void Save();

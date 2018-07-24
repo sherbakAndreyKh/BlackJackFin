@@ -33,9 +33,7 @@ namespace BlackJack.UI.Controllers
        [HttpPost]
        public ActionResult Options(GameOptions item)
         {
-
-          action.Create(item);
-
+            action.Create(item);
             return RedirectToAction("Game");
         }
 

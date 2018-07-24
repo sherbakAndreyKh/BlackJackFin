@@ -24,7 +24,15 @@ namespace BlackJack.DAL.Repositories
             db.Players.Add(item);
         }
 
-        
+        public int CreateWithId(Player item)
+        {
+            db.Players.Add(item);
+
+            db.SaveChanges();
+
+            return item.Id;
+        }
+
         public void Delete(int id)
         {
             Player player = db.Players.Find(id);
