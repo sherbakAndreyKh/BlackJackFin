@@ -40,11 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IOptions.cs" />
-    <Compile Include="Interfaces\IStartGame.cs" />
+    <Compile Include="Interfaces\IGameStartService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Options.cs" />
-    <Compile Include="Services\StartGame.cs" />
+    <Compile Include="Services\GameStartService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlackJack.BLL\BlackJack.BLL.csproj">

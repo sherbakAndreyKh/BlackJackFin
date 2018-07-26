@@ -15,6 +15,8 @@ namespace BlackJack.Entities.Participant
 
         public ICollection<Game> Games { get; set; }
 
+
+
         public Player()
         {
             Games = new List<Game>();

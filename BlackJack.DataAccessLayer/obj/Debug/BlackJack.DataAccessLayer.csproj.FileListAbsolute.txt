@@ -1,0 +1,14 @@
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\BlackJack.DataAccessLayer.dll.config
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\BlackJack.DataAccessLayer.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\BlackJack.DataAccessLayer.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\BlackJack.Entities.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\BlackJack.Entities.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\obj\Debug\BlackJack.DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\obj\Debug\BlackJack.DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\obj\Debug\BlackJack.DataAccessLayer.csproj.CopyComplete
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\obj\Debug\BlackJack.DataAccessLayer.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\obj\Debug\BlackJack.DataAccessLayer.pdb

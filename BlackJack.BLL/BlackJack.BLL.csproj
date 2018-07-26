@@ -69,16 +69,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ICreateGame.cs" />
-    <Compile Include="Interfaces\IStartGame.cs" />
-    <Compile Include="Logic\CreateGame.cs" />
-    <Compile Include="Logic\StartGame.cs" />
+    <Compile Include="Interfaces\IGameBL.cs" />
+    <Compile Include="Interfaces\IPlayerBL.cs" />
+    <Compile Include="Logic\GameBL.cs" />
+    <Compile Include="Logic\PlayerBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlackJack.DAL\BlackJack.DAL.csproj">
-      <Project>{f6ad32bc-095a-4dfd-a410-ed64af4d81e4}</Project>
-      <Name>BlackJack.DAL</Name>
+    <ProjectReference Include="..\BlackJack.DataAccessLayer\BlackJack.DataAccessLayer.csproj">
+      <Project>{cc00b30e-0ccc-424a-a6d7-298327aa91d2}</Project>
+      <Name>BlackJack.DataAccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlackJack.Entities\BlackJack.Entities.csproj">
       <Project>{7406ba2f-cd9a-436c-88f0-c96a3181b9cf}</Project>
