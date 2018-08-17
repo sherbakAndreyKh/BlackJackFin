@@ -15,9 +15,7 @@ namespace BlackJack.DataAccessLayer.Repositories
         private bool disposedValue = false;
 
         // Constructors
-        public BotRepository()
-        {
-        }
+       
 
         public BotRepository(BlackJackContext db) : base(db)
         {

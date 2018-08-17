@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using BlackJack.Entities.History;
 
-namespace BlackJack.BusinessLogicLayer.BusinessLogic
+namespace BlackJack.BusinessLogicLayer.Interfaces
 {
     public interface IGameLogic
     {
         void Create(Game item);
         int CreateAndReturnId(Game item);
+        Game Get(int id);
         void Delete(int id);
         IEnumerable<Game> Find(Func<Game, bool> predicate);
         IEnumerable<Game> GatAll();

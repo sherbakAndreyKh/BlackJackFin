@@ -9,5 +9,6 @@ namespace BlackJack.Entities.Participant
     public class Bot : MainEntity
     {
         public string Name { get; set; }
+        public int Score { get; set; }
     }
 }

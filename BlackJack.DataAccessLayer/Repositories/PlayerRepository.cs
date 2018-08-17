@@ -15,12 +15,15 @@ namespace BlackJack.DataAccessLayer.Repositories
         private bool disposedValue = false;
 
         // Constructors
-        public PlayerRepository()
-        {
-        }
+     
 
         public PlayerRepository(BlackJackContext db) : base(db)
         {
+        }
+
+        public override void Create(Player item)
+        {
+            base.Create(item);
         }
 
         // Methods

@@ -24,6 +24,11 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             return _playerRepository.CreateAndReturnId(item);
         }
 
+        public Player Get(int Id)
+        {
+            return _playerRepository.Get(Id);
+        }
+
         public IEnumerable<Player> GatAll()
         {
             return _playerRepository.GetAll();

@@ -5,38 +5,34 @@ using System.Web;
 using System.Web.Mvc;
 using BlackJack.ViewModels;
 using BlackJack.Services.Interfaces;
+using BlackJack.Entities.History;
 
 namespace BlackJack.UI.Controllers
 {
     public class OptionsController : Controller
     {
         IGameStartService _gameStartService;
-        public OptionsController(IGameStartService service)
+        ICreateGame _createGame;
+
+        public OptionsController(IGameStartService service, ICreateGame createGame)
         {
             _gameStartService = service;
+            _createGame = createGame;
         }
 
         [HttpGet]
-        public ViewResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public RedirectToRouteResult Index(GameOptions item)
+        public ActionResult Index(GameOptions item)
         {
-            var a = _gameStartService.GetAndCreateGame(item);
+            var game = _gameStartService.GetAndCreateGame(item);
+            var gameViewModel = _createGame.DataGame(game.AmountPlayers);
 
-            GameViewModel i = new GameViewModel();
-            i.DealerScore = a;
-
-            return RedirectToAction("Test", i);
-        }
-        
-        public ViewResult Test(GameViewModel model)
-        {
-
-            return View(model);
-        }
+            return View("Test", gameViewModel);
+        } 
     }
 }

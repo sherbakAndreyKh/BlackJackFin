@@ -8,6 +8,7 @@ namespace BlackJack.BusinessLogicLayer.Interfaces
     {
         void Create(Player item);
         int CreateAndReturnId(Player item);
+        Player Get(int id);
         void Delete(int id);
         IEnumerable<Player> Find(Func<Player, bool> predicate);
         IEnumerable<Player> GatAll();

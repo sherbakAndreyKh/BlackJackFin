@@ -40,7 +40,7 @@ namespace BlackJack.Dependency.Config
 
             // Service
             Bind<IGameStartService>().To<GameStartService>();
-           
+            Bind<ICreateGame>().To<CreateGame>();
             
 
             Bind<IBlackJackContext>().To<BlackJackContext>().WithConstructorArgument(connectionString);

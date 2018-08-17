@@ -85,9 +85,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlackJack.BLL\BlackJack.BLL.csproj">
-      <Project>{01e51b1b-f9e3-461c-925a-c9850c454b29}</Project>
-      <Name>BlackJack.BLL</Name>
+    <ProjectReference Include="..\BlackJack.BusinessLogicLayer\BlackJack.BusinessLogicLayer.csproj">
+      <Project>{41e1af8f-45ad-49b7-9f1b-5db3ed95235b}</Project>
+      <Name>BlackJack.BusinessLogicLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlackJack.DataAccessLayer\BlackJack.DataAccessLayer.csproj">
       <Project>{cc00b30e-0ccc-424a-a6d7-298327aa91d2}</Project>

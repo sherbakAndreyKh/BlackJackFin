@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlackJack.ViewModels;
+using BlackJack.Entities.History;
 
 namespace BlackJack.Services.Interfaces
 {
     public interface IGameStartService
     {
-        int GetAndCreateGame(GameOptions options);
+        Game GetAndCreateGame(GameOptions options);
     }
 }

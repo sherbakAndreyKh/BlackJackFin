@@ -91,7 +91,6 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.csproj.CopyComplete
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.BLL.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.ViewModels.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\EntityFramework.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\EntityFramework.SqlServer.dll
@@ -100,10 +99,7 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Ninject.Web.Common.
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Ninject.Web.Common.WebHost.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Ninject.Web.Mvc.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Services.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DAL.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Entities.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.BLL.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.BLL.dll.config
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.ViewModels.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\EntityFramework.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\EntityFramework.SqlServer.xml
@@ -112,9 +108,12 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Ninject.Web.Common.
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Ninject.Web.Common.WebHost.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Ninject.Web.Mvc.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Services.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DAL.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DAL.dll.config
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Entities.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Dependency.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Dependency.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Dependency.dll.config
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccessLayer.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.BusinessLogicLayer.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccessLayer.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccessLayer.dll.config
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.BusinessLogicLayer.pdb

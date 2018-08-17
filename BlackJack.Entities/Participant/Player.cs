@@ -11,11 +11,10 @@ namespace BlackJack.Entities.Participant
     {
         public string Name { get; set; }
 
-        public string Score { get; set; }
+        public int Score { get; set; }
+
 
         public ICollection<Game> Games { get; set; }
-
-
 
         public Player()
         {

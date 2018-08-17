@@ -19,6 +19,11 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             _botRepository = botRepository;
         }
 
+        public Bot Get(int id)
+        {
+            return _botRepository.Get(id);
+        }
+
         public IEnumerable<Bot> GatAll()
         {
             return _botRepository.GetAll();
@@ -48,5 +53,7 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         {
             _botRepository.Save();
         }
+
+        
     }
 }

@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlackJack.Entities.Participant;
+using BlackJack.Entities;
 
 
 namespace BlackJack.ViewModels
 {
     public class GameViewModel
     {
-        public string PlayerName { get; set; }
-        public int PlayerScore { get; set; }
+        public Dealer Dealer { get; set; }
+        public Player Player { get; set; }
 
-        public string DealerName { get; set; }
-        public int DealerScore { get; set; }
+        public List<Bot> Bots { get; set; }
 
-        public List<string> BotName { get; set; }
-        public List<int> BotScore { get; set; }
+        public List<Card> Cards { get; set; }
+
+
     }
 }

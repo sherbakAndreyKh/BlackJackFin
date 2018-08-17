@@ -7,37 +7,40 @@ using BlackJack.ViewModels;
 using BlackJack.Entities.Participant;
 using BlackJack.Entities.History;
 using BlackJack.Services.Interfaces;
-using BlackJack.BLL.Interfaces;
+using BlackJack.BusinessLogicLayer.Interfaces;
 
 namespace BlackJack.Services.Services
 {
     public class GameStartService : IGameStartService
     {
-        private IGameBL _gameBL;
-        private IPlayerBL _playerBL; 
+        private IGameLogic _gameLogic;
+        private IPlayerLogic _playerLogic;
+        
 
-        public GameStartService(IGameBL gameBL, IPlayerBL playerBL)
+        
+        public GameStartService(IGameLogic gameBL, IPlayerLogic playerBL)
         {
-            _gameBL = gameBL;
-            _playerBL = playerBL;
+            _gameLogic = gameBL;
+            _playerLogic = playerBL;
         }
 
-        public int GetAndCreateGame(GameOptions gameOptions)
+        public Game GetAndCreateGame(GameOptions gameOptions)
         {
             Player player = new Player()
             {
                 Name = gameOptions.PlayerName
-            };
+            };  
 
             Game game = new Game()
             {
                 AmountPlayers = gameOptions.Bots
             };
 
-            var amount = _gameBL.Add(game, _playerBL.AddAndReturnId(player));
+            _playerLogic.Create(player);
+            _gameLogic.Create(game);
+            _playerLogic.Save();
 
-            return amount;
-            
+            return game;
         }
     }
 }

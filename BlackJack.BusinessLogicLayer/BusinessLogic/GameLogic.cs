@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BlackJack.DataAccessLayer.Interfaces;
 using BlackJack.Entities.History;
+using BlackJack.BusinessLogicLayer.Interfaces;
 
 namespace BlackJack.BusinessLogicLayer.BusinessLogic
 {
@@ -23,6 +24,10 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             return _gameRepository.CreateAndReturnId(item);
         }
 
+        public Game Get(int id)
+        {
+            return _gameRepository.Get(id);
+        }
 
         public IEnumerable<Game> GatAll()
         {
@@ -53,5 +58,7 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         {
             _gameRepository.Save();
         }
+
+        
     }
 }

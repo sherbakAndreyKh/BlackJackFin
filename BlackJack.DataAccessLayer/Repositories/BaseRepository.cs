@@ -9,8 +9,8 @@ using System.Data.Entity;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
-    public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
-    {
+    public abstract class BaseRepository<T>: IBaseRepository<T> where T :class
+        {
         protected BlackJackContext db;
 
         public BaseRepository(BlackJackContext db)
@@ -18,10 +18,6 @@ namespace BlackJack.DataAccessLayer.Repositories
             this.db = db;
         }
 
-        public BaseRepository()
-        {
-        }
-       
         public virtual IEnumerable<T> GetAll()
         {
             return db.Set<T>();
@@ -56,7 +52,7 @@ namespace BlackJack.DataAccessLayer.Repositories
             }
         }
 
-        public virtual void Save()
+        public void Save()
         {
             db.SaveChanges();
         }
