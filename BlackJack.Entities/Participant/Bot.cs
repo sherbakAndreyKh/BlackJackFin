@@ -10,5 +10,11 @@ namespace BlackJack.Entities.Participant
     {
         public string Name { get; set; }
         public int Score { get; set; }
+        public ICollection<Card> Hand { get; set; }
+
+        public Bot()
+        {
+            Hand = new List<Card>();
+        }
     }
 }

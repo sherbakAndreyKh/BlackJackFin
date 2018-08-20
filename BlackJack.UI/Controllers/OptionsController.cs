@@ -32,7 +32,7 @@ namespace BlackJack.UI.Controllers
             var game = _gameStartService.GetAndCreateGame(item);
             var gameViewModel = _createGame.DataGame(game.AmountPlayers);
 
-            return View("Test", gameViewModel);
+            return View("Game", gameViewModel);
         } 
     }
 }

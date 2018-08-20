@@ -212,7 +212,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Options\Index.cshtml" />
-    <Content Include="Views\Options\Test.cshtml" />
+    <Content Include="Views\Options\Game.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

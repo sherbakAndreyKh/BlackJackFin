@@ -45,7 +45,6 @@ namespace BlackJack.Services.Services
                 Cards = _cardLogic.GatAll().ToList(),
                 Dealer = _dealerLogic.GatAll().FirstOrDefault(),
                 Player = _playerLogic.GatAll().LastOrDefault(),
-                Bots = new List<Bot>()
             };
             for (int i = 0; i < amountBots; i++)
             {

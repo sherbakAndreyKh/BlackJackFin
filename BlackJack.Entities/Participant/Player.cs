@@ -13,12 +13,14 @@ namespace BlackJack.Entities.Participant
 
         public int Score { get; set; }
 
+        public ICollection<Card> Hand { get; set; }
 
         public ICollection<Game> Games { get; set; }
 
         public Player()
         {
             Games = new List<Game>();
+            Hand = new List<Card>();
         }
     }
 }
