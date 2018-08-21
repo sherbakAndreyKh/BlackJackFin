@@ -33,6 +33,13 @@ namespace BlackJack.UI.Controllers
             var gameViewModel = _createGame.DataGame(game.AmountPlayers);
 
             return View("Game", gameViewModel);
-        } 
+        }
+
+        [HttpPost]
+        public ActionResult Test(GameViewModel data)
+        {
+
+            return View("Index", "Home");
+        }
     }
 }

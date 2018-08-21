@@ -14,6 +14,7 @@ namespace BlackJack.ViewModels
         public Dealer Dealer { get; set; }
         public Player Player { get; set; }
 
+        public string Winner { get; set; }
         public List<Bot> Bots { get; set; }
 
         public List<Card> Cards { get; set; }

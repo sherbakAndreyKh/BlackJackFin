@@ -45,6 +45,7 @@
     <Compile Include="Services\CreateGame.cs" />
     <Compile Include="Services\GameStartService.cs" />
     <Compile Include="Interfaces\ICreateGame.cs" />
+    <Compile Include="Services\SaveGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlackJack.BusinessLogicLayer\BlackJack.BusinessLogicLayer.csproj">
