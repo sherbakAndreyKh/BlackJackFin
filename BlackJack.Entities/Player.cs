@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlackJack.Entities.History;
+using BlackJack.Entities.Enums;
 
-namespace BlackJack.Entities.Participant
+namespace BlackJack.Entities
 {
     public class Player : MainEntity
     {
         public string Name { get; set; }
 
-        public int Score { get; set; }
+        public  Roles  Role { get; set; }
 
-        public ICollection<Card> Hand { get; set; }
-
-        public ICollection<Game> Games { get; set; }
+        public virtual ICollection<Game> Games { get; set; }
+        public virtual ICollection<PlayerProperties> Properties { get; set; }
 
         public Player()
         {
             Games = new List<Game>();
-            Hand = new List<Card>();
+            Properties = new List<PlayerProperties>();
         }
     }
 }

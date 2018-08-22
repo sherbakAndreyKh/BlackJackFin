@@ -9,7 +9,10 @@ namespace BlackJack.BusinessLogicLayer.Interfaces
         void Create(Round item);
         void Delete(int id);
         IEnumerable<Round> Find(Func<Round, bool> predicate);
-        IEnumerable<Round> GatAll();
+        IEnumerable<Round> GetAll();
+        Round Get(int id);
+        int GetAndReturnId(Round item);
+        int ReturnNewRoundNumber(int id);
         void Save();
         void Update(Round item);
     }

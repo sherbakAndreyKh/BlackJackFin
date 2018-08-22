@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BlackJack.Entities.Participant;
+using BlackJack.Entities;
 
 namespace BlackJack.BusinessLogicLayer.Interfaces
 {
@@ -12,6 +12,7 @@ namespace BlackJack.BusinessLogicLayer.Interfaces
         void Delete(int id);
         IEnumerable<Player> Find(Func<Player, bool> predicate);
         IEnumerable<Player> GatAll();
+        IEnumerable<Player> GetQuentityWithRole(int quantity, int role);
         void Save();
         void Update(Player item);
     }

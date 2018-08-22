@@ -8,8 +8,10 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
 {
     public class RoundLogic : IRoundLogic
     {
+        //Fields
         IRoundRepository _roundRepository;
 
+        // Constructors
         public RoundLogic()
         {
         }
@@ -19,9 +21,15 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             _roundRepository = roundRepository;
         }
 
-        public IEnumerable<Round> GatAll()
+        //Methods
+        public IEnumerable<Round> GetAll()
         {
             return _roundRepository.GetAll();
+        }
+
+        public Round Get(int id)
+        {
+            return _roundRepository.Get(id);
         }
 
         public IEnumerable<Round> Find(Func<Round, Boolean> predicate)
@@ -34,9 +42,20 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             _roundRepository.Create(item);
         }
 
+        
         public void Update(Round item)
         {
             _roundRepository.Update(item);
+        }
+
+        public int GetAndReturnId(Round item)
+        {
+            return _roundRepository.CreateAndReturnId(item);
+        }
+
+        public int ReturnNewRoundNumber(int id)
+        {
+            return _roundRepository.ReturnNewRoundNumber(id);
         }
 
         public void Delete(int id)

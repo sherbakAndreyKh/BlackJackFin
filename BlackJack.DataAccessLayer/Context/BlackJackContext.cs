@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using BlackJack.Entities;
-using BlackJack.Entities.Participant;
+using BlackJack.Entities.Enums;
 using BlackJack.Entities.History;
 using BlackJack.DataAccessLayer.Interfaces;
 
@@ -15,8 +15,7 @@ namespace BlackJack.DataAccessLayer.Context
     {
         // Participant
         public DbSet<Player> Players { get; set; }
-        public DbSet<Dealer> Dealers { get; set; }
-        public DbSet<Bot> Bots { get; set; }
+        public DbSet<PlayerProperties> Properties { get; set; }
 
         // History
         public DbSet<Game> Games { get; set; }
@@ -43,13 +42,12 @@ namespace BlackJack.DataAccessLayer.Context
     {
         protected override void Seed(BlackJackContext db)
         {
-            db.Bots.Add(new Bot { Name = "Bot1" });
-            db.Bots.Add(new Bot { Name = "Bot2" });
-            db.Bots.Add(new Bot { Name = "Bot3" });
-            db.Bots.Add(new Bot { Name = "Bot4" });
-            db.Bots.Add(new Bot { Name = "Bot5" });
-
-            db.Dealers.Add(new Dealer { Name = "Dealer" });
+            db.Players.Add(new Player { Name = "Bot1", Role = Roles.Bot });
+            db.Players.Add(new Player { Name = "Bot2", Role = Roles.Bot });
+            db.Players.Add(new Player { Name = "Bot3", Role = Roles.Bot });
+            db.Players.Add(new Player { Name = "Bot4", Role = Roles.Bot });
+            db.Players.Add(new Player { Name = "Bot5", Role = Roles.Bot });
+            db.Players.Add(new Player { Name = "Dealer", Role = Roles.Dealer });
 
 
             List<Card> Cards = new List<Card>

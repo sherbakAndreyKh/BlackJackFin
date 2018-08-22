@@ -5,27 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using BlackJack.DataAccessLayer.Context;
 using BlackJack.DataAccessLayer.Interfaces;
-using BlackJack.Entities.Participant;
+using BlackJack.Entities;
+using BlackJack.Entities.Enums;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
-    public class PlayerRepository : BaseRepository<Player>, IPlayerRepository, IDisposable
+    public class PlayerRepository : BaseRepository<Player>, IPlayerRepository
     {
-        // Fields
-        private bool disposedValue = false;
-
         // Constructors
-     
-
         public PlayerRepository(BlackJackContext db) : base(db)
         {
         }
-
-        public override void Create(Player item)
-        {
-            base.Create(item);
-        }
-
+      
         // Methods
         public int CreateAndReturnId(Player item)
         {
@@ -36,24 +27,9 @@ namespace BlackJack.DataAccessLayer.Repositories
             return item.Id;
         }
 
-        // Dispose
-        protected virtual void Dispose(bool disposing)
+        public IEnumerable<Player> GetQuantityWithRole(int quantity, int role)
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-                disposedValue = true;
-            }
-        }
-
-        public void Dispose()
-        {
-
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            return db.Players.Where(x => (int)x.Role == role).Take(quantity);
         }
     }
 }

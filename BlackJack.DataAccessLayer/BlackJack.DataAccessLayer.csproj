@@ -49,19 +49,17 @@
   <ItemGroup>
     <Compile Include="Context\BlackJackContext.cs" />
     <Compile Include="Interfaces\IBlackJackContext.cs" />
-    <Compile Include="Interfaces\IBotRepository.cs" />
     <Compile Include="Interfaces\ICardRepository.cs" />
-    <Compile Include="Interfaces\IDealerRepository.cs" />
     <Compile Include="Interfaces\IGameRepository.cs" />
-    <Compile Include="Interfaces\IPlayerRepository.cs" />
+    <Compile Include="Interfaces\IPlayerPropertiesRepository.cs" />
     <Compile Include="Interfaces\IRoundRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Repositories\BotRepository.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Repositories\CardRepository.cs" />
-    <Compile Include="Repositories\DealerRepository.cs" />
     <Compile Include="Repositories\GameRepository.cs" />
+    <Compile Include="Interfaces\IPlayerRepository.cs" />
+    <Compile Include="Repositories\PlayerPropertiesRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\RoundRepository.cs" />
   </ItemGroup>

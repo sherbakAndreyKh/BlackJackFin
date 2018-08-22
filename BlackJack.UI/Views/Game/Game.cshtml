@@ -8,46 +8,24 @@
 <div class="field">
 
 </div>
+@Model.PlayerName
 
-<div class="container text-center">
-    <div class="text-center col-md-2 Participant">
-        <p class="Hand"></p>
-        <p class="Score">@Model.Player.Score</p>
-        <p><img src="#" alt="PlayerIcon" /></p>
-        <h4>@Model.Player.Name</h4>
-    </div>
-    @foreach (var a in Model.Bots)
-    {
-        <div class="text-center col-md-2 Participant">
-            <p class="Hand"></p>
-            <p class="Score">@a.Score</p>
-            <p><img src="#" alt="BotIcon" /></p>
-            <h4>@a.Name</h4>
-        </div>
-    }
-</div>
+@Model.GameNumber
 
-<div class="text-center col-md-2 dealer Participant">
-    <h4>@Model.Dealer.Name</h4>
-    <p><img src="#" alt="DealerIcon" /></p>
-    <p class="Score">@Model.Dealer.Score</p>
-    <p class="Hand"></p>
-</div>
+@Model.RoundNumber
 
-
-<div class="ControlBar text-right">
-    <button id="Take">Take</button>
-    <button id="Stop">Stop</button>
-</div>
+@foreach(var a in Model.PlayerName)
+{
+<p>a</p>
+}
 
 
 
 
 
 
-
-
-<script>
+@*<script>
+    
 
     var CardArray = @Html.Raw(Json.Encode(Model.Cards));
     var Player = @Html.Raw(Json.Encode(Model.Player));
@@ -133,11 +111,7 @@
         }
     }
 
-    function Send() {
-        if (Bool = true) {
-            $.post(@Url.Action("Test"), )
-        }
-    }
+  
     //first deal
     $('.Participant').each(function (i)
     {
@@ -145,13 +119,14 @@
         var SecondCard = GetCard();
 
         $(this).children('.Hand').html(FirstCard.Name + " " + FirstCard.Suit + ", " + SecondCard.Name + " " + SecondCard.Suit);
-
-        if (FirstCard.Value == 11 && SecondCard.Value == 11) {
-            $(this).children('.Score').html(+FirstCard.Value + SecondCard.Value - 10);
-        }
-        else {
-            $(this).children('.Score').html(+FirstCard.Value + SecondCard.Value);
-        }
+        var value = FirstCard.Value == 11 && SecondCard.Value == 1 ? +FirstCard.Value + SecondCard.Value - 10 : +FirstCard.Value + SecondCard.Value;
+        $(this).children('.Score').html(value);
+        //if (FirstCard.Value == 11 && SecondCard.Value == 11) {
+        //    $(this).children('.Score').html(+FirstCard.Value + SecondCard.Value - 10);
+        //}
+        //else {
+        //    $(this).children('.Score').html(+FirstCard.Value + SecondCard.Value);
+        //}
 
         addHands(i, FirstCard);
         addHands(i, SecondCard);
@@ -187,6 +162,6 @@
         });
     });
 
-    
 
-</script>
+
+</script>*@

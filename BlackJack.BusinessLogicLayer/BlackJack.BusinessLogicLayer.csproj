@@ -40,16 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\BotLogic.cs" />
     <Compile Include="BusinessLogic\CardLogic.cs" />
-    <Compile Include="BusinessLogic\DealerLogic.cs" />
     <Compile Include="BusinessLogic\GameLogic.cs" />
+    <Compile Include="Interfaces\IPlayerPropertiesLogic.cs" />
+    <Compile Include="BusinessLogic\PlayerPropertiesLogic.cs" />
     <Compile Include="Interfaces\IRoundLogic.cs" />
     <Compile Include="Interfaces\IPlayerLogic.cs" />
-    <Compile Include="Interfaces\IDealerLogic.cs" />
     <Compile Include="Interfaces\IGameLogic.cs" />
     <Compile Include="Interfaces\ICardLogic.cs" />
-    <Compile Include="Interfaces\IBotLogic.cs" />
     <Compile Include="BusinessLogic\PlayerLogic.cs" />
     <Compile Include="BusinessLogic\RoundLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

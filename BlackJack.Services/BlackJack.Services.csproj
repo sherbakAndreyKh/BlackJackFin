@@ -40,12 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IGameStartService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CreateGame.cs" />
     <Compile Include="Services\GameStartService.cs" />
-    <Compile Include="Interfaces\ICreateGame.cs" />
-    <Compile Include="Services\SaveGame.cs" />
+    <Compile Include="Interfaces\IGameStartService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlackJack.BusinessLogicLayer\BlackJack.BusinessLogicLayer.csproj">
@@ -61,5 +58,6 @@
       <Name>BlackJack.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

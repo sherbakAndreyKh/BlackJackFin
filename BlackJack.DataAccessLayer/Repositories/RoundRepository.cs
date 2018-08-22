@@ -9,35 +9,29 @@ using BlackJack.Entities.History;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
-    public class RoundRepository : BaseRepository<Round>, IRoundRepository, IDisposable
+    public class RoundRepository : BaseRepository<Round>, IRoundRepository
     {
-        // Fields
-        private bool disposedValue = false;
+
+
 
         // Constructors
-      
         public RoundRepository(BlackJackContext db) : base(db)
         {
         }
 
-        // Dispose
-        protected virtual void Dispose(bool disposing)
+        // Methods
+        public int CreateAndReturnId(Round item)
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-                disposedValue = true;
-            }
+            db.Rounds.Add(item);
+
+            db.SaveChanges();
+
+            return item.Id;
         }
 
-        public void Dispose()
+        public int ReturnNewRoundNumber(int id)
         {
-
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            return db.Rounds.Where(x => x.GameId == id).Count() + 1;
         }
     }
 }

@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlackJack.DataAccessLayer.Context;
-using BlackJack.DataAccessLayer.Interfaces;
 using BlackJack.Entities;
+using BlackJack.DataAccessLayer.Interfaces;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
-    public class CardRepository : BaseRepository<Card>, ICardRepository
+    public class PlayerPropertiesRepository : BaseRepository<PlayerProperties>, IPlayerPropertiesRepository
     {
-
-        // Constructors
-        public CardRepository(BlackJackContext db) : base(db)
+        //Constructors
+        public PlayerPropertiesRepository(BlackJackContext db) : base(db)
         {
         }
 
-      
+        //Methods
+
+
     }
 }
