@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlackJack.Entities.History;
 
 namespace BlackJack.Entities
 {
@@ -14,6 +15,8 @@ namespace BlackJack.Entities
 
         public string ImgPath { get; set; }
 
+        public virtual ICollection<Round> Rounds { get; set; }
+
         public Card() { }
 
         public Card(string name, string suit, int value, string imgpath)
@@ -22,6 +25,7 @@ namespace BlackJack.Entities
             Suit = suit;
             Value = value;
             ImgPath = imgpath;
+            Rounds = new List<Round>();
         }
     }
 }

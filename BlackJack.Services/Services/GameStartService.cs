@@ -18,13 +18,17 @@ namespace BlackJack.Services.Services
         IPlayerLogic _plyerLogic;
         IGameLogic _gameLogic;
         IRoundLogic _roundLogic;
+        ICardLogic _cardLogic;
+        IPlayerPropertiesLogic _playerPropertiesLogic;
 
         //Constructors
-        public GameStartService(IPlayerLogic playerLogic, IGameLogic gameLogic, IRoundLogic roundLogic)
+        public GameStartService(IPlayerLogic playerLogic, IGameLogic gameLogic, IRoundLogic roundLogic, ICardLogic cardLogic, IPlayerPropertiesLogic playerPropertiesLogic)
         {
             _plyerLogic = playerLogic;
             _gameLogic = gameLogic;
             _roundLogic = roundLogic;
+            _cardLogic = cardLogic;
+            _playerPropertiesLogic = playerPropertiesLogic;
         }
 
         //Methods
@@ -35,11 +39,21 @@ namespace BlackJack.Services.Services
             Player player = new Player()
             {
                 Name = item.PlayerName,
-                Role = Roles.Player
+                Role = Roles.Player,
             };
 
             var playerId = _plyerLogic.CreateAndReturnId(player);
 
+            // cards
+            var cards = MapCards(_cardLogic.GetAll());
+            List<PlayersGameViewModelItem> players = new List<PlayersGameViewModelItem>();
+
+            players.Add(MapPlayer(_plyerLogic.Get(playerId)));
+            players.Add(MapPlayer(_plyerLogic.GetQuentityWithRole(1, 1).SingleOrDefault()));
+            foreach (var a in _plyerLogic.GetQuentityWithRole(item.AmountBots, 2))
+            {
+                players.Add(MapPlayer(a));
+            }
 
             // add Game and return Id
             Game game = new Game()
@@ -52,36 +66,68 @@ namespace BlackJack.Services.Services
             var gameId = _gameLogic.CreateAndReturnId(game);
 
             // add Round and return Id 
+            var test = new List<Card>();
+            test.Add(_cardLogic.Find(x => x.Id == 12).Single());
+
             Round round = new Round()
             {
                 GameId = gameId,
-                NumberOfRound = _roundLogic.ReturnNewRoundNumber(gameId),
+                NumberRound = _roundLogic.ReturnNewRoundNumber(gameId),
+                WinnerHand = test
             };
-
-            round.Players.Add(player);
-            round.Players.Add(_plyerLogic.GetQuentityWithRole(1, 1).Single());
-            foreach (var a in _plyerLogic.GetQuentityWithRole(item.AmountBots, 2))
-            {
-                round.Players.Add(a);
-            }
-
+            
             var roundId = _roundLogic.GetAndReturnId(round);
 
 
-            // Test For tomorow
+
+          
+
+
+
             GameViewModel gameVM = new GameViewModel()
             {
                 GameNumber = game.NumberGame,
-                RoundNumber = round.NumberOfRound,
-
+                RoundNumber = round.NumberRound,
+                Card = cards,
+                Players = players,                
             };
-            foreach (var a in round.Players)
-            {
-                gameVM.PlayerName.Add(a.Name);
-            }
 
+
+            
+           
             return gameVM;
-
         }
+
+
+
+        // Mapping 
+        protected PlayersGameViewModelItem MapPlayer(Player player)
+        {
+            var result = new PlayersGameViewModelItem()
+            {
+                Name = player.Name,
+                Role = (int)player.Role
+            };
+            return result;
+        }
+        
+        protected List<CardGameViewModelItem> MapCards(IEnumerable<Card> cards)
+        {
+            var result = new List<CardGameViewModelItem>();
+            foreach (var a in cards)
+            {
+                var CardView = new CardGameViewModelItem()
+                {
+                    Name = a.Name,
+                    Suit = a.Suit,
+                    Value = a.Value,
+                    ImgPath = a.ImgPath
+                };
+                result.Add(CardView);
+            }
+            return result;
+        }
+
+
     }
 }

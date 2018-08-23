@@ -36,7 +36,18 @@ namespace BlackJack.DataAccessLayer.Context
         public BlackJackContext(string connectionString)
             : base(connectionString)
         { }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Card>().HasMany(a => a.Rounds)
+                .WithMany(a => a.WinnerHand)
+                .Map(a => a.MapLeftKey("RoundId")
+                .MapRightKey("WinnerHand")
+                .ToTable("RoundCards"));
+        }
     }
+
+    
 
     public class BlackJackInitializer : DropCreateDatabaseIfModelChanges<BlackJackContext>
     {

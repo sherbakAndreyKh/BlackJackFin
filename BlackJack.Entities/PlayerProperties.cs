@@ -14,6 +14,12 @@ namespace BlackJack.Entities
         public int? PlayerId { get; set; }
         public Player player { get; set; }
 
-        public int RoundId { get; set; }
+        public int Round_Id { get; set; }
+
+        public PlayerProperties()
+        {
+            Hand = new List<Card>();
+        }
+
     }
 }

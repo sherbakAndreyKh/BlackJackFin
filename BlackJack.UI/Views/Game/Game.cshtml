@@ -8,20 +8,27 @@
 <div class="field">
 
 </div>
-@Model.PlayerName
 
 @Model.GameNumber
 
 @Model.RoundNumber
 
-@foreach(var a in Model.PlayerName)
-{
-<p>a</p>
-}
 
+<div class="col-md-4">
+    @foreach (var a in Model.Card)
+    {
+        <p>@a.Name</p>
+        <p>@a.Suit</p>
+    }
+</div>
 
-
-
+<div class="col-md-4">
+    @foreach(var a in Model.Players)
+    {
+        <p>@a.Name</p>
+        <p>@a.Role</p>
+    }
+</div>
 
 
 @*<script>
