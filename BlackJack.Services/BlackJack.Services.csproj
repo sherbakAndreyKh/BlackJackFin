@@ -43,6 +43,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GameStartService.cs" />
     <Compile Include="Interfaces\IGameStartService.cs" />
+    <Compile Include="Services\HistoryService.cs" />
+    <Compile Include="Interfaces\IHistoryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlackJack.BusinessLogicLayer\BlackJack.BusinessLogicLayer.csproj">

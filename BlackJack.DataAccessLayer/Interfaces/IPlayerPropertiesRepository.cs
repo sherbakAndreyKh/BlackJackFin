@@ -9,5 +9,6 @@ namespace BlackJack.DataAccessLayer.Interfaces
 {
     public interface IPlayerPropertiesRepository : IBaseRepository<PlayerProperties>
     {
+            PlayerProperties GetWithPlayerAndRoundId(int playerId, int roundId);
     }
 }

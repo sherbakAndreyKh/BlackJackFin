@@ -48,6 +48,7 @@ namespace BlackJack.DataAccessLayer.Repositories
         public void Update(T item)
         {
             db.Entry(item).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)

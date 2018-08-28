@@ -8,7 +8,7 @@ namespace BlackJack.Entities
 {
     public class PlayerProperties : MainEntity
     {
-        public IEnumerable<Card> Hand { get; set; }
+        public virtual ICollection<Card> Hand { get; set; }
         public int Score { get; set; }
 
         public int? PlayerId { get; set; }

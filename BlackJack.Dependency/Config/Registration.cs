@@ -30,7 +30,6 @@ namespace BlackJack.Dependency.Config
 
 
             // BLL
-          
             Bind<IPlayerLogic>().To<PlayerLogic>();
             Bind<IPlayerPropertiesLogic>().To<PlayerPropertiesLogic>();
             Bind<ICardLogic>().To<CardLogic>();
@@ -39,6 +38,8 @@ namespace BlackJack.Dependency.Config
 
             // Service
             Bind<IGameStartService>().To<GameStartService>();
+            Bind<IHistoryService>().To<HistoryService>();
+
 
             Bind<IBlackJackContext>().To<BlackJackContext>().WithConstructorArgument(connectionString);
         }

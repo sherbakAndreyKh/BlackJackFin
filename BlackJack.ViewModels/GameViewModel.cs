@@ -9,18 +9,26 @@ namespace BlackJack.ViewModels
 
     public class GameViewModel
     {
+        public int RoundId { get; set; }
+        public int GameId { get; set; }
+        public int PlayerId { get; set; }
         public int GameNumber { get; set; }
         public int RoundNumber { get; set; }
+        public PlayersGameViewModelItem Dealer { get; set; }
+        public PlayersGameViewModelItem Player { get; set; }
 
-        public IEnumerable<CardGameViewModelItem> Card { get; set; }
-        public IEnumerable<PlayersGameViewModelItem> Players { get; set; }
+
+        public IEnumerable<CardGameViewModelItem> CardDeck { get; set; }
+
+        public IEnumerable<PlayersGameViewModelItem> Bots { get; set; }
 
         public string Winner { get; set; }
 
         public GameViewModel()
         {
-            Card = new List<CardGameViewModelItem>();
-            Players = new List<PlayersGameViewModelItem>();
+            CardDeck = new List<CardGameViewModelItem>();
+            Bots = new List<PlayersGameViewModelItem>();
+           
         }
     }
 
@@ -45,6 +53,7 @@ namespace BlackJack.ViewModels
         {
             Properties = new List<PlayerPropertiesGameViewModelItem>();
         }
+
     }
 
 

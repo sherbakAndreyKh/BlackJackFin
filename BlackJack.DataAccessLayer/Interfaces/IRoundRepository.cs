@@ -11,5 +11,6 @@ namespace BlackJack.DataAccessLayer.Interfaces
     {
         int CreateAndReturnId(Round item);
         int ReturnNewRoundNumber(int id);
+        IQueryable<Round> Include();
     }
 }

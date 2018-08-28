@@ -3,172 +3,143 @@
 @{
     ViewBag.Title = "Game";
 }
+<div class="col-md-6"><h2 class="text-center">Game: @Model.GameNumber</h2></div>
+<div class="col-md-6"><h3 class="text-center">Round: @Model.RoundNumber</h3></div>
 
 
-<div class="field">
 
-</div>
-
-@Model.GameNumber
-
-@Model.RoundNumber
-
-
-<div class="col-md-4">
-    @foreach (var a in Model.Card)
-    {
-        <p>@a.Name</p>
-        <p>@a.Suit</p>
-    }
-</div>
-
-<div class="col-md-4">
-    @foreach(var a in Model.Players)
-    {
-        <p>@a.Name</p>
-        <p>@a.Role</p>
-    }
+<div class="field text-center">
+    <img src="~/Content/Img/bj.jpg" style="width:75%;height:70%;" alt="Alternate Text" />
 </div>
 
 
-@*<script>
-    
 
-    var CardArray = @Html.Raw(Json.Encode(Model.Cards));
-    var Player = @Html.Raw(Json.Encode(Model.Player));
-    var Dealer = @Html.Raw(Json.Encode(Model.Dealer));
-    var BotArray = @Html.Raw(Json.Encode(Model.Bots));
-    var Winner = @Html.Raw(Json.Encode(Model.Winner));
+<div class="player col-md-2 Participant">
+    <p class="Hand"></p>
+    <p>Score: <span class="Score">@Model.Player.Properties.SingleOrDefault().Score</span></p>
+    <h4>@Model.Player.Name</h4>
+</div>
+
+
+
+@foreach (var bot in Model.Bots)
+{
+    <div class="player col-md-2 Participant">
+        <p class="Hand"></p>
+        <p>Score: <span class="Score">@Model.Player.Properties.SingleOrDefault().Score</span></p>
+        <h4>@bot.Name</h4>
+    </div>
+}
+    <div class="dealer Participant text-center">
+        <h4>@Model.Dealer.Name</h4>
+        <p>Score: <span class="Score">@Model.Player.Properties.SingleOrDefault().Score</span></p>
+        <p class="Hand"></p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="Buttons text-right">
+    <button id="First">FirstDeal</button>
+    <button id="Take">TakeOne</button>
+    <button id="Stop">Stop</button>
+    <button id="asd">test</button>
+</div>
+
+
+<script>
+    var model = @Html.Raw(Json.Encode(Model));
     var Bool = false;
-
+    model.Winner = model.Player.Name;
+    model.WinnerScore = 21;
 
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     function GetCard() {
-        return CardArray[getRandomInt(0,51)]
+        return model.CardDeck[getRandomInt(0, 51)]
     }
-
-
-    function FindBlackJack() {
-        var playerScore = $('.Participant').first().children('.Score').html();
-        var dealerScore = $('.Participant').last().children('.Score').html();
-
-        if (playerScore == dealerScore && playerScore == 21) {
-            alert("!")
-            Winner = "Draw"
-            BotLogic();
-        }
-        if (playerScore == 21) {
-            alert(Player.Name + " - BlackJack!");
-            Winner = Player.Name;
-            BotLogic();
-        }
-        if (playerScore > 21) {
-            alert(Player.Name + " - To Much");
-            BotLogic();
-        }
-        if (dealerScore == 21) {
-            alert(Dealer.Name + " - BlackJack!");
-            Winner = Dealer.Name;
-            BotLogic();
-        }
-        //if (playerScore > dealerScore && playerScore < 21) {
-        //    Winner = Player.Name;
-        //    alert(Player.Name + " - Win!");
-        //}
-        //if (playerScore < dealerScore && dealerScore < 21) {
-        //    Winner = Dealer.Name;
-        //    alert(Dealer.Name + " - Win!")
-        //}
-
-    }
-
-    function BotLogic() {
-        if (Bool = true) {
-            for (var i = 1; i <= BotArray.length + 1; i++) {
-                while ($('.Score').eq(i).html() < 17) {
-                    var Card = GetCard();
-                    var value = $('.Score').eq(i).html();
-                    var Hand = $('.Hand').eq(i).html();
-
-                    $('.Hand').eq(i).html(Hand + ", " + Card.Name + " " + Card.Suit);
-                    if (value >= 11 && Card.Value == 11) {
-                        $('.Score').eq(i).html(+value + Card.Value - 10);
-                    }
-                    else {
-                        $('.Score').eq(i).html(+value + Card.Value);
-                    }
-                }
-
-            }
-        }
-    }
-
-    function addHands(count, card) {
-        if (count == 0) {
-            Player.Hand.push(card);
-        }
-        if (count == BotArray.length + 1) {
-            Dealer.Hand.push(card);
-        }
-        if (count != 0 && count != BotArray.length + 1) {
-            BotArray[count - 1].Hand.push(card);
-        }
-    }
-
-  
-    //first deal
-    $('.Participant').each(function (i)
-    {
-        var FirstCard = GetCard();
-        var SecondCard = GetCard();
-
-        $(this).children('.Hand').html(FirstCard.Name + " " + FirstCard.Suit + ", " + SecondCard.Name + " " + SecondCard.Suit);
-        var value = FirstCard.Value == 11 && SecondCard.Value == 1 ? +FirstCard.Value + SecondCard.Value - 10 : +FirstCard.Value + SecondCard.Value;
-        $(this).children('.Score').html(value);
-        //if (FirstCard.Value == 11 && SecondCard.Value == 11) {
-        //    $(this).children('.Score').html(+FirstCard.Value + SecondCard.Value - 10);
-        //}
-        //else {
-        //    $(this).children('.Score').html(+FirstCard.Value + SecondCard.Value);
-        //}
-
-        addHands(i, FirstCard);
-        addHands(i, SecondCard);
-
-    });
-
-    FindBlackJack();
 
     //Add Card
     $(function () {
-        $('#Take').on('click', function ()
-        {
-            var Card = GetCard();
-            var value = $('.Score').eq(0).html();
-            var Hand = $('.Hand').eq(0).html();
-            $('.Hand').eq(0).html(Hand + ", " + Card.Name + " " + Card.Suit);
-            if (value >= 11 && Card.Value == 11) {
-                $('.Score').eq(0).html(+value + Card.Value - 10);
-            }
-            else {
-                $('.Score').eq(0).html(+value + Card.Value);
-            }
-            FindBlackJack();
-        });
+            $('#Take').on('click', function () {
+                var Card = GetCard();
+                var value = $('.Score').eq(0).html();
+                var Hand = $('.Hand').eq(0).html();
+                $('.Hand').eq(0).html(Hand + ", " + Card.Name + " " + Card.Suit);
+                value >= 11 && Card.Value == 11 ? $('.Score').eq(0).html(+value + Card.Value - 10) : $('.Score').eq(0).html(+value + Card.Value);
+                model.Player.Properties[0].Score = 23
+                model.Player.Properties[0].Hand[0] = Card;
+            });
     });
 
+    $(function () {
+        $('#First').on('click', function () {
+            $('.Participant').each(function (i  ) {
+                var FirstCard = GetCard();
+                var SecondCard = GetCard();
+                if ($(this).children('p').children('.Score').html() == "0") {
+                    $(this).children('.Hand').html(FirstCard.Name + " " + FirstCard.Suit + ", " + SecondCard.Name + " " + SecondCard.Suit);
+                    var value = FirstCard.Value == 11 && SecondCard.Value == 11 ? +FirstCard.Value + SecondCard.Value - 10 : +FirstCard.Value + SecondCard.Value;
+                    $(this).children('p').children('.Score').html(value);
+                }              
+            });
+
+        });
+    });
     //Stop Button
     $(function () {
 
         $('#Stop').on('click', function () {
-            Bool = true;
-            BotLogic();
+            $('.Participant').each(function (i) { 
+            
+                BotLogic(i+1);
+            });
         });
     });
 
+    function BotLogic(i) {
+        while ($('.Score').eq(i).html() < 17)
+        {
+            var Card = GetCard();
+            var value = $('.Score').eq(i).html();
+            var Hand = $('.Hand').eq(i).html();
+
+            $('.Hand').eq(i).html(Hand + ", " + Card.Name + " " + Card.Suit);
+            value >= 11 && Card.Value == 11 ? $('.Score').eq(i).html(+value + Card.Value - 10) : $('.Score').eq(i).html(+value + Card.Value);
+           
+        }
+    }
+
+ 
+   
+   $(function () {
+       $('#asd').on('click', function () {
+           var players = model.Bots;
+           players.push(model.Player.Properties[0].Hand);
+           players.push(model.Dealer);
+
+           Alert(model.Player.Properties[0].Hand[0]);
+         
 
 
-</script>*@
+           $.get("@Url.Action("Index","History")", { RoundId: model.RoundId, Winner: model.Winner, WinnerScore: model.Player.Properties[0].Score, Players: players })
+
+                    });
+            });
+  
+
+   
+
+
+
+</script>

@@ -13,19 +13,12 @@ namespace BlackJack.Entities.History
         public int WinnerScore { get; set; }
         
 
-        public virtual ICollection<Card> WinnerHand { get; set; }
-        
-
+     
         public int NumberRound { get; set; }
 
         public int? GameId { get; set; }
         public virtual Game Game { get; set; }
 
-
-        public Round()
-        {
-            WinnerHand = new List<Card>();
-        }
 
        
     }

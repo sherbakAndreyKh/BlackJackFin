@@ -30,6 +30,11 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             return _playerPropertiesRepository.Get(id);
         }
 
+        public PlayerProperties GetWithPlayerAndRoundId(int playerId, int roundId)
+        {
+            return _playerPropertiesRepository.GetWithPlayerAndRoundId(playerId, roundId);
+        }
+
         public IEnumerable<PlayerProperties> GatAll()
         {
             return _playerPropertiesRepository.GetAll();
