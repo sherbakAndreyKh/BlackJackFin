@@ -40,23 +40,18 @@
 
 
 
-
-
-
-
-
-
-
 <div class="Buttons text-right">
     <button id="First">FirstDeal</button>
     <button id="Take">TakeOne</button>
     <button id="Stop">Stop</button>
-    <button id="asd">test</button>
+    <button id="History">test</button>
 </div>
 
 
 <script>
     var model = @Html.Raw(Json.Encode(Model));
+
+    alert(model.Player.Properties[0].Hand);
     var Bool = false;
     model.Winner = model.Player.Name;
     model.WinnerScore = 21;
@@ -77,13 +72,16 @@
                 var Hand = $('.Hand').eq(0).html();
                 $('.Hand').eq(0).html(Hand + ", " + Card.Name + " " + Card.Suit);
                 value >= 11 && Card.Value == 11 ? $('.Score').eq(0).html(+value + Card.Value - 10) : $('.Score').eq(0).html(+value + Card.Value);
-                model.Player.Properties[0].Score = 23
-                model.Player.Properties[0].Hand[0] = Card;
+                var CardArray = new Array();
+                CardArray.push(Card);
+                $.post("@Url.Action("Index","History")", { PlayerName: model.Player.Name, Cards: CardArray, Score: +$('.Score').eq(0).html(), GameId: model.GameId, RoundId: model.RoundId });
             });
     });
 
     $(function () {
         $('#First').on('click', function () {
+
+
             $('.Participant').each(function (i  ) {
                 var FirstCard = GetCard();
                 var SecondCard = GetCard();
@@ -91,7 +89,12 @@
                     $(this).children('.Hand').html(FirstCard.Name + " " + FirstCard.Suit + ", " + SecondCard.Name + " " + SecondCard.Suit);
                     var value = FirstCard.Value == 11 && SecondCard.Value == 11 ? +FirstCard.Value + SecondCard.Value - 10 : +FirstCard.Value + SecondCard.Value;
                     $(this).children('p').children('.Score').html(value);
-                }              
+                    var CardArray = new Array();
+                    CardArray.push(FirstCard);
+                    CardArray.push(SecondCard);
+
+                    $.post("@Url.Action("Index","History")", { PlayerName: $(this).children("h4").html(), Cards: CardArray, Score: value, GameId: model.GameId, RoundId: model.RoundId });
+                }                
             });
 
         });
@@ -108,6 +111,7 @@
     });
 
     function BotLogic(i) {
+        var CardArray = new Array();
         while ($('.Score').eq(i).html() < 17)
         {
             var Card = GetCard();
@@ -116,24 +120,22 @@
 
             $('.Hand').eq(i).html(Hand + ", " + Card.Name + " " + Card.Suit);
             value >= 11 && Card.Value == 11 ? $('.Score').eq(i).html(+value + Card.Value - 10) : $('.Score').eq(i).html(+value + Card.Value);
-           
+            CardArray.push(Card);          
         }
+          $.post("@Url.Action("Index","History")", { PlayerName: $('.Participant').eq(i).children("h4").html(), Cards: CardArray, Score: +$('.Score').eq(i).html(), GameId: model.GameId, RoundId: model.RoundId });
     }
 
  
    
    $(function () {
-       $('#asd').on('click', function () {
+       $('#History').on('click', function () {
            var players = model.Bots;
            players.push(model.Player.Properties[0].Hand);
            players.push(model.Dealer);
 
-           Alert(model.Player.Properties[0].Hand[0]);
          
 
-
-           $.get("@Url.Action("Index","History")", { RoundId: model.RoundId, Winner: model.Winner, WinnerScore: model.Player.Properties[0].Score, Players: players })
-
+           $.post("@Url.Action("Index","History")", model)
                     });
             });
   

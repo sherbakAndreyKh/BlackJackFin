@@ -19,10 +19,10 @@ namespace BlackJack.UI.Controllers
 
         public ViewResult Index(AddHistory data)
         {
-            HistoryViewModel result =  _historyService.AddAndReturnHistory(data);
+           _historyService.AddFirstDeal(data);
 
 
-            return View("Index", result);
+            return View();
         }
     }
 }

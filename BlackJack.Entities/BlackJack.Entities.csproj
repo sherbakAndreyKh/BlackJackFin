@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="Enums\Roles.cs" />
+    <Compile Include="History\CardHistory.cs" />
     <Compile Include="History\Game.cs" />
     <Compile Include="History\Round.cs" />
     <Compile Include="MainEntity.cs" />

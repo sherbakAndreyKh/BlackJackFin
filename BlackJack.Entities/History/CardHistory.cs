@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlackJack.Entities.History;
 
-namespace BlackJack.Entities
+namespace BlackJack.Entities.History
 {
-    public class Card : MainEntity
+    public class CardHistory : MainEntity
     {
         public string Name { get; set; }
         public string Suit { get; set; }
@@ -15,17 +14,19 @@ namespace BlackJack.Entities
 
         public string ImgPath { get; set; }
 
+        public virtual ICollection<PlayerProperties> Hands { get; set; }
 
-        public Card() { }
+
+        public CardHistory() { }
 
 
-        public Card(string name, string suit, int value, string imgpath)
+        public CardHistory(string name, string suit, int value, string imgpath)
         {
             Name = name;
             Suit = suit;
             Value = value;
             ImgPath = imgpath;
-          
+            Hands = new List<PlayerProperties>();
         }
     }
 }

@@ -17,42 +17,52 @@ namespace BlackJack.Services.Services
         IRoundLogic _roundLogic { get; set; }
         IGameLogic _gameLogic { get; set; }
         IPlayerLogic _playerLogic { get; set; }
+        IPlayerPropertiesLogic _playerPropertiesLogic { get; set; }
+        ICardLogic _cardLogic { get; set; }
 
-
-        public HistoryService(IRoundLogic roundLogic, IGameLogic gameLogic, IPlayerLogic playerLogic)
+        public HistoryService(IRoundLogic roundLogic, IGameLogic gameLogic, IPlayerLogic playerLogic, IPlayerPropertiesLogic playerPropertiesLogic, ICardLogic cardLogic)
         {
             _roundLogic = roundLogic;
             _gameLogic = gameLogic;
             _playerLogic = playerLogic;
+            _playerPropertiesLogic = playerPropertiesLogic;
+            _cardLogic = cardLogic;
         }
 
-        public HistoryViewModel AddAndReturnHistory(AddHistory item)
+        public void AddFirstDeal(AddHistory item)
         {
-            //round update
-            Round Round = _roundLogic.Get(item.RoundId);
-            Round.Winner = item.Winner;
-            Round.WinnerScore = item.WinnerScore;
-            Game Game = _gameLogic.Get((int)Round.GameId);
-            Player Player = _playerLogic.Get(Game.PlayerId);
+            var player = _playerLogic.Find(x => x.Name == item.PlayerName).SingleOrDefault();
+
+            var playerProp = _playerPropertiesLogic.GetWithPlayerAndRoundId(player.Id, item.RoundId);
+
+            playerProp.Score = item.Score;
+
+            playerProp.Hand = ReMapCards(item.Cards.ToList());
+
+            _playerPropertiesLogic.Update(playerProp);
+           
+        }
 
 
-            _roundLogic.Update(Round);
-            _roundLogic.Save();
 
 
-        
-
-            HistoryViewModel model = new HistoryViewModel()
+        protected List<CardHistory> ReMapCards(IEnumerable<CardGameViewModelItem> cards)
+        {
+            var result = new List<CardHistory>();
+            foreach (var a in cards)
             {
-                PlayerName = Player.Name,
-                GameNumber = Game.NumberGame,
-                RoundNumber = Round.NumberRound,
-                Winner = Round.Winner,
-                WinnerScore = Round.WinnerScore,
-                AmountPlayers = Game.AmountPlayers
-            };
-
-            return model;
+                var CardView = new CardHistory()
+                {
+                    Name = a.Name,
+                    Suit = a.Suit,
+                    Value = a.Value,
+                    ImgPath = a.ImgPath
+                };
+                result.Add(CardView);
+            }
+            return result;
         }
     }
+
+
 }

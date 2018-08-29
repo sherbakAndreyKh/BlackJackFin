@@ -20,6 +20,7 @@ namespace BlackJack.DataAccessLayer.Context
         // History
         public DbSet<Game> Games { get; set; }
         public DbSet<Round> Rounds { get; set; }
+        public DbSet<CardHistory> CardHistory { get; set; }
 
         // Card
         public DbSet<Card> CardDeck { get; set; }

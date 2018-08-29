@@ -72,8 +72,8 @@ namespace BlackJack.Services.Services
 
 
             GameViewModel gameVM = new GameViewModel();
-            gameVM.RoundId = roundId;
             gameVM.GameId = gameId;
+            gameVM.RoundId = roundId;
             gameVM.GameNumber = _gameLogic.Get(gameId).NumberGame;
             gameVM.RoundNumber = _roundLogic.Get(roundId).NumberRound;
             gameVM.CardDeck = cards;
@@ -171,9 +171,8 @@ namespace BlackJack.Services.Services
             }
             return result;
         }
-
-
-        
-
+       
     }
+
 }
+

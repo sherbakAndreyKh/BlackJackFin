@@ -4,6 +4,6 @@ namespace BlackJack.Services.Interfaces
 {
     public interface IHistoryService
     {
-        HistoryViewModel AddAndReturnHistory(AddHistory item);
+        void AddFirstDeal(AddHistory item);
     }
 }
