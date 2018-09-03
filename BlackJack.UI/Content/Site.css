@@ -24,16 +24,30 @@ textarea {
 }
 
 .field {
-    margin-top: 90px;
+    margin-top: 150px;
     width: 100%;
     height: 70%;
     min-height: 400px;
-    background-color: forestgreen;
+    background-color: darkred;
 }
 
 .dealer{
     position: absolute;
-    top: 50px;
-    left: 40%;
+    width: 100px;
+    padding: 5px;
+    top: 70px;
+    left:  47%;
+}
+.SelectAmountBots{
+    width: 100px;
+    height: 30px;
+    
+}
 
+.Score{
+    font-weight: bold;
+}
+
+.Hand{
+    font-weight: bold;
 }

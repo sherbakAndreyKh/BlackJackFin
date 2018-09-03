@@ -9,6 +9,7 @@ namespace BlackJack.DataAccessLayer.Interfaces
         void Delete(int id);
         IEnumerable<T> Find(Func<T, bool> predicate);
         T Get(int id);
+      
         IEnumerable<T> GetAll();
         void Save();
         void Update(T item);

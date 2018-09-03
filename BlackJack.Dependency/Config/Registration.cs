@@ -1,11 +1,11 @@
 ﻿using Ninject.Modules;
 using BlackJack.BusinessLogicLayer.Interfaces;
 using BlackJack.BusinessLogicLayer.BusinessLogic;
-using BlackJack.Services.Interfaces;
-using BlackJack.Services.Services;
 using BlackJack.DataAccessLayer.Interfaces;
 using BlackJack.DataAccessLayer.Repositories;
 using BlackJack.DataAccessLayer.Context;
+using BlackJack.Services.Interfaces;
+using BlackJack.Services.Services;
 
 
 namespace BlackJack.Dependency.Config
@@ -21,29 +21,26 @@ namespace BlackJack.Dependency.Config
 
         public override void Load()
         {
+            Bind<BlackJackContext>().ToSelf().InSingletonScope().WithConstructorArgument(connectionString);
+
             // DAL
-            Bind<IBotRepository>().To<BotRepository>().WithConstructorArgument(connectionString);
-            Bind<IPlayerRepository>().To<PlayerRepository>().WithConstructorArgument(connectionString);
-            Bind<IDealerRepository>().To<DealerRepository>().WithConstructorArgument(connectionString);
-            Bind<IGameRepository>().To<GameRepository>().WithConstructorArgument(connectionString);
-            Bind<IRoundRepository>().To<RoundRepository>().WithConstructorArgument(connectionString);
-            Bind<ICardRepository>().To<CardRepository>().WithConstructorArgument(connectionString);
+            Bind<IPlayerRepository>().To<PlayerRepository>();
+            Bind<IPlayerPropertiesRepository>().To<PlayerPropertiesRepository>();
+            Bind<IGameRepository>().To<GameRepository>();
+            Bind<IRoundRepository>().To<RoundRepository>();
+            Bind<ICardRepository>().To<CardRepository>();
 
 
             // BLL
-            Bind<IBotLogic>().To<BotLogic>();
             Bind<IPlayerLogic>().To<PlayerLogic>();
-            Bind<IDealerLogic>().To<DealerLogic>();
+            Bind<IPlayerPropertiesLogic>().To<PlayerPropertiesLogic>();
             Bind<ICardLogic>().To<CardLogic>();
             Bind<IGameLogic>().To<GameLogic>();
             Bind<IRoundLogic>().To<RoundLogic>();
 
             // Service
             Bind<IGameStartService>().To<GameStartService>();
-            Bind<ICreateGame>().To<CreateGame>();
-            
-
-            Bind<IBlackJackContext>().To<BlackJackContext>().WithConstructorArgument(connectionString);
+            Bind<IHistoryService>().To<HistoryService>();
         }
     }
 }

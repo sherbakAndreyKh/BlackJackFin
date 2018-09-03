@@ -9,14 +9,11 @@ using BlackJack.Entities.History;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
-    public class GameRepository : BaseRepository<Game>, IGameRepository, IDisposable
+    public class GameRepository : BaseRepository<Game>, IGameRepository
     {
-        // Fields
-        private bool disposedValue = false;
 
-        // Constructors
-      
 
+        //Constructors
         public GameRepository(BlackJackContext db) : base(db)
         {
         }
@@ -31,24 +28,9 @@ namespace BlackJack.DataAccessLayer.Repositories
             return item.Id;
         }
 
-        // Dispose
-        protected virtual void Dispose(bool disposing)
+        public int ReturnNewGameNumber(int id)
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-                disposedValue = true;
-            }
-        }
-
-        public void Dispose()
-        {
-
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            return db.Games.Where(x => x.PlayerId == id).Count() + 1;
         }
     }
 }

@@ -9,41 +9,50 @@ using System.Data.Entity;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
-    public abstract class BaseRepository<T>: IBaseRepository<T> where T :class
+    public class BaseRepository<T>:  IBaseRepository<T>, IDisposable where T :class
         {
+
+        //Fields
         protected BlackJackContext db;
 
+        private bool disposedValue = false;
+
+        //Constructors
         public BaseRepository(BlackJackContext db)
         {
             this.db = db;
         }
 
-        public virtual IEnumerable<T> GetAll()
+
+        //Methods
+        public T Get(int id)
+        {
+            return db.Set<T>().Find(id);
+        }
+        
+        public IEnumerable<T> GetAll()
         {
             return db.Set<T>();
         }
 
-        public virtual T Get(int id)
-        {
-            return db.Set<T>().Find(id);
-        }
 
-        public virtual IEnumerable<T> Find(Func<T, Boolean> predicate)
+        public IEnumerable<T> Find(Func<T, Boolean> predicate)
         {
             return db.Set<T>().Where(predicate);
         }
 
-        public virtual void Create(T item)
+        public void Create(T item)
         {
             db.Set<T>().Add(item);
         }
 
-        public virtual void Update(T item)
+        public void Update(T item)
         {
             db.Entry(item).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
-        public virtual void Delete(int id)
+        public void Delete(int id)
         {
             T item = db.Set<T>().Find(id);
             if (item != null)
@@ -56,5 +65,24 @@ namespace BlackJack.DataAccessLayer.Repositories
         {
             db.SaveChanges();
         }
+
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+                disposedValue = true;
+            }
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
     }
 }

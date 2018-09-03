@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using BlackJack.BusinessLogicLayer.Interfaces;
 using BlackJack.DataAccessLayer.Interfaces;
-using BlackJack.Entities.Participant;
+using BlackJack.Entities;
 
 namespace BlackJack.BusinessLogicLayer.BusinessLogic
 {
@@ -29,9 +29,14 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             return _playerRepository.Get(Id);
         }
 
-        public IEnumerable<Player> GatAll()
+        public IEnumerable<Player> GetAll()
         {
             return _playerRepository.GetAll();
+        }
+
+        public IEnumerable<Player> GetQuantityWithRole(int quantity, int role)
+        {
+            return _playerRepository.GetQuantityWithRole(quantity, role);
         }
 
         public IEnumerable<Player> Find(Func<Player, Boolean> predicate)

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlackJack.Entities.Participant;
+﻿using System.Collections.Generic;
+using BlackJack.Entities;
+using BlackJack.Entities.Enums;
 
 namespace BlackJack.DataAccessLayer.Interfaces
 {
     public interface IPlayerRepository : IBaseRepository<Player>
     {
         int CreateAndReturnId(Player item);
+        IEnumerable<Player> GetQuantityWithRole(int quantity, int role);
     }
 }

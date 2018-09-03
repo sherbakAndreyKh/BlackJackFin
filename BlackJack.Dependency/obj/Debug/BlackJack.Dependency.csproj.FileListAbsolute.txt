@@ -1,6 +1,8 @@
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.Dependency.dll.config
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.Dependency.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.Dependency.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.BusinessLogicLayer.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccessLayer.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.Services.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\EntityFramework.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\EntityFramework.SqlServer.dll
@@ -17,6 +19,9 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\Syste
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\System.Web.WebPages.Razor.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.Entities.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.ViewModels.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.BusinessLogicLayer.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccessLayer.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccessLayer.dll.config
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.Services.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\EntityFramework.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\EntityFramework.SqlServer.xml
@@ -37,8 +42,3 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\obj\Debug\Black
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\obj\Debug\BlackJack.Dependency.csproj.CopyComplete
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\obj\Debug\BlackJack.Dependency.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\obj\Debug\BlackJack.Dependency.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.BusinessLogicLayer.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccessLayer.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.BusinessLogicLayer.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccessLayer.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccessLayer.dll.config

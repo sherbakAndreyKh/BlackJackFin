@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,15 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameOptions.cs" />
-    <Compile Include="GameViewModel.cs" />
+    <Compile Include="GameOptionsViewModel.cs" />
+    <Compile Include="RequestGameViewModel.cs" />
+    <Compile Include="ResponseGameViewModel.cs" />
+    <Compile Include="HistoryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BlackJack.Entities\BlackJack.Entities.csproj">
-      <Project>{7406ba2f-cd9a-436c-88f0-c96a3181b9cf}</Project>
-      <Name>BlackJack.Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,36 +9,14 @@ using BlackJack.Entities;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
-    public class CardRepository : BaseRepository<Card>, ICardRepository, IDisposable
+    public class CardRepository : BaseRepository<Card>, ICardRepository
     {
-        // Fields
-        private bool disposedValue = false;
 
         // Constructors
-       
-
         public CardRepository(BlackJackContext db) : base(db)
         {
         }
 
-        // Dispose
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-                disposedValue = true;
-            }
-        }
-
-        public void Dispose()
-        {
-
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+      
     }
 }
