@@ -18,17 +18,17 @@ namespace BlackJack.ViewModels
         public int AmountPlayers { get; set; }
 
     }
-    public class AddHistory
-    {
-        public int GameId { get; set; }
-        public int RoundId { get; set; }
-        public string PlayerName { get; set; }
-        public List<CardGameViewModelItem> Cards { get; set; }
-        public int Score { get; set; }
+    //    public class AddHistory
+    //    {
+    //        public int GameId { get; set; }
+    //        public int RoundId { get; set; }
+    //        public string PlayerName { get; set; }
+    //        public List<CardGameViewModelItem> Cards { get; set; }
+    //        public int Score { get; set; }
 
-        public AddHistory()
-        {
-            Cards = new List<CardGameViewModelItem>();
-        }
-    }
+    //        public AddHistory()
+    //        {
+    //            Cards = new List<CardGameViewModelItem>();
+    //        }
+    //    }
 }

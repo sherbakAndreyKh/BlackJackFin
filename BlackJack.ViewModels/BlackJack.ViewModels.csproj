@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameOptionsViewModel.cs" />
-    <Compile Include="GameViewModel.cs" />
+    <Compile Include="RequestGameViewModel.cs" />
+    <Compile Include="ResponseGameViewModel.cs" />
     <Compile Include="HistoryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

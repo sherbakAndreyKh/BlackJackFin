@@ -14,7 +14,7 @@ namespace BlackJack.Entities.History
 
         public string ImgPath { get; set; }
 
-        public virtual ICollection<PlayerProperties> Hands { get; set; }
+       
 
 
         public CardHistory() { }
@@ -26,7 +26,6 @@ namespace BlackJack.Entities.History
             Suit = suit;
             Value = value;
             ImgPath = imgpath;
-            Hands = new List<PlayerProperties>();
         }
     }
 }

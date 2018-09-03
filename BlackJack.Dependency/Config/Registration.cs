@@ -21,12 +21,14 @@ namespace BlackJack.Dependency.Config
 
         public override void Load()
         {
+            Bind<BlackJackContext>().ToSelf().InSingletonScope().WithConstructorArgument(connectionString);
+
             // DAL
-            Bind<IPlayerRepository>().To<PlayerRepository>().WithConstructorArgument(connectionString);
-            Bind<IPlayerPropertiesRepository>().To<PlayerPropertiesRepository>().WithConstructorArgument(connectionString);
-            Bind<IGameRepository>().To<GameRepository>().WithConstructorArgument(connectionString);
-            Bind<IRoundRepository>().To<RoundRepository>().WithConstructorArgument(connectionString);
-            Bind<ICardRepository>().To<CardRepository>().WithConstructorArgument(connectionString);
+            Bind<IPlayerRepository>().To<PlayerRepository>();
+            Bind<IPlayerPropertiesRepository>().To<PlayerPropertiesRepository>();
+            Bind<IGameRepository>().To<GameRepository>();
+            Bind<IRoundRepository>().To<RoundRepository>();
+            Bind<ICardRepository>().To<CardRepository>();
 
 
             // BLL
@@ -39,9 +41,6 @@ namespace BlackJack.Dependency.Config
             // Service
             Bind<IGameStartService>().To<GameStartService>();
             Bind<IHistoryService>().To<HistoryService>();
-
-
-            Bind<IBlackJackContext>().To<BlackJackContext>().WithConstructorArgument(connectionString);
         }
     }
 }

@@ -15,8 +15,12 @@ namespace BlackJack.Entities
 
         public string ImgPath { get; set; }
 
+        public virtual ICollection<PlayerProperties> Hands { get; set; }
 
-        public Card() { }
+
+        public Card() {
+            Hands = new List<PlayerProperties>();
+        }
 
 
         public Card(string name, string suit, int value, string imgpath)
@@ -24,8 +28,7 @@ namespace BlackJack.Entities
             Name = name;
             Suit = suit;
             Value = value;
-            ImgPath = imgpath;
-          
+            ImgPath = imgpath;   
         }
     }
 }

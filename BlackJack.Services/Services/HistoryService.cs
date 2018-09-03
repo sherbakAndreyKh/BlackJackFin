@@ -29,39 +29,26 @@ namespace BlackJack.Services.Services
             _cardLogic = cardLogic;
         }
 
-        public void AddFirstDeal(AddHistory item)
+        public void AddFirstDeal(RequestGameViewModel item)
         {
-            var player = _playerLogic.Find(x => x.Name == item.PlayerName).SingleOrDefault();
+            var player = _playerLogic.Find(x => x.Name == item.Player.Name).SingleOrDefault();
 
-            var playerProp = _playerPropertiesLogic.GetWithPlayerAndRoundId(player.Id, item.RoundId);
+            var playerProp = _playerPropertiesLogic.GetWithPlayerAndRoundId(player.Id, item.Round.Id);
 
-            playerProp.Score = item.Score;
+            playerProp.Score = item.Player.Properties.SingleOrDefault().Score;
 
-            playerProp.Hand = ReMapCards(item.Cards.ToList());
+           
+            //var Card = _cardLogic.Find(x => x.Name == item.Cards.FirstOrDefault().Name)
+            //                     .Where(x => x.Suit == item.Cards.FirstOrDefault().Suit)
+            //                     .SingleOrDefault();
+
+            //playerProp.Hand.Add(Card);
 
             _playerPropertiesLogic.Update(playerProp);
-           
+            
+            
         }
-
-
-
-
-        protected List<CardHistory> ReMapCards(IEnumerable<CardGameViewModelItem> cards)
-        {
-            var result = new List<CardHistory>();
-            foreach (var a in cards)
-            {
-                var CardView = new CardHistory()
-                {
-                    Name = a.Name,
-                    Suit = a.Suit,
-                    Value = a.Value,
-                    ImgPath = a.ImgPath
-                };
-                result.Add(CardView);
-            }
-            return result;
-        }
+    
     }
 
 

@@ -14,7 +14,8 @@ namespace BlackJack.DataAccessLayer.Repositories
 
         //Fields
         protected BlackJackContext db;
-        private bool disposedValue = false; 
+
+        private bool disposedValue = false;
 
         //Constructors
         public BaseRepository(BlackJackContext db)
@@ -79,7 +80,6 @@ namespace BlackJack.DataAccessLayer.Repositories
         }
         public void Dispose()
         {
-           
             Dispose(true);
             GC.SuppressFinalize(this);
         }

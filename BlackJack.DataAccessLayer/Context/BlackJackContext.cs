@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using BlackJack.Entities;
 using BlackJack.Entities.Enums;
@@ -25,20 +21,22 @@ namespace BlackJack.DataAccessLayer.Context
         // Card
         public DbSet<Card> CardDeck { get; set; }
 
-        public BlackJackContext()
-        {
-        }
+        //public BlackJackContext()
+        //{
+          
+        //}
 
-        static BlackJackContext()
+        //static BlackJackContext()
+        //{
+          
+        //}
+
+        public BlackJackContext(string connectionString)
+            : base(connectionString)
         {
             Database.SetInitializer<BlackJackContext>(new BlackJackInitializer());
         }
 
-        public BlackJackContext(string connectionString)
-            : base(connectionString)
-        { }
-
-      
     }
 
     

@@ -4,6 +4,6 @@ namespace BlackJack.Services.Interfaces
 {
     public interface IGameStartService
     {
-        GameViewModel CreateGame(GameOptionsViewModel item);
+        ResponseGameViewModel CreateGame(GameOptionsViewModel item);
     }
 }

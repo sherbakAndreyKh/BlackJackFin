@@ -10,6 +10,7 @@ namespace BlackJack.DataAccessLayer.Interfaces
         DbSet<Game> Games { get; set; }
         DbSet<Player> Players { get; set; }
         DbSet<PlayerProperties> Properties { get; set; }
-        DbSet<Round> Rounds { get; set; }
+        DbSet<Round> Rounds { get; set; }  
+
     }
 }

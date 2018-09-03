@@ -20,8 +20,12 @@ namespace BlackJack.DataAccessLayer.Repositories
         //Methods
         public PlayerProperties GetWithPlayerAndRoundId(int playerId,int roundId)
         {
-            return db.Properties.Where(x => x.PlayerId == playerId).Where(y => y.Round_Id == roundId).Include(x=>x.Hand).SingleOrDefault();
+            return db.Properties.Where(x => x.PlayerId == playerId && x.Round_Id == roundId)
+                                .Include(x => x.Hand)
+                                .SingleOrDefault();
+                                
         }
 
+        
     }
 }

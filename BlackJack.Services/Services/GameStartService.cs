@@ -1,84 +1,85 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BlackJack.BusinessLogicLayer.Interfaces;
 using BlackJack.Entities;
 using BlackJack.Entities.History;
 using BlackJack.Entities.Enums;
 using BlackJack.ViewModels;
 using BlackJack.Services.Interfaces;
+using BlackJack.BusinessLogicLayer.Mapping;
 
 namespace BlackJack.Services.Services
 {
     public class GameStartService : IGameStartService
     {
         // Fields
-        IPlayerLogic _plyerLogic;
+        IPlayerLogic _playerLogic;
         IGameLogic _gameLogic;
         IRoundLogic _roundLogic;
         ICardLogic _cardLogic;
         IPlayerPropertiesLogic _playerPropertiesLogic;
+        GameStartServiceResponseMappProvider _mapp;
 
         //Constructors
-        public GameStartService(IPlayerLogic playerLogic, IGameLogic gameLogic, IRoundLogic roundLogic, ICardLogic cardLogic, IPlayerPropertiesLogic playerPropertiesLogic)
+        public GameStartService(IPlayerLogic playerLogic, IGameLogic gameLogic, IRoundLogic roundLogic, ICardLogic cardLogic, IPlayerPropertiesLogic playerPropertiesLogic, GameStartServiceResponseMappProvider mapp)
         {
-            _plyerLogic = playerLogic;
+            _playerLogic = playerLogic;
             _gameLogic = gameLogic;
             _roundLogic = roundLogic;
             _cardLogic = cardLogic;
             _playerPropertiesLogic = playerPropertiesLogic;
+            _mapp = mapp;
         }
 
 
         //Methods
-        public GameViewModel CreateGame(GameOptionsViewModel item)
+        public ResponseGameViewModel CreateGame(GameOptionsViewModel item)
         {
             // add Player 
-            var playerId = CheckPLayerName(item.PlayerName) ? CreatePlayerAndReturnId(item) : _plyerLogic.Find(x => x.Name == item.PlayerName).SingleOrDefault().Id;
+            int playerId = CheckPLayerName(item.PlayerName) ? CreatePlayerAndReturnId(item) : _playerLogic.Find(x => x.Name == item.PlayerName).SingleOrDefault().Id;
             // add Game and return Id         
-            var gameId = CreateGameAndReturnId(item, playerId);
+            int gameId = CreateGameAndReturnId(item, playerId);
             // add Round and return Id
-            var roundId = CreateRoundAndReturnId(gameId);
+            int roundId = CreateRoundAndReturnId(gameId);
             // add cards
-            var cards = MapCards(_cardLogic.GetAll());
+            List<CardResponseGameViewModelItem> cards = _mapp.MapCards(_cardLogic.GetAll());
 
             ////add Plyer Hands
-            List<Player> playersList = new List<Player>();
-            playersList.Add(_plyerLogic.Get(playerId));
-            playersList.Add(_plyerLogic.GetQuentityWithRole(1, 1).SingleOrDefault());
-            foreach (var a in _plyerLogic.GetQuentityWithRole(item.AmountBots, 2))
+            var playerList = new List<Player>();
+            playerList.Add(_playerLogic.Get(playerId));
+            playerList.Add(_playerLogic.GetQuantityWithRole(1, 1).SingleOrDefault());
+
+            foreach (var player in _playerLogic.GetQuantityWithRole(item.AmountBots, 2))
             {
-                playersList.Add(a);
+                playerList.Add(player);
             }
 
-            foreach(var a in playersList)
+            for (int i = 0; i < playerList.Count(); i++)
             {
-                PlayerProperties prop = new PlayerProperties();
-                prop.PlayerId = a.Id;
-                prop.Round_Id = roundId;
-                _playerPropertiesLogic.Create(prop);
+                var property = new PlayerProperties();
+                property.PlayerId = playerList[i].Id;
+                property.Round_Id = roundId;
+                _playerPropertiesLogic.Create(property);
                 _playerPropertiesLogic.Save();
             }
+           
 
             // mappin Players
-            List<PlayersGameViewModelItem> Bots = new List<PlayersGameViewModelItem>();
+            List<PlayersResponseGameViewModelItem> Bots = new List<PlayersResponseGameViewModelItem>();
 
-            foreach (var a in _plyerLogic.GetQuentityWithRole(item.AmountBots, 2))
+            foreach (var player in _playerLogic.GetQuantityWithRole(item.AmountBots, 2).ToList())
             {
-                Bots.Add(MapPlayer(a, roundId));
+                Bots.Add(_mapp.MapPlayer(player, _playerPropertiesLogic.GetWithPlayerAndRoundId(playerId,roundId)));
             }
 
 
-            GameViewModel gameVM = new GameViewModel();
-            gameVM.GameId = gameId;
-            gameVM.RoundId = roundId;
-            gameVM.GameNumber = _gameLogic.Get(gameId).NumberGame;
-            gameVM.RoundNumber = _roundLogic.Get(roundId).NumberRound;
+            ResponseGameViewModel gameVM = new ResponseGameViewModel();
+            gameVM.Game = _mapp.MapGame(_gameLogic.Get(gameId));
+            gameVM.Round = _mapp.MapRound(_roundLogic.Get(roundId));
             gameVM.CardDeck = cards;
-            gameVM.Player = MapPlayer(_plyerLogic.Get(playerId),roundId);
-            gameVM.Dealer = MapPlayer(_plyerLogic.GetQuentityWithRole(1, 1).SingleOrDefault(),roundId);
+            gameVM.Player = _mapp.MapPlayer(_playerLogic.Get(playerId), _playerPropertiesLogic.GetWithPlayerAndRoundId(playerId, roundId)); 
+            gameVM.Dealer = _mapp.MapPlayer(_playerLogic.GetQuantityWithRole(1, 1).SingleOrDefault(), _playerPropertiesLogic.GetWithPlayerAndRoundId(playerId, roundId));
             gameVM.Bots = Bots;
                  
             return gameVM;
@@ -88,7 +89,7 @@ namespace BlackJack.Services.Services
 
         private bool CheckPLayerName(string name)
         {
-            foreach(var Search in _plyerLogic.GatAll())
+            foreach(var Search in _playerLogic.GetAll())
             {
                 if(Search.Name == name)
                 {
@@ -106,7 +107,7 @@ namespace BlackJack.Services.Services
                 Role = Roles.Player,
             };
 
-            return _plyerLogic.CreateAndReturnId(player);
+            return _playerLogic.CreateAndReturnId(player);
         }
 
         private int CreateGameAndReturnId(GameOptionsViewModel item, int playerId)
@@ -130,48 +131,6 @@ namespace BlackJack.Services.Services
             return _roundLogic.GetAndReturnId(round);
         }
 
-
-
-        // Mapping 
-        protected PlayersGameViewModelItem MapPlayer(Player player, int roundId)
-        {
-            var result = new PlayersGameViewModelItem()
-            {
-                Name = player.Name,
-                Role = (int)player.Role,              
-            };
-            result.Properties.Add(MapProperties(_playerPropertiesLogic.GetWithPlayerAndRoundId(player.Id, roundId)));
-            return result;
-        }
-        
-        protected PlayerPropertiesGameViewModelItem MapProperties(PlayerProperties properties)
-        {
-            var result = new PlayerPropertiesGameViewModelItem()
-            {
-                PlayerId = properties.PlayerId,
-                Round_Id = properties.Round_Id,
-            };
-            return result;
-        }
-      
-
-        protected List<CardGameViewModelItem> MapCards(IEnumerable<Card> cards)
-        {
-            var result = new List<CardGameViewModelItem>();
-            foreach (var a in cards)
-            {
-                var CardView = new CardGameViewModelItem()
-                {
-                    Name = a.Name,
-                    Suit = a.Suit,
-                    Value = a.Value,
-                    ImgPath = a.ImgPath
-                };
-                result.Add(CardView);
-            }
-            return result;
-        }
-       
     }
 
 }

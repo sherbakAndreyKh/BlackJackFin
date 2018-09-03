@@ -9,7 +9,7 @@ namespace BlackJack.Entities
 {
     public class PlayerProperties : MainEntity
     {
-        public virtual ICollection<CardHistory> Hand { get; set; }
+        public virtual ICollection<Card> Hand { get; set; }
         public int Score { get; set; }
 
         public int? PlayerId { get; set; }
@@ -17,9 +17,10 @@ namespace BlackJack.Entities
 
         public int Round_Id { get; set; }
 
+
         public PlayerProperties()
         {
-            Hand = new List<CardHistory>();
+            Hand = new List<Card>();
         }
 
     }

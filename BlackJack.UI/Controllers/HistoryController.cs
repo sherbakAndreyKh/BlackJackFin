@@ -17,10 +17,9 @@ namespace BlackJack.UI.Controllers
             _historyService = historyService;
         }
 
-        public ViewResult Index(AddHistory data)
+        public ViewResult Index(RequestGameViewModel data)
         {
            _historyService.AddFirstDeal(data);
-
 
             return View();
         }

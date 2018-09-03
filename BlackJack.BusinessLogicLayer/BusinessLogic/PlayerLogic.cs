@@ -29,12 +29,12 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             return _playerRepository.Get(Id);
         }
 
-        public IEnumerable<Player> GatAll()
+        public IEnumerable<Player> GetAll()
         {
             return _playerRepository.GetAll();
         }
 
-        public IEnumerable<Player> GetQuentityWithRole(int quantity, int role)
+        public IEnumerable<Player> GetQuantityWithRole(int quantity, int role)
         {
             return _playerRepository.GetQuantityWithRole(quantity, role);
         }
