@@ -39,8 +39,8 @@ namespace BlackJack.Dependency.Config
             Bind<IRoundLogic>().To<RoundLogic>();
 
             // Service
-            Bind<IGameStartService>().To<GameStartService>();
-            Bind<IHistoryService>().To<HistoryService>();
+            Bind<IGameService>().To<GameService>();
+            //Bind<IHistoryService>().To<HistoryService>();
         }
     }
 }

@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameOptionsViewModel.cs" />
-    <Compile Include="RequestGameViewModel.cs" />
-    <Compile Include="ResponseGameViewModel.cs" />
-    <Compile Include="HistoryViewModel.cs" />
+    <Compile Include="RequestModel\RequestGameStartOptionsGameView.cs" />
+    <Compile Include="ResponseModel\ResponseGameStartOptionsGameView.cs" />
+    <Compile Include="RequestModel\RequestGameProcessGameView.cs" />
+    <Compile Include="ResponseModel\ResponseGameProcessGameView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
