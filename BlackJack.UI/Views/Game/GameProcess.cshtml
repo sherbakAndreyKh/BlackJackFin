@@ -1,4 +1,4 @@
-﻿@model BlackJack.ViewModels.ResponseGameViewModel
+﻿@model BlackJack.ViewModels.ResponseModel.ResponseGameProcessGameView
 
 @{
     ViewBag.Title = "Game";
@@ -30,11 +30,11 @@
         <h4>@bot.Name</h4>
     </div>
 }
-    <div class="dealer Participant text-center">
-        <h4>@Model.Dealer.Name</h4>
-        <p>Score: <span class="Score">@Model.Player.Properties.SingleOrDefault().Score</span></p>
-        <p class="Hand"></p>
-    </div>
+<div class="dealer Participant text-center">
+    <h4>@Model.Dealer.Name</h4>
+    <p>Score: <span class="Score">@Model.Player.Properties.SingleOrDefault().Score</span></p>
+    <p class="Hand"></p>
+</div>
 
 
 
@@ -51,9 +51,9 @@
 <script>
 
 
-    var model = JSON.parse('@Html.Raw(Json.Encode(Model))');
-    var path = '@Url.Action("Index", "History")';
-    
+    var model = @Html.Raw(Json.Encode(Model));
+
+    var path = '@Url.Action("NewRound", "Game")';
 
 
     @*var model = @Html.Raw(Json.Encode(Model));

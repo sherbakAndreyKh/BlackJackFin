@@ -50,7 +50,7 @@
     <Compile Include="Interfaces\ICardLogic.cs" />
     <Compile Include="BusinessLogic\PlayerLogic.cs" />
     <Compile Include="BusinessLogic\RoundLogic.cs" />
-    <Compile Include="Mapping\GameStartServiceMappProvider.cs" />
+    <Compile Include="Mapping\GameServiceResponceMappProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

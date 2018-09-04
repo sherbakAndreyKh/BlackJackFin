@@ -1,36 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using BlackJack.ViewModels;
+﻿using System.Web.Mvc;
 using BlackJack.Services.Interfaces;
+using BlackJack.ViewModels.RequestModel;
+using BlackJack.ViewModels.ResponseModel;
 
 namespace BlackJack.UI.Controllers
 {
     public class GameController : Controller
     {
-        IGameStartService _startService;
+        IGameService _startService;
 
-        public GameController(IGameStartService gameStartService)
+        public GameController(IGameService gameStartService)
         {
             _startService = gameStartService;
         }
 
         [HttpGet]
-        public ActionResult Options()
+        public ActionResult GameStartOptions()
         {
             return View();
         }
 
+        //rename create game
         [HttpPost]
-        public ActionResult Options(GameOptionsViewModel item)
+        public ActionResult GameStartOptions(RequestGameStartOptionsGameView item)
         {
-            var StartData = _startService.CreateGame(item);
-
-            return View("Game", StartData);
+            ResponseGameProcessGameView startData = _startService.StartGame(item);
+            return View("GameProcess", startData);
         }
 
+        
+        public ActionResult NewRound(RequestGameProcessGameView item)
+        {
+            _startService.SaveChanges(item);
 
+            return View("GameProcess");
+        }
+        
+
+        
     }
 }
