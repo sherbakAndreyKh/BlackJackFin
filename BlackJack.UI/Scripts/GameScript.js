@@ -30,7 +30,7 @@ function MoreLess(participant) {
     if (participant > 21) {
         alert('Too Much!');
     }
-    if (participant == 21) {
+    if (participant === 21) {
         alert('enough');
     }
 }

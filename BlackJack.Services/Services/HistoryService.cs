@@ -1,55 +1,73 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using BlackJack.BusinessLogicLayer.Interfaces;
-//using BlackJack.Entities;
-//using BlackJack.Entities.History;
-//using BlackJack.Entities.Enums;
-//using BlackJack.ViewModels;
-//using BlackJack.Services.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using BlackJack.BusinessLogicLayer.Interfaces;
+using BlackJack.Entities;
+using BlackJack.Entities.History;
+using BlackJack.Entities.Enums;
+using BlackJack.Services.Interfaces;
+using BlackJack.BusinessLogicLayer.Mapping;
+using BlackJack.ViewModels.RequestModel;
+using BlackJack.ViewModels.ResponseModel;
 
-//namespace BlackJack.Services.Services
-//{
-//    public class HistoryService : IHistoryService
-//    {
-//        IRoundLogic _roundLogic { get; set; }
-//        IGameLogic _gameLogic { get; set; }
-//        IPlayerLogic _playerLogic { get; set; }
-//        IPlayerPropertiesLogic _playerPropertiesLogic { get; set; }
-//        ICardLogic _cardLogic { get; set; }
+namespace BlackJack.Services.Services
+{
+    public class HistoryService : IHistoryService
+    {
+        // Fields
+        IPlayerLogic _playerLogic;
+        IGameLogic _gameLogic;
+        IRoundLogic _roundLogic;
+        ICardLogic _cardLogic;
+        IPlayerPropertiesLogic _playerPropertiesLogic;
+        HistoryServiceMappProvider _mapp;
 
-//        public HistoryService(IRoundLogic roundLogic, IGameLogic gameLogic, IPlayerLogic playerLogic, IPlayerPropertiesLogic playerPropertiesLogic, ICardLogic cardLogic)
-//        {
-//            _roundLogic = roundLogic;
-//            _gameLogic = gameLogic;
-//            _playerLogic = playerLogic;
-//            _playerPropertiesLogic = playerPropertiesLogic;
-//            _cardLogic = cardLogic;
-//        }
-
-//        public void AddFirstDeal(RequestGameProcessGameView item)
-//        {
-//            var player = _playerLogic.Find(x => x.Name == item.Player.Name).SingleOrDefault();
-
-//            var playerProp = _playerPropertiesLogic.GetWithPlayerAndRoundId(player.Id, item.Round.Id);
-
-//            playerProp.Score = item.Player.Properties.SingleOrDefault().Score;
-
-           
-//            //var Card = _cardLogic.Find(x => x.Name == item.Cards.FirstOrDefault().Name)
-//            //                     .Where(x => x.Suit == item.Cards.FirstOrDefault().Suit)
-//            //                     .SingleOrDefault();
-
-//            //playerProp.Hand.Add(Card);
-
-//            _playerPropertiesLogic.Update(playerProp);
-            
-            
-//        }
-    
-//    }
+        //Constructors
+        public HistoryService(IPlayerLogic playerLogic, IGameLogic gameLogic, IRoundLogic roundLogic, ICardLogic cardLogic, IPlayerPropertiesLogic playerPropertiesLogic, HistoryServiceMappProvider mapp)
+        {
+            _playerLogic = playerLogic;
+            _gameLogic = gameLogic;
+            _roundLogic = roundLogic;
+            _cardLogic = cardLogic;
+            _playerPropertiesLogic = playerPropertiesLogic;
+            _mapp = mapp;
+        }
 
 
-//}
+
+        //Methods
+        public ResponseIndexHistoryView ReturnPlayers()
+        {
+            List<Player> Players = _playerLogic.Find(x => x.Role == Roles.Player).ToList();
+            ResponseIndexHistoryView data = new ResponseIndexHistoryView();
+            data.Players = _mapp.HistoryView(Players);
+
+            return data;
+
+        }
+
+        public ResponseGameListHistoryView ReturnGames(int id)
+        {
+            List<Game> Games = _gameLogic.Find(x => x.PlayerId == id).ToList();
+            ResponseGameListHistoryView data = new ResponseGameListHistoryView();
+            data.Player = _mapp.HistoryGamesPlayerView(_playerLogic.Get(id));
+            data.Games = _mapp.HistoryGamesView(Games);
+          
+
+            return data;
+        }
+
+
+        public ResponseRoundListHistoryView ReturnRounds(int id)
+        {
+            List<Round> Rounds = _roundLogic.Find(x => x.GameId == id).ToList();
+            ResponseRoundListHistoryView data = new ResponseRoundListHistoryView();
+            data.AmountPlayers = _gameLogic.Get(id).AmountPlayers;
+            data.Rounds = _mapp.HistoryGamesRoundView(_roundLogic.Find(x => x.GameId == id).ToList());
+
+            return data;
+        }
+
+
+       
+    }
+}

@@ -1,0 +1,41 @@
+﻿@model BlackJack.ViewModels.ResponseModel.ResponseRoundListHistoryView
+
+<script src="~/Scripts/TestScript.js"></script>
+
+@{
+    ViewBag.Title = "RoundsList";
+}
+
+<h2>RoundsList</h2>
+
+@Model.AmountPlayers
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Round Number</th>
+            <th>Winner Name</th>
+            <th>Winner Score</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var a in Model.Rounds)
+        {
+            <tr class="testButton" data-param="@a.Id">
+                <td>@a.NumberRound</td>
+                <td>@a.Winner</td> 
+                <td>@a.WinnerScore</td>
+                <td>Show More  &#9660;</td>
+            </tr>
+
+            <tr class="render"></tr>
+
+        }
+
+    </tbody>
+</table>
+
+<script>
+    var path = '@Url.Action("DetailRound", "History")';
+</script>

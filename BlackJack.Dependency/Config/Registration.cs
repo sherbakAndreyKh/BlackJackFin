@@ -21,6 +21,7 @@ namespace BlackJack.Dependency.Config
 
         public override void Load()
         {
+            // Context
             Bind<BlackJackContext>().ToSelf().InSingletonScope().WithConstructorArgument(connectionString);
 
             // DAL
@@ -40,7 +41,7 @@ namespace BlackJack.Dependency.Config
 
             // Service
             Bind<IGameService>().To<GameService>();
-            //Bind<IHistoryService>().To<HistoryService>();
+            Bind<IHistoryService>().To<HistoryService>();
         }
     }
 }
