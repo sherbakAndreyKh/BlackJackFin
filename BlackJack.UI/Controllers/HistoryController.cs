@@ -1,23 +1,47 @@
-﻿//using System.Web.Mvc;
-//using BlackJack.ViewModels;
-//using BlackJack.Services.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BlackJack.Services.Interfaces;
 
-//namespace BlackJack.UI.Controllers
-//{
-//    public class HistoryController : Controller
-//    {
-//        IHistoryService _historyService;
+namespace BlackJack.UI.Controllers
+{
+    public class HistoryController : Controller
+    {
+        // Fields
+        IHistoryService _historyService;
 
-//        public HistoryController( IHistoryService historyService)
-//        {
-//            _historyService = historyService;
-//        }
+        // Constructors
+        public HistoryController(IHistoryService historyService)
+        {
+            _historyService = historyService;
+        }
+        
+        // Methods
+        public ActionResult Index()
+        {
+            ViewModels.ResponseModel.ResponseIndexHistoryView model = _historyService.ReturnPlayers();
+            return View(model);
+        }
 
-//        public ViewResult Index(RequestGameProcessGameView data)
-//        {
-//           _historyService.AddFirstDeal(data);
 
-//            return View();
-//        }
-//    }
-//}
+        public ActionResult GameList(int id)
+        {
+            ViewModels.ResponseModel.ResponseGameListHistoryView model = _historyService.ReturnGames(id);
+            return View(model);
+        }
+
+        public ActionResult RoundsList(int id)
+        {
+            ViewModels.ResponseModel.ResponseRoundListHistoryView model = _historyService.ReturnRounds(id);
+            return View(model);
+        }
+
+        public ActionResult DetailRound(string id)
+        {
+            var a = id;
+            return View();
+        }
+    }
+}

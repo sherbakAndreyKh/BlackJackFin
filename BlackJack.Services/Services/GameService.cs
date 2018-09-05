@@ -100,7 +100,6 @@ namespace BlackJack.Services.Services
         //}
 
 
-         //сделать обратный маппинг
         public void SaveChanges(ViewModels.RequestModel.RequestGameProcessGameView item)
         {
             Round round = _roundLogic.Get(item.Round.Id);

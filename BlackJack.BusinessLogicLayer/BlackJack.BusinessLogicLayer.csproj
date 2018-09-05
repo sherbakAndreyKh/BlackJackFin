@@ -51,6 +51,7 @@
     <Compile Include="BusinessLogic\PlayerLogic.cs" />
     <Compile Include="BusinessLogic\RoundLogic.cs" />
     <Compile Include="Mapping\GameServiceResponceMappProvider.cs" />
+    <Compile Include="Mapping\HistoryServiceMappProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

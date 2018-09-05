@@ -1,5 +1,29 @@
-﻿@model BlackJack.ViewModels.HistoryViewModel
+﻿@model BlackJack.ViewModels.ResponseModel.ResponseIndexHistoryView
 
 @{
     ViewBag.Title = "Index";
 }
+
+<h3>All Player's history</h3>
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Player Name</th>
+            <th>Amount Games</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var a in Model.Players)
+        {
+        <tr>
+            <td>@a.Name</td>
+            <td>@a.GameAmount</td>
+            <td><a href="@Url.Action("GameList","History", new { id = a.Id})">Details</a></td>  
+        </tr>
+                }
+            
+        </tbody>
+</table>
