@@ -81,7 +81,7 @@ namespace BlackJack.ViewModels.ResponseModel
         public string Winner { get; set; }
         public int WinnerScore { get; set; }
         public int NumberRound { get; set; }
-        public int? GameId { get; set; }
+        public int GameId { get; set; }
         public virtual GameGameProcessGameViewItem Game { get; set; }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using BlackJack.Services.Interfaces;
 
 namespace BlackJack.UI.Controllers
@@ -38,10 +34,10 @@ namespace BlackJack.UI.Controllers
             return View(model);
         }
 
-        public ActionResult DetailRound(string id)
+        public ActionResult DetailRound(int id)
         {
-            var a = id;
-            return View();
+            ViewModels.ResponseModel.ResponseDetailsRoundHistoryView model = _historyService.DetailsRound(id);
+            return View(model);
         }
     }
 }

@@ -36,8 +36,8 @@ namespace BlackJack.DataAccessLayer.Repositories
         {
             IQueryable<Round> data = db.Rounds
                  .Include(x => x.Game)
-                 .Include(x => x.Game.player)
-                 .Include(x => x.Game.player.Properties);
+                 .Include(x => x.Game.Player)
+                 .Include(x => x.Game.Player.Properties);
 
             return data;
         }

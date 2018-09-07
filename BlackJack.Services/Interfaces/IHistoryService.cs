@@ -7,5 +7,6 @@ namespace BlackJack.Services.Interfaces
         ResponseIndexHistoryView ReturnPlayers();
         ResponseGameListHistoryView ReturnGames(int id);
         ResponseRoundListHistoryView ReturnRounds(int id);
+        ResponseDetailsRoundHistoryView DetailsRound(int id);
     }
 }

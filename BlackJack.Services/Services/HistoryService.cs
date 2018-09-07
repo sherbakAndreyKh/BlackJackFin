@@ -67,6 +67,30 @@ namespace BlackJack.Services.Services
             return data;
         }
 
+        public  ResponseDetailsRoundHistoryView DetailsRound(int id)
+        {
+            List<Player> players = new List<Player>();
+            players.Add(_roundLogic.Get(id).Game.Player);
+            players.Add(_playerLogic.GetQuantityWithRole(1, 1).SingleOrDefault());
+            List<Player> bots = _playerLogic.GetQuantityWithRole(_roundLogic.Get(id).Game.AmountPlayers - 1, 2).ToList();
+            foreach(var bot in bots)
+            {
+                players.Add(bot);
+            }
+            List<PlayerProperties> hands = _playerPropertiesLogic.GatAll().Where(x => x.Round_Id == id).ToList();
+            
+            foreach(var participant in players)
+            {
+                participant.Properties = hands.Where(x => x.PlayerId == participant.Id).ToList();
+            }
+
+            var data = new ResponseDetailsRoundHistoryView();
+            data.Players = _mapp.HistoryRoundDetailsView(players);
+
+            return data;
+
+          
+        }
 
        
     }

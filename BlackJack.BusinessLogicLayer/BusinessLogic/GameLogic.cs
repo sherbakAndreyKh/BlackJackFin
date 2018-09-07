@@ -68,6 +68,10 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         {
             _gameRepository.Save();
         }
+        public void Dispose()
+        {
+            _gameRepository.Dispose();
+        }
                 
     }
 }

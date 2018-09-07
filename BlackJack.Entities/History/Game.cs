@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,8 @@ namespace BlackJack.Entities.History
         public int AmountPlayers { get; set; }
         public int NumberGame { get; set; }
 
-        public int PlayerId { get; set; }
-        public Player player { get; set; }
+        public int? PlayerId { get; set; }
+        public Player Player { get; set; }
         
         public virtual ICollection<Round> Rounds { get; set; }
 

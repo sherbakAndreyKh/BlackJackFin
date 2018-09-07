@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RequestModel\RequestGameStartOptionsGameView.cs" />
+    <Compile Include="ResponseModel\ResponseDetailsRoundHistoryView.cs" />
     <Compile Include="ResponseModel\ResponseGameListHistoryView.cs" />
     <Compile Include="ResponseModel\ResponseGameStartOptionsGameView.cs" />
     <Compile Include="RequestModel\RequestGameProcessGameView.cs" />
