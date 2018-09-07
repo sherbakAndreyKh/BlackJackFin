@@ -1,6 +1,5 @@
 ﻿@model BlackJack.ViewModels.ResponseModel.ResponseRoundListHistoryView
 
-<script src="~/Scripts/TestScript.js"></script>
 
 @{
     ViewBag.Title = "RoundsList";
@@ -24,18 +23,20 @@
         {
             <tr class="testButton" data-param="@a.Id">
                 <td>@a.NumberRound</td>
-                <td>@a.Winner</td> 
+                <td>@a.Winner</td>
                 <td>@a.WinnerScore</td>
                 <td>Show More  &#9660;</td>
             </tr>
-
-            <tr class="render"></tr>
-
         }
 
     </tbody>
 </table>
 
+
+<div class="render container">
+
+</div>
 <script>
     var path = '@Url.Action("DetailRound", "History")';
 </script>
+<script src="~/Scripts/TestScript.js"></script>

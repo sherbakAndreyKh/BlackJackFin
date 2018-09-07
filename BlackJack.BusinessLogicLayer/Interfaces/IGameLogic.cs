@@ -15,5 +15,6 @@ namespace BlackJack.BusinessLogicLayer.Interfaces
         IEnumerable<Game> GatAll();
         void Save();
         void Update(Game item);
+        void Dispose();
     }
 }

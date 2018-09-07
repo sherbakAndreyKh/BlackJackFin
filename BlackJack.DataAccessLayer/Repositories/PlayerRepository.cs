@@ -7,6 +7,7 @@ using BlackJack.DataAccessLayer.Context;
 using BlackJack.DataAccessLayer.Interfaces;
 using BlackJack.Entities;
 using BlackJack.Entities.Enums;
+using System.Data.Entity;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
@@ -20,8 +21,10 @@ namespace BlackJack.DataAccessLayer.Repositories
         // Methods
         public int CreateAndReturnId(Player item)
         {
-            db.Players.Add(item);
 
+
+            
+            db.Players.Add(item);
             db.SaveChanges();
 
             return item.Id;

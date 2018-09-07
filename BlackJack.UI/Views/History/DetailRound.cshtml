@@ -1,5 +1,26 @@
-﻿@{ 
+﻿@model BlackJack.ViewModels.ResponseModel.ResponseDetailsRoundHistoryView
+
+@{
     Layout = null;
 }
 
-<h2>Hello!</h2>
+@foreach (var player in Model.Players)
+{
+    <div class="col-md-6 BorderInDetails">
+        <div class="text-center">
+            <h4>@player.Name</h4>
+            @foreach(var prop in player.Properties)
+            {
+          
+                <p>Score: @prop.Score</p>
+                <p>
+                    @foreach (var a in prop.Hand)
+                    {
+                    <span>@a.Name </span>
+                    <span>@a.Suit </span>
+                    }
+                </p>
+            }
+        </div>
+    </div>
+}

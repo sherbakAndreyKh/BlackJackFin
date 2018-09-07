@@ -68,7 +68,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             var result = new ViewModels.ResponseModel.RoundGameProcessGameViewItem();
             result.Id = item.Id;
             result.NumberRound = item.NumberRound;
-            result.GameId = item.GameId;
+            result.GameId = (int)item.GameId;
             result.Winner = item.Winner;
             result.WinnerScore = item.WinnerScore;
             return result;

@@ -13,5 +13,6 @@ namespace BlackJack.DataAccessLayer.Interfaces
         IEnumerable<T> GetAll();
         void Save();
         void Update(T item);
+        void Dispose();
     }
 }

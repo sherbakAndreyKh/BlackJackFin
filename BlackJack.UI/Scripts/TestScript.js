@@ -3,17 +3,27 @@
 
 $(function () {
     $('.testButton').on('click', function () {
-
-        var id = $(this).attr('data-param');
-        var element = $(this);
         if (bool) {
-            $.post(path, id, function (data) {
-                $(element).next().html(data);
+            var roundId = $(this).attr('data-param');
+            $.post(path, { id: roundId })
+                .done(function (data) {
+                    $('.render').html(data).css({ 'opacity': 1, 'visibility': 'visible' });
+                
                 bool = false;
-            });
+                });
+
+            //$.ajax({  .css({ 'opacity': 0, 'visibility': 'hidden' })
+            //    type: "POST",
+            //    url: path,
+            //    data: id,
+            //    succes: function (ret) {
+            //        $(element).next().html(data);
+            //        bool = false;
+            //    }
+            //});
         }
         if (!bool) {
-            $(element).next().html(null);
+            $('.render').html(null);
             bool = true;
         }
     });

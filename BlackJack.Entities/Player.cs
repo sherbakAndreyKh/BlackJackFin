@@ -13,8 +13,6 @@ namespace BlackJack.Entities
         public string Name { get; set; }
 
         public  Roles  Role { get; set; }
-        
-
         public virtual ICollection<Game> Games { get; set; }
         public virtual ICollection<PlayerProperties> Properties { get; set; }
 

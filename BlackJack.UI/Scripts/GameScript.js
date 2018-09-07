@@ -7,7 +7,7 @@ function getRandomInt(min, max) {
 }
 
 function GetCard() {
-    return model.CardDeck[getRandomInt(0, 51)]
+    return model.CardDeck[getRandomInt(0, 51)];
 }
 
 //Add Card
@@ -17,8 +17,8 @@ $(function () {
         var value = $('.Score').eq(0).html();
         var Hand = $('.Hand').eq(0).html();
         $('.Hand').eq(0).html(Hand + ", " + Card.Name + " " + Card.Suit);
-        var score = value >= 11 && Card.Value === 11 ? $('.Score').eq(0).html(+value + Card.Value - 10) : $('.Score').eq(0).html(+value + Card.Value);
-        model.Player.Properties[0].Score += score;
+        value >= 11 && Card.Value === 11 ? $('.Score').eq(0).html(+value + Card.Value - 10) : $('.Score').eq(0).html(+value + Card.Value);
+        model.Player.Properties[0].Score = $('.Score').eq(0).html();  
         model.Player.Properties[0].Hand.push(Card);
 
         MoreLess(model.Player.Properties[0].Score);
@@ -128,7 +128,7 @@ function BotLogic(i) {
 
 $(function () {
     $('#History').on('click', function () {
-        $.post(path, model)
+        $.post(path, model);
     });
 });
 
