@@ -46,6 +46,11 @@ namespace BlackJack.DataAccessLayer.Repositories
             db.Set<T>().Add(item);
         }
 
+        public void CreateMany(List<T> item)
+        {
+            db.Set<T>().AddRange(item);
+        }
+
         public void Update(T item)
         {
             db.Entry(item).State = EntityState.Modified;

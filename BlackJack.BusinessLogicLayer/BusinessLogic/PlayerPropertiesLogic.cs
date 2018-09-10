@@ -49,6 +49,10 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         {
             _playerPropertiesRepository.Create(item);
         }
+        public void CreateMany(List<PlayerProperties> item)
+        {
+            _playerPropertiesRepository.CreateMany(item);
+        }
 
         public void Update(PlayerProperties item)
         {
