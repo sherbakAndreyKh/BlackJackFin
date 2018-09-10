@@ -6,6 +6,7 @@ namespace BlackJack.DataAccessLayer.Interfaces
     public interface IBaseRepository<T> where T : class
     {
         void Create(T item);
+        void CreateMany(List<T> item);
         void Delete(int id);
         IEnumerable<T> Find(Func<T, bool> predicate);
         T Get(int id);

@@ -22,7 +22,6 @@ namespace BlackJack.Entities
         public PlayerProperties()
         {
             Hand = new List<Card>();
-            
         }
 
     }

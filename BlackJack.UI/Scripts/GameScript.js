@@ -18,13 +18,13 @@ $(function () {
         var Hand = $('.Hand').eq(0).html();
         $('.Hand').eq(0).html(Hand + ", " + Card.Name + " " + Card.Suit);
         value >= 11 && Card.Value === 11 ? $('.Score').eq(0).html(+value + Card.Value - 10) : $('.Score').eq(0).html(+value + Card.Value);
-        model.Player.Properties[0].Score = $('.Score').eq(0).html();  
+        model.Player.Properties[0].Score = $('.Score').eq(0).html();
         model.Player.Properties[0].Hand.push(Card);
 
         MoreLess(model.Player.Properties[0].Score);
-       
+
     });
-  
+
 });
 function MoreLess(participant) {
     if (participant > 21) {
@@ -34,6 +34,41 @@ function MoreLess(participant) {
         alert('enough');
     }
 }
+
+function FindWinner(player, dealer) {
+    if (player.Properties[0].Score <= 21 && player.Properties[0].Score > dealer.Properties[0].Score) {
+        alert(player.Name + " Win!");
+        model.Round.Winner = player.Name;
+        model.Round.WinnerScore = player.Properties[0].Score;
+
+    }
+    if (player.Properties[0].Score <= 21 && dealer.Properties[0].Score > 21) {
+        alert(player.Name + " Win!");
+        model.Round.Winner = player.Name;
+        model.Round.WinnerScore = player.Properties[0].Score;
+    }
+
+    if (player.Properties[0].Score <= 21 && player.Properties[0].Score === dealer.Properties[0].Score) {
+        alert("Draw");
+        model.Round.Winner = "Draw";
+    }
+    if (player.Properties[0].Score > 21 && dealer.Properties[0].Score > 21) {
+        alert("Draw");
+        model.Round.Winner = "Draw";
+    }
+    if (dealer.Properties[0].Score <= 21 && player.Properties[0].Score < dealer.Properties[0].Score) {
+        alert(dealer.Name + " Win!");
+        model.Round.Winner = dealer.Name;
+        model.Round.WinnerScore = dealer.Properties[0].Score;
+    }
+    if (player.Properties[0].Score > 21 && dealer.Properties[0].Score <= 21) {
+        alert(dealer.Name + " Win!");
+        model.Round.Winner = dealer.Name;
+        model.Round.WinnerScore = dealer.Properties[0].Score;
+    }
+   
+}
+
 
 //First Deal
 $(function () {
@@ -128,7 +163,17 @@ function BotLogic(i) {
 
 $(function () {
     $('#History').on('click', function () {
-        $.post(path, model);
+        FindWinner(model.Player, model.Dealer);
+        var result = confirm("PLay next Round?");
+        if (result) {
+            $.post(path, model)
+                .done(function (data) {
+                    $('body').html(data);
+                });
+        }
+        if (!result) {
+            $.post(pathEnd, model);
+        }
     });
 });
 

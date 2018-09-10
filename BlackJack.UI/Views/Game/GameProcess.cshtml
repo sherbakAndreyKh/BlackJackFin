@@ -44,13 +44,15 @@
     <button id="First">FirstDeal</button>
     <button id="Take">TakeOne</button>
     <button id="Stop">Stop</button>
-    <button id="History">test</button>
+    <button id="History">End Round</button>
 </div>
 
 <script src="~/Scripts/GameScript.js"></script>
 <script>
 
     var model = @Html.Raw(Json.Encode(Model));
-    var path = '@Url.Action("NewRound", "Game")';
+
+    var path = '@Url.Action("NewRound", "Game")'; 
+    var pathEnd = '@Url.Action("EndGame", "Game")';
 
 </script>

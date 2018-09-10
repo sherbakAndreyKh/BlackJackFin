@@ -60,6 +60,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             var result = new ViewModels.ResponseModel.GameGameProcessGameViewItem();
             result.Id = item.Id;
             result.NumberGame = item.NumberGame;
+            result.AmountPlayers = item.AmountPlayers;
             return result;
         }
 
@@ -75,7 +76,16 @@ namespace BlackJack.BusinessLogicLayer.Mapping
         }
 
 
+        public Game RemapGame(ViewModels.RequestModel.GameGameProcessGameViewItem item)
+        {
+            var result = new Game();
+            result.Id = item.Id;
+            result.NumberGame = item.NumberGame;
+            result.PlayerId = item.PlayerId;
 
 
+            return result;
+
+        }
     }
 }

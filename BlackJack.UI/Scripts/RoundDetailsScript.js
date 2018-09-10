@@ -9,7 +9,7 @@ $(function () {
                 .done(function (data) {
                     $('.render').html(data).css({ 'opacity': 1, 'visibility': 'visible' });
                 
-                bool = false;
+                    bool = false;
                 });
 
             //$.ajax({  .css({ 'opacity': 0, 'visibility': 'hidden' })
@@ -23,7 +23,8 @@ $(function () {
             //});
         }
         if (!bool) {
-            $('.render').html(null);
+            $('.render').html(null).css({ 'opacity': 0, 'visibility': 'hidden' });
+            
             bool = true;
         }
     });

@@ -1,4 +1,5 @@
 ﻿using Ninject.Modules;
+using Ninject.Web.Common;
 using BlackJack.BusinessLogicLayer.Interfaces;
 using BlackJack.BusinessLogicLayer.BusinessLogic;
 using BlackJack.DataAccessLayer.Interfaces;
@@ -22,7 +23,7 @@ namespace BlackJack.Dependency.Config
         public override void Load()
         {
             // Context
-            Bind<BlackJackContext>().ToSelf().InSingletonScope().WithConstructorArgument(connectionString);
+            Bind<BlackJackContext>().ToSelf().InRequestScope().WithConstructorArgument(connectionString);
 
             // DAL
             Bind<IPlayerRepository>().To<PlayerRepository>();
@@ -43,5 +44,6 @@ namespace BlackJack.Dependency.Config
             Bind<IGameService>().To<GameService>();
             Bind<IHistoryService>().To<HistoryService>();
         }
+
     }
 }

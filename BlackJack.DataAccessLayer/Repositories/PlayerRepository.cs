@@ -21,8 +21,6 @@ namespace BlackJack.DataAccessLayer.Repositories
         // Methods
         public int CreateAndReturnId(Player item)
         {
-
-
             
             db.Players.Add(item);
             db.SaveChanges();

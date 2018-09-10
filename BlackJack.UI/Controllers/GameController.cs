@@ -32,11 +32,16 @@ namespace BlackJack.UI.Controllers
         public ActionResult NewRound(RequestGameProcessGameView item)
         {
             _startService.SaveChanges(item);
+            ResponseGameProcessGameView roundData = _startService.NewRound(item);
 
-            return View("GameProcess");
+            return View("GameProcess", roundData);
         }
         
-
+        public ActionResult EndGame(RequestGameProcessGameView item)
+        {
+            _startService.SaveChanges(item);
+            return View();
+        }
         
     }
 }
