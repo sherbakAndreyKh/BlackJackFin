@@ -117,3 +117,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.csproj.CopyComplete
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Z.EntityFramework.Extensions.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Z.EntityFramework.Extensions.xml

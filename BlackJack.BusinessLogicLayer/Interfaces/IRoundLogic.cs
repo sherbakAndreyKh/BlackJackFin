@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BlackJack.Entities.History;
+using BlackJack.Entities;
 
 namespace BlackJack.BusinessLogicLayer.Interfaces
 {

@@ -3,8 +3,6 @@ using BlackJack.DataAccessLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 
 namespace BlackJack.DataAccessLayer.Repositories
@@ -23,7 +21,6 @@ namespace BlackJack.DataAccessLayer.Repositories
             this.db = db;
         }
 
-
         //Methods
         public T Get(int id)
         {
@@ -34,7 +31,6 @@ namespace BlackJack.DataAccessLayer.Repositories
         {
             return db.Set<T>();
         }
-
 
         public IEnumerable<T> Find(Func<T, Boolean> predicate)
         {
@@ -57,6 +53,11 @@ namespace BlackJack.DataAccessLayer.Repositories
             db.SaveChanges();
         }
 
+        public void UpdateMany(List<T> item)
+        {
+            db.BulkUpdate(item);
+        }
+
         public void Delete(int id)
         {
             T item = db.Set<T>().Find(id);
@@ -71,7 +72,6 @@ namespace BlackJack.DataAccessLayer.Repositories
             db.SaveChanges();
         }
 
-
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -83,6 +83,7 @@ namespace BlackJack.DataAccessLayer.Repositories
                 disposedValue = true;
             }
         }
+
         public void Dispose()
         {
             Dispose(true);

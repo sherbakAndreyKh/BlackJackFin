@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BlackJack.DataAccessLayer.Interfaces;
-using BlackJack.Entities.History;
+using BlackJack.Entities;
 using BlackJack.BusinessLogicLayer.Interfaces;
 
 namespace BlackJack.BusinessLogicLayer.BusinessLogic
@@ -10,7 +10,6 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
     {
         // Fields
         IGameRepository _gameRepository;
-
 
         // Constructors
         public GameLogic()
@@ -21,7 +20,6 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         {
             _gameRepository = gameRepository;
         }
-
 
         // Methods
         public int CreateAndReturnId(Game item)

@@ -42,8 +42,8 @@
   <ItemGroup>
     <Compile Include="BusinessLogic\CardLogic.cs" />
     <Compile Include="BusinessLogic\GameLogic.cs" />
-    <Compile Include="Interfaces\IPlayerPropertiesLogic.cs" />
-    <Compile Include="BusinessLogic\PlayerPropertiesLogic.cs" />
+    <Compile Include="Interfaces\IPlayerRoundHandLogic.cs" />
+    <Compile Include="BusinessLogic\PlayerRoundHandLogic.cs" />
     <Compile Include="Interfaces\IRoundLogic.cs" />
     <Compile Include="Interfaces\IPlayerLogic.cs" />
     <Compile Include="Interfaces\IGameLogic.cs" />

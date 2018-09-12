@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using BlackJack.Entities;
-using BlackJack.Entities.History;
 
 namespace BlackJack.DataAccessLayer.Interfaces
 {
@@ -9,8 +8,7 @@ namespace BlackJack.DataAccessLayer.Interfaces
         DbSet<Card> CardDeck { get; set; }
         DbSet<Game> Games { get; set; }
         DbSet<Player> Players { get; set; }
-        DbSet<PlayerProperties> Properties { get; set; }
-        DbSet<Round> Rounds { get; set; }  
-
+        DbSet<PlayerRoundHand> Properties { get; set; }
+        DbSet<Round> Rounds { get; set; }
     }
 }

@@ -43,12 +43,11 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="Enums\Roles.cs" />
-    <Compile Include="History\CardHistory.cs" />
-    <Compile Include="History\Game.cs" />
-    <Compile Include="History\Round.cs" />
-    <Compile Include="MainEntity.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Round.cs" />
+    <Compile Include="BaseEntity.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="PlayerProperties.cs" />
+    <Compile Include="PlayerRoundHand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
