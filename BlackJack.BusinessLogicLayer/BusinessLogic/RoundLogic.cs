@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BlackJack.BusinessLogicLayer.Interfaces;
 using BlackJack.DataAccessLayer.Interfaces;
-using BlackJack.Entities.History;
+using BlackJack.Entities;
 
 namespace BlackJack.BusinessLogicLayer.BusinessLogic
 {
@@ -57,11 +57,6 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         public int ReturnNewRoundNumber(int id)
         {
             return _roundRepository.ReturnNewRoundNumber(id);
-        }
-
-        public IQueryable<Round> Include()
-        {
-            return _roundRepository.Include();
         }
 
         public void Delete(int id)

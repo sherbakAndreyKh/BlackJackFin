@@ -2,11 +2,9 @@
 using System.Linq;
 using BlackJack.BusinessLogicLayer.Interfaces;
 using BlackJack.Entities;
-using BlackJack.Entities.History;
 using BlackJack.Entities.Enums;
 using BlackJack.Services.Interfaces;
 using BlackJack.BusinessLogicLayer.Mapping;
-using BlackJack.ViewModels.RequestModel;
 using BlackJack.ViewModels.ResponseModel;
 
 namespace BlackJack.Services.Services
@@ -18,28 +16,26 @@ namespace BlackJack.Services.Services
         IGameLogic _gameLogic;
         IRoundLogic _roundLogic;
         ICardLogic _cardLogic;
-        IPlayerPropertiesLogic _playerPropertiesLogic;
+        IPlayerRoundHandLogic _playerRoundHandLogic;
         HistoryServiceMappProvider _mapp;
 
         //Constructors
-        public HistoryService(IPlayerLogic playerLogic, IGameLogic gameLogic, IRoundLogic roundLogic, ICardLogic cardLogic, IPlayerPropertiesLogic playerPropertiesLogic, HistoryServiceMappProvider mapp)
+        public HistoryService(IPlayerLogic playerLogic, IGameLogic gameLogic, IRoundLogic roundLogic, ICardLogic cardLogic, IPlayerRoundHandLogic playerRoundHandLogic, HistoryServiceMappProvider mapp)
         {
             _playerLogic = playerLogic;
             _gameLogic = gameLogic;
             _roundLogic = roundLogic;
             _cardLogic = cardLogic;
-            _playerPropertiesLogic = playerPropertiesLogic;
+            _playerRoundHandLogic = playerRoundHandLogic;
             _mapp = mapp;
         }
-
-
 
         //Methods
         public ResponseIndexHistoryView ReturnPlayers()
         {
             List<Player> Players = _playerLogic.Find(x => x.Role == Roles.Player).ToList();
             ResponseIndexHistoryView data = new ResponseIndexHistoryView();
-            data.Players = _mapp.HistoryView(Players);
+            data.Players = _mapp.MapListPlayerOnPlayerIndexHistoryViewItem(Players);
 
             return data;
 
@@ -49,25 +45,23 @@ namespace BlackJack.Services.Services
         {
             List<Game> Games = _gameLogic.Find(x => x.PlayerId == id).ToList();
             ResponseGameListHistoryView data = new ResponseGameListHistoryView();
-            data.Player = _mapp.HistoryGamesPlayerView(_playerLogic.Get(id));
-            data.Games = _mapp.HistoryGamesView(Games);
+            data.Player = _mapp.MapPlayerOnPlayerGameListHistoryViewItem(_playerLogic.Get(id));
+            data.Games = _mapp.MapListGameOnGameGameListHistoryViewItem(Games);
           
-
             return data;
         }
-
 
         public ResponseRoundListHistoryView ReturnRounds(int id)
         {
             List<Round> Rounds = _roundLogic.Find(x => x.GameId == id).ToList();
             ResponseRoundListHistoryView data = new ResponseRoundListHistoryView();
             data.AmountPlayers = _gameLogic.Get(id).AmountPlayers;
-            data.Rounds = _mapp.HistoryGamesRoundView(_roundLogic.Find(x => x.GameId == id).ToList());
+            data.Rounds = _mapp.MapListRoundOnRoundRoundListHistoryViewItem(_roundLogic.Find(x => x.GameId == id).ToList());
 
             return data;
         }
 
-        public  ResponseDetailsRoundHistoryView DetailsRound(int id)
+        public ResponseDetailsRoundHistoryView DetailsRound(int id)
         {
             List<Player> players = new List<Player>();
             
@@ -78,7 +72,7 @@ namespace BlackJack.Services.Services
             {
                 players.Add(bot);
             }
-            List<PlayerProperties> hands = _playerPropertiesLogic.Find(x=>x.Round_Id== id).ToList();
+            List<PlayerRoundHand> hands = _playerRoundHandLogic.Find(x=>x.RoundId== id).ToList();
             
             foreach(var participant in players)
             {
@@ -86,12 +80,8 @@ namespace BlackJack.Services.Services
             }
 
             var data = new ResponseDetailsRoundHistoryView();
-            data.Players = _mapp.HistoryRoundDetailsView(players);
+            data.Players = _mapp.MapListPlayerOnPlayerDetailsRoundHistoryViewItem(players);
             return data;
-
-          
         }
-
-       
     }
 }

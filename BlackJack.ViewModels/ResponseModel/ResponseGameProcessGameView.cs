@@ -40,7 +40,6 @@ namespace BlackJack.ViewModels.ResponseModel
         {
             Properties = new List<PlayerPropertiesGameProcessGameViewItem>();
         }
-
     }
 
     public class PlayerPropertiesGameProcessGameViewItem

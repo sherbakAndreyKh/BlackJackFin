@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using BlackJack.DataAccessLayer.Context;
 using BlackJack.DataAccessLayer.Interfaces;
-using BlackJack.Entities.History;
-using System.Data.Entity;
+using BlackJack.Entities;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
@@ -30,16 +25,6 @@ namespace BlackJack.DataAccessLayer.Repositories
         public int ReturnNewRoundNumber(int id)
         {
             return db.Rounds.Where(x => x.GameId == id).Count() + 1;
-        }
-
-        public IQueryable<Round> Include()
-        {
-            IQueryable<Round> data = db.Rounds
-                 .Include(x => x.Game)
-                 .Include(x => x.Game.Player)
-                 .Include(x => x.Game.Player.Properties);
-
-            return data;
         }
     }
 }

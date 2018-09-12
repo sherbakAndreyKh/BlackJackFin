@@ -10,22 +10,6 @@ function GetCard() {
     return model.CardDeck[getRandomInt(0, 51)];
 }
 
-//Add Card
-$(function () {
-    $('#Take').on('click', function () {
-        var Card = GetCard();
-        var value = $('.Score').eq(0).html();
-        var Hand = $('.Hand').eq(0).html();
-        $('.Hand').eq(0).html(Hand + ", " + Card.Name + " " + Card.Suit);
-        value >= 11 && Card.Value === 11 ? $('.Score').eq(0).html(+value + Card.Value - 10) : $('.Score').eq(0).html(+value + Card.Value);
-        model.Player.Properties[0].Score = $('.Score').eq(0).html();
-        model.Player.Properties[0].Hand.push(Card);
-
-        MoreLess(model.Player.Properties[0].Score);
-
-    });
-
-});
 function MoreLess(participant) {
     if (participant > 21) {
         alert('Too Much!');
@@ -66,42 +50,8 @@ function FindWinner(player, dealer) {
         model.Round.Winner = dealer.Name;
         model.Round.WinnerScore = dealer.Properties[0].Score;
     }
-   
+
 }
-
-
-//First Deal
-$(function () {
-    $('#First').on('click', function () {
-
-        $('.Participant').each(function (i) {
-            var FirstCard = GetCard();
-            var SecondCard = GetCard();
-
-            if ($(this).children('p').children('.Score').html() === "0") {
-                $(this).children('.Hand').html(FirstCard.Name + " " + FirstCard.Suit + ", " + SecondCard.Name + " " + SecondCard.Suit);
-                var value = FirstCard.Value === 11 && SecondCard.Value === 11 ? +FirstCard.Value + SecondCard.Value - 10 : +FirstCard.Value + SecondCard.Value;
-                $(this).children('p').children('.Score').html(value);
-                if (i === 0) {
-                    model.Player.Properties[0].Hand.push(FirstCard);
-                    model.Player.Properties[0].Hand.push(SecondCard);
-                    model.Player.Properties[0].Score = value;
-                }
-                if (i === $('.Participant').length - 1) {
-                    model.Dealer.Properties[0].Hand.push(FirstCard);
-                    model.Dealer.Properties[0].Hand.push(SecondCard);
-                    model.Dealer.Properties[0].Score = value;
-                }
-                if (i !== 0 && i !== $('.Participant').length - 1) {
-                    model.Bots[i - 1].Properties[0].Hand.push(FirstCard);
-                    model.Bots[i - 1].Properties[0].Hand.push(SecondCard);
-                    model.Bots[i - 1].Properties[0].Score = value;
-                }
-            }
-        });
-        findBlackJack();
-    });
-});
 
 
 
@@ -124,19 +74,6 @@ function findBlackJack() {
 }
 
 
-
-//Stop Button
-$(function () {
-
-    $('#Stop').on('click', function () {
-        $('.Participant').each(function (i) {
-            if (i !== 0) {
-                BotLogic(i);
-            }
-        });
-    });
-});
-
 function BotLogic(i) {
     while ($('.Score').eq(i).html() < 17) {
         var Card = GetCard();
@@ -145,11 +82,14 @@ function BotLogic(i) {
 
         $('.Hand').eq(i).html(Hand + ", " + Card.Name + " " + Card.Suit);
         value >= 11 && Card.Value === 11 ? $('.Score').eq(i).html(+value + Card.Value - 10) : $('.Score').eq(i).html(+value + Card.Value);
-        if (i === $('.Participant').length - 1) {
+
+        var participantValLength = $('.Participant').length;
+
+        if (i === participantValLength - 1) {
             model.Dealer.Properties[0].Hand.push(Card);
             model.Dealer.Properties[0].Score += Card.Value;
         }
-        else {
+        if (i !== participantValLength - 1) {
             model.Bots[i - 1].Properties[0].Hand.push(Card);
             model.Bots[i - 1].Properties[0].Score += Card.Value;
         }
@@ -159,21 +99,84 @@ function BotLogic(i) {
     }
 }
 
+$('#History').on('click', function () {
+    FindWinner(model.Player, model.Dealer);
+    var result = confirm("PLay next Round?");
+    if (result) {
+        $.post(path, model)
+            .done(function (data) {
+                $('body').html(data);
+            });
+    }
+    if (!result) {
+        $.post(pathEnd, model);
+    }
+});
 
 
-$(function () {
-    $('#History').on('click', function () {
-        FindWinner(model.Player, model.Dealer);
-        var result = confirm("PLay next Round?");
-        if (result) {
-            $.post(path, model)
-                .done(function (data) {
-                    $('body').html(data);
-                });
+//Add Card
+$('#Take').on('click', function () {
+    var Card = GetCard();
+    var value = $('.Score').eq(0).html();
+    var Hand = $('.Hand').eq(0).html();
+    $('.Hand').eq(0).html(Hand + ", " + Card.Name + " " + Card.Suit);
+    value >= 11 && Card.Value === 11 ? $('.Score').eq(0).html(+value + Card.Value - 10) : $('.Score').eq(0).html(+value + Card.Value);
+    model.Player.Properties[0].Score = $('.Score').eq(0).html();
+    model.Player.Properties[0].Hand.push(Card);
+
+    MoreLess(model.Player.Properties[0].Score);
+});
+
+
+
+//First Deal
+$('#First').on('click', function () {
+
+    $('.Participant').each(function (i) {
+        var FirstCard = GetCard();
+        var SecondCard = GetCard();
+
+        if ($(this).children('p').children('.Score').html() === "0") {
+            $(this).children('.Hand').html(FirstCard.Name + " " + FirstCard.Suit + ", " + SecondCard.Name + " " + SecondCard.Suit);
+            var value = FirstCard.Value === 11 && SecondCard.Value === 11 ? +FirstCard.Value + SecondCard.Value - 10 : +FirstCard.Value + SecondCard.Value;
+            $(this).children('p').children('.Score').html(value);
+            if (i === 0) {
+                model.Player.Properties[0].Hand.push(FirstCard);
+                model.Player.Properties[0].Hand.push(SecondCard);
+                model.Player.Properties[0].Score = value;
+            }
+            if (i === $('.Participant').length - 1) {
+                model.Dealer.Properties[0].Hand.push(FirstCard);
+                model.Dealer.Properties[0].Hand.push(SecondCard);
+                model.Dealer.Properties[0].Score = value;
+            }
+            if (i !== 0 && i !== $('.Participant').length - 1) {
+                model.Bots[i - 1].Properties[0].Hand.push(FirstCard);
+                model.Bots[i - 1].Properties[0].Hand.push(SecondCard);
+                model.Bots[i - 1].Properties[0].Score = value;
+            }
         }
-        if (!result) {
-            $.post(pathEnd, model);
+    });
+    findBlackJack();
+});
+
+
+
+
+
+
+
+//Stop Button
+$('#Stop').on('click', function () {
+    $('.Participant').each(function (i) {
+        if (i !== 0) {
+            BotLogic(i);
         }
     });
 });
+
+
+
+
+
 

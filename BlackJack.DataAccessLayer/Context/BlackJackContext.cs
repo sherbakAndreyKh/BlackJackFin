@@ -2,7 +2,6 @@
 using System.Data.Entity;
 using BlackJack.Entities;
 using BlackJack.Entities.Enums;
-using BlackJack.Entities.History;
 using BlackJack.DataAccessLayer.Interfaces;
 
 namespace BlackJack.DataAccessLayer.Context
@@ -11,24 +10,23 @@ namespace BlackJack.DataAccessLayer.Context
     {
         // Participant
         public DbSet<Player> Players { get; set; }
-        public DbSet<PlayerProperties> Properties { get; set; }
+        public DbSet<PlayerRoundHand> Properties { get; set; }
 
         // History
         public DbSet<Game> Games { get; set; }
         public DbSet<Round> Rounds { get; set; }
-        public DbSet<CardHistory> CardHistory { get; set; }
 
         // Card
         public DbSet<Card> CardDeck { get; set; }
 
         //public BlackJackContext()
         //{
-          
+
         //}
 
         //static BlackJackContext()
         //{
-          
+
         //}
 
         public BlackJackContext(string connectionString)
@@ -38,8 +36,6 @@ namespace BlackJack.DataAccessLayer.Context
         }
 
     }
-
-    
 
     public class BlackJackInitializer : DropCreateDatabaseIfModelChanges<BlackJackContext>
     {

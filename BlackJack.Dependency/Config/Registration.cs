@@ -27,7 +27,7 @@ namespace BlackJack.Dependency.Config
 
             // DAL
             Bind<IPlayerRepository>().To<PlayerRepository>();
-            Bind<IPlayerPropertiesRepository>().To<PlayerPropertiesRepository>();
+            Bind<IPlayerRoundHandRepository>().To<PlayerRoundHandRepository>();
             Bind<IGameRepository>().To<GameRepository>();
             Bind<IRoundRepository>().To<RoundRepository>();
             Bind<ICardRepository>().To<CardRepository>();
@@ -35,7 +35,7 @@ namespace BlackJack.Dependency.Config
 
             // BLL
             Bind<IPlayerLogic>().To<PlayerLogic>();
-            Bind<IPlayerPropertiesLogic>().To<PlayerPropertiesLogic>();
+            Bind<IPlayerRoundHandLogic>().To<PlayerRoundHandLogic>();
             Bind<ICardLogic>().To<CardLogic>();
             Bind<IGameLogic>().To<GameLogic>();
             Bind<IRoundLogic>().To<RoundLogic>();
@@ -44,6 +44,5 @@ namespace BlackJack.Dependency.Config
             Bind<IGameService>().To<GameService>();
             Bind<IHistoryService>().To<HistoryService>();
         }
-
     }
 }

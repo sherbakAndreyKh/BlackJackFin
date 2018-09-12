@@ -42,3 +42,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\obj\Debug\Black
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\obj\Debug\BlackJack.Dependency.csproj.CopyComplete
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\obj\Debug\BlackJack.Dependency.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\obj\Debug\BlackJack.Dependency.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\Z.EntityFramework.Extensions.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\Z.EntityFramework.Extensions.xml

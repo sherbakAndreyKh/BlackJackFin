@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BlackJack.Entities;
-using BlackJack.Entities.History;
 
 namespace BlackJack.BusinessLogicLayer.Mapping
 {
     public class HistoryServiceMappProvider
     {
-        public List<ViewModels.ResponseModel.PlayerIndexHistoryViewItem>  HistoryView (List<Player> data)
+        public List<ViewModels.ResponseModel.PlayerIndexHistoryViewItem> MapListPlayerOnPlayerIndexHistoryViewItem(List<Player> data)
         {
             var result = new List<ViewModels.ResponseModel.PlayerIndexHistoryViewItem>();
             foreach(var player in data)
@@ -25,8 +21,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             return result;
         }
 
-
-        public List<ViewModels.ResponseModel.GameGameListHistoryViewItem> HistoryGamesView(List<Game> data)
+        public List<ViewModels.ResponseModel.GameGameListHistoryViewItem> MapListGameOnGameGameListHistoryViewItem(List<Game> data)
         {
             var result = new List<ViewModels.ResponseModel.GameGameListHistoryViewItem>();
             foreach(var game in data)
@@ -40,7 +35,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             return result;
         }
 
-        public ViewModels.ResponseModel.PlayerGameListHistoryViewItem HistoryGamesPlayerView(Player data)
+        public ViewModels.ResponseModel.PlayerGameListHistoryViewItem MapPlayerOnPlayerGameListHistoryViewItem(Player data)
         {
             var result = new ViewModels.ResponseModel.PlayerGameListHistoryViewItem();
             result.Id = data.Id;
@@ -49,7 +44,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             return result;
         }
 
-        public List<ViewModels.ResponseModel.RoundRoundListHistoryViewItem> HistoryGamesRoundView(List<Round> data)
+        public List<ViewModels.ResponseModel.RoundRoundListHistoryViewItem> MapListRoundOnRoundRoundListHistoryViewItem(List<Round> data)
         {
             var result = new List<ViewModels.ResponseModel.RoundRoundListHistoryViewItem>();
             foreach(var round in data)
@@ -64,34 +59,34 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             return result;
         }
 
-       public List<ViewModels.ResponseModel.PlayerDetailsRoundHistoryViewItem> HistoryRoundDetailsView(List<Player> data)
+       public List<ViewModels.ResponseModel.PlayerDetailsRoundHistoryViewItem> MapListPlayerOnPlayerDetailsRoundHistoryViewItem(List<Player> data)
         {
             var result = new List<ViewModels.ResponseModel.PlayerDetailsRoundHistoryViewItem>();
             foreach(var details in data)
             {
                 var DetailsViewModel = new ViewModels.ResponseModel.PlayerDetailsRoundHistoryViewItem();
                 DetailsViewModel.Name = details.Name;
-                DetailsViewModel.Properties =  HistoryPlayerPropertiesRoundDetailsView(details.Properties.ToList());
+                DetailsViewModel.Properties = MapListPlayerRoundHandOnPlayerRoundHandDetailsRoundHistoryViewItem(details.Properties.ToList());
                 result.Add(DetailsViewModel);
             }
             return result;
         }
 
-        public List<ViewModels.ResponseModel.PlayerPropertiesDetailsRoundHistoryViewItem> HistoryPlayerPropertiesRoundDetailsView(List<PlayerProperties> data)
+        public List<ViewModels.ResponseModel.PlayerRoundHandDetailsRoundHistoryViewItem> MapListPlayerRoundHandOnPlayerRoundHandDetailsRoundHistoryViewItem(List<PlayerRoundHand> data)
         {
-            var result = new List<ViewModels.ResponseModel.PlayerPropertiesDetailsRoundHistoryViewItem>();
+            var result = new List<ViewModels.ResponseModel.PlayerRoundHandDetailsRoundHistoryViewItem>();
             foreach(var properties in data)
             {
-                var PropertiesViewModel = new ViewModels.ResponseModel.PlayerPropertiesDetailsRoundHistoryViewItem();
+                var PropertiesViewModel = new ViewModels.ResponseModel.PlayerRoundHandDetailsRoundHistoryViewItem();
                 PropertiesViewModel.Score = properties.Score;
                 PropertiesViewModel.PlayerId = (int)properties.PlayerId;
-                PropertiesViewModel.Hand = HistoryCardRoundDetailsView(properties.Hand.ToList());
+                PropertiesViewModel.Hand = MapListCardOnCardDetailsRoundHistoryViewItem(properties.Hand.ToList());
                 result.Add(PropertiesViewModel);
             }
             return result;
         }
 
-        public List<ViewModels.ResponseModel.CardDetailsRoundHistoryViewItem> HistoryCardRoundDetailsView(List<Card> data)
+        public List<ViewModels.ResponseModel.CardDetailsRoundHistoryViewItem> MapListCardOnCardDetailsRoundHistoryViewItem(List<Card> data)
         {
             var result = new List<ViewModels.ResponseModel.CardDetailsRoundHistoryViewItem>();
             foreach(var card in data)
@@ -103,7 +98,5 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             }
             return result;
         }
-
-
     }
 }

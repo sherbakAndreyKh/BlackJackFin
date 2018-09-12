@@ -1,30 +1,29 @@
 ﻿using BlackJack.Entities;
-using BlackJack.Entities.History;
 using System.Collections.Generic;
 
 namespace BlackJack.BusinessLogicLayer.Mapping
 {
     public class GameServiceResponseMappProvider
     {
-        public ViewModels.ResponseModel.PlayerGameProcessGameViewItem MapPlayer(Player player, PlayerProperties properties)
+        public ViewModels.ResponseModel.PlayerGameProcessGameViewItem MapPlayerOnPlayerGameProccessGameViewItem(Player player, PlayerRoundHand properties)
         {
             var result = new ViewModels.ResponseModel.PlayerGameProcessGameViewItem();
             result.Id = player.Id;
             result.Name = player.Name;
             result.Role = (int)player.Role;
-            result.Properties.Add(MapProperties(properties));
+            result.Properties.Add(MapRoundHandOnPlayerPropertiesGameProcessGameViewItem(properties));
             return result;
         }
 
-        public ViewModels.ResponseModel.PlayerPropertiesGameProcessGameViewItem MapProperties(PlayerProperties properties)
+        public ViewModels.ResponseModel.PlayerPropertiesGameProcessGameViewItem MapRoundHandOnPlayerPropertiesGameProcessGameViewItem(PlayerRoundHand properties)
         {
             var result = new ViewModels.ResponseModel.PlayerPropertiesGameProcessGameViewItem();
             result.PlayerId = properties.PlayerId;
-            result.Round_Id = properties.Round_Id;
+            result.Round_Id = (int)properties.RoundId;
             return result;
         }
 
-        public List<ViewModels.ResponseModel.CardGameProcessGameViewItem> MapCards(IEnumerable<Card> cards)
+        public List<ViewModels.ResponseModel.CardGameProcessGameViewItem> MapCardsOnCardGameProcessGameViewItem(IEnumerable<Card> cards)
         {
             var result = new List<ViewModels.ResponseModel.CardGameProcessGameViewItem>();
             foreach (var a in cards)
@@ -39,23 +38,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             return result;
         }
 
-        public List<Card> MapCards(IEnumerable<ViewModels.RequestModel.CardGameProcessGameViewItem> cards)
-        {
-            var result = new List<Card>();
-            foreach(var a in cards)
-            {
-                var CardView = new Card();
-                CardView.Name = a.Name;
-                CardView.Suit = a.Suit;
-                CardView.Value = a.Value;
-                CardView.ImgPath = a.ImgPath;
-                result.Add(CardView);
-            }
-
-            return result;
-        }
-
-        public ViewModels.ResponseModel.GameGameProcessGameViewItem MapGame(Game item)
+        public ViewModels.ResponseModel.GameGameProcessGameViewItem MapGameOnGameGameProcessGameViewItem(Game item)
         {
             var result = new ViewModels.ResponseModel.GameGameProcessGameViewItem();
             result.Id = item.Id;
@@ -64,7 +47,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             return result;
         }
 
-        public ViewModels.ResponseModel.RoundGameProcessGameViewItem MapRound(Round item)
+        public ViewModels.ResponseModel.RoundGameProcessGameViewItem MapRoundOnRoundGameProcessGameViewItem(Round item)
         {
             var result = new ViewModels.ResponseModel.RoundGameProcessGameViewItem();
             result.Id = item.Id;
@@ -73,19 +56,6 @@ namespace BlackJack.BusinessLogicLayer.Mapping
             result.Winner = item.Winner;
             result.WinnerScore = item.WinnerScore;
             return result;
-        }
-
-
-        public Game RemapGame(ViewModels.RequestModel.GameGameProcessGameViewItem item)
-        {
-            var result = new Game();
-            result.Id = item.Id;
-            result.NumberGame = item.NumberGame;
-            result.PlayerId = item.PlayerId;
-
-
-            return result;
-
         }
     }
 }
