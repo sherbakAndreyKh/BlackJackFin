@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Ninject;
@@ -22,7 +18,7 @@ namespace BlackJack.UI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
-            NinjectModule registration = new Registration("DefaultConnection");
+            NinjectModule registration = new NinjectConfig("DefaultConnection");
             var kernel = new StandardKernel(registration);
             kernel.Unbind<ModelValidatorProvider>();
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));

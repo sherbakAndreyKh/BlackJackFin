@@ -8,10 +8,8 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
 {
     public class GameLogic : IGameLogic
     {
-        // Fields
         IGameRepository _gameRepository;
 
-        // Constructors
         public GameLogic()
         {
         }
@@ -21,7 +19,6 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             _gameRepository = gameRepository;
         }
 
-        // Methods
         public int CreateAndReturnId(Game item)
         {
             return _gameRepository.CreateAndReturnId(item);
@@ -66,10 +63,10 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         {
             _gameRepository.Save();
         }
+
         public void Dispose()
         {
             _gameRepository.Dispose();
-        }
-                
+        }        
     }
 }

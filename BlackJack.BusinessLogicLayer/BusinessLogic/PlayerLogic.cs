@@ -64,5 +64,4 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             _playerRepository.Save();
         }
     }
-
 }

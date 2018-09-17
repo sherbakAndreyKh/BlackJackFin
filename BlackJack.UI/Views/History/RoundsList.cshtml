@@ -1,6 +1,5 @@
 ﻿@model BlackJack.ViewModels.ResponseModel.ResponseRoundListHistoryView
 
-
 @{
     ViewBag.Title = "RoundsList";
 }
@@ -18,18 +17,17 @@
     <tbody>
 
         @foreach (var a in Model.Rounds)
-        {
+         {
             <tr class="testButton" data-param="@a.Id">
                 <td>@a.NumberRound</td>
                 <td>@a.Winner</td>
                 <td>@a.WinnerScore</td>
                 <td>Show More  &#9660;</td>
             </tr>
-        }
+         }
 
     </tbody>
 </table>
-
 
 <div class="render container">
 

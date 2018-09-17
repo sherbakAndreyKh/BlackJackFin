@@ -39,8 +39,8 @@ namespace BlackJack.Services.Services
             List<ViewModels.ResponseModel.CardGameProcessGameViewItem> cards = _mapp.MapCardsOnCardGameProcessGameViewItem(_cardLogic.GetAll());
 
             Player Player = _playerLogic.Get(playerId);
-            Player Dealer = _playerLogic.GetQuantityWithRole(1, 1).SingleOrDefault();
-            List<Player> BotsList = _playerLogic.GetQuantityWithRole(item.AmountBots, 2).ToList();
+            Player Dealer = _playerLogic.GetQuantityWithRole(1, (int)Roles.Dealer).SingleOrDefault();
+            List<Player> BotsList = _playerLogic.GetQuantityWithRole(item.AmountBots, (int)Roles.Bot).ToList();
 
             ////add Plyer Hands
             var playerList = new List<Player>();
@@ -87,11 +87,11 @@ namespace BlackJack.Services.Services
 
             Player Player = _playerLogic.Get(item.Player.Id);
             Player Dealer = _playerLogic.Get(item.Dealer.Id);
-            List<Player> BotsList = _playerLogic.GetQuantityWithRole(item.Game.AmountPlayers, 2).ToList();
+            List<Player> BotsList = _playerLogic.GetQuantityWithRole(item.Game.AmountPlayers, (int)Roles.Bot).ToList();
 
             var playerList = new List<Player>();
-            playerList.Add(_playerLogic.Get(item.Player.Id));
-            playerList.Add(_playerLogic.Get(item.Dealer.Id));
+            playerList.Add(Player);
+            playerList.Add(Dealer);
             playerList.AddRange(BotsList);
 
             List<PlayerRoundHand> propertiesList = new List<PlayerRoundHand>();
@@ -105,7 +105,6 @@ namespace BlackJack.Services.Services
             _playerRoundHandLogic.CreateMany(propertiesList);
             _playerRoundHandLogic.Save();
 
-
             var BotsViewItemList = new List<ViewModels.ResponseModel.PlayerGameProcessGameViewItem>();
             foreach(var bot in BotsList)
             {
@@ -116,8 +115,8 @@ namespace BlackJack.Services.Services
             result.Game = _mapp.MapGameOnGameGameProcessGameViewItem(_gameLogic.Get(gameId));
             result.Round = _mapp.MapRoundOnRoundGameProcessGameViewItem(_roundLogic.Get(roundId));
             result.CardDeck = cards;
-            result.Player = _mapp.MapPlayerOnPlayerGameProccessGameViewItem(_playerLogic.Get(playerId), _playerRoundHandLogic.GetWithPlayerAndRoundId(playerId, roundId));
-            result.Dealer = _mapp.MapPlayerOnPlayerGameProccessGameViewItem(_playerLogic.GetQuantityWithRole(1, 1).SingleOrDefault(), _playerRoundHandLogic.GetWithPlayerAndRoundId(_playerLogic.GetQuantityWithRole(1, 1).SingleOrDefault().Id, roundId));
+            result.Player = _mapp.MapPlayerOnPlayerGameProccessGameViewItem(Player, _playerRoundHandLogic.GetWithPlayerAndRoundId(playerId, roundId));
+            result.Dealer = _mapp.MapPlayerOnPlayerGameProccessGameViewItem(Dealer, _playerRoundHandLogic.GetWithPlayerAndRoundId(Dealer.Id, roundId));
             result.Bots = BotsViewItemList;
             return result;
         }
@@ -144,7 +143,7 @@ namespace BlackJack.Services.Services
 
             var botsProperties = new List<PlayerRoundHand>();
             var bots = new List<Player>();
-            bots = _playerLogic.GetQuantityWithRole(item.Bots.Count(), 2).ToList();
+            bots = _playerLogic.GetQuantityWithRole(item.Bots.Count(), (int)Roles.Bot).ToList();
 
             for(int i =0;i < bots.Count(); i++)
             {

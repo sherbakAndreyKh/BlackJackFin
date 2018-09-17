@@ -20,7 +20,12 @@ namespace BlackJack.Services.Services
         HistoryServiceMappProvider _mapp;
 
         //Constructors
-        public HistoryService(IPlayerLogic playerLogic, IGameLogic gameLogic, IRoundLogic roundLogic, ICardLogic cardLogic, IPlayerRoundHandLogic playerRoundHandLogic, HistoryServiceMappProvider mapp)
+        public HistoryService(IPlayerLogic playerLogic, 
+                              IGameLogic gameLogic, 
+                              IRoundLogic roundLogic, 
+                              ICardLogic cardLogic, 
+                              IPlayerRoundHandLogic playerRoundHandLogic, 
+                              HistoryServiceMappProvider mapp)
         {
             _playerLogic = playerLogic;
             _gameLogic = gameLogic;
@@ -38,7 +43,6 @@ namespace BlackJack.Services.Services
             data.Players = _mapp.MapListPlayerOnPlayerIndexHistoryViewItem(Players);
 
             return data;
-
         }
 
         public ResponseGameListHistoryView ReturnGames(int id)
@@ -66,12 +70,14 @@ namespace BlackJack.Services.Services
             List<Player> players = new List<Player>();
             
             players.Add(_playerLogic.Get((int)_roundLogic.Get(id).Game.PlayerId));
-            players.Add(_playerLogic.GetQuantityWithRole(1, 1).SingleOrDefault());
-            List<Player> bots = _playerLogic.GetQuantityWithRole(_roundLogic.Get(id).Game.AmountPlayers - 1, 2).ToList();
+            players.Add(_playerLogic.GetQuantityWithRole(1, (int)Roles.Dealer).SingleOrDefault());
+            List<Player> bots = _playerLogic.GetQuantityWithRole(_roundLogic.Get(id).Game.AmountPlayers - 1, (int)Roles.Bot).ToList();
+
             foreach(var bot in bots)
             {
                 players.Add(bot);
             }
+
             List<PlayerRoundHand> hands = _playerRoundHandLogic.Find(x=>x.RoundId== id).ToList();
             
             foreach(var participant in players)
@@ -81,6 +87,7 @@ namespace BlackJack.Services.Services
 
             var data = new ResponseDetailsRoundHistoryView();
             data.Players = _mapp.MapListPlayerOnPlayerDetailsRoundHistoryViewItem(players);
+
             return data;
         }
     }

@@ -13,7 +13,6 @@ namespace BlackJack.ViewModels.ResponseModel
         }
     }
 
-
     public class GameGameListHistoryViewItem
     {
         public int Id { get; set; }

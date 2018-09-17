@@ -21,7 +21,6 @@ namespace BlackJack.UI.Controllers
             return View(model);
         }
 
-
         public ActionResult GameList(int id)
         {
             ViewModels.ResponseModel.ResponseGameListHistoryView model = _historyService.ReturnGames(id);

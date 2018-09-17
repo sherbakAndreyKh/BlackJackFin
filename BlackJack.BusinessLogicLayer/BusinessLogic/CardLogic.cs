@@ -8,11 +8,8 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
 {
     public class CardLogic : ICardLogic
     {
-        // Fields
-
         ICardRepository _cardRepository;
 
-        // Constructors
         public CardLogic()
         {
         }
@@ -22,7 +19,6 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             _cardRepository = cardRepository;
         }
 
-        // Methods
         public IEnumerable<Card> GetAll()
         {
             return _cardRepository.GetAll();

@@ -11,13 +11,12 @@
             <h4>@player.Name</h4>
             @foreach(var prop in player.Properties)
             {
-          
                 <p>Score: @prop.Score</p>
                 <p>
-                    @foreach (var a in prop.Hand)
+                    @foreach (var card in prop.Hand)
                     {
-                    <span>@a.Name </span>
-                    <span>@a.Suit </span>
+                        <span>@card.Name </span>
+                        <span>@card.Suit </span>
                     }
                 </p>
             }

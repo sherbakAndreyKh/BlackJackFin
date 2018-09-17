@@ -7,8 +7,8 @@ namespace BlackJack.Entities
     public class Player : BaseEntity
     {
         public string Name { get; set; }
-
         public  Roles  Role { get; set; }
+
         public virtual ICollection<Game> Games { get; set; }
         public virtual ICollection<PlayerRoundHand> Properties { get; set; }
 
