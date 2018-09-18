@@ -26,6 +26,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
         public List<ViewModels.ResponseModel.CardGameProcessGameViewItem> MapCardsOnCardGameProcessGameViewItem(IEnumerable<Card> cards)
         {
             var result = new List<ViewModels.ResponseModel.CardGameProcessGameViewItem>();
+
             foreach (var a in cards)
             {
                 var CardView = new ViewModels.ResponseModel.CardGameProcessGameViewItem();
@@ -35,6 +36,7 @@ namespace BlackJack.BusinessLogicLayer.Mapping
                 CardView.ImgPath = a.ImgPath;
                 result.Add(CardView);
             }
+
             return result;
         }
 

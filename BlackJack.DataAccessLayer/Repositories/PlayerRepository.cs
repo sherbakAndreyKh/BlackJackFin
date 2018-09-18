@@ -9,12 +9,10 @@ namespace BlackJack.DataAccessLayer.Repositories
 {
     public class PlayerRepository : BaseRepository<Player>, IPlayerRepository
     {
-        // Constructors
         public PlayerRepository(BlackJackContext db) : base(db)
         {
         }
-      
-        // Methods
+
         public int CreateAndReturnId(Player item)
         {
             db.Players.Add(item);

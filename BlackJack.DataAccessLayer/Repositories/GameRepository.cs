@@ -7,14 +7,10 @@ namespace BlackJack.DataAccessLayer.Repositories
 {
     public class GameRepository : BaseRepository<Game>, IGameRepository
     {
-
-
-        //Constructors
         public GameRepository(BlackJackContext db) : base(db)
         {
         }
 
-        // Methods
         public int CreateAndReturnId(Game item)
         {
             db.Games.Add(item);

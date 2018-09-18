@@ -20,14 +20,12 @@ namespace BlackJack.UI.Controllers
             return View();
         }
 
-        //rename create game
         [HttpPost]
         public ActionResult GameStartOptions(RequestGameStartOptionsGameView item)
         {
             ResponseGameProcessGameView startData = _startService.StartGame(item);
             return View("GameProcess", startData);
         }
-
         
         public ActionResult NewRound(RequestGameProcessGameView item)
         {
@@ -42,6 +40,5 @@ namespace BlackJack.UI.Controllers
             _startService.SaveChanges(item);
             return View();
         }
-        
     }
 }

@@ -13,12 +13,10 @@ namespace BlackJack.ViewModels.ResponseModel
         }
     }
 
-
     public class PlayerIndexHistoryViewItem
     {
         public int Id { get; set; }
         public string Name { get; set; }        
         public int GameAmount { get; set; }
     }
-
 }

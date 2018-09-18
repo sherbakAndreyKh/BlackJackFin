@@ -11,7 +11,8 @@ namespace BlackJack.Entities
 
         public virtual ICollection<PlayerRoundHand> Hands { get; set; }
 
-        public Card() {
+        public Card()
+        {
             Hands = new List<PlayerRoundHand>();
         }
 

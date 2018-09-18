@@ -7,26 +7,21 @@ using System.Data.Entity;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
-    public class BaseRepository<T>:  IBaseRepository<T>, IDisposable where T :class
-        {
-
-        //Fields
+    public class BaseRepository<T> : IBaseRepository<T>, IDisposable where T : class
+    {
         protected BlackJackContext db;
-
         private bool disposedValue = false;
 
-        //Constructors
         public BaseRepository(BlackJackContext db)
         {
             this.db = db;
         }
 
-        //Methods
         public T Get(int id)
         {
             return db.Set<T>().Find(id);
         }
-        
+
         public IEnumerable<T> GetAll()
         {
             return db.Set<T>();
@@ -89,6 +84,5 @@ namespace BlackJack.DataAccessLayer.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
     }
 }

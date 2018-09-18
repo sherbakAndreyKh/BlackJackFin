@@ -1,7 +1,6 @@
 ﻿
 var Bool = false;
 
-
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -45,15 +44,12 @@ function FindWinner(player, dealer) {
         model.Round.Winner = dealer.Name;
         model.Round.WinnerScore = dealer.Properties[0].Score;
     }
-    if (player.Properties[0].Score > 21 && dealer.Properties[0].Score <= 21) {
+    if (dealer.Properties[0].Score > 21 && player.Properties[0].Score <= 21) {
         alert(dealer.Name + " Win!");
         model.Round.Winner = dealer.Name;
         model.Round.WinnerScore = dealer.Properties[0].Score;
     }
-
 }
-
-
 
 function findBlackJack() {
     if (model.Player.Properties[0].Score === 21 && model.Player.Properties[0].Score !== model.Dealer.Properties[0].Score) {
@@ -72,7 +68,6 @@ function findBlackJack() {
         model.Round.WinnerScore = model.Dealer.Properties[0].Score;
     }
 }
-
 
 function BotLogic(i) {
     while ($('.Score').eq(i).html() < 17) {
@@ -113,7 +108,6 @@ $('#History').on('click', function () {
     }
 });
 
-
 //Add Card
 $('#Take').on('click', function () {
     var Card = GetCard();
@@ -126,8 +120,6 @@ $('#Take').on('click', function () {
 
     MoreLess(model.Player.Properties[0].Score);
 });
-
-
 
 //First Deal
 $('#First').on('click', function () {
@@ -160,12 +152,6 @@ $('#First').on('click', function () {
     findBlackJack();
 });
 
-
-
-
-
-
-
 //Stop Button
 $('#Stop').on('click', function () {
     $('.Participant').each(function (i) {
@@ -174,9 +160,3 @@ $('#Stop').on('click', function () {
         }
     });
 });
-
-
-
-
-
-

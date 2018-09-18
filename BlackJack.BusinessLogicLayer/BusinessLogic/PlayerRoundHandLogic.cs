@@ -11,10 +11,8 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
 {
     public class PlayerRoundHandLogic : IPlayerRoundHandLogic
     {
-        // Fields
         IPlayerRoundHandRepository _playerRoundHandRepository;
 
-        // Constructors
         public PlayerRoundHandLogic()
         {
         }
@@ -24,7 +22,6 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
             _playerRoundHandRepository = playerRoundHandRepository;
         }
 
-        // Methods
         public PlayerRoundHand Get(int id)
         {
             return _playerRoundHandRepository.Get(id);
@@ -49,6 +46,7 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         {
             _playerRoundHandRepository.Create(item);
         }
+        
         public void CreateMany(List<PlayerRoundHand> item)
         {
             _playerRoundHandRepository.CreateMany(item);
@@ -58,6 +56,7 @@ namespace BlackJack.BusinessLogicLayer.BusinessLogic
         {
             _playerRoundHandRepository.Update(item);
         }
+
         public void UpdateMany(List<PlayerRoundHand> item)
         {
             _playerRoundHandRepository.UpdateMany(item);

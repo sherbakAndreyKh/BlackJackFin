@@ -7,12 +7,10 @@ namespace BlackJack.DataAccessLayer.Repositories
 {
     public class RoundRepository : BaseRepository<Round>, IRoundRepository
     {
-        // Constructors
         public RoundRepository(BlackJackContext db) : base(db)
         {
         }
 
-        // Methods
         public int CreateAndReturnId(Round item)
         {
             db.Rounds.Add(item);

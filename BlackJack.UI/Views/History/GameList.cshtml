@@ -15,12 +15,12 @@
     </thead>
     <tbody>
 
-        @foreach (var a in Model.Games)
+        @foreach (var game in Model.Games)
         {
             <tr>
-                <td>@a.Number</td>
-                <td>@a.AmountRounds</td>
-                <td><a href="@Url.Action("RoundsList","History", new { id = a.Id, playerId = Model.Player.Id })">Details</a></td>
+                <td>@game.Number</td>
+                <td>@game.AmountRounds</td>
+                <td><a href="@Url.Action("RoundsList","History", new { id = game.Id, playerId = Model.Player.Id })">Details</a></td>
             </tr>
         }
 

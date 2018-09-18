@@ -6,12 +6,9 @@ namespace BlackJack.DataAccessLayer.Repositories
 {
     public class CardRepository : BaseRepository<Card>, ICardRepository
     {
-
-        // Constructors
         public CardRepository(BlackJackContext db) : base(db)
         {
-        }
 
-      
+        }
     }
 }

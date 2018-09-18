@@ -13,14 +13,12 @@ namespace BlackJack.ViewModels.RequestModel
         public List<CardGameProcessGameViewItem> CardDeck { get; set; }
         public List<PlayerGameProcessGameViewItem> Bots { get; set; }
 
-
         public RequestGameProcessGameView()
         {
             CardDeck = new List<CardGameProcessGameViewItem>();
             Bots = new List<PlayerGameProcessGameViewItem>();
         }
     }
-
 
     public class CardGameProcessGameViewItem
     {
@@ -29,7 +27,6 @@ namespace BlackJack.ViewModels.RequestModel
         public int Value { get; set; }
         public string ImgPath { get; set; }
     }
-
 
     public class PlayerGameProcessGameViewItem
     {
@@ -42,7 +39,6 @@ namespace BlackJack.ViewModels.RequestModel
         {
             Properties = new List<PlayerPropertiesGameProcessGameViewItem>();
         }
-
     }
 
     public class PlayerPropertiesGameProcessGameViewItem

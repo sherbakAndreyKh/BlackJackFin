@@ -11,11 +11,11 @@ using BlackJack.Services.Services;
 
 namespace BlackJack.Dependency.Config
 {
-    public class Registration : NinjectModule
+    public class NinjectConfig : NinjectModule
     {
         private string connectionString;
 
-        public Registration(string connection)
+        public NinjectConfig(string connection)
         {
             connectionString = connection;
         }
@@ -31,7 +31,6 @@ namespace BlackJack.Dependency.Config
             Bind<IGameRepository>().To<GameRepository>();
             Bind<IRoundRepository>().To<RoundRepository>();
             Bind<ICardRepository>().To<CardRepository>();
-
 
             // BLL
             Bind<IPlayerLogic>().To<PlayerLogic>();
