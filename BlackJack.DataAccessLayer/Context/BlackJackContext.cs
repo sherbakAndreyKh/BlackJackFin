@@ -91,8 +91,18 @@ namespace BlackJack.DataAccessLayer.Context
                 new Card("King","Clubs",10,"#"),
                 new Card("Ace","Clubs",11,"#")
             };
-            Cards.ForEach(a => db.CardDeck.Add(a));
+            db.CardDeck.AddRange(Cards);
             db.SaveChanges();
+        }
+
+        private void CardDeckGenerate()
+        {
+            List<Card> CardDeck = new List<Card>(52);
+
+            for (var i = 0; i < CardDeck.Count; i++)
+            {
+                
+            }
         }
     }
 }
