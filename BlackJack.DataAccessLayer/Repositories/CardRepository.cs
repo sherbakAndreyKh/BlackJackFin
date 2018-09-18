@@ -8,7 +8,6 @@ namespace BlackJack.DataAccessLayer.Repositories
     {
         public CardRepository(BlackJackContext db) : base(db)
         {
-
         }
     }
 }
