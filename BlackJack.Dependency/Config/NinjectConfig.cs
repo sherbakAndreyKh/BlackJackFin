@@ -1,12 +1,11 @@
 ﻿using Ninject.Modules;
 using Ninject.Web.Common;
 using BlackJack.BusinessLogicLayer.Interfaces;
-using BlackJack.BusinessLogicLayer.BusinessLogic;
+using BlackJack.BusinessLogicLayer.Services;
 using BlackJack.DataAccessLayer.Interfaces;
 using BlackJack.DataAccessLayer.Repositories;
 using BlackJack.DataAccessLayer.Context;
-using BlackJack.Services.Interfaces;
-using BlackJack.Services.Services;
+
 
 
 namespace BlackJack.Dependency.Config
@@ -32,16 +31,11 @@ namespace BlackJack.Dependency.Config
             Bind<IRoundRepository>().To<RoundRepository>();
             Bind<ICardRepository>().To<CardRepository>();
 
-            // BLL
-            Bind<IPlayerLogic>().To<PlayerLogic>();
-            Bind<IPlayerRoundHandLogic>().To<PlayerRoundHandLogic>();
-            Bind<ICardLogic>().To<CardLogic>();
-            Bind<IGameLogic>().To<GameLogic>();
-            Bind<IRoundLogic>().To<RoundLogic>();
-
             // Service
             Bind<IGameService>().To<GameService>();
             Bind<IHistoryService>().To<HistoryService>();
         }
     }
+
+   
 }

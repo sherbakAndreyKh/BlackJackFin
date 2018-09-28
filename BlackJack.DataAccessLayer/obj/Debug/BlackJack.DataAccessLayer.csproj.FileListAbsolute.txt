@@ -145,3 +145,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\Z.EntityFramework.Extensions.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\Dapper.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\Dapper.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\Z.Dapper.Plus.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\Z.Dapper.Plus.xml

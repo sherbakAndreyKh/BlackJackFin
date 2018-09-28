@@ -9,5 +9,10 @@ namespace BlackJack.DataAccessLayer.Repositories
         public CardRepository(BlackJackContext db) : base(db)
         {
         }
+
+        public Card FindCardWithNameAndSuit(string name, string suit)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

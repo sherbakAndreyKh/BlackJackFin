@@ -8,11 +8,17 @@ namespace BlackJack.DataAccessLayer.Context
 {
     public class BlackJackContext : DbContext, IBlackJackContext
     {
-        public DbSet<Player> Players { get; set; }
-        public DbSet<PlayerRoundHand> Properties { get; set; }
-        public DbSet<Game> Games { get; set; }
-        public DbSet<Round> Rounds { get; set; }
-        public DbSet<Card> CardDeck { get; set; }
+        public DbSet<Player> Player { get; set; }
+        public DbSet<PlayerRoundHand> PlayerRoundHand{ get; set; }
+        public DbSet<Game> Game { get; set; }
+        public DbSet<Round> Round { get; set; }
+        public DbSet<Card> Card { get; set; }
+
+        public BlackJackContext()
+            : base("DefaultConnection")
+        {
+            Database.SetInitializer<BlackJackContext>(new BlackJackInitializer());
+        }
 
         public BlackJackContext(string connectionString)
             : base(connectionString)
@@ -25,12 +31,12 @@ namespace BlackJack.DataAccessLayer.Context
     {
         protected override void Seed(BlackJackContext db)
         {
-            db.Players.Add(new Player { Name = "Bot1", Role = Roles.Bot });
-            db.Players.Add(new Player { Name = "Bot2", Role = Roles.Bot });
-            db.Players.Add(new Player { Name = "Bot3", Role = Roles.Bot });
-            db.Players.Add(new Player { Name = "Bot4", Role = Roles.Bot });
-            db.Players.Add(new Player { Name = "Bot5", Role = Roles.Bot });
-            db.Players.Add(new Player { Name = "Dealer", Role = Roles.Dealer });
+            db.Player.Add(new Player { Name = "Bot1", Role = Role.Bot });
+            db.Player.Add(new Player { Name = "Bot2", Role = Role.Bot });
+            db.Player.Add(new Player { Name = "Bot3", Role = Role.Bot });
+            db.Player.Add(new Player { Name = "Bot4", Role = Role.Bot });
+            db.Player.Add(new Player { Name = "Bot5", Role = Role.Bot });
+            db.Player.Add(new Player { Name = "Dealer", Role = Role.Dealer });
 
 
             List<Card> Cards = new List<Card>
@@ -91,18 +97,8 @@ namespace BlackJack.DataAccessLayer.Context
                 new Card("King","Clubs",10,"#"),
                 new Card("Ace","Clubs",11,"#")
             };
-            db.CardDeck.AddRange(Cards);
+            db.Card.AddRange(Cards);
             db.SaveChanges();
-        }
-
-        private void CardDeckGenerate()
-        {
-            List<Card> CardDeck = new List<Card>(52);
-
-            for (var i = 0; i < CardDeck.Count; i++)
-            {
-                
-            }
         }
     }
 }

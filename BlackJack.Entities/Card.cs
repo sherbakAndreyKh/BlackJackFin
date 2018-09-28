@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlackJack.Entities
 {
+    [Table("Card")]
     public class Card : BaseEntity
     {
         public string Name { get; set; }
@@ -11,8 +13,7 @@ namespace BlackJack.Entities
 
         public virtual ICollection<PlayerRoundHand> Hands { get; set; }
 
-        public Card()
-        {
+        public Card() {
             Hands = new List<PlayerRoundHand>();
         }
 

@@ -13,17 +13,22 @@ namespace BlackJack.DataAccessLayer.Repositories
         {
         }
 
-        public int CreateAndReturnId(Player item)
+        public long CreateAndReturnId(Player item)
         {
-            db.Players.Add(item);
+            db.Player.Add(item);
             db.SaveChanges();
 
             return item.Id;
         }
 
+        public Player FindPlayerWithPlayerName(string Name)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Player> GetQuantityWithRole(int quantity, int role)
         {
-            return db.Players.Where(x => (int)x.Role == role).Take(quantity);
+            return db.Player.Where(x => (int)x.Role == role).Take(quantity);
         }
     }
 }

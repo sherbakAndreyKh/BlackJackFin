@@ -11,18 +11,18 @@ namespace BlackJack.DataAccessLayer.Repositories
         {
         }
 
-        public int CreateAndReturnId(Round item)
+        public long CreateAndReturnId(Round item)
         {
-            db.Rounds.Add(item);
+            db.Round.Add(item);
 
             db.SaveChanges();
 
             return item.Id;
         }
 
-        public int ReturnNewRoundNumber(int id)
+        public long ReturnNewRoundNumber(long id)
         {
-            return db.Rounds.Where(x => x.GameId == id).Count() + 1;
+            return db.Round.Where(x => x.GameId == id).Count() + 1;
         }
     }
 }

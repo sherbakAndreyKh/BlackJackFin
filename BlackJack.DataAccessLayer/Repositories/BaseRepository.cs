@@ -17,7 +17,7 @@ namespace BlackJack.DataAccessLayer.Repositories
             this.db = db;
         }
 
-        public T Get(int id)
+        public T Get(long id)
         {
             return db.Set<T>().Find(id);
         }
@@ -53,7 +53,7 @@ namespace BlackJack.DataAccessLayer.Repositories
             db.BulkUpdate(item);
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             T item = db.Set<T>().Find(id);
             if (item != null)
@@ -83,6 +83,11 @@ namespace BlackJack.DataAccessLayer.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public long CreateAndReturnId(T item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

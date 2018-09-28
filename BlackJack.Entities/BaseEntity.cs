@@ -1,7 +1,9 @@
-﻿namespace BlackJack.Entities
+﻿using System;
+
+namespace BlackJack.Entities
 {
     public class BaseEntity
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
     }
 }

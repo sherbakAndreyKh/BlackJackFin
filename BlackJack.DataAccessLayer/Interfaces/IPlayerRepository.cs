@@ -6,7 +6,8 @@ namespace BlackJack.DataAccessLayer.Interfaces
 {
     public interface IPlayerRepository : IBaseRepository<Player>
     {
-        int CreateAndReturnId(Player item);
+        long CreateAndReturnId(Player item);
         IEnumerable<Player> GetQuantityWithRole(int quantity, int role);
+        Player FindPlayerWithPlayerName(string Name);
     }
 }

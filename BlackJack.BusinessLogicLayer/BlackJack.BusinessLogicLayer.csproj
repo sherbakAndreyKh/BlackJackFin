@@ -7,8 +7,8 @@
     <ProjectGuid>{41E1AF8F-45AD-49B7-9F1B-5DB3ED95235B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlackJack.BusinessLogicLayer</RootNamespace>
-    <AssemblyName>BlackJack.BusinessLogicLayer</AssemblyName>
+    <RootNamespace>BlackJack.BusinessLogic</RootNamespace>
+    <AssemblyName>BlackJack.BusinessLogic</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,19 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\CardLogic.cs" />
-    <Compile Include="BusinessLogic\GameLogic.cs" />
-    <Compile Include="Interfaces\IPlayerRoundHandLogic.cs" />
-    <Compile Include="BusinessLogic\PlayerRoundHandLogic.cs" />
-    <Compile Include="Interfaces\IRoundLogic.cs" />
-    <Compile Include="Interfaces\IPlayerLogic.cs" />
-    <Compile Include="Interfaces\IGameLogic.cs" />
-    <Compile Include="Interfaces\ICardLogic.cs" />
-    <Compile Include="BusinessLogic\PlayerLogic.cs" />
-    <Compile Include="BusinessLogic\RoundLogic.cs" />
-    <Compile Include="Mapping\GameServiceResponceMappProvider.cs" />
-    <Compile Include="Mapping\HistoryServiceMappProvider.cs" />
+    <Compile Include="Interfaces\IGameService.cs" />
+    <Compile Include="Interfaces\IHistoryService.cs" />
+    <Compile Include="Maping\GameServiceResponceMappProvider.cs" />
+    <Compile Include="Maping\HistoryServiceMappProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\HistoryService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

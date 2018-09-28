@@ -3,6 +3,7 @@ using BlackJack.DataAccessLayer.Context;
 using BlackJack.Entities;
 using BlackJack.DataAccessLayer.Interfaces;
 using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace BlackJack.DataAccessLayer.Repositories
 {
@@ -12,9 +13,14 @@ namespace BlackJack.DataAccessLayer.Repositories
         {
         }
 
-        public PlayerRoundHand GetWithPlayerAndRoundId(int playerId,int roundId)
+        public IEnumerable<PlayerRoundHand> FindPLayerRoundHandWithRoundId(long roundId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public PlayerRoundHand GetWithPlayerAndRoundId(long playerId,long roundId)
         {            
-            return db.Properties.Where(x => x.PlayerId == playerId && x.RoundId == roundId)
+            return db.PlayerRoundHand.Where(x => x.PlayerId == playerId && x.RoundId == roundId)
                                 .Include(x => x.Hand)
                                 .SingleOrDefault();             
         }

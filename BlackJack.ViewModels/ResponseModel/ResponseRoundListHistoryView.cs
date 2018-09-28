@@ -10,9 +10,9 @@ namespace BlackJack.ViewModels.ResponseModel
 
     public class RoundRoundListHistoryViewItem
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Winner { get; set; }
         public int WinnerScore { get; set; }
-        public int NumberRound { get; set; }
+        public long NumberRound { get; set; }
     }
 }
