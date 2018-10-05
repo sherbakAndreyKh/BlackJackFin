@@ -20,8 +20,7 @@ namespace BlackJack.DataAccessLayer.Repositories
 
         public PlayerRoundHand GetWithPlayerAndRoundId(long playerId,long roundId)
         {            
-            return db.PlayerRoundHand.Where(x => x.PlayerId == playerId && x.RoundId == roundId)
-                                .Include(x => x.Hand)
+            return db.PlayerRoundHand.Where(x => x.PlayerId == playerId && x.RoundId == roundId)  
                                 .SingleOrDefault();             
         }
     }

@@ -11,13 +11,5 @@ namespace BlackJack.Entities
         public long NumberRound { get; set; }
 
         public long GameId { get; set; }
-        //public virtual Game Game { get; set; }
-
-        //public virtual ICollection<PlayerRoundHand> PlayerHands { get; set; }
-
-        //public Round()
-        //{
-        //    PlayerHands = new List<PlayerRoundHand>();
-        //}
     }
 }

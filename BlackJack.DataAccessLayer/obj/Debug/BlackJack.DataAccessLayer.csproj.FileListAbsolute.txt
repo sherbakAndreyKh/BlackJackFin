@@ -147,3 +147,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\Dapper.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\Z.Dapper.Plus.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\bin\Debug\Z.Dapper.Plus.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\obj\Debug\BlackJack.DataAccessLayer.Migrations.InitialMigration.resources
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccessLayer\obj\Debug\BlackJack.DataAccessLayer.csproj.GenerateResource.cache

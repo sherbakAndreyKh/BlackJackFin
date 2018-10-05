@@ -13,5 +13,6 @@ namespace BlackJack.DataAccessLayer.Interfaces
         IEnumerable<T> GetAll();
         void Update(T item);
         void UpdateMany(List<T> item);
+        IEnumerable<T> Find(Func<T, Boolean> predicate);
     }
 }

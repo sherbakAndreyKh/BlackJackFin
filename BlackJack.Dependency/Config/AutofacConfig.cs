@@ -2,10 +2,9 @@
 using BlackJack.BusinessLogicLayer.Interfaces;
 using BlackJack.BusinessLogicLayer.Maping;
 using BlackJack.BusinessLogicLayer.Services;
-using BlackJack.DataAccessLayer.Context;
-using BlackJack.DataAccessLayer.Interfaces;
-using BlackJack.DataAccessLayer.Repositories;
-using BlackJack.DataAccessLayer.ResitoriesDapper;
+using BlackJack.DataAccess.Context;
+using BlackJack.DataAccess.Interfaces;
+using BlackJack.DataAccess.Repositories;
 
 namespace BlackJack.Dependency.Config
 {
@@ -20,14 +19,14 @@ namespace BlackJack.Dependency.Config
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<BlackJackContext>().AsSelf().WithParameter("connectionString", connectionString).InstancePerRequest();
             builder.RegisterType<BlackJackConnection>().AsSelf().WithParameter("connectionString", connectionString).InstancePerRequest();
 
-            builder.RegisterType<CardDapperRepository>().As<ICardRepository>();
-            builder.RegisterType<GameDapperRepository>().As<IGameRepository>();
-            builder.RegisterType<PlayerDapperRepository>().As<IPlayerRepository>();
-            builder.RegisterType<PlayerRoundHandDapperRepository>().As<IPlayerRoundHandRepository>();
-            builder.RegisterType<RoundDapperRepository>().As<IRoundRepository>();
+            builder.RegisterType<CardRepository>().As<ICardRepository>();
+            builder.RegisterType<GameRepository>().As<IGameRepository>();
+            builder.RegisterType<PlayerRepository>().As<IPlayerRepository>();
+            builder.RegisterType<PlayerRoundHandRepository>().As<IPlayerRoundHandRepository>();
+            builder.RegisterType<RoundRepository>().As<IRoundRepository>();
+            builder.RegisterType<PlayerRoundHandCardsRepository>().As<IPlayerRoundHandCardsRepository>();
 
             builder.RegisterType<GameServiceResponseMappProvider>().AsSelf();
             builder.RegisterType<HistoryServiceMappProvider>().AsSelf();
@@ -37,6 +36,7 @@ namespace BlackJack.Dependency.Config
                                                                                     typeof(IRoundRepository),
                                                                                     typeof(ICardRepository),
                                                                                     typeof(IPlayerRoundHandRepository),
+                                                                                    typeof(IPlayerRoundHandCardsRepository),
                                                                                     typeof(GameServiceResponseMappProvider));
 
             builder.RegisterType<HistoryService>().As<IHistoryService>().UsingConstructor(typeof(IPlayerRepository),

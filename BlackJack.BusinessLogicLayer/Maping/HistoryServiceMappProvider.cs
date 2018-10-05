@@ -6,7 +6,7 @@ namespace BlackJack.BusinessLogicLayer.Maping
 {
     public class HistoryServiceMappProvider
     {
-        public List<ViewModels.ResponseModel.PlayerIndexHistoryViewItem> MapListPlayerOnPlayerIndexHistoryViewItem(List<Player> data, int gamesAmount)
+        public List<ViewModels.ResponseModel.PlayerIndexHistoryViewItem> MapListPlayerOnPlayerIndexHistoryViewItem(List<Player> data)
         {
             var result = new List<ViewModels.ResponseModel.PlayerIndexHistoryViewItem>();
 
@@ -15,15 +15,12 @@ namespace BlackJack.BusinessLogicLayer.Maping
                 var PlayerViewItem = new ViewModels.ResponseModel.PlayerIndexHistoryViewItem();
                 PlayerViewItem.Id = player.Id;
                 PlayerViewItem.Name = player.Name;
-                PlayerViewItem.GameAmount = gamesAmount;
-
                 result.Add(PlayerViewItem);
             }
-
             return result;
         }
 
-        public List<ViewModels.ResponseModel.GameGameListHistoryViewItem> MapListGameOnGameGameListHistoryViewItem(List<Game> data, int roundAmount)
+        public List<ViewModels.ResponseModel.GameGameListHistoryViewItem> MapListGameOnGameGameListHistoryViewItem(List<Game> data)
         {
             var result = new List<ViewModels.ResponseModel.GameGameListHistoryViewItem>();
 
@@ -32,7 +29,6 @@ namespace BlackJack.BusinessLogicLayer.Maping
                 var GameViewItem = new ViewModels.ResponseModel.GameGameListHistoryViewItem();
                 GameViewItem.Id = game.Id;
                 GameViewItem.Number = game.NumberGame;
-                GameViewItem.AmountRounds = roundAmount;
                 result.Add(GameViewItem);
             }
 
@@ -65,7 +61,7 @@ namespace BlackJack.BusinessLogicLayer.Maping
             return result;
         }
 
-       public List<ViewModels.ResponseModel.PlayerDetailsRoundHistoryViewItem> MapListPlayerOnPlayerDetailsRoundHistoryViewItem(List<Player> data)
+        public List<ViewModels.ResponseModel.PlayerDetailsRoundHistoryViewItem> MapListPlayerOnPlayerDetailsRoundHistoryViewItem(List<Player> data, List<PlayerRoundHand> properties, List<Card> cards)
         {
             var result = new List<ViewModels.ResponseModel.PlayerDetailsRoundHistoryViewItem>();
 
@@ -73,14 +69,14 @@ namespace BlackJack.BusinessLogicLayer.Maping
             {
                 var DetailsViewModel = new ViewModels.ResponseModel.PlayerDetailsRoundHistoryViewItem();
                 DetailsViewModel.Name = details.Name;
-                //DetailsViewModel.Properties = MapListPlayerRoundHandOnPlayerRoundHandDetailsRoundHistoryViewItem(details.PlayerRoundHands.ToList());
+                DetailsViewModel.Properties = MapListPlayerRoundHandOnPlayerRoundHandDetailsRoundHistoryViewItem(properties.Where(x=>x.PlayerId==details.Id).ToList(), cards);
                 result.Add(DetailsViewModel);
             }
 
             return result;
         }
 
-        public List<ViewModels.ResponseModel.PlayerRoundHandDetailsRoundHistoryViewItem> MapListPlayerRoundHandOnPlayerRoundHandDetailsRoundHistoryViewItem(List<PlayerRoundHand> data)
+        public List<ViewModels.ResponseModel.PlayerRoundHandDetailsRoundHistoryViewItem> MapListPlayerRoundHandOnPlayerRoundHandDetailsRoundHistoryViewItem(List<PlayerRoundHand> data, List<Card> cards)
         {
             var result = new List<ViewModels.ResponseModel.PlayerRoundHandDetailsRoundHistoryViewItem>();
 
@@ -89,7 +85,7 @@ namespace BlackJack.BusinessLogicLayer.Maping
                 var PropertiesViewModel = new ViewModels.ResponseModel.PlayerRoundHandDetailsRoundHistoryViewItem();
                 PropertiesViewModel.Score = properties.Score;
                 PropertiesViewModel.PlayerId = (int)properties.PlayerId;
-                PropertiesViewModel.Hand = MapListCardOnCardDetailsRoundHistoryViewItem(properties.Hand.ToList());
+                PropertiesViewModel.Hand = MapListCardOnCardDetailsRoundHistoryViewItem(cards.Where(x=>x.Id==properties.Id).ToList());
                 result.Add(PropertiesViewModel);
             }
 

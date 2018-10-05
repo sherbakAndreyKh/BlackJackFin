@@ -5,7 +5,7 @@ using BlackJack.Entities;
 using BlackJack.Entities.Enums;
 using BlackJack.BusinessLogicLayer.Maping;
 using BlackJack.ViewModels.ResponseModel;
-using BlackJack.DataAccessLayer.Interfaces;
+using BlackJack.DataAccess.Interfaces;
 
 namespace BlackJack.BusinessLogicLayer.Services
 {
@@ -25,7 +25,7 @@ namespace BlackJack.BusinessLogicLayer.Services
                               IGameRepository gameRepository,
                               IRoundRepository roundRepository,
                               ICardRepository cardRepository,
-                              IPlayerRoundHandRepository playerRoundHandRepository, 
+                              IPlayerRoundHandRepository playerRoundHandRepository,
                               HistoryServiceMappProvider maping)
         {
             _playerRepository = playerRepository;
@@ -36,61 +36,57 @@ namespace BlackJack.BusinessLogicLayer.Services
             _maping = maping;
         }
 
-
         //Methods
-        //public ResponseIndexHistoryView ReturnPlayers()
-        //{
-        //    List<Player> Players = _playerRepository.Find(x => x.Role == Role.Player).ToList();
-        //    ResponseIndexHistoryView data = new ResponseIndexHistoryView();
-        //    data.Players = _maping.MapListPlayerOnPlayerIndexHistoryViewItem(Players);
+        public ResponseIndexHistoryView ReturnPlayers()
+        {
+            List<Player> Players = _playerRepository.GetPlayersWithRole(Role.Player);
+            ResponseIndexHistoryView data = new ResponseIndexHistoryView();
+            data.Players = _maping.MapListPlayerOnPlayerIndexHistoryViewItem(Players);
+            return data;
+        }
 
-        //    return data;
-        //}
+        public ResponseGameListHistoryView ReturnGames(int PlayerId)
+        {
+            List<Game> Games = _gameRepository.GetGamestWithPlayerId(PlayerId);
+            ResponseGameListHistoryView data = new ResponseGameListHistoryView();
+            data.Player = _maping.MapPlayerOnPlayerGameListHistoryViewItem(_playerRepository.Get(PlayerId));
+            data.Games = _maping.MapListGameOnGameGameListHistoryViewItem(Games);
 
-        //public ResponseGameListHistoryView ReturnGames(int id)
-        //{
-        //    List<Game> Games = _gameRepository.Find(x => x.PlayerId == id).ToList();
-        //    ResponseGameListHistoryView data = new ResponseGameListHistoryView();
-        //    data.Player = _maping.MapPlayerOnPlayerGameListHistoryViewItem(_playerRepository.Get(id));
-        //    data.Games = _maping.MapListGameOnGameGameListHistoryViewItem(Games);
-          
-        //    return data;
-        //}
+            return data;
+        }
 
-        //public ResponseRoundListHistoryView ReturnRounds(int id)
-        //{
-        //    List<Round> Rounds = _roundRepository.Find(x => x.GameId == id).ToList();
-        //    ResponseRoundListHistoryView data = new ResponseRoundListHistoryView();
-        //    data.AmountPlayers = _gameRepository.Get(id).AmountPlayers;
-        //    data.Rounds = _maping.MapListRoundOnRoundRoundListHistoryViewItem(_roundRepository.Find(x => x.GameId == id).ToList());
+        public ResponseRoundListHistoryView ReturnRounds(int GameId)
+        {
+            List<Round> Rounds = _roundRepository.GetAll().Where(x => x.GameId == GameId).ToList();
+            var data = new ResponseRoundListHistoryView();
+            data.AmountPlayers = _gameRepository.Get(GameId).AmountPlayers;
+            data.Rounds = _maping.MapListRoundOnRoundRoundListHistoryViewItem(_roundRepository.GetAll().Where(x => x.GameId == GameId).ToList());
 
-        //    return data;
-        //}
 
-        //public ResponseDetailsRoundHistoryView DetailsRound(int id)
-        //{
-        //    List<Player> players = new List<Player>();
-            
-        //    players.Add(_playerRepository.Get((int)_roundRepository.Get(id).Game.PlayerId));
-        //    players.Add(_playerRepository.GetQuantityWithRole(1, (int)Role.Dealer).SingleOrDefault());
-        //    List<Player> bots = _playerRepository.GetQuantityWithRole(_roundRepository.Get(id).Game.AmountPlayers - 1, (int)Role.Bot).ToList();
 
-        //    foreach(var bot in bots)
-        //    {
-        //        players.Add(bot);
-        //    }
 
-        //    List<PlayerRoundHand> hands = _playerRoundHandRepository.Find(x=>x.RoundId== id).ToList();
-            
-        //    foreach(var participant in players)
-        //    {
-        //        participant.PlayerRoundHands = hands.Where(x => (int)x.PlayerId == participant.Id).ToList();
-        //    }
+            return data;
+        }
 
-        //    var data = new ResponseDetailsRoundHistoryView();
-        //    data.Players = _maping.MapListPlayerOnPlayerDetailsRoundHistoryViewItem(players);
+        public ResponseDetailsRoundHistoryView DetailsRound(int RoundId)
+        {
+            Round round = _roundRepository.Get(RoundId);
+            Game game = _gameRepository.Get(round.GameId);
+            Player player = _playerRepository.Get(game.PlayerId);
+            Player dealer = _playerRepository.GetPlayersWithRole(Role.Dealer).SingleOrDefault();
+            List<Player> bots = _playerRepository.GetQuantityWithRole(game.AmountPlayers - 1, (int)Role.Bot).ToList();
+            var players = new List<Player>();
+            players.Add(player);
+            players.Add(dealer);
+            players.AddRange(bots);
 
-        //    return data;
-        //}
+            List<PlayerRoundHand> hands = _playerRoundHandRepository.FindPLayerRoundHandWithRoundId(round.Id).ToList();
+            List<Card> cards = _cardRepository.ReturnPlayerpropertiesHand(round.Id);
+
+
+            var data = new ResponseDetailsRoundHistoryView();
+            data.Players = _maping.MapListPlayerOnPlayerDetailsRoundHistoryViewItem(players, hands,cards);
+            return data;
+        }
     }
 }

@@ -80,7 +80,6 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\System.Web.WebPages
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\System.Web.WebPages.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\System.Web.WebPages.Razor.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\WebGrease.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccessLayer.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Dependency.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Dependency.dll.config
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.Entities.pdb
@@ -106,15 +105,11 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Microsoft.AI.Depend
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Microsoft.AI.Web.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccessLayer.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccessLayer.dll.config
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.csprojAssemblyReference.cache
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.csproj.CoreCompileInputs.cache
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.csproj.CopyComplete
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\obj\Debug\BlackJack.UI.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Z.EntityFramework.Extensions.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Z.EntityFramework.Extensions.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.BusinessLogic.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.BusinessLogic.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Microsoft.Owin.dll
@@ -136,3 +131,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Dapper.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Dapper.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Z.Dapper.Plus.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Z.Dapper.Plus.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccess.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccess.pdb

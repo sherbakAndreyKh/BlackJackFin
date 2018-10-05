@@ -8,15 +8,7 @@ namespace BlackJack.Entities
     {
         public int AmountPlayers { get; set; }
         public long NumberGame { get; set; }
-
         public long PlayerId { get; set; }
-        //public Player Player { get; set; }
-
-        //public virtual ICollection<Round> Rounds { get; set; }
-
-        //public Game()
-        //{
-        //    Rounds = new List<Round>();
-        //}
+      
     }
 }

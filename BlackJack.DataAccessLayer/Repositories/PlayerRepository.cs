@@ -13,13 +13,7 @@ namespace BlackJack.DataAccessLayer.Repositories
         {
         }
 
-        public long CreateAndReturnId(Player item)
-        {
-            db.Player.Add(item);
-            db.SaveChanges();
-
-            return item.Id;
-        }
+    
 
         public Player FindPlayerWithPlayerName(string Name)
         {

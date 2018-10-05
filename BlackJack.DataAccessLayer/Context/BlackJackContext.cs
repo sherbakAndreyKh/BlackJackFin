@@ -27,7 +27,7 @@ namespace BlackJack.DataAccessLayer.Context
         }
     }
 
-    public class BlackJackInitializer : DropCreateDatabaseIfModelChanges<BlackJackContext>
+    public class BlackJackInitializer : DropCreateDatabaseAlways<BlackJackContext>
     {
         protected override void Seed(BlackJackContext db)
         {

@@ -1,0 +1,13 @@
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\BlackJack.DataAccess.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\BlackJack.DataAccess.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\BlackJack.Entities.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\Dapper.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\Z.Dapper.Plus.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\BlackJack.Entities.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\Dapper.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\Z.Dapper.Plus.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.csprojAssemblyReference.cache
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.csproj.CopyComplete
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.pdb

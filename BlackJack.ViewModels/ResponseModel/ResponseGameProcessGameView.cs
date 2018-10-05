@@ -23,6 +23,7 @@ namespace BlackJack.ViewModels.ResponseModel
 
     public class CardGameProcessGameViewItem
     {
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Suit { get; set; }
         public int Value { get; set; }

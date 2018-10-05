@@ -1,17 +1,10 @@
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.DataAccessLayer.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.Entities.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\EntityFramework.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.DataAccessLayer.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.DataAccessLayer.dll.config
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.Entities.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\EntityFramework.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\obj\Debug\BlackJack.BusinessLogicLayer.csprojAssemblyReference.cache
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\obj\Debug\BlackJack.BusinessLogicLayer.csproj.CoreCompileInputs.cache
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\obj\Debug\BlackJack.BusinessLogicLayer.csproj.CopyComplete
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.ViewModels.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.ViewModels.pdb
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\Z.EntityFramework.Extensions.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\Z.EntityFramework.Extensions.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.BusinessLogic.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.BusinessLogic.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\obj\Debug\BlackJack.BusinessLogic.dll
@@ -20,3 +13,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Deb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\Dapper.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\Z.Dapper.Plus.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\Z.Dapper.Plus.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.DataAccess.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogicLayer\bin\Debug\BlackJack.DataAccess.pdb

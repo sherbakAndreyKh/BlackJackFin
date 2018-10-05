@@ -30,6 +30,7 @@ namespace BlackJack.BusinessLogicLayer.Maping
             foreach (var a in cards)
             {
                 var CardView = new ViewModels.ResponseModel.CardGameProcessGameViewItem();
+                CardView.Id = a.Id;
                 CardView.Name = a.Name;
                 CardView.Suit = a.Suit;
                 CardView.Value = a.Value;
