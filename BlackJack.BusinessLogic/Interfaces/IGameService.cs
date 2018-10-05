@@ -7,6 +7,6 @@ namespace BlackJack.BusinessLogic.Interfaces
     {
         ResponseGameProcessGameView StartGame(RequestGameStartOptionsGameView item);
         void SaveChanges(ViewModels.RequestModel.RequestGameProcessGameView item);
-        ViewModels.ResponseModel.ResponseGameProcessGameView NewRound(ViewModels.RequestModel.RequestGameProcessGameView item);
+        ViewModels.ResponseModel.NewRoundGameView NewRound(ViewModels.RequestModel.RequestGameProcessGameView item);
     }
 }

@@ -1,0 +1,54 @@
+﻿@model BlackJack.ViewModels.ResponseModel.ResponseNewRoundGameView
+
+
+@{
+    ViewBag.Title = "NewRouns";
+}
+
+<div class="col-md-6"><h2 class="text-center">Game: @Model.Game.NumberGame</h2></div>
+<div class="col-md-6"><h3 class="text-center">Round: @Model.Round.NumberRound</h3></div>
+
+
+<div class="field text-center">
+    <img src="~/Content/Img/bj.jpg" style="width:75%;height:70%;" alt="Alternate Text" />
+</div>
+
+
+<div class="player col-md-2 Participant">
+    <p class="Hand"></p>
+    <p>Score: <span class="Score">@Model.Player.Properties.SingleOrDefault().Score</span></p>
+    <h4>@Model.Player.Name</h4>
+</div>
+
+
+@foreach (var bot in Model.Bots)
+{
+    <div class="player col-md-2 Participant">
+        <p class="Hand"></p>
+        <p>Score: <span class="Score">@Model.Player.Properties.SingleOrDefault().Score</span></p>
+        <h4>@bot.Name</h4>
+    </div>
+}
+<div class="dealer Participant text-center">
+    <h4>@Model.Dealer.Name</h4>
+    <p>Score: <span class="Score">@Model.Player.Properties.SingleOrDefault().Score</span></p>
+    <p class="Hand"></p>
+</div>
+
+
+<div class="Buttons text-right">
+    <button id="First">FirstDeal</button>
+    <button id="Take">TakeOne</button>
+    <button id="Stop">Stop</button>
+    <button id="History">End Round</button>
+</div>
+
+<script src="~/Scripts/GameScript.js"></script>
+<script>
+
+    var model = JSON.parse('@Html.Raw(Json.Encode(Model))');
+
+    var path = '@Url.Action("NewRound", "Game")';
+    var pathEnd = '@Url.Action("EndGame", "Game")';
+
+</script>

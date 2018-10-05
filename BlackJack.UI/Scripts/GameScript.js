@@ -3,7 +3,6 @@ var Bool = false;
 
 function GetCard() {
     var card = model.CardDeck.shift();
-    model.CardDeck, push(card);
     return card;
 }
 
@@ -42,7 +41,7 @@ function FindWinner(player, dealer) {
         model.Round.Winner = dealer.Name;
         model.Round.WinnerScore = dealer.Properties[0].Score;
     }
-    if (dealer.Properties[0].Score > 21 && player.Properties[0].Score <= 21) {
+    if (dealer.Properties[0].Score <= 21 && player.Properties[0].Score > 21) {
         alert(dealer.Name + " Win!");
         model.Round.Winner = dealer.Name;
         model.Round.WinnerScore = dealer.Properties[0].Score;

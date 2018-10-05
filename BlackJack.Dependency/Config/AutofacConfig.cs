@@ -28,8 +28,8 @@ namespace BlackJack.Dependency.Config
             builder.RegisterType<RoundRepository>().As<IRoundRepository>();
             builder.RegisterType<PlayerRoundHandCardsRepository>().As<IPlayerRoundHandCardsRepository>();
 
-            builder.RegisterType<GameServiceResponseMappProvider>().AsSelf();
-            builder.RegisterType<HistoryServiceMappProvider>().AsSelf();
+            builder.RegisterType<GameServiceResponseMapProvider>().AsSelf();
+            builder.RegisterType<HistoryServiceMapProvider>().AsSelf();
 
             builder.RegisterType<GameService>().As<IGameService>().UsingConstructor(typeof(IPlayerRepository),
                                                                                     typeof(IGameRepository),
@@ -37,14 +37,14 @@ namespace BlackJack.Dependency.Config
                                                                                     typeof(ICardRepository),
                                                                                     typeof(IPlayerRoundHandRepository),
                                                                                     typeof(IPlayerRoundHandCardsRepository),
-                                                                                    typeof(GameServiceResponseMappProvider));
+                                                                                    typeof(GameServiceResponseMapProvider));
 
             builder.RegisterType<HistoryService>().As<IHistoryService>().UsingConstructor(typeof(IPlayerRepository),
                                                                                           typeof(IGameRepository),
                                                                                           typeof(IRoundRepository),
                                                                                           typeof(ICardRepository),
                                                                                           typeof(IPlayerRoundHandRepository),
-                                                                                          typeof(HistoryServiceMappProvider));
+                                                                                          typeof(HistoryServiceMapProvider));
         }
     }
 }

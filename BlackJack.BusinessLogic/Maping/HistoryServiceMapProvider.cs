@@ -4,7 +4,7 @@ using BlackJack.Entities;
 
 namespace BlackJack.BusinessLogic.Maping
 {
-    public class HistoryServiceMappProvider
+    public class HistoryServiceMapProvider
     {
         public List<ViewModels.ResponseModel.PlayerIndexHistoryViewItem> MapListPlayerOnPlayerIndexHistoryViewItem(List<Player> data)
         {
