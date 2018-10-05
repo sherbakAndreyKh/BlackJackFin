@@ -30,7 +30,5 @@ namespace BlackJack.DataAccess.Repositories
                 return db.Query<PlayerRoundHand>("SELECT * FROM PlayerRoundHand WHERE RoundId=@roundId", new { roundId });
             }
         }
-
-       
     }
 }

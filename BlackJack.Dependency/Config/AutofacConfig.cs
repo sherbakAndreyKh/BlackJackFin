@@ -1,7 +1,7 @@
 ﻿using Autofac;
-using BlackJack.BusinessLogicLayer.Interfaces;
-using BlackJack.BusinessLogicLayer.Maping;
-using BlackJack.BusinessLogicLayer.Services;
+using BlackJack.BusinessLogic.Interfaces;
+using BlackJack.BusinessLogic.Maping;
+using BlackJack.BusinessLogic.Services;
 using BlackJack.DataAccess.Context;
 using BlackJack.DataAccess.Interfaces;
 using BlackJack.DataAccess.Repositories;

@@ -32,7 +32,5 @@ namespace BlackJack.DataAccess.Repositories
                return db.Query<PlayerRoundHandCards>(query).ToList();
             }
         }
-        
-        
     }
 }

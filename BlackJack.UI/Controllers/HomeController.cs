@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using BlackJack.BusinessLogicLayer.Interfaces;
+using BlackJack.BusinessLogic.Interfaces;
 
 namespace BlackJack.UI.Controllers
 {

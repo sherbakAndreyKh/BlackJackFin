@@ -1,12 +1,10 @@
 ﻿
 var Bool = false;
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function GetCard() {
-    return model.CardDeck[getRandomInt(0, 51)];
+    var card = model.CardDeck.shift();
+    model.CardDeck, push(card);
+    return card;
 }
 
 function MoreLess(participant) {

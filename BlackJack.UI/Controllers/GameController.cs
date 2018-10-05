@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using BlackJack.BusinessLogicLayer.Interfaces;
+using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.ViewModels.RequestModel;
 using BlackJack.ViewModels.ResponseModel;
 

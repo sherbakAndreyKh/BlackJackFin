@@ -262,9 +262,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlackJack.BusinessLogicLayer\BlackJack.BusinessLogicLayer.csproj">
-      <Project>{41E1AF8F-45AD-49B7-9F1B-5DB3ED95235B}</Project>
-      <Name>BlackJack.BusinessLogicLayer</Name>
+    <ProjectReference Include="..\BlackJack.BusinessLogic\BlackJack.BusinessLogic.csproj">
+      <Project>{4f30a007-5af7-4bfd-99fe-3a84be31eff3}</Project>
+      <Name>BlackJack.BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlackJack.Dependency\BlackJack.Dependency.csproj">
       <Project>{bf0842e6-1dc7-474a-ad47-c5f4a6eac411}</Project>
