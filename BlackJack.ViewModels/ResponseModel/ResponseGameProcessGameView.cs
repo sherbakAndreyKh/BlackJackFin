@@ -23,6 +23,7 @@ namespace BlackJack.ViewModels.ResponseModel
 
     public class CardGameProcessGameViewItem
     {
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Suit { get; set; }
         public int Value { get; set; }
@@ -31,7 +32,7 @@ namespace BlackJack.ViewModels.ResponseModel
 
     public class PlayerGameProcessGameViewItem
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public int Role { get; set; }
         public virtual List<PlayerPropertiesGameProcessGameViewItem> Properties { get; set; }
@@ -47,9 +48,9 @@ namespace BlackJack.ViewModels.ResponseModel
         public List<CardGameProcessGameViewItem> Hand { get; set; }
         public int Score { get; set; }
 
-        public int? PlayerId { get; set; }
+        public long? PlayerId { get; set; }
 
-        public int Round_Id { get; set; }
+        public long Round_Id { get; set; }
 
         public PlayerPropertiesGameProcessGameViewItem()
         {
@@ -59,11 +60,11 @@ namespace BlackJack.ViewModels.ResponseModel
 
     public class GameGameProcessGameViewItem
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public int AmountPlayers { get; set; }
-        public int NumberGame { get; set; }
+        public long NumberGame { get; set; }
 
-        public int PlayerId { get; set; }
+        public long PlayerId { get; set; }
         public PlayerGameProcessGameViewItem player { get; set; }
 
         public virtual List<RoundGameProcessGameViewItem> Rounds { get; set; }
@@ -76,11 +77,11 @@ namespace BlackJack.ViewModels.ResponseModel
 
     public class RoundGameProcessGameViewItem
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Winner { get; set; }
         public int WinnerScore { get; set; }
-        public int NumberRound { get; set; }
-        public int GameId { get; set; }
+        public long NumberRound { get; set; }
+        public long GameId { get; set; }
         public virtual GameGameProcessGameViewItem Game { get; set; }
     }
 }
