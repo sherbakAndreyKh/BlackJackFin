@@ -30,9 +30,9 @@ namespace BlackJack.UI.Controllers
         public ActionResult NewRound(RequestGameProcessGameView item)
         {
             _startService.SaveChanges(item);
-            ResponseGameProcessGameView roundData = _startService.NewRound(item);
+            NewRoundGameView roundData = _startService.NewRound(item);
 
-            return View("GameProcess", roundData);
+            return View(roundData);
         }
         
         public ActionResult EndGame(RequestGameProcessGameView item)

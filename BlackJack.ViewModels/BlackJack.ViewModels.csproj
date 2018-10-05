@@ -44,6 +44,7 @@
     <Compile Include="RequestModel\RequestGameStartOptionsGameView.cs" />
     <Compile Include="ResponseModel\DetailsRoundHistoryView.cs" />
     <Compile Include="ResponseModel\GameListHistoryView.cs" />
+    <Compile Include="ResponseModel\NewRoundGameView.cs" />
     <Compile Include="ResponseModel\ResponseGameStartOptionsGameView.cs" />
     <Compile Include="RequestModel\RequestGameProcessGameView.cs" />
     <Compile Include="ResponseModel\ResponseGameProcessGameView.cs" />

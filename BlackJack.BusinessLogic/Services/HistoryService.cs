@@ -17,7 +17,7 @@ namespace BlackJack.BusinessLogic.Services
         IRoundRepository _roundRepository;
         ICardRepository _cardRepository;
         IPlayerRoundHandRepository _playerRoundHandRepository;
-        HistoryServiceMappProvider _maping;
+        HistoryServiceMapProvider _maping;
 
         //Constructors
         public HistoryService(IPlayerRepository playerRepository,
@@ -25,7 +25,7 @@ namespace BlackJack.BusinessLogic.Services
                               IRoundRepository roundRepository,
                               ICardRepository cardRepository,
                               IPlayerRoundHandRepository playerRoundHandRepository,
-                              HistoryServiceMappProvider maping)
+                              HistoryServiceMapProvider maping)
         {
             _playerRepository = playerRepository;
             _gameRepository = gameRepository;

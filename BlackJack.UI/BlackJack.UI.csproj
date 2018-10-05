@@ -244,6 +244,7 @@
     <Content Include="Views\History\RoundsList.cshtml" />
     <Content Include="Views\History\DetailRound.cshtml" />
     <Content Include="Views\Game\GameStartOptions.cshtml" />
+    <Content Include="Views\Game\NewRound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

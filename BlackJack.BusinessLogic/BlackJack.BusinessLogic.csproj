@@ -43,8 +43,8 @@
   <ItemGroup>
     <Compile Include="Interfaces\IGameService.cs" />
     <Compile Include="Interfaces\IHistoryService.cs" />
-    <Compile Include="Maping\GameServiceResponceMappProvider.cs" />
-    <Compile Include="Maping\HistoryServiceMappProvider.cs" />
+    <Compile Include="Maping\GameServiceResponceMapProvider.cs" />
+    <Compile Include="Maping\HistoryServiceMapProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\HistoryService.cs" />
