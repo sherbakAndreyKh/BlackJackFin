@@ -14,24 +14,28 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public long ReturnNewRoundNumber(long id)
+        public long ReturnNewRoundNumber(long gameId)
         {
-            List<Round> games = new List<Round>();
+            long result;
+            string query = $"SELECT COUNT (*) FROM Round WHERE GameId={gameId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                games = db.Query<Round>($"SELECT * FROM Round WHERE GameId=@id", new { id }).ToList();
+                result = db.QuerySingle<long>(query);
             }
-            return games.Count() + 1;
+            return result + 1;
         }
 
-        public List<Round> GetRoundtWithPlayerId(long id)
+        public List<Round> GetRoundtWithPlayerId(long playerId)
         {
+            List<Round> result;
+            string query = $"SELECT * FROM Round WHERE GameId={playerId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<Round>($"SELECT * FROM Round WHERE GameId=@id", new { id }).ToList();
+                result = db.Query<Round>(query).ToList();
             }
+            return result;
         }
     }
 }

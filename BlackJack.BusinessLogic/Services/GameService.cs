@@ -51,7 +51,7 @@ namespace BlackJack.BusinessLogic.Services
 
             Player Player = _playerRepository.Get(playerId);
             Player Dealer = _playerRepository.GetQuantityWithRole(1, (int)Role.Dealer).SingleOrDefault();
-            List<Player> BotsList = _playerRepository.GetQuantityWithRole(item.AmountBots, (int)Role.Bot).ToList();
+            List<Player> BotsList = _playerRepository.GetQuantityWithRole(item.BotsAmount, (int)Role.Bot).ToList();
 
             ////add Plyer Hands
             var playerList = new List<Player>();
@@ -220,7 +220,7 @@ namespace BlackJack.BusinessLogic.Services
         {
             Game game = new Game()
             {
-                PlayersAmount = item.AmountBots + 1,
+                PlayersAmount = item.BotsAmount + 1,
                 PlayerId = playerId,
                 GameNumber = _gameRepository.ReturnNewGameNumber(playerId)
             };

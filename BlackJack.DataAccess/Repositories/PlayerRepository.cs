@@ -17,28 +17,38 @@ namespace BlackJack.DataAccess.Repositories
 
         public IEnumerable<Player> GetQuantityWithRole(int quantity, int role)
         {
-            string query = $"SELECT TOP {quantity} * FROM Player WHERE Role=@role ";
+            IEnumerable<Player> result;
+            string query = $"SELECT TOP {quantity} * FROM Player WHERE Role={role} ";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<Player>(query, new { role });
+                result = db.Query<Player>(query);
             }
+            return result;
         }
 
-        public Player FindPlayerWithPlayerName(string Name)
+        public Player FindPlayerWithPlayerName(string playerName)
         {
+            Player result;
+            string query = $"SELECT * FROM Player WHERE Name ='{playerName}'";
+
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<Player>($"SELECT * FROM Player WHERE Name = @Name", new { Name }).SingleOrDefault();
+                result = db.Query<Player>(query).SingleOrDefault();
             }
+            return result;
         }
 
         public List<Player> GetPlayersWithRole(Role role)
         {
+            List<Player> result;
+            string query = $"SELECT * FROM Player WHERE Role = {(int)role}";
+
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<Player>($"SELECT * FROM Player WHERE Role = {(int)role}").ToList();
+                result = db.Query<Player>(query).ToList();
             }
+            return result;
         }
     }
 }

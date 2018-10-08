@@ -16,3 +16,7 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\Entit
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\EntityFramework.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.Migrations.adjustmentmodels.resources
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.csproj.GenerateResource.cache
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.Migrations.adjustmentmodels1.resources
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.DataAccess\obj\Debug\BlackJack.DataAccess.Migrations.addPlayerRoundHandsCard.resources

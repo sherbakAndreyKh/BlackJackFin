@@ -20,6 +20,7 @@ namespace BlackJack.Dependency.Config
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<BlackJackConnection>().AsSelf().WithParameter("connectionString", connectionString).InstancePerRequest();
+            builder.RegisterType<BlackJackContext>().AsSelf().WithParameter("connectionString", connectionString).InstancePerRequest();
 
             builder.RegisterType<CardRepository>().As<ICardRepository>();
             builder.RegisterType<GameRepository>().As<IGameRepository>();

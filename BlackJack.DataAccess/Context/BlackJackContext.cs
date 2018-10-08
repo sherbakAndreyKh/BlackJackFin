@@ -12,6 +12,7 @@ namespace BlackJack.DataAccess.Context
         public DbSet<Game> Game { get; set; }
         public DbSet<Round> Round { get; set; }
         public DbSet<Card> Card { get; set; }
+        public DbSet<PlayerRoundHandCards> PlayerRoundHandCards { get; set; }
 
         public BlackJackContext()
             : base("DefaultConnection")

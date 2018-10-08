@@ -17,6 +17,6 @@ namespace BlackJack.ViewModels
     {
         public long Id { get; set; }
         public string Name { get; set; }        
-        public int AmountGame { get; set; }
+        public int GameAmount { get; set; }
     }
 }

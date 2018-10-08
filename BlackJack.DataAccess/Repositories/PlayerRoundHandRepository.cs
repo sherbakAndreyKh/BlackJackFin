@@ -16,19 +16,25 @@ namespace BlackJack.DataAccess.Repositories
 
         public PlayerRoundHand GetWithPlayerAndRoundId(long playerId, long roundId)
         {
+            PlayerRoundHand result;
             var query = $"SELECT * FROM PlayerRoundHand WHERE RoundId={roundId} AND PlayerId={playerId}";
+
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<PlayerRoundHand>(query).SingleOrDefault();
+                result = db.Query<PlayerRoundHand>(query).SingleOrDefault();
             }
+            return result;
         }
 
         public IEnumerable<PlayerRoundHand> FindPLayerRoundHandWithRoundId(long roundId)
         {
+            IEnumerable<PlayerRoundHand> result;
+            string query = $"SELECT * FROM PlayerRoundHand WHERE RoundId={roundId}";
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<PlayerRoundHand>("SELECT * FROM PlayerRoundHand WHERE RoundId=@roundId", new { roundId });
+                result = db.Query<PlayerRoundHand>(query);
             }
+            return result;
         }
     }
 }
