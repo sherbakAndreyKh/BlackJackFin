@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Context\BlackJackConnection.cs" />
     <Compile Include="Context\BlackJackContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
