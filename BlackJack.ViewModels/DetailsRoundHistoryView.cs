@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BlackJack.ViewModels.ResponseModel
+namespace BlackJack.ViewModels
 {
     public class DetailsRoundHistoryView
     {
@@ -10,11 +10,11 @@ namespace BlackJack.ViewModels.ResponseModel
     public class PlayerDetailsRoundHistoryViewItem
     {
         public string Name { get; set; }
-        public virtual List<PlayerRoundHandDetailsRoundHistoryViewItem> Properties { get; set; }
+        public List<PlayerRoundHandDetailsRoundHistoryViewItem> PlayerRoundHands { get; set; }
 
         public PlayerDetailsRoundHistoryViewItem()
         {
-            Properties = new List<PlayerRoundHandDetailsRoundHistoryViewItem>();
+            PlayerRoundHands = new List<PlayerRoundHandDetailsRoundHistoryViewItem>();
         }
     }
 
@@ -22,9 +22,9 @@ namespace BlackJack.ViewModels.ResponseModel
     {
         public virtual List<CardDetailsRoundHistoryViewItem> Hand { get; set; }
         public int Score { get; set; }
-        public int PlayerId { get; set; }
+        public long PlayerId { get; set; }
         public PlayerDetailsRoundHistoryViewItem Player { get; set; }
-        public int Round_Id { get; set; }
+        public long RoundId { get; set; }
 
         public PlayerRoundHandDetailsRoundHistoryViewItem()
         {

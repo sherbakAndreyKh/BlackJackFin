@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlackJack.ViewModels.ResponseModel
+namespace BlackJack.ViewModels
 {
     public class NewRoundGameView
     {
@@ -39,39 +39,37 @@ namespace BlackJack.ViewModels.ResponseModel
         public long Id { get; set; }
         public string Name { get; set; }
         public int Role { get; set; }
-        public virtual List<PlayerRoundHandNewRoundGameViewItem> Properties { get; set; }
+        public List<PlayerRoundHandNewRoundGameViewItem> PlayerRoundHand { get; set; }
 
         public PlayerNewRoundGameViewItem()
         {
-            Properties = new List<PlayerRoundHandNewRoundGameViewItem>();
+            PlayerRoundHand = new List<PlayerRoundHandNewRoundGameViewItem>();
         }
     }
 
     public class PlayerRoundHandNewRoundGameViewItem
     {
-        public List<CardGameProcessGameViewItem> Hand { get; set; }
+        public List<CardNewRoundGameViewItem> Hand { get; set; }
         public int Score { get; set; }
 
-        public long? PlayerId { get; set; }
-
-        public long Round_Id { get; set; }
+        public long PlayerId { get; set; }
+        public long RoundId { get; set; }
 
         public PlayerRoundHandNewRoundGameViewItem()
         {
-            Hand = new List<CardGameProcessGameViewItem>();
+            Hand = new List<CardNewRoundGameViewItem>();
         }
     }
 
     public class GameNewRoundGameViewItem
     {
         public long Id { get; set; }
-        public int AmountPlayers { get; set; }
-        public long NumberGame { get; set; }
+        public int PlayersAmount { get; set; }
+        public long GameNumber { get; set; }
 
         public long PlayerId { get; set; }
-        public PlayerNewRoundGameViewItem player { get; set; }
-
-        public virtual List<RoundNewRoundGameViewItem> Rounds { get; set; }
+        public PlayerNewRoundGameViewItem Player { get; set; }
+        public List<RoundNewRoundGameViewItem> Rounds { get; set; }
 
         public GameNewRoundGameViewItem()
         {
@@ -84,8 +82,8 @@ namespace BlackJack.ViewModels.ResponseModel
         public long Id { get; set; }
         public string Winner { get; set; }
         public int WinnerScore { get; set; }
-        public long NumberRound { get; set; }
+        public long RoundNumber { get; set; }
         public long GameId { get; set; }
-        public virtual GameNewRoundGameViewItem Game { get; set; }
+        public GameNewRoundGameViewItem Game { get; set; }
     }
 }

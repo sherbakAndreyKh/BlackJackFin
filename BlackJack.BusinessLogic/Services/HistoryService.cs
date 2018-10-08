@@ -4,7 +4,7 @@ using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.Entities;
 using BlackJack.Entities.Enums;
 using BlackJack.BusinessLogic.Maping;
-using BlackJack.ViewModels.ResponseModel;
+using BlackJack.ViewModels;
 using BlackJack.DataAccess.Interfaces;
 
 namespace BlackJack.BusinessLogic.Services
@@ -58,7 +58,7 @@ namespace BlackJack.BusinessLogic.Services
         {
             List<Round> Rounds = _roundRepository.GetAll().Where(x => x.GameId == GameId).ToList();
             var data = new RoundListHistoryView();
-            data.AmountPlayers = _gameRepository.Get(GameId).AmountPlayers;
+            data.PlayersAmount = _gameRepository.Get(GameId).PlayersAmount;
             data.Rounds = _maping.MapListRoundOnRoundRoundListHistoryViewItem(_roundRepository.GetAll().Where(x => x.GameId == GameId).ToList());
             return data;
         }
@@ -69,7 +69,7 @@ namespace BlackJack.BusinessLogic.Services
             Game game = _gameRepository.Get(round.GameId);
             Player player = _playerRepository.Get(game.PlayerId);
             Player dealer = _playerRepository.GetPlayersWithRole(Role.Dealer).SingleOrDefault();
-            List<Player> bots = _playerRepository.GetQuantityWithRole(game.AmountPlayers - 1, (int)Role.Bot).ToList();
+            List<Player> bots = _playerRepository.GetQuantityWithRole(game.PlayersAmount - 1, (int)Role.Bot).ToList();
             var players = new List<Player>();
             players.Add(player);
             players.Add(dealer);

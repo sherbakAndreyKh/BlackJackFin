@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace BlackJack.ViewModels.ResponseModel
+namespace BlackJack.ViewModels
 {
     public class RoundListHistoryView
     {
-       public int AmountPlayers { get; set; }
+       public int PlayersAmount { get; set; }
        public List<RoundRoundListHistoryViewItem> Rounds { get; set; }
     }
 
@@ -13,6 +13,6 @@ namespace BlackJack.ViewModels.ResponseModel
         public long Id { get; set; }
         public string Winner { get; set; }
         public int WinnerScore { get; set; }
-        public long NumberRound { get; set; }
+        public long RoundNumber { get; set; }
     }
 }

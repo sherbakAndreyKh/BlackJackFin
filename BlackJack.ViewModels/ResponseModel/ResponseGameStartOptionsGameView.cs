@@ -7,7 +7,6 @@ namespace BlackJack.ViewModels.ResponseModel
     {
         [Required(ErrorMessage = "Write your Name please")]
         public string PlayerName { get; set; }
-        
-        public int AmountBots { get; set; }
+        public int BotsAmount { get; set; }
     }
 }

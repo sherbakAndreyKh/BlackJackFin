@@ -10,6 +10,5 @@ namespace BlackJack.Entities
     {
         public string Name { get; set; }
         public  Role  Role { get; set; }
-
     }
 }

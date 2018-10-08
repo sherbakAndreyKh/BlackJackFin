@@ -1,4 +1,4 @@
-﻿using BlackJack.ViewModels.ResponseModel;
+﻿using BlackJack.ViewModels;
 
 namespace BlackJack.BusinessLogic.Interfaces
 {

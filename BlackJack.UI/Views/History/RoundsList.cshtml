@@ -1,4 +1,4 @@
-﻿@model BlackJack.ViewModels.ResponseModel.RoundListHistoryView
+﻿@model BlackJack.ViewModels.RoundListHistoryView
 
 @{
     ViewBag.Title = "RoundsList";
@@ -14,11 +14,11 @@
             <th>Winner Score</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody data-myPath="@Url.Action("DetailRound", "History")">
 
         @foreach (var a in Model.Rounds)
          {
-            <tr class="testButton" data-param="@a.Id">
+            <tr class="testButton" data-param="@a.Id" >
                 <td>@a.NumberRound</td>
                 <td>@a.Winner</td>
                 <td>@a.WinnerScore</td>
@@ -30,9 +30,5 @@
 </table>
 
 <div class="render container">
-
 </div>
-<script>
-    var path = '@Url.Action("DetailRound", "History")';
-</script>
 <script src="~/Scripts/RoundDetailsScript.js"></script>

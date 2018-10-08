@@ -1,4 +1,5 @@
 ﻿using BlackJack.Entities;
+using BlackJack.ViewModels;
 using System.Collections.Generic;
 
 namespace BlackJack.BusinessLogic.Maping
@@ -11,15 +12,15 @@ namespace BlackJack.BusinessLogic.Maping
             result.Id = player.Id;
             result.Name = player.Name;
             result.Role = (int)player.Role;
-            result.Properties.Add(MapRoundHandOnPlayerPropertiesGameProcessGameViewItem(properties));
+            result.PlayerRoundHand.Add(MapRoundHandOnPlayerPropertiesGameProcessGameViewItem(properties));
             return result;
         }
 
-        public ViewModels.ResponseModel.PlayerPropertiesGameProcessGameViewItem MapRoundHandOnPlayerPropertiesGameProcessGameViewItem(PlayerRoundHand properties)
+        public ViewModels.ResponseModel.PlayerRoundHandGameProcessGameViewItem MapRoundHandOnPlayerPropertiesGameProcessGameViewItem(PlayerRoundHand properties)
         {
-            var result = new ViewModels.ResponseModel.PlayerPropertiesGameProcessGameViewItem();
+            var result = new ViewModels.ResponseModel.PlayerRoundHandGameProcessGameViewItem();
             result.PlayerId = properties.PlayerId;
-            result.Round_Id = (int)properties.RoundId;
+            result.RoundId = (int)properties.RoundId;
             return result;
         }
 
@@ -45,8 +46,8 @@ namespace BlackJack.BusinessLogic.Maping
         {
             var result = new ViewModels.ResponseModel.GameGameProcessGameViewItem();
             result.Id = item.Id;
-            result.NumberGame = item.NumberGame;
-            result.AmountPlayers = item.AmountPlayers;
+            result.GameNumber = item.GameNumber;
+            result.PlayersAmount = item.PlayersAmount;
             return result;
         }
 
@@ -54,20 +55,20 @@ namespace BlackJack.BusinessLogic.Maping
         {
             var result = new ViewModels.ResponseModel.RoundGameProcessGameViewItem();
             result.Id = item.Id;
-            result.NumberRound = item.NumberRound;
+            result.RoundNumber = item.RoundNumber;
             result.GameId = (int)item.GameId;
             result.Winner = item.Winner;
             result.WinnerScore = item.WinnerScore;
             return result;
         }
 
-        public List<ViewModels.ResponseModel.CardNewRoundGameViewItem> MapCardsOnCardNewRoundGameViewItem(IEnumerable<Card> cards)
+        public List<CardNewRoundGameViewItem> MapCardsOnCardNewRoundGameViewItem(IEnumerable<Card> cards)
         {
-            var result = new List<ViewModels.ResponseModel.CardNewRoundGameViewItem>();
+            var result = new List<CardNewRoundGameViewItem>();
 
             foreach (var a in cards)
             {
-                var CardView = new ViewModels.ResponseModel.CardNewRoundGameViewItem();
+                var CardView = new CardNewRoundGameViewItem();
                 CardView.Id = a.Id;
                 CardView.Name = a.Name;
                 CardView.Suit = a.Suit;
@@ -79,41 +80,41 @@ namespace BlackJack.BusinessLogic.Maping
             return result;
         }
 
-        public ViewModels.ResponseModel.GameNewRoundGameViewItem MapGameOnGameNewRoundGameViewItem(Game item)
+        public GameNewRoundGameViewItem MapGameOnGameNewRoundGameViewItem(Game item)
         {
-            var result = new ViewModels.ResponseModel.GameNewRoundGameViewItem();
+            var result = new GameNewRoundGameViewItem();
             result.Id = item.Id;
-            result.NumberGame = item.NumberGame;
-            result.AmountPlayers = item.AmountPlayers;
+            result.GameNumber = item.GameNumber;
+            result.PlayersAmount = item.PlayersAmount;
             return result;
         }
 
-        public ViewModels.ResponseModel.RoundNewRoundGameViewItem MapRoundOnRoundNewRoundGameViewItem(Round item)
+        public RoundNewRoundGameViewItem MapRoundOnRoundNewRoundGameViewItem(Round item)
         {
-            var result = new ViewModels.ResponseModel.RoundNewRoundGameViewItem();
+            var result = new RoundNewRoundGameViewItem();
             result.Id = item.Id;
-            result.NumberRound = item.NumberRound;
+            result.RoundNumber = item.RoundNumber;
             result.GameId = (int)item.GameId;
             result.Winner = item.Winner;
             result.WinnerScore = item.WinnerScore;
             return result;
         }
 
-        public ViewModels.ResponseModel.PlayerNewRoundGameViewItem MapPlayerOnPlayerNewRoundGameViewItem(Player player, PlayerRoundHand properties)
+        public PlayerNewRoundGameViewItem MapPlayerOnPlayerNewRoundGameViewItem(Player player, PlayerRoundHand properties)
         {
-            var result = new ViewModels.ResponseModel.PlayerNewRoundGameViewItem();
+            var result = new PlayerNewRoundGameViewItem();
             result.Id = player.Id;
             result.Name = player.Name;
             result.Role = (int)player.Role;
-            result.Properties.Add(MapRoundHandOnPlayerRoundHandNewRoundGameViewItem(properties));
+            result.PlayerRoundHand.Add(MapRoundHandOnPlayerRoundHandNewRoundGameViewItem(properties));
             return result;
         }
 
-        public ViewModels.ResponseModel.PlayerRoundHandNewRoundGameViewItem MapRoundHandOnPlayerRoundHandNewRoundGameViewItem(PlayerRoundHand properties)
+        public PlayerRoundHandNewRoundGameViewItem MapRoundHandOnPlayerRoundHandNewRoundGameViewItem(PlayerRoundHand properties)
         {
-            var result = new ViewModels.ResponseModel.PlayerRoundHandNewRoundGameViewItem();
+            var result = new PlayerRoundHandNewRoundGameViewItem();
             result.PlayerId = properties.PlayerId;
-            result.Round_Id = (int)properties.RoundId;
+            result.RoundId = (int)properties.RoundId;
             return result;
         }
     }   

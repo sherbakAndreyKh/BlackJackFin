@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using BlackJack.BusinessLogic.Interfaces;
+using BlackJack.ViewModels;
 using BlackJack.ViewModels.RequestModel;
 using BlackJack.ViewModels.ResponseModel;
 
@@ -31,7 +32,6 @@ namespace BlackJack.UI.Controllers
         {
             _startService.SaveChanges(item);
             NewRoundGameView roundData = _startService.NewRound(item);
-
             return View(roundData);
         }
         

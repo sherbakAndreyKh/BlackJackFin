@@ -1,6 +1,4 @@
-﻿
-
-namespace BlackJack.ViewModels.RequestModel
+﻿namespace BlackJack.ViewModels.RequestModel
 {
     public class RequestGameStartOptionsGameView
     {

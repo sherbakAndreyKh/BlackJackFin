@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-namespace BlackJack.ViewModels.ResponseModel
+namespace BlackJack.ViewModels
 {
     public class IndexHistoryView
     {
@@ -17,6 +17,6 @@ namespace BlackJack.ViewModels.ResponseModel
     {
         public long Id { get; set; }
         public string Name { get; set; }        
-        public int GameAmount { get; set; }
+        public int AmountGame { get; set; }
     }
 }
