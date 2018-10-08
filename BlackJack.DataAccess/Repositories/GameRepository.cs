@@ -15,24 +15,28 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public int ReturnNewGameNumber(long id)
+        public long GetNewGameNumber(long playerId)
         {
-            List<Game> games = new List<Game>();
+            long result ;
+            string query = $"SELECT COUNT (*) FROM Game WHERE PlayerId={playerId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                games = db.Query<Game>($"SELECT * FROM Game WHERE PlayerId=@id", new { id }).ToList();
+                result = db.QuerySingle<long>(query);
             }
-            return games.Count() + 1;
+            return result + 1;
         }
 
-        public List<Game> GetGamestWithPlayerId(long id)
+        public List<Game> GetGamesByPlayerId(long playerId)
         {
+            List<Game> result;
+            string query = $"SELECT * FROM Game WHERE PlayerId={playerId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<Game>($"SELECT * FROM Game WHERE PlayerId=@id", new { id }).ToList();
+               result = db.Query<Game>(query).ToList();
             }
+            return result;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model BlackJack.ViewModels.ResponseModel.DetailsRoundHistoryView
+﻿@model BlackJack.ViewModels.DetailsRoundHistoryView
 
 @{
     Layout = null;
@@ -9,7 +9,7 @@
     <div class="col-md-6 BorderInDetails">
         <div class="text-center">
             <h4>@player.Name</h4>
-            @foreach(var prop in player.Properties)
+            @foreach(var prop in player.PlayerRoundHands)
             {
                 <p>Score: @prop.Score</p>
                 <p>

@@ -28,14 +28,7 @@ namespace BlackJack.UI
             builder.RegisterModule(new AutofacConfig("DefaultConnection"));
             var container = builder.Build();
 
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
-            #region Ninject Module Registration
-            //NinjectModule registration = new NinjectConfig("DefaultConnection");
-            //var kernel = new StandardKernel(registration);
-            //kernel.Unbind<ModelValidatorProvider>();
-            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
-            #endregion
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));          
         } 
     }
 }

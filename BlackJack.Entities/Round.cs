@@ -8,7 +8,7 @@ namespace BlackJack.Entities
     {
         public string Winner { get; set; }
         public int WinnerScore { get; set; }
-        public long NumberRound { get; set; }
+        public long RoundNumber { get; set; }
 
         public long GameId { get; set; }
     }

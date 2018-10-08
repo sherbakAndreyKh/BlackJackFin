@@ -1,4 +1,4 @@
-﻿@model BlackJack.ViewModels.ResponseModel.GameListHistoryView
+﻿@model BlackJack.ViewModels.GameListHistoryView
 
 @{
     ViewBag.Title = "GameList";
@@ -19,7 +19,7 @@
         {
             <tr>
                 <td>@game.Number</td>
-                <td>@game.AmountRounds</td>
+                <td>@game.RoundsAmount</td>
                 <td><a href="@Url.Action("RoundsList","History", new { id = game.Id, playerId = Model.Player.Id })">Details</a></td>
             </tr>
         }

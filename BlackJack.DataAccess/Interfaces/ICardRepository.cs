@@ -5,7 +5,7 @@ namespace BlackJack.DataAccess.Interfaces
 {
     public interface ICardRepository : IBaseRepository<Card>
     {
-        Card FindCardWithNameAndSuit(string name, string suit);
-        List<Card> ReturnPlayerpropertiesHand(long PlayerPropertiesId);
+        Card FindCardWithNameAndSuit(string cardName, string cardSuit);
+        List<Card> GetPlayerRoundHandCards(long playerPropertiesId);
     }
 }

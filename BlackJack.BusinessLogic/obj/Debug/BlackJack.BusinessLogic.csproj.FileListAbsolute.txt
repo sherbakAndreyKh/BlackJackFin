@@ -15,3 +15,6 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogic\obj\Debug\Bl
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogic\obj\Debug\BlackJack.BusinessLogic.csproj.CopyComplete
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogic\obj\Debug\BlackJack.BusinessLogic.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogic\obj\Debug\BlackJack.BusinessLogic.pdb
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogic\bin\Debug\BlackJack.DataAccess.dll.config
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.BusinessLogic\bin\Debug\EntityFramework.xml

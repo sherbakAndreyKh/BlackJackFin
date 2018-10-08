@@ -14,23 +14,26 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public void AddCommunicationCardsWithHands(long PlayerRoundHandId, long CardsId)
+        public void AddCommunicationCardsByHands(long playerRoundHandId, long cardId)
         {
-            var query = $"INSERT INTO PlayerRoundHandCards(PLayerRoundHandId, CardId) VALUES({PlayerRoundHandId},{CardsId})";
+            var query = $"INSERT INTO PlayerRoundHandCards(PLayerRoundHandId, CardId) VALUES({playerRoundHandId},{cardId})";
+
             using (IDbConnection db = _connection.CreateConnection())
             {
                 db.Execute(query);
             }
         }
 
-        public List<PlayerRoundHandCards> GetFieldsWithPlayerPropertiesId(long PlayerRoundHandId)
+        public List<PlayerRoundHandCards> GetFieldsByPlayerPropertiesId(long playerRoundHandId)
         {
-            var query = $"SELECT * FROM PlayerRoundHandCards WHERE PlayerRoundHandId = {PlayerRoundHandId}";
+            List<PlayerRoundHandCards> result;
+            var query = $"SELECT * FROM PlayerRoundHandCards WHERE PlayerRoundHandId = {playerRoundHandId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-               return db.Query<PlayerRoundHandCards>(query).ToList();
+               result = db.Query<PlayerRoundHandCards>(query).ToList();
             }
+            return result;
         }
     }
 }

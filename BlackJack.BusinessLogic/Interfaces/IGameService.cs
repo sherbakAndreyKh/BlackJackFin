@@ -1,12 +1,13 @@
-﻿using BlackJack.ViewModels.ResponseModel;
+﻿using BlackJack.ViewModels;
 using BlackJack.ViewModels.RequestModel;
+using BlackJack.ViewModels.ResponseModel;
 
 namespace BlackJack.BusinessLogic.Interfaces
 {
     public interface IGameService
     {
-        ResponseGameProcessGameView StartGame(RequestGameStartOptionsGameView item);
-        void SaveChanges(ViewModels.RequestModel.RequestGameProcessGameView item);
-        ViewModels.ResponseModel.NewRoundGameView NewRound(ViewModels.RequestModel.RequestGameProcessGameView item);
+        ResponseGameProcessGameView StartGame(RequestGameStartOptionsGameView viewModel);
+        void SaveChanges(ViewModels.RequestModel.RequestGameProcessGameView viewModel);
+        NewRoundGameView NewRound(ViewModels.RequestModel.RequestGameProcessGameView viewModel);
     }
 }

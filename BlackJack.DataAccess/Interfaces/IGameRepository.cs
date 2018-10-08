@@ -5,7 +5,7 @@ namespace BlackJack.DataAccess.Interfaces
 {
     public interface IGameRepository : IBaseRepository<Game>
     {
-        int ReturnNewGameNumber(long id);
-        List<Game> GetGamestWithPlayerId(long id);
+        long GetNewGameNumber(long playerId);
+        List<Game> GetGamesByPlayerId(long playerId);
     }
 }

@@ -21,27 +21,33 @@ namespace BlackJack.DataAccess.Repositories
 
         public T Get(long id)
         {
+            T result;
+            string query = $"SELECT * FROM {typeof(T).Name} WHERE Id = {id}";
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<T>($"SELECT * FROM {typeof(T).Name} WHERE Id = @id", new { id }).SingleOrDefault();
+               result = db.Query<T>(query).FirstOrDefault();
             }
+            return result;
         }
 
         public IEnumerable<T> GetAll()
         {
+            IEnumerable<T> result;
+            string query = $"SELECT * FROM {typeof(T).Name}";
             using (IDbConnection db = _connection.CreateConnection())
             {
-                return db.Query<T>($"SELECT * FROM {typeof(T).Name}");
+             result = db.Query<T>(query);
             }
+            return result;
         }
 
         public void Create(T item)
         {
-            var columns = GetColums();
-            var stringOfColumns = string.Join(", ", columns);
-            var stringOfParameters = string.Join(", ", columns.Select(e => "@" + e));
+            IEnumerable<string> columns = GetColums();
+            string stringOfColumns = string.Join(", ", columns);
+            string stringOfParameters = string.Join(", ", columns.Select(e => "@" + e));
 
-            var query = $"INSERT INTO {typeof(T).Name} ({stringOfColumns}) VALUES ({stringOfParameters})";
+            string query = $"INSERT INTO {typeof(T).Name} ({stringOfColumns}) VALUES ({stringOfParameters})";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
@@ -52,15 +58,15 @@ namespace BlackJack.DataAccess.Repositories
         public long CreateAndReturnId(T item)
         {
             long id;
-            var columns = GetColums();
-            var stringOfColumns = string.Join(", ", columns);
-            var stringOfParameters = string.Join(", ", columns.Select(e => "@" + e));
-            var query = $@"INSERT INTO {typeof(T).Name} ({stringOfColumns}) VALUES ({stringOfParameters});
+            IEnumerable<string> columns = GetColums();
+            string stringOfColumns = string.Join(", ", columns);
+            string stringOfParameters = string.Join(", ", columns.Select(e => "@" + e));
+            string query = $@"INSERT INTO {typeof(T).Name} ({stringOfColumns}) VALUES ({stringOfParameters});
                           SELECT CAST (SCOPE_IDENTITY() AS int)";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                id = db.Query<int>(query, item).SingleOrDefault();
+                id = db.Query<int>(query, item).FirstOrDefault();
             }
             return id;
         }
@@ -77,15 +83,16 @@ namespace BlackJack.DataAccess.Repositories
 
         public void Delete(long id)
         {
+            string query = $"DELETE FROM {typeof(T).Name} where id = {id}";
             using (IDbConnection db = _connection.CreateConnection())
             {
-                db.Execute($"DELETE FROM {typeof(T).Name} where id = @id", new { id });
+                db.Execute(query);
             }
         }
 
         public void Update(T item)
         {
-            var colums = GetColums();
+            IEnumerable<string> colums = GetColums();
             var stringColumns = string.Join(",", colums.Select(x => $"{x}= @{x}"));
             var query = $"UPDATE {typeof(T).Name} SET {stringColumns} WHERE Id = @Id";
 
@@ -106,7 +113,9 @@ namespace BlackJack.DataAccess.Repositories
 
         private IEnumerable<string> GetColums()
         {
-            return typeof(T).GetProperties().Where(x => x.Name != "Id" && !x.PropertyType.GetTypeInfo().IsGenericType).Select(x => x.Name);
+            IEnumerable<string> result;
+            result = typeof(T).GetProperties().Where(x => x.Name != "Id" && !x.PropertyType.GetTypeInfo().IsGenericType).Select(x => x.Name);
+            return result;
         }
     }
 }
