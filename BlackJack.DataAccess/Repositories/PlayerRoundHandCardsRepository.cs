@@ -14,9 +14,9 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public void AddCommunicationCardsByHands(long playerRoundHandId, long cardsId)
+        public void AddCommunicationCardsByHands(long playerRoundHandId, long cardId)
         {
-            var query = $"INSERT INTO PlayerRoundHandCards(PLayerRoundHandId, CardId) VALUES({playerRoundHandId},{cardsId})";
+            var query = $"INSERT INTO PlayerRoundHandCards(PLayerRoundHandId, CardId) VALUES({playerRoundHandId},{cardId})";
 
             using (IDbConnection db = _connection.CreateConnection())
             {

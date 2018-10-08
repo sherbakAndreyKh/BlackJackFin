@@ -7,11 +7,11 @@ namespace BlackJack.BusinessLogic.Maping
 {
     public class HistoryServiceMapProvider
     {
-        public List<PlayerIndexHistoryViewItem> MapListPlayerOnPlayerIndexHistoryViewItem(List<Player> data)
+        public List<PlayerIndexHistoryViewItem> MapPlayersToPlayerIndexHistoryViewItem(List<Player> playersList)
         {
             var result = new List<PlayerIndexHistoryViewItem>();
 
-            foreach(var player in data)
+            foreach(var player in playersList)
             {
                 var PlayerViewItem = new PlayerIndexHistoryViewItem();
                 PlayerViewItem.Id = player.Id;
@@ -21,11 +21,11 @@ namespace BlackJack.BusinessLogic.Maping
             return result;
         }
 
-        public List<GameGameListHistoryViewItem> MapListGameOnGameGameListHistoryViewItem(List<Game> data)
+        public List<GameGameListHistoryViewItem> MapGamesToGameGameListHistoryViewItem(List<Game> gamesList)
         {
             var result = new List<GameGameListHistoryViewItem>();
 
-            foreach(var game in data)
+            foreach(var game in gamesList)
             {
                 var GameViewItem = new GameGameListHistoryViewItem();
                 GameViewItem.Id = game.Id;
@@ -36,20 +36,20 @@ namespace BlackJack.BusinessLogic.Maping
             return result;
         }
 
-        public ViewModels.PlayerGameListHistoryViewItem MapPlayerOnPlayerGameListHistoryViewItem(Player data)
+        public PlayerGameListHistoryViewItem MapPlayerToPlayerGameListHistoryViewItem(Player player)
         {
             var result = new PlayerGameListHistoryViewItem();
-            result.Id = data.Id;
-            result.Name = data.Name;
+            result.Id = player.Id;
+            result.Name = player.Name;
 
             return result;
         }
 
-        public List<ViewModels.RoundRoundListHistoryViewItem> MapListRoundOnRoundRoundListHistoryViewItem(List<Round> data)
+        public List<RoundRoundListHistoryViewItem> MapListRoundToRoundRoundListHistoryViewItem(List<Round> roundsList)
         {
             var result = new List<RoundRoundListHistoryViewItem>();
 
-            foreach(var round in data)
+            foreach(var round in roundsList)
             {
                 var RoundViewModel = new RoundRoundListHistoryViewItem();
                 RoundViewModel.Id = round.Id;
@@ -62,42 +62,42 @@ namespace BlackJack.BusinessLogic.Maping
             return result;
         }
 
-        public List<PlayerDetailsRoundHistoryViewItem> MapListPlayerOnPlayerDetailsRoundHistoryViewItem(List<Player> data, List<PlayerRoundHand> properties, List<Card> cards)
+        public List<PlayerDetailsRoundHistoryViewItem> MapPlayersToPlayerDetailsRoundHistoryViewItem(List<Player> playersList, List<PlayerRoundHand> plyerRoundHandsList, List<Card> cardsList)
         {
             var result = new List<PlayerDetailsRoundHistoryViewItem>();
 
-            foreach(var details in data)
+            foreach(var details in playersList)
             {
                 var DetailsViewModel = new PlayerDetailsRoundHistoryViewItem();
                 DetailsViewModel.Name = details.Name;
-                DetailsViewModel.PlayerRoundHands = MapListPlayerRoundHandOnPlayerRoundHandDetailsRoundHistoryViewItem(properties.Where(x=>x.PlayerId==details.Id).ToList(), cards);
+                DetailsViewModel.PlayerRoundHands = MapPlayersRoundHandToPlayerRoundHandDetailsRoundHistoryViewItem(plyerRoundHandsList.Where(x=>x.PlayerId==details.Id).ToList(), cardsList);
                 result.Add(DetailsViewModel);
             }
 
             return result;
         }
 
-        public List<PlayerRoundHandDetailsRoundHistoryViewItem> MapListPlayerRoundHandOnPlayerRoundHandDetailsRoundHistoryViewItem(List<PlayerRoundHand> data, List<Card> cards)
+        public List<PlayerRoundHandDetailsRoundHistoryViewItem> MapPlayersRoundHandToPlayerRoundHandDetailsRoundHistoryViewItem(List<PlayerRoundHand> playerRoundHandsList, List<Card> cardsList)
         {
             var result = new List<PlayerRoundHandDetailsRoundHistoryViewItem>();
 
-            foreach(var properties in data)
+            foreach(var properties in playerRoundHandsList)
             {
                 var PropertiesViewModel = new PlayerRoundHandDetailsRoundHistoryViewItem();
                 PropertiesViewModel.Score = properties.Score;
                 PropertiesViewModel.PlayerId = (int)properties.PlayerId;
-                PropertiesViewModel.Hand = MapListCardOnCardDetailsRoundHistoryViewItem(cards.Where(x=>x.Id==properties.Id).ToList());
+                PropertiesViewModel.Hand = MapCardsToCardDetailsRoundHistoryViewItem(cardsList.Where(x=>x.Id==properties.Id).ToList());
                 result.Add(PropertiesViewModel);
             }
 
             return result;
         }
 
-        public List<CardDetailsRoundHistoryViewItem> MapListCardOnCardDetailsRoundHistoryViewItem(List<Card> data)
+        public List<CardDetailsRoundHistoryViewItem> MapCardsToCardDetailsRoundHistoryViewItem(List<Card> cardsList)
         {
             var result = new List<CardDetailsRoundHistoryViewItem>();
 
-            foreach(var card in data)
+            foreach(var card in cardsList)
             {
                 var CardViewItem = new CardDetailsRoundHistoryViewItem();
                 CardViewItem.Name = card.Name;

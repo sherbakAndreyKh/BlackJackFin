@@ -1,122 +1,139 @@
 ﻿using BlackJack.Entities;
 using BlackJack.ViewModels;
 using System.Collections.Generic;
+using BlackJack.ViewModels.ResponseModel;
+using System.Linq;
 
 namespace BlackJack.BusinessLogic.Maping
 {
     public class GameServiceResponseMapProvider
     {
-        public ViewModels.ResponseModel.PlayerGameProcessGameViewItem MapPlayerOnPlayerGameProccessGameViewItem(Player player, PlayerRoundHand properties)
+        public PlayerGameProcessGameViewItem MapPlayerToPlayerGameProccessGameViewItem(Player player, PlayerRoundHand playerRoundHands)
         {
-            var result = new ViewModels.ResponseModel.PlayerGameProcessGameViewItem();
+            var result = new PlayerGameProcessGameViewItem();
             result.Id = player.Id;
             result.Name = player.Name;
             result.Role = (int)player.Role;
-            result.PlayerRoundHand.Add(MapRoundHandOnPlayerPropertiesGameProcessGameViewItem(properties));
+            result.PlayerRoundHand.Add(MapRoundHandToPlayerRoundHandGameProcessGameViewItem(playerRoundHands));
             return result;
         }
 
-        public ViewModels.ResponseModel.PlayerRoundHandGameProcessGameViewItem MapRoundHandOnPlayerPropertiesGameProcessGameViewItem(PlayerRoundHand properties)
+        public PlayerRoundHandGameProcessGameViewItem MapRoundHandToPlayerRoundHandGameProcessGameViewItem(PlayerRoundHand playerRoundhands)
         {
-            var result = new ViewModels.ResponseModel.PlayerRoundHandGameProcessGameViewItem();
-            result.PlayerId = properties.PlayerId;
-            result.RoundId = (int)properties.RoundId;
+            var result = new PlayerRoundHandGameProcessGameViewItem();
+            result.PlayerId = playerRoundhands.PlayerId;
+            result.RoundId = (int)playerRoundhands.RoundId;
             return result;
         }
 
-        public List<ViewModels.ResponseModel.CardGameProcessGameViewItem> MapCardsOnCardGameProcessGameViewItem(IEnumerable<Card> cards)
+        public List<CardGameProcessGameViewItem> MapCardsToCardGameProcessGameViewItem(IEnumerable<Card> cardsList)
         {
-            var result = new List<ViewModels.ResponseModel.CardGameProcessGameViewItem>();
+            var result = new List<CardGameProcessGameViewItem>();
 
-            foreach (var a in cards)
+            foreach (var card in cardsList)
             {
-                var CardView = new ViewModels.ResponseModel.CardGameProcessGameViewItem();
-                CardView.Id = a.Id;
-                CardView.Name = a.Name;
-                CardView.Suit = a.Suit;
-                CardView.Value = a.Value;
-                CardView.ImgPath = a.ImgPath;
+                var CardView = new CardGameProcessGameViewItem();
+                CardView.Id = card.Id;
+                CardView.Name = card.Name;
+                CardView.Suit = card.Suit;
+                CardView.Value = card.Value;
+                CardView.ImgPath = card.ImgPath;
                 result.Add(CardView);
             }
 
             return result;
         }
 
-        public ViewModels.ResponseModel.GameGameProcessGameViewItem MapGameOnGameGameProcessGameViewItem(Game item)
+        public GameGameProcessGameViewItem MapGameToGameGameProcessGameViewItem(Game game)
         {
-            var result = new ViewModels.ResponseModel.GameGameProcessGameViewItem();
-            result.Id = item.Id;
-            result.GameNumber = item.GameNumber;
-            result.PlayersAmount = item.PlayersAmount;
+            var result = new GameGameProcessGameViewItem();
+            result.Id = game.Id;
+            result.GameNumber = game.GameNumber;
+            result.PlayersAmount = game.PlayersAmount;
             return result;
         }
 
-        public ViewModels.ResponseModel.RoundGameProcessGameViewItem MapRoundOnRoundGameProcessGameViewItem(Round item)
+        public RoundGameProcessGameViewItem MapRoundToRoundGameProcessGameViewItem(Round round)
         {
-            var result = new ViewModels.ResponseModel.RoundGameProcessGameViewItem();
-            result.Id = item.Id;
-            result.RoundNumber = item.RoundNumber;
-            result.GameId = (int)item.GameId;
-            result.Winner = item.Winner;
-            result.WinnerScore = item.WinnerScore;
+            var result = new RoundGameProcessGameViewItem();
+            result.Id = round.Id;
+            result.RoundNumber = round.RoundNumber;
+            result.GameId = (int)round.GameId;
+            result.Winner = round.Winner;
+            result.WinnerScore = round.WinnerScore;
             return result;
         }
 
-        public List<CardNewRoundGameViewItem> MapCardsOnCardNewRoundGameViewItem(IEnumerable<Card> cards)
+        public List<CardNewRoundGameViewItem> MapCardsToCardNewRoundGameViewItem(IEnumerable<Card> cardsList)
         {
             var result = new List<CardNewRoundGameViewItem>();
 
-            foreach (var a in cards)
+            foreach (var card in cardsList)
             {
                 var CardView = new CardNewRoundGameViewItem();
-                CardView.Id = a.Id;
-                CardView.Name = a.Name;
-                CardView.Suit = a.Suit;
-                CardView.Value = a.Value;
-                CardView.ImgPath = a.ImgPath;
+                CardView.Id = card.Id;
+                CardView.Name = card.Name;
+                CardView.Suit = card.Suit;
+                CardView.Value = card.Value;
+                CardView.ImgPath = card.ImgPath;
                 result.Add(CardView);
             }
 
             return result;
         }
 
-        public GameNewRoundGameViewItem MapGameOnGameNewRoundGameViewItem(Game item)
+        public GameNewRoundGameViewItem MapGameToGameNewRoundGameViewItem(Game round)
         {
             var result = new GameNewRoundGameViewItem();
-            result.Id = item.Id;
-            result.GameNumber = item.GameNumber;
-            result.PlayersAmount = item.PlayersAmount;
+            result.Id = round.Id;
+            result.GameNumber = round.GameNumber;
+            result.PlayersAmount = round.PlayersAmount;
             return result;
         }
 
-        public RoundNewRoundGameViewItem MapRoundOnRoundNewRoundGameViewItem(Round item)
+        public RoundNewRoundGameViewItem MapRoundToRoundNewRoundGameViewItem(Round round)
         {
             var result = new RoundNewRoundGameViewItem();
-            result.Id = item.Id;
-            result.RoundNumber = item.RoundNumber;
-            result.GameId = (int)item.GameId;
-            result.Winner = item.Winner;
-            result.WinnerScore = item.WinnerScore;
+            result.Id = round.Id;
+            result.RoundNumber = round.RoundNumber;
+            result.GameId = (int)round.GameId;
+            result.Winner = round.Winner;
+            result.WinnerScore = round.WinnerScore;
             return result;
         }
 
-        public PlayerNewRoundGameViewItem MapPlayerOnPlayerNewRoundGameViewItem(Player player, PlayerRoundHand properties)
+        public PlayerNewRoundGameViewItem MapPlayerToPlayerNewRoundGameViewItem(Player player, PlayerRoundHand playerRoundHand)
         {
             var result = new PlayerNewRoundGameViewItem();
             result.Id = player.Id;
             result.Name = player.Name;
             result.Role = (int)player.Role;
-            result.PlayerRoundHand.Add(MapRoundHandOnPlayerRoundHandNewRoundGameViewItem(properties));
+            result.PlayerRoundHand.Add(MapRoundHandToPlayerRoundHandNewRoundGameViewItem(playerRoundHand));
             return result;
         }
 
-        public PlayerRoundHandNewRoundGameViewItem MapRoundHandOnPlayerRoundHandNewRoundGameViewItem(PlayerRoundHand properties)
+        public List<PlayerNewRoundGameViewItem> MapPlayersToPlayerNewRoundGameViewItem(List<Player> playerList, List<PlayerRoundHand> playerRoundHandList)
         {
-            var result = new PlayerRoundHandNewRoundGameViewItem();
-            result.PlayerId = properties.PlayerId;
-            result.RoundId = (int)properties.RoundId;
+            var result = new List<PlayerNewRoundGameViewItem>();
+            foreach(var player in playerList)
+            {
+            PlayerNewRoundGameViewItem playerViewModel = new PlayerNewRoundGameViewItem();
+                playerViewModel.Id = player.Id;
+                playerViewModel.Name = player.Name;
+                playerViewModel.Role = (int)player.Role;
+                playerViewModel.PlayerRoundHand.Add(MapRoundHandToPlayerRoundHandNewRoundGameViewItem(playerRoundHandList.Where(x => x.PlayerId == player.Id).FirstOrDefault()));
+                result.Add(playerViewModel);
+            }
             return result;
         }
+        public PlayerRoundHandNewRoundGameViewItem MapRoundHandToPlayerRoundHandNewRoundGameViewItem(PlayerRoundHand playerRoundHand)
+        {
+            var result = new PlayerRoundHandNewRoundGameViewItem();
+            result.PlayerId = playerRoundHand.PlayerId;
+            result.RoundId = (int)playerRoundHand.RoundId;
+            return result;
+        }
+
     }   
 }
 

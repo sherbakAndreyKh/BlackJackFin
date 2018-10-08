@@ -37,7 +37,7 @@ namespace BlackJack.BusinessLogic.Services
         {
             List<Player> players = _playerRepository.GetPlayersByRole(Role.Player);
             IndexHistoryView data = new IndexHistoryView();
-            data.Players = _maping.MapListPlayerOnPlayerIndexHistoryViewItem(players);
+            data.Players = _maping.MapPlayersToPlayerIndexHistoryViewItem(players);
             return data;
         }
 
@@ -45,8 +45,8 @@ namespace BlackJack.BusinessLogic.Services
         {
             List<Game> games = _gameRepository.GetGamesByPlayerId(playerId);
             GameListHistoryView data = new GameListHistoryView();
-            data.Player = _maping.MapPlayerOnPlayerGameListHistoryViewItem(_playerRepository.Get(playerId));
-            data.Games = _maping.MapListGameOnGameGameListHistoryViewItem(games);
+            data.Player = _maping.MapPlayerToPlayerGameListHistoryViewItem(_playerRepository.Get(playerId));
+            data.Games = _maping.MapGamesToGameGameListHistoryViewItem(games);
 
             return data;
         }
@@ -56,7 +56,7 @@ namespace BlackJack.BusinessLogic.Services
             List<Round> rounds = _roundRepository.GetAll().Where(x => x.GameId == gameId).ToList();
             var data = new RoundListHistoryView();
             data.PlayersAmount = _gameRepository.Get(gameId).PlayersAmount;
-            data.Rounds = _maping.MapListRoundOnRoundRoundListHistoryViewItem(rounds);
+            data.Rounds = _maping.MapListRoundToRoundRoundListHistoryViewItem(rounds);
             return data;
         }
 
@@ -76,7 +76,7 @@ namespace BlackJack.BusinessLogic.Services
             List<Card> cards = _cardRepository.GetPlayerRoundHandCards(round.Id);
 
             var data = new DetailsRoundHistoryView();
-            data.Players = _maping.MapListPlayerOnPlayerDetailsRoundHistoryViewItem(players, hands,cards);
+            data.Players = _maping.MapPlayersToPlayerDetailsRoundHistoryViewItem(players, hands,cards);
             return data;
         }
     }
