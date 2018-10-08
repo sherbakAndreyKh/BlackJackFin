@@ -20,12 +20,12 @@ namespace BlackJack.DataAccess.Repositories
             string query = $"SELECT * FROM Card WHERE Name='{name}' AND Suit='{suit}'";            
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = db.Query<Card>(query).SingleOrDefault();
+                result = db.Query<Card>(query).FirstOrDefault();
             }
             return result;
         }
 
-        public List<Card> ReturnPlayerpropertiesHand(long roundId)
+        public List<Card> GetPlayerRoundHandCards(long roundId)
         {
             List<Card> result;
             var query = $"SELECT * FROM Card JOIN PlayerRoundHandCards ON Card.Id = PlayerRoundHandCards.CardId JOIN PlayerRoundHand ON PlayerRoundHand.Id = PlayerRoundHandCards.PlayerRoundHandId WHERE PlayerRoundHand.RoundId={roundId}";

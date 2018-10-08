@@ -107,8 +107,7 @@ $('#History').on('click', function () {
     }
 });
 
-//Add Card
-$('#Take').on('click', function () {
+$('#Take').on('click', function AddCard () {
     var card = GetCard();
     var value = $('.Score').eq(0).html();
     var hand = $('.Hand').eq(0).html();
@@ -120,8 +119,7 @@ $('#Take').on('click', function () {
     MoreLess(model.Player.PlayerRoundHand[0].Score);
 });
 
-//First Deal
-$('#First').on('click', function () {
+$('#First').on('click', function FirstDeal () {
 
     $('.Participant').each(function (i) {
         var firstCard = GetCard();
@@ -151,8 +149,7 @@ $('#First').on('click', function () {
     findBlackJack();
 });
 
-//Stop Button
-$('#Stop').on('click', function () {
+$('#Stop').on('click', function Stop () {
     $('.Participant').each(function (i) {
         if (i !== 0) {
             BotLogic(i);

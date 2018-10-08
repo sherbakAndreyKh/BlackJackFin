@@ -15,7 +15,7 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public IEnumerable<Player> GetQuantityWithRole(int quantity, int role)
+        public IEnumerable<Player> GetQuantityByRole(int quantity, int role)
         {
             IEnumerable<Player> result;
             string query = $"SELECT TOP {quantity} * FROM Player WHERE Role={role} ";
@@ -27,19 +27,19 @@ namespace BlackJack.DataAccess.Repositories
             return result;
         }
 
-        public Player FindPlayerWithPlayerName(string playerName)
+        public Player GetPlayerByPlayerName(string playerName)
         {
             Player result;
             string query = $"SELECT * FROM Player WHERE Name ='{playerName}'";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = db.Query<Player>(query).SingleOrDefault();
+                result = db.Query<Player>(query).FirstOrDefault();
             }
             return result;
         }
 
-        public List<Player> GetPlayersWithRole(Role role)
+        public List<Player> GetPlayersByRole(Role role)
         {
             List<Player> result;
             string query = $"SELECT * FROM Player WHERE Role = {(int)role}";

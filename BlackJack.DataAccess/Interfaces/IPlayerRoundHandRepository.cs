@@ -5,7 +5,7 @@ namespace BlackJack.DataAccess.Interfaces
 {
     public interface IPlayerRoundHandRepository : IBaseRepository<PlayerRoundHand>
     {
-        IEnumerable<PlayerRoundHand> FindPLayerRoundHandWithRoundId(long roundId);
-        PlayerRoundHand GetWithPlayerAndRoundId(long playerId, long roundId);
+        IEnumerable<PlayerRoundHand> GetPLayerRoundHandListByRoundId(long roundId);
+        PlayerRoundHand GetPlayerRoundHandByPlayerAndRoundId(long playerId, long roundId);
     }
 }

@@ -25,7 +25,7 @@ namespace BlackJack.DataAccess.Repositories
             string query = $"SELECT * FROM {typeof(T).Name} WHERE Id = {id}";
             using (IDbConnection db = _connection.CreateConnection())
             {
-               result = db.Query<T>(query).SingleOrDefault();
+               result = db.Query<T>(query).FirstOrDefault();
             }
             return result;
         }
@@ -66,7 +66,7 @@ namespace BlackJack.DataAccess.Repositories
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                id = db.Query<int>(query, item).SingleOrDefault();
+                id = db.Query<int>(query, item).FirstOrDefault();
             }
             return id;
         }

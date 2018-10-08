@@ -15,7 +15,7 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public long ReturnNewGameNumber(long playerId)
+        public long GetNewGameNumber(long playerId)
         {
             long result ;
             string query = $"SELECT COUNT (*) FROM Game WHERE PlayerId={playerId}";
@@ -27,7 +27,7 @@ namespace BlackJack.DataAccess.Repositories
             return result + 1;
         }
 
-        public List<Game> GetGamestWithPlayerId(long playerId)
+        public List<Game> GetGamesByPlayerId(long playerId)
         {
             List<Game> result;
             string query = $"SELECT * FROM Game WHERE PlayerId={playerId}";

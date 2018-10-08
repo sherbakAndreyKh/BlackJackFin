@@ -14,7 +14,7 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public void AddCommunicationCardsWithHands(long playerRoundHandId, long cardsId)
+        public void AddCommunicationCardsByHands(long playerRoundHandId, long cardsId)
         {
             var query = $"INSERT INTO PlayerRoundHandCards(PLayerRoundHandId, CardId) VALUES({playerRoundHandId},{cardsId})";
 
@@ -24,7 +24,7 @@ namespace BlackJack.DataAccess.Repositories
             }
         }
 
-        public List<PlayerRoundHandCards> GetFieldsWithPlayerPropertiesId(long playerRoundHandId)
+        public List<PlayerRoundHandCards> GetFieldsByPlayerPropertiesId(long playerRoundHandId)
         {
             List<PlayerRoundHandCards> result;
             var query = $"SELECT * FROM PlayerRoundHandCards WHERE PlayerRoundHandId = {playerRoundHandId}";

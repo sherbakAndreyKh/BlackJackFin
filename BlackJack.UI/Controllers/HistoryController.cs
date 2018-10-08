@@ -6,37 +6,34 @@ namespace BlackJack.UI.Controllers
 {
     public class HistoryController : Controller
     {
-        // Fields
         private IHistoryService _historyService;
 
-        // Constructors
         public HistoryController(IHistoryService historyService)
         {
             _historyService = historyService;
         }
 
-        //Methods
         public ActionResult Index()
         {
-            IndexHistoryView model = _historyService.ReturnPlayers();
+            IndexHistoryView model = _historyService.GetAllPlayers();
             return View(model);
         }
 
-        public ActionResult GameList(int id)
+        public ActionResult GetGamesByPlayerId(int playerId)
         {
-            GameListHistoryView model = _historyService.ReturnGames(id);
+            GameListHistoryView model = _historyService.GetGamesByPlayerId(playerId);
             return View(model);
         }
 
-        public ActionResult RoundsList(int id)
+        public ActionResult GetRoundsByGameId(int gameId)
         {
-            RoundListHistoryView model = _historyService.ReturnRounds(id);
+            RoundListHistoryView model = _historyService.GetRoundsByGameId(gameId);
             return View(model);
         }
 
-        public ActionResult DetailRound(int id)
+        public ActionResult GetRoundsDetailsByRoundId(int roundId)
         {
-            DetailsRoundHistoryView model = _historyService.DetailsRound(id);
+            DetailsRoundHistoryView model = _historyService.GetRoundsDetailsByRoundId(roundId);
             return View(model);
         }
     }

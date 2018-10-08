@@ -4,9 +4,9 @@ namespace BlackJack.BusinessLogic.Interfaces
 {
     public interface IHistoryService
     {
-        IndexHistoryView ReturnPlayers();
-        GameListHistoryView ReturnGames(int id);
-        RoundListHistoryView ReturnRounds(int id);
-        DetailsRoundHistoryView DetailsRound(int id);
+        IndexHistoryView GetAllPlayers();
+        GameListHistoryView GetGamesByPlayerId(int playerId);
+        RoundListHistoryView GetRoundsByGameId(int gameId);
+        DetailsRoundHistoryView GetRoundsDetailsByRoundId(int roundId);
     }
 }
