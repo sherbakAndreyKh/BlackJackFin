@@ -1,4 +1,4 @@
-﻿//var model = $('.Buttons').attr('data-model');
+﻿var model = $('#test').val();
 var path = $("#History").attr('data-path');
 var pathEnd = $('#History').attr('data-pathEnd');
 var jackValue = 11;

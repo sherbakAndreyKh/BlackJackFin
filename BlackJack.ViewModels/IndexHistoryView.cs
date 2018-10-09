@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 namespace BlackJack.ViewModels
 {
     public class IndexHistoryView

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
 using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.ViewModels;
 using BlackJack.ViewModels.RequestModel;
@@ -22,22 +23,23 @@ namespace BlackJack.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult GameStartOptions(RequestGameStartOptionsGameView item)
+        public async Task<ActionResult> GameStartOptions(RequestGameStartOptionsGameView item)
         {
-            ResponseGameProcessGameView startData = _startService.StartGame(item);
-            return View("GameProcess", startData);
+            ResponseGameProcessGameView startData = await _startService.StartGame(item);
+
+            return View("GameProcess",  startData);
         }
-        
-        public ActionResult NewRound(RequestGameProcessGameView item)
+
+        public async Task<ActionResult> NewRound(RequestGameProcessGameView item)
         {
-            _startService.SaveChanges(item);
-            NewRoundGameView roundData = _startService.NewRound(item);
+            await _startService.SaveChanges(item);
+            NewRoundGameView roundData = await _startService.NewRound(item);
             return View(roundData);
         }
-        
-        public ActionResult EndGame(RequestGameProcessGameView item)
+
+        public async Task<ActionResult> EndGame(RequestGameProcessGameView item)
         {
-            _startService.SaveChanges(item);
+            await _startService.SaveChanges(item);
             return View();
         }
     }

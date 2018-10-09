@@ -7,6 +7,7 @@ using System.Reflection;
 using BlackJack.Entities;
 using Z.Dapper.Plus;
 using BlackJack.DataAccess.Interfaces;
+using System.Threading.Tasks;
 
 namespace BlackJack.DataAccess.Repositories
 {
@@ -19,29 +20,29 @@ namespace BlackJack.DataAccess.Repositories
             _connection = connection;
         }
 
-        public T Get(long id)
+        public async Task<T> Get(long id)
         {
             T result;
             string query = $"SELECT * FROM {typeof(T).Name} WHERE Id = {id}";
             using (IDbConnection db = _connection.CreateConnection())
             {
-               result = db.Query<T>(query).FirstOrDefault();
+                result = await db.QueryFirstOrDefaultAsync<T>(query);
             }
             return result;
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<List<T>> GetAll()
         {
             IEnumerable<T> result;
             string query = $"SELECT * FROM {typeof(T).Name}";
             using (IDbConnection db = _connection.CreateConnection())
             {
-             result = db.Query<T>(query);
+             result = await db.QueryAsync<T>(query);
             }
-            return result;
+            return result.ToList();
         }
 
-        public void Create(T item)
+        public async Task Create(T item)
         {
             IEnumerable<string> columns = GetColums();
             string stringOfColumns = string.Join(", ", columns);
@@ -51,11 +52,11 @@ namespace BlackJack.DataAccess.Repositories
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                db.Execute(query, item);
+                await db.ExecuteAsync(query, item);
             }
         }
 
-        public long CreateAndReturnId(T item)
+        public async Task<long> CreateAndReturnId(T item)
         {
             long id;
             IEnumerable<string> columns = GetColums();
@@ -66,31 +67,35 @@ namespace BlackJack.DataAccess.Repositories
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                id = db.Query<int>(query, item).FirstOrDefault();
+                id = await db.QueryFirstOrDefaultAsync<int>(query, item);
             }
             return id;
         }
 
-        public void CreateMany(List<T> item)
+        protected void CreateMany(List<T> item)
         {
             DapperPlusManager.Entity<T>().Table(typeof(T).Name);
-
             using (IDbConnection db = _connection.CreateConnection())
             {
                 db.BulkInsert(item);
             }
         }
 
-        public void Delete(long id)
+        public async Task CreateManyAsync(List<T> item)
         {
-            string query = $"DELETE FROM {typeof(T).Name} where id = {id}";
+            await Task.Run(() => CreateMany(item));
+        }
+
+        public async Task Delete(long id)
+        {
+            string query = $"DELETE FROM {typeof(T).Name} WHERE id = {id}";
             using (IDbConnection db = _connection.CreateConnection())
             {
-                db.Execute(query);
+               await db.ExecuteAsync(query);
             }
         }
 
-        public void Update(T item)
+        public async Task Update(T item)
         {
             IEnumerable<string> colums = GetColums();
             var stringColumns = string.Join(",", colums.Select(x => $"{x}= @{x}"));
@@ -98,17 +103,22 @@ namespace BlackJack.DataAccess.Repositories
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                db.Execute(query, item);
+               await db.ExecuteAsync(query, item);
             }
         }
 
-        public void UpdateMany(List<T> item)
+        protected void UpdateMany(List<T> item)
         {
             DapperPlusManager.Entity<T>().Table(typeof(T).Name);
             using (IDbConnection db = _connection.CreateConnection())
             {
                 db.BulkUpdate(item);
             }
+        }
+
+        public async Task UpdateManyAsync(List<T> item)
+        {
+            await Task.Run(() => UpdateMany(item));
         }
 
         private IEnumerable<string> GetColums()

@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BlackJack.DataAccess.Interfaces
 {
     public interface IBaseRepository<T>
     {
-        void Create(T item);
-        long CreateAndReturnId(T item);
-        void CreateMany(List<T> item);
-        void Delete(long id);
-        T Get(long id);
-        IEnumerable<T> GetAll();
-        void Update(T item);
-        void UpdateMany(List<T> item);
+        Task Create(T item);
+        Task<long> CreateAndReturnId(T item);
+        Task CreateManyAsync(List<T> item);
+        Task Delete(long id);
+        Task<T> Get(long id);
+        Task<List<T>> GetAll();
+        Task Update(T item);
+        Task UpdateManyAsync(List<T> item);
     }
 }

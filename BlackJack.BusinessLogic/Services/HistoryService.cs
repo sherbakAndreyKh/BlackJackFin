@@ -6,17 +6,18 @@ using BlackJack.Entities.Enums;
 using BlackJack.BusinessLogic.Maping;
 using BlackJack.ViewModels;
 using BlackJack.DataAccess.Interfaces;
+using System.Threading.Tasks;
 
 namespace BlackJack.BusinessLogic.Services
 {
     public class HistoryService : IHistoryService
     {
-        IPlayerRepository _playerRepository;
-        IGameRepository _gameRepository;
-        IRoundRepository _roundRepository;
-        ICardRepository _cardRepository;
-        IPlayerRoundHandRepository _playerRoundHandRepository;
-        HistoryServiceMapProvider _maping;
+        private IPlayerRepository _playerRepository;
+        private IGameRepository _gameRepository;
+        private IRoundRepository _roundRepository;
+        private ICardRepository _cardRepository;
+        private IPlayerRoundHandRepository _playerRoundHandRepository;
+        private HistoryServiceMapProvider _maping;
 
         public HistoryService(IPlayerRepository playerRepository,
                               IGameRepository gameRepository,
@@ -33,50 +34,52 @@ namespace BlackJack.BusinessLogic.Services
             _maping = maping;
         }
 
-        public IndexHistoryView GetAllPlayers()
+        public async Task<IndexHistoryView> GetAllPlayers()
         {
-            List<Player> players = _playerRepository.GetPlayersByRole(Role.Player);
+            List<Player> players = await _playerRepository.GetAllPlayersByRole(Role.Player);
             IndexHistoryView data = new IndexHistoryView();
             data.Players = _maping.MapPlayersToPlayerIndexHistoryViewItem(players);
             return data;
         }
 
-        public GameListHistoryView GetGamesByPlayerId(int playerId)
+        public async Task<GameListHistoryView> GetGamesByPlayerId(int playerId)
         {
-            List<Game> games = _gameRepository.GetGamesByPlayerId(playerId);
+            List<Game> games = await _gameRepository.GetGamesByPlayerId(playerId);
             GameListHistoryView data = new GameListHistoryView();
-            data.Player = _maping.MapPlayerToPlayerGameListHistoryViewItem(_playerRepository.Get(playerId));
+            data.Player = _maping.MapPlayerToPlayerGameListHistoryViewItem(await _playerRepository.Get(playerId));
             data.Games = _maping.MapGamesToGameGameListHistoryViewItem(games);
 
             return data;
         }
 
-        public RoundListHistoryView GetRoundsByGameId(int gameId)
+        public async Task<RoundListHistoryView> GetRoundsByGameId(int gameId)
         {
-            List<Round> rounds = _roundRepository.GetAll().Where(x => x.GameId == gameId).ToList();
+            List<Round> rounds = await _roundRepository.GetAll();
+            rounds.Where(x => x.GameId == gameId).ToList();
+            Game game = await _gameRepository.Get(gameId);
             var data = new RoundListHistoryView();
-            data.PlayersAmount = _gameRepository.Get(gameId).PlayersAmount;
+            data.PlayersAmount = game.PlayersAmount;
             data.Rounds = _maping.MapListRoundToRoundRoundListHistoryViewItem(rounds);
             return data;
         }
 
-        public DetailsRoundHistoryView GetRoundsDetailsByRoundId(int roundId)
+        public async Task<DetailsRoundHistoryView> GetRoundsDetailsByRoundId(int roundId)
         {
-            Round round = _roundRepository.Get(roundId);
-            Game game = _gameRepository.Get(round.GameId);
-            Player player = _playerRepository.Get(game.PlayerId);
-            Player dealer = _playerRepository.GetPlayersByRole(Role.Dealer).FirstOrDefault();
-            List<Player> bots = _playerRepository.GetQuantityByRole(game.PlayersAmount - 1, (int)Role.Bot).ToList();
+            Round round = await _roundRepository.Get(roundId);
+            Game game = await _gameRepository.Get(round.GameId);
+            Player player =await _playerRepository.Get(game.PlayerId);
+            Player dealer =await _playerRepository.GetFirstPlayerByRole(Role.Dealer);
+            List<Player> bots =await _playerRepository.GetQuantityByRole(game.PlayersAmount - 1, (int)Role.Bot);
             var players = new List<Player>();
             players.Add(player);
             players.Add(dealer);
             players.AddRange(bots);
 
-            List<PlayerRoundHand> hands = _playerRoundHandRepository.GetPLayerRoundHandListByRoundId(round.Id).ToList();
-            List<Card> cards = _cardRepository.GetPlayerRoundHandCards(round.Id);
+            List<PlayerRoundHand> hands = await _playerRoundHandRepository.GetPLayerRoundHandListByRoundId(round.Id);
+            List<Card> cards = await _cardRepository.GetPlayerRoundHandCards(round.Id);
 
             var data = new DetailsRoundHistoryView();
-            data.Players = _maping.MapPlayersToPlayerDetailsRoundHistoryViewItem(players, hands,cards);
+            data.Players = _maping.MapPlayersToPlayerDetailsRoundHistoryViewItem(players, hands, cards);
             return data;
         }
     }

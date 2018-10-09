@@ -14,14 +14,14 @@
             <th>Winner Score</th>
         </tr>
     </thead>
-    <tbody data-myPath="@Url.Action("DetailRound", "History")">
+    <tbody data-myPath="@Url.Action("GetRoundsDetailsByRoundId", "History")">
 
-        @foreach (var a in Model.Rounds)
-         {
-            <tr class="testButton" data-param="@a.Id" >
-                <td>@a.RoundNumber</td>
-                <td>@a.Winner</td>
-                <td>@a.WinnerScore</td>
+        @foreach (var round in Model.Rounds)
+        {
+            <tr class="testButton" data-param="@round.Id" >
+                <td>@round.RoundNumber</td>
+                <td>@round.Winner</td>
+                <td>@round.WinnerScore</td>
                 <td>Show More  &#9660;</td>
             </tr>
          }

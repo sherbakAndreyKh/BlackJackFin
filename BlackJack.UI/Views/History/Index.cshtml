@@ -20,7 +20,7 @@
             <tr>
                 <td>@a.Name</td>
                 <td>@a.GameAmount</td>
-                <td><a href="@Url.Action("GameList","History", new { id = a.Id})">Details</a></td>
+                <td>@Html.ActionLink("Details", "GetGamesByPlayerId", new { playerId = a.Id})</td>
             </tr>
          }
 

@@ -1,11 +1,12 @@
 ﻿using BlackJack.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BlackJack.DataAccess.Interfaces
 {
     public interface IGameRepository : IBaseRepository<Game>
     {
-        long GetNewGameNumber(long playerId);
-        List<Game> GetGamesByPlayerId(long playerId);
+        Task<long> GetNewGameNumber(long playerId);
+        Task<List<Game>> GetGamesByPlayerId(long playerId);
     }
 }

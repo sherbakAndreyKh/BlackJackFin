@@ -2,7 +2,6 @@
 using BlackJack.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace BlackJack.Entities
 {
     [Table("Player")]

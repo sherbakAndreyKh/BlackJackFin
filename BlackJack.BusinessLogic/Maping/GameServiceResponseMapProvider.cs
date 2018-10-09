@@ -40,7 +40,6 @@ namespace BlackJack.BusinessLogic.Maping
                 CardView.ImgPath = card.ImgPath;
                 result.Add(CardView);
             }
-
             return result;
         }
 
@@ -78,7 +77,6 @@ namespace BlackJack.BusinessLogic.Maping
                 CardView.ImgPath = card.ImgPath;
                 result.Add(CardView);
             }
-
             return result;
         }
 
@@ -126,6 +124,7 @@ namespace BlackJack.BusinessLogic.Maping
             }
             return result;
         }
+
         public PlayerRoundHandNewRoundGameViewItem MapRoundHandToPlayerRoundHandNewRoundGameViewItem(PlayerRoundHand playerRoundHand)
         {
             var result = new PlayerRoundHandNewRoundGameViewItem();
@@ -133,7 +132,6 @@ namespace BlackJack.BusinessLogic.Maping
             result.RoundId = (int)playerRoundHand.RoundId;
             return result;
         }
-
     }   
 }
 

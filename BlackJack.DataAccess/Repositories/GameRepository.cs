@@ -5,7 +5,7 @@ using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-
+using System.Threading.Tasks;
 
 namespace BlackJack.DataAccess.Repositories
 {
@@ -15,28 +15,28 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public long GetNewGameNumber(long playerId)
+        public async Task<long> GetNewGameNumber(long playerId)
         {
-            long result ;
+            long result;
             string query = $"SELECT COUNT (*) FROM Game WHERE PlayerId={playerId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = db.QuerySingle<long>(query);
+                result = await db.QueryFirstOrDefaultAsync<long>(query);
             }
             return result + 1;
         }
 
-        public List<Game> GetGamesByPlayerId(long playerId)
+        public async Task<List<Game>> GetGamesByPlayerId(long playerId)
         {
-            List<Game> result;
+            IEnumerable<Game> result;
             string query = $"SELECT * FROM Game WHERE PlayerId={playerId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-               result = db.Query<Game>(query).ToList();
+               result = await db.QueryAsync<Game>(query);
             }
-            return result;
+            return result.ToList();
         }
     }
 }
