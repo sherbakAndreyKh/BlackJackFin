@@ -12,7 +12,6 @@ namespace BlackJack.ViewModels
         public RoundNewRoundGameViewItem Round { get; set; }
         public PlayerNewRoundGameViewItem Dealer { get; set; }
         public PlayerNewRoundGameViewItem Player { get; set; }
-
         public List<CardNewRoundGameViewItem> CardDeck { get; set; }
         public List<PlayerNewRoundGameViewItem> Bots { get; set; }
 

@@ -240,11 +240,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\History\Index.cshtml" />
     <Content Include="Views\Game\GameProcess.cshtml" />
-    <Content Include="Views\History\GameList.cshtml" />
-    <Content Include="Views\History\RoundsList.cshtml" />
-    <Content Include="Views\History\DetailRound.cshtml" />
+    <Content Include="Views\History\GetRoundsByGameId.cshtml" />
+    <Content Include="Views\History\GetRoundsDetailsByRoundId.cshtml" />
     <Content Include="Views\Game\GameStartOptions.cshtml" />
     <Content Include="Views\Game\NewRound.cshtml" />
+    <Content Include="Views\History\GetGamesByPlayerId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
