@@ -11,12 +11,12 @@ namespace BlackJack.BusinessLogic.Services
 {
     public class HistoryService : IHistoryService
     {
-        IPlayerRepository _playerRepository;
-        IGameRepository _gameRepository;
-        IRoundRepository _roundRepository;
-        ICardRepository _cardRepository;
-        IPlayerRoundHandRepository _playerRoundHandRepository;
-        HistoryServiceMapProvider _maping;
+        private IPlayerRepository _playerRepository;
+        private IGameRepository _gameRepository;
+        private IRoundRepository _roundRepository;
+        private ICardRepository _cardRepository;
+        private IPlayerRoundHandRepository _playerRoundHandRepository;
+        private HistoryServiceMapProvider _maping;
 
         public HistoryService(IPlayerRepository playerRepository,
                               IGameRepository gameRepository,
@@ -76,7 +76,7 @@ namespace BlackJack.BusinessLogic.Services
             List<Card> cards = _cardRepository.GetPlayerRoundHandCards(round.Id);
 
             var data = new DetailsRoundHistoryView();
-            data.Players = _maping.MapPlayersToPlayerDetailsRoundHistoryViewItem(players, hands,cards);
+            data.Players = _maping.MapPlayersToPlayerDetailsRoundHistoryViewItem(players, hands, cards);
             return data;
         }
     }

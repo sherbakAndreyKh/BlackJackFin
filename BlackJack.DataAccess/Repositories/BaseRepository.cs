@@ -83,7 +83,7 @@ namespace BlackJack.DataAccess.Repositories
 
         public void Delete(long id)
         {
-            string query = $"DELETE FROM {typeof(T).Name} where id = {id}";
+            string query = $"DELETE FROM {typeof(T).Name} WHERE id = {id}";
             using (IDbConnection db = _connection.CreateConnection())
             {
                 db.Execute(query);

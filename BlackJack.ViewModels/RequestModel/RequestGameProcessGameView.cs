@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 namespace BlackJack.ViewModels.RequestModel
 {
     public class RequestGameProcessGameView

@@ -12,13 +12,13 @@ namespace BlackJack.BusinessLogic.Services
 {
     public class GameService : IGameService
     {
-        IPlayerRepository _playerRepository;
-        IGameRepository _gameRepository;
-        IRoundRepository _roundRepository;
-        ICardRepository _cardRepository;
-        IPlayerRoundHandRepository _playerRoundHandRepository;
-        IPlayerRoundHandCardsRepository _playerRoundHandCardsRepository;
-        GameServiceResponseMapProvider _maping;
+        private IPlayerRepository _playerRepository;
+        private IGameRepository _gameRepository;
+        private IRoundRepository _roundRepository;
+        private ICardRepository _cardRepository;
+        private IPlayerRoundHandRepository _playerRoundHandRepository;
+        private IPlayerRoundHandCardsRepository _playerRoundHandCardsRepository;
+        private GameServiceResponseMapProvider _maping;
 
         public GameService(IPlayerRepository playerRepository,
                               IGameRepository gameRepository,
@@ -80,14 +80,12 @@ namespace BlackJack.BusinessLogic.Services
             long playerId = viewModel.Player.Id;
             long gameId = viewModel.Game.Id;
             long roundId = CreateRoundAndReturnId(gameId);
-
             Random random = new Random();
             List<Card> cards = _cardRepository.GetAll().OrderBy(x => random.Next()).ToList();
-
-
             Player Player = _playerRepository.Get(viewModel.Player.Id);
             Player Dealer = _playerRepository.Get(viewModel.Dealer.Id);
             List<Player> BotsList = _playerRepository.GetQuantityByRole(viewModel.Game.PlayersAmount -1, (int)Role.Bot).ToList();
+
 
             var playerList = new List<Player>();
             playerList.Add(Player);

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-
 namespace BlackJack.ViewModels.ResponseModel
 {
     public class ResponseGameStartOptionsGameView
