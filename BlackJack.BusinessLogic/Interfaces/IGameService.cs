@@ -1,13 +1,14 @@
 ﻿using BlackJack.ViewModels;
 using BlackJack.ViewModels.RequestModel;
 using BlackJack.ViewModels.ResponseModel;
+using System.Threading.Tasks;
 
 namespace BlackJack.BusinessLogic.Interfaces
 {
     public interface IGameService
     {
-        ResponseGameProcessGameView StartGame(RequestGameStartOptionsGameView viewModel);
-        void SaveChanges(ViewModels.RequestModel.RequestGameProcessGameView viewModel);
-        NewRoundGameView NewRound(ViewModels.RequestModel.RequestGameProcessGameView viewModel);
+        Task<ResponseGameProcessGameView> StartGame(RequestGameStartOptionsGameView viewModel);
+        Task SaveChanges(RequestGameProcessGameView viewModel);
+        Task<NewRoundGameView> NewRound(RequestGameProcessGameView viewModel);
     }
 }

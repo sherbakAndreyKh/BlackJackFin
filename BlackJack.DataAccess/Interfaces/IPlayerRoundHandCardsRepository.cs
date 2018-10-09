@@ -1,11 +1,12 @@
 ﻿using BlackJack.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BlackJack.DataAccess.Interfaces
 {
     public interface IPlayerRoundHandCardsRepository : IBaseRepository<PlayerRoundHandCards>
     {
-        void AddCommunicationCardsByHands(long PlayerRoundHandId, long CardsId);
-        List<PlayerRoundHandCards> GetFieldsByPlayerPropertiesId(long PlayerRoundHandId);
+        Task AddCommunicationCardsByHands(long playerRoundHandId, long cardId);
+        Task<IEnumerable<PlayerRoundHandCards>> GetFieldsByPlayerPropertiesId(long playerRoundHandId);
     }
 }

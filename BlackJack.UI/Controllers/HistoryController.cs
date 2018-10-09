@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
 using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.ViewModels;
 
@@ -13,27 +14,27 @@ namespace BlackJack.UI.Controllers
             _historyService = historyService;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            IndexHistoryView model = _historyService.GetAllPlayers();
+            IndexHistoryView model = await _historyService.GetAllPlayers();
             return View(model);
         }
 
-        public ActionResult GetGamesByPlayerId(int playerId)
+        public async Task<ActionResult> GetGamesByPlayerId(int playerId)
         {
-            GameListHistoryView model = _historyService.GetGamesByPlayerId(playerId);
+            GameListHistoryView model = await _historyService.GetGamesByPlayerId(playerId);
             return View(model);
         }
 
-        public ActionResult GetRoundsByGameId(int gameId)
+        public async Task<ActionResult> GetRoundsByGameId(int gameId)
         {
-            RoundListHistoryView model = _historyService.GetRoundsByGameId(gameId);
+            RoundListHistoryView model = await _historyService.GetRoundsByGameId(gameId);
             return View(model);
         }
 
-        public ActionResult GetRoundsDetailsByRoundId(int roundId)
+        public async Task<ActionResult> GetRoundsDetailsByRoundId(int roundId)
         {
-            DetailsRoundHistoryView model = _historyService.GetRoundsDetailsByRoundId(roundId);
+            DetailsRoundHistoryView model = await _historyService.GetRoundsDetailsByRoundId(roundId);
             return View(model);
         }
     }

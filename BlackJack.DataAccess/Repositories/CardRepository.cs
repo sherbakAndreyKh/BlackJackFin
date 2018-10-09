@@ -5,6 +5,7 @@ using System.Data;
 using Dapper;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BlackJack.DataAccess.Repositories
 {
@@ -14,27 +15,27 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public Card FindCardWithNameAndSuit(string name, string suit)
+        public async Task<Card> FindCardWithNameAndSuit(string cardName, string cardSuit)
         {
             Card result;
-            string query = $"SELECT * FROM Card WHERE Name='{name}' AND Suit='{suit}'";            
+            string query = $"SELECT * FROM Card WHERE Name='{cardName}' AND Suit='{cardSuit}'";            
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = db.Query<Card>(query).FirstOrDefault();
+                result = await db.QueryFirstOrDefaultAsync<Card>(query);
             }
-            return result;
+            return  result;
         }
 
-        public List<Card> GetPlayerRoundHandCards(long roundId)
+        public async Task<List<Card>> GetPlayerRoundHandCards(long roundId)
         {
-            List<Card> result;
+            IEnumerable<Card> result;
             var query = $"SELECT * FROM Card JOIN PlayerRoundHandCards ON Card.Id = PlayerRoundHandCards.CardId JOIN PlayerRoundHand ON PlayerRoundHand.Id = PlayerRoundHandCards.PlayerRoundHandId WHERE PlayerRoundHand.RoundId={roundId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = db.Query<Card>(query).ToList();
+                result = await db.QueryAsync<Card>(query);
             }
-            return result;
+            return result.ToList();
         }
     }
 }

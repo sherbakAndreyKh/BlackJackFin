@@ -6,6 +6,7 @@ using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BlackJack.DataAccess.Repositories
 {
@@ -15,38 +16,60 @@ namespace BlackJack.DataAccess.Repositories
         {
         }
 
-        public IEnumerable<Player> GetQuantityByRole(int quantity, int role)
+        public async Task<List<Player>> GetQuantityByRole(int quantity, int role)
         {
             IEnumerable<Player> result;
             string query = $"SELECT TOP {quantity} * FROM Player WHERE Role={role} ";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = db.Query<Player>(query);
+                result = await db.QueryAsync<Player>(query);
             }
-            return result;
+            return result.ToList();
         }
 
-        public Player GetPlayerByPlayerName(string playerName)
+        public async Task<Player> GetPlayerByPlayerName(string playerName)
         {
             Player result;
             string query = $"SELECT * FROM Player WHERE Name ='{playerName}'";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = db.Query<Player>(query).FirstOrDefault();
+                result = await db.QueryFirstOrDefaultAsync<Player>(query);
             }
             return result;
         }
 
-        public List<Player> GetPlayersByRole(Role role)
+        public async Task<List<Player>> GetAllPlayersByRole(Role role)
         {
-            List<Player> result;
+            IEnumerable<Player> result;
             string query = $"SELECT * FROM Player WHERE Role = {(int)role}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = db.Query<Player>(query).ToList();
+                result = await db.QueryAsync<Player>(query);
+            }
+            return result.ToList();
+        }
+
+        public async Task<Player> GetFirstPlayerByRole(Role role)
+        {
+            Player result;
+            string query = $"SELECT * FROM Player WHERE Role = {(int)role}";
+            using (IDbConnection db = _connection.CreateConnection())
+            {
+                result = await db.QueryFirstOrDefaultAsync<Player>(query);
+            }
+            return result;
+        }
+
+        public async Task<long> GetPlayerIdByPlayerName(string playerName)
+        {
+            long result;
+            string query = $"SELECT Id FROM Player WHERE Name = '{playerName}'";
+            using (IDbConnection db = _connection.CreateConnection())
+            {
+                result = await db.QueryFirstOrDefaultAsync<long>(query);
             }
             return result;
         }
