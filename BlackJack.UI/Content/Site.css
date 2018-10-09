@@ -81,3 +81,9 @@ textarea {
 .BorderInDetails{
     border: 1px dotted black;
 }
+
+.field img{
+    width: 75%;
+    height: 70%;
+
+}

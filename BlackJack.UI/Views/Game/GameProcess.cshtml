@@ -7,9 +7,8 @@
 <div class="col-md-6"><h2 class="text-center">Game: @Model.Game.GameNumber</h2></div>
 <div class="col-md-6"><h3 class="text-center">Round: @Model.Round.RoundNumber</h3></div>
 
-
 <div class="field text-center">
-    <img src="~/Content/Img/bj.jpg" style="width:75%;height:70%;" alt="Alternate Text" />
+    <img src="~/Content/Img/bj.jpg" alt="Alternate Text" />
 </div>
 
 
@@ -34,15 +33,16 @@
     <p class="Hand"></p>
 </div>
 
-
-<div class="Buttons text-right" data-model="@Html.Raw(Json.Encode(Model))">
+<div class="Buttons text-right">
     <button id="First">FirstDeal</button>
     <button id="Take">TakeOne</button>
     <button id="Stop">Stop</button>
     <button id="History" data-path="@Url.Action("NewRound", "Game")" data-pathEnd="@Url.Action("EndGame", "Game")">End Round</button>
 </div>
 
+<input type="hidden" id="test" value="@Html.Raw(Json.Encode(Model))" />
 <script src="~/Scripts/GameScript.js"></script>
+
 
 <script>
     var model = @Html.Raw(Json.Encode(Model));
