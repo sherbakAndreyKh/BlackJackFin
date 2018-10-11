@@ -10,5 +10,6 @@ namespace BlackJack.BusinessLogic.Interfaces
         Task<ResponseGameProcessGameView> StartGame(RequestGameStartOptionsGameView viewModel);
         Task SaveChanges(RequestGameProcessGameView viewModel);
         Task<NewRoundGameView> NewRound(RequestGameProcessGameView viewModel);
+        Task<ViewModels.ResponseModel.ResponseGameStartOptionsGameView> GetPlayersStartOptions();
     }
 }

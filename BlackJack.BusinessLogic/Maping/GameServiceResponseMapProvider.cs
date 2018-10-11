@@ -8,6 +8,18 @@ namespace BlackJack.BusinessLogic.Maping
 {
     public class GameServiceResponseMapProvider
     {
+        public List<PlayerGameStartOptionsGameViewItem> MapPlayerToPlayerGameStartOptionsGameBiewItem(List<Player> players)
+        {
+            var result = new List<PlayerGameStartOptionsGameViewItem>();
+            foreach (var player in players)
+            {
+                var ViewModel = new PlayerGameStartOptionsGameViewItem();
+                ViewModel.PlayerName = player.Name;
+                result.Add(ViewModel);
+            }
+            return result;
+        }
+
         public PlayerGameProcessGameViewItem MapPlayerToPlayerGameProccessGameViewItem(Player player, PlayerRoundHand playerRoundHands)
         {
             var result = new PlayerGameProcessGameViewItem();

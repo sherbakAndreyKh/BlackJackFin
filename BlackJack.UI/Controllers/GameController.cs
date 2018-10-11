@@ -17,9 +17,10 @@ namespace BlackJack.UI.Controllers
         }
 
         [HttpGet]
-        public ActionResult GameStartOptions()
+        public async Task<ActionResult> GameStartOptions()
         {
-            return View();
+            var model =  await _startService.GetPlayersStartOptions();
+            return View(model);
         }
 
         [HttpPost]

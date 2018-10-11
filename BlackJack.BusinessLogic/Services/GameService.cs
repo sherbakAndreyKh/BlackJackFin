@@ -38,6 +38,14 @@ namespace BlackJack.BusinessLogic.Services
             _maping = maping;
         }
 
+        public async Task<ViewModels.ResponseModel.ResponseGameStartOptionsGameView> GetPlayersStartOptions()
+        {
+
+            var result = new ViewModels.ResponseModel.ResponseGameStartOptionsGameView();
+            result.Players = _maping.MapPlayerToPlayerGameStartOptionsGameBiewItem(await _playerRepository.GetAllPlayersByRole(Role.Player));
+            return result;
+        }
+
         public async Task<ViewModels.ResponseModel.ResponseGameProcessGameView> StartGame(ViewModels.RequestModel.RequestGameStartOptionsGameView viewModel)
         {
             long playerId = await CheckPLayerName(viewModel.PlayerName) ? await CreatePlayerAndReturnId(viewModel) : await _playerRepository.GetPlayerIdByPlayerName(viewModel.PlayerName);
@@ -45,12 +53,10 @@ namespace BlackJack.BusinessLogic.Services
             long roundId = await CreateRoundAndReturnId(gameId);
             Random random = new Random();
             List<Card> cards = await _cardRepository.GetAll();
-            cards.OrderBy(x => random.Next());
-
+          
             Player player = await _playerRepository.Get(playerId);
             Player dealer = await _playerRepository.GetFirstPlayerByRole(Role.Dealer);
             List<Player> botList = await _playerRepository.GetQuantityByRole(viewModel.BotsAmount, (int)Role.Bot);
-
 
             var playerList = new List<Player>();
             playerList.Add(player);
@@ -70,14 +76,13 @@ namespace BlackJack.BusinessLogic.Services
             var gameViewModel = new ViewModels.ResponseModel.ResponseGameProcessGameView();
             gameViewModel.Game = _maping.MapGameToGameGameProcessGameViewItem(await _gameRepository.Get(gameId));
             gameViewModel.Round = _maping.MapRoundToRoundGameProcessGameViewItem(await _roundRepository.Get(roundId));
-            gameViewModel.CardDeck = _maping.MapCardsToCardGameProcessGameViewItem(cards);
+            gameViewModel.CardDeck = _maping.MapCardsToCardGameProcessGameViewItem(cards.OrderBy(x => random.Next()));
             gameViewModel.Player = _maping.MapPlayerToPlayerGameProccessGameViewItem(player, playerRoundHandList.Where(x => x.PlayerId == playerId).FirstOrDefault());
             gameViewModel.Dealer = _maping.MapPlayerToPlayerGameProccessGameViewItem(dealer, playerRoundHandList.Where(x => x.PlayerId == dealer.Id).FirstOrDefault());
             gameViewModel.Bots = BotsViewItemList;
 
             return gameViewModel;
         }
-
 
         public async Task<NewRoundGameView> NewRound(ViewModels.RequestModel.RequestGameProcessGameView viewModel)
         {
@@ -86,7 +91,8 @@ namespace BlackJack.BusinessLogic.Services
             long roundId = await CreateRoundAndReturnId(gameId);
             Random random = new Random();
             List<Card> cards = await _cardRepository.GetAll();
-            cards.OrderBy(x => random.Next());
+           
+
             Player player = await _playerRepository.Get(viewModel.Player.Id);
             Player dealer = await _playerRepository.Get(viewModel.Dealer.Id);
             List<Player> botList = await _playerRepository.GetQuantityByRole(viewModel.Game.PlayersAmount - 1, (int)Role.Bot);
@@ -104,7 +110,7 @@ namespace BlackJack.BusinessLogic.Services
             var result = new NewRoundGameView();
             result.Game = _maping.MapGameToGameNewRoundGameViewItem(await _gameRepository.Get(gameId));
             result.Round = _maping.MapRoundToRoundNewRoundGameViewItem(await _roundRepository.Get(roundId));
-            result.CardDeck = _maping.MapCardsToCardNewRoundGameViewItem(cards);
+            result.CardDeck = _maping.MapCardsToCardNewRoundGameViewItem(cards.OrderBy(x => random.Next()));
             result.Player = _maping.MapPlayerToPlayerNewRoundGameViewItem(player, await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(playerId, roundId));
             result.Dealer = _maping.MapPlayerToPlayerNewRoundGameViewItem(dealer, await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(dealer.Id, roundId));
             result.Bots = _maping.MapPlayersToPlayerNewRoundGameViewItem(botList, playerRoundHandList);

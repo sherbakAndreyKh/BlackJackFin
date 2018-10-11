@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlackJack.ViewModels.ResponseModel
 {
@@ -7,5 +8,16 @@ namespace BlackJack.ViewModels.ResponseModel
         [Required(ErrorMessage = "Write your Name please")]
         public string PlayerName { get; set; }
         public int BotsAmount { get; set; }
+        public List<PlayerGameStartOptionsGameViewItem> Players { get; set; }
+        
+        public ResponseGameStartOptionsGameView()
+        {
+            Players = new List<PlayerGameStartOptionsGameViewItem>();
+        }
+    }
+
+    public class PlayerGameStartOptionsGameViewItem
+    {
+        public string PlayerName { get; set; }
     }
 }
