@@ -8,8 +8,11 @@ namespace BlackJack.BusinessLogic.Interfaces
     public interface IGameService
     {
         Task<ResponseGameProcessGameView> StartGame(RequestGameStartOptionsGameView viewModel);
+        Task<ResponseGameStartOptionsGameView> GetPlayersStartOptions();
+        Task<ResponseGetFirstDealGameView> GetFirstDeal(RequestGetFirstDealGameView model);
+        Task<ResponseGetCardGameView> GetCard(RequestGetCardGameView model);
+        Task<ResponseBotLogicGameView> BotLogic(RequestBotLogicGameView model);
         Task SaveChanges(RequestGameProcessGameView viewModel);
         Task<NewRoundGameView> NewRound(RequestGameProcessGameView viewModel);
-        Task<ViewModels.ResponseModel.ResponseGameStartOptionsGameView> GetPlayersStartOptions();
     }
 }
