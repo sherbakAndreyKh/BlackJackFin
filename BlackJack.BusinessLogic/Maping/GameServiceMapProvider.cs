@@ -33,6 +33,7 @@ namespace BlackJack.BusinessLogic.Maping
         public List<PlayerGameProcessGameViewItem> MapPlayerListToPlayerGameProccessGameViewItem(List<Player> players, List<PlayerRoundHand> playerRoundHands)
         {
             var result = new List<PlayerGameProcessGameViewItem>();
+
             foreach (var player in players)
             {
                 var viewModel = new PlayerGameProcessGameViewItem();
@@ -42,13 +43,16 @@ namespace BlackJack.BusinessLogic.Maping
                 viewModel.PlayerRoundHand = MapRoundHandToPlayerRoundHandGameProcessGameViewItem(playerRoundHands.Where(x => x.PlayerId == player.Id).FirstOrDefault());
                 result.Add(viewModel);
             }
+
             return result;
         }
 
         public PlayerRoundHandGameProcessGameViewItem MapRoundHandToPlayerRoundHandGameProcessGameViewItem(PlayerRoundHand playerRoundhands)
         {
             var result = new PlayerRoundHandGameProcessGameViewItem();
+            result.Id = playerRoundhands.Id;
             result.PlayerId = playerRoundhands.PlayerId;
+            result.RoundId = playerRoundhands.RoundId;
             return result;
         }
 
@@ -226,6 +230,19 @@ namespace BlackJack.BusinessLogic.Maping
                 viewItem.Suit = card.Suit;
                 result.Add(viewItem);
             }
+            return result;
+        }
+
+        public RoundFindWinnerGameViewItem MapRoundToRoundFindWinnerGameViewItem(Round round)
+        {
+            var result = new RoundFindWinnerGameViewItem();
+
+            result.Id = round.Id;
+            result.RoundNumber = round.RoundNumber;
+            result.Winner = round.Winner;
+            result.WinnerScore = round.WinnerScore;
+            result.GameId = round.GameId;
+
             return result;
         }
     }

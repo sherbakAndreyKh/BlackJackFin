@@ -28,10 +28,11 @@ namespace BlackJack.ViewModels.ResponseModel
 
     public class PlayerRoundHandGameProcessGameViewItem
     {
-        public int Id { get;set; }
+        public long Id { get;set; }
         public List<CardGameProcessGameViewItem> Hand { get; set; }
         public int Score { get; set; }
         public long PlayerId { get; set; }
+        public long RoundId { get; set; }
         public PlayerRoundHandGameProcessGameViewItem()
         {
             Hand = new List<CardGameProcessGameViewItem>();

@@ -14,7 +14,7 @@ namespace BlackJack.ViewModels.RequestModel
 
     public class PlayerRoundHandGetCardGameViewItem
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public List<CardGetFirstDealGameViewItem> Hand { get; set; }
         public int Score { get; set; }
         public long PlayerId { get; set; }

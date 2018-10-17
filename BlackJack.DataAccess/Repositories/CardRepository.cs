@@ -17,7 +17,7 @@ namespace BlackJack.DataAccess.Repositories
 
         public async Task<Card> FindCardWithNameAndSuit(string cardName, string cardSuit)
         {
-            Card result;
+            var result = new Card();
             string query = $"SELECT * FROM Card WHERE Name='{cardName}' AND Suit='{cardSuit}'";            
             using (IDbConnection db = _connection.CreateConnection())
             {
@@ -28,14 +28,14 @@ namespace BlackJack.DataAccess.Repositories
 
         public async Task<List<Card>> GetPlayerRoundHandCards(long roundId)
         {
-            IEnumerable<Card> result;
+            var result = new List<Card>();
             var query = $"SELECT * FROM Card JOIN PlayerRoundHandCards ON Card.Id = PlayerRoundHandCards.CardId JOIN PlayerRoundHand ON PlayerRoundHand.Id = PlayerRoundHandCards.PlayerRoundHandId WHERE PlayerRoundHand.RoundId={roundId}";
 
             using (IDbConnection db = _connection.CreateConnection())
             {
-                result = await db.QueryAsync<Card>(query);
+                result = (await db.QueryAsync<Card>(query)).ToList();
             }
-            return result.ToList();
+            return result;
         }
     }
 }

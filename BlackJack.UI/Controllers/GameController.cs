@@ -49,20 +49,31 @@ namespace BlackJack.UI.Controllers
             ResponseBotLogicGameView model = await _gameService.BotLogic(item);
             return Json(model);
         }
-
-        public async Task<ActionResult> NewRound(RequestGameProcessGameView item)
+        [HttpPost]
+        public async Task<JsonResult> FindWinner(RequestFindWinnerGameView item)
         {
-            await _gameService.SaveChanges(item);
-            NewRoundGameView roundData = await _gameService.NewRound(item);
-            return View(roundData);
+            ResponseFindWinnerGameView model = await _gameService.FindWinner(item);
+            return Json(model);
         }
 
-        public async Task<ActionResult> EndGame(RequestGameProcessGameView item)
-        {
-            await _gameService.SaveChanges(item);
-            return View();
-        }
+        //public async Task<ActionResult> NewRound(RequestGameProcessGameView item)
+        //{
+        //    await _gameService.SaveChanges(item);
+        //    NewRoundGameView roundData = await _gameService.NewRound(item);
+        //    return View(roundData);
+        //}
 
+        //public async Task<ActionResult> EndGame(RequestGameProcessGameView item)
+        //{
+        //    await _gameService.SaveChanges(item);
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public async Task<JsonResult> FindWinner(RequestFindWinnerGameView item)
+        //{
+        //    ResponseFindWinnerGameView model = await _gameService
+        //}
 
     }
 }

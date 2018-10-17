@@ -1,8 +1,9 @@
 ﻿var bool = true;
 
-$('#First').on('click', function FirstDeal () {
+$('#First').on('click', function FirstDeal() {
 
     if (bool) {
+        bool = false;
         var Hands = new Array();
         Hands.push(model.Dealer.PlayerRoundHand);
         Hands.push(model.Player.PlayerRoundHand);
@@ -10,7 +11,7 @@ $('#First').on('click', function FirstDeal () {
             Hands.push(model.Bots[i].PlayerRoundHand);
         }
 
-        $.post(testPath, {'Round': model.Round, 'Hands': Hands })
+        $.post(testPath, { 'Round': model.Round, 'Hands': Hands })
             .done(function (data) {
                 $('.Participant').each(function (i) {
                     var firstCard = data.Hands[i].Hand[0].Name + " " + data.Hands[i].Hand[0].Suit;
@@ -19,11 +20,10 @@ $('#First').on('click', function FirstDeal () {
                     $(this).children('p').children('.Score').html(data.Hands[i].Score);
                 });
             });
-        bool = false;
     }
 });
 
-$('#Take').on('click', function OneCard () {
+$('#Take').on('click', function OneCard() {
     var Hand = model.Player.PlayerRoundHand;
 
     $.post(singleTestPath, { 'Round': model.Round, 'Hand': Hand })
@@ -40,38 +40,64 @@ $('#Take').on('click', function OneCard () {
                 for (i = 0; i <= model.Bots.length; i++) {
                     BotLogic(i);
                 }
+                //findWinner();
             }
         });
 });
 
-$('#Stop').on('click', function BotsLogic() {
 
-    for (var i = 0; i <= model.Bots.length; i++){
+
+function test() {
+    for (var i = 0; i <= model.Bots.length; i++) {
         BotLogic(i);
     }
-
-});
-
-function BotLogic(count) {
-    var hand;
-    if (count < model.Bots.length) {
-        hand = model.Bots[count].PlayerRoundHand;
-    }
-    if (count == model.Bots.length) {
-        hand = model.Dealer.PlayerRoundHand;
-    }
-    $.post(botTestPath, { 'Round': model.Round, 'Hand': hand })
-        .done(function (data) {
-            var card = "";
-            for (var i = 0; i < data.Hand.Hand.length; i++) {
-                var handI = data.Hand.Hand[i];
-                card += handI.Name + " " + handI.Suit + " ";
-            }
-            
-            $('.Participant').eq(count+1).children('.Hand').html(card);
-            $('.Participant').eq(count+1).children('p').children('.Score').html(data.Hand.Score);
-        });
+    findWinner();
 }
+    $('#Stop').on('click', function () { test(); });
+
+
+
+
+    function findWinner() {
+        $.post(pathTestTest, { 'PlayerHand': model.Player.PlayerRoundHand, 'DealerHand': model.Dealer.PlayerRoundHand })
+            .done(function (data) {
+                alert(data.Round.Winner);
+            });
+    }
+
+    function BotLogic(count) {
+        var hand;
+        if (count < model.Bots.length) {
+            hand = model.Bots[count].PlayerRoundHand;
+        }
+        if (count == model.Bots.length) {
+            hand = model.Dealer.PlayerRoundHand;
+        }
+        $.post(botTestPath, { 'Round': model.Round, 'Hand': hand })
+            .done(function (data) {
+                var card = "";
+                for (var i = 0; i < data.Hand.Hand.length; i++) {
+                    var handI = data.Hand.Hand[i];
+                    card += handI.Name + " " + handI.Suit + " ";
+                }
+                $('.Participant').eq(count + 1).children('.Hand').html(card);
+                $('.Participant').eq(count + 1).children('p').children('.Score').html(data.Hand.Score);
+            });
+    }
+
+    $('#History').on('click', function () {
+        //FindWinner(model.Player, model.Dealer);
+        var result = confirm("PLay next Round?");
+        if (result) {
+            $.post(path, model)
+                .done(function (data) {
+                    $('body').html(data);
+                });
+        }
+        if (!result) {
+            $.post(pathEnd, model);
+        }
+    });
 
 
 

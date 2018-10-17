@@ -23,9 +23,6 @@ namespace BlackJack.BusinessLogic.Services
         private IPlayerRoundHandCardsRepository _playerRoundHandCardsRepository;
         private GameServiceMapProvider _maping;
 
-
-
-
         public GameService(IPlayerRepository playerRepository,
                               IGameRepository gameRepository,
                               IRoundRepository roundRepository,
@@ -45,7 +42,6 @@ namespace BlackJack.BusinessLogic.Services
 
         public async Task<ResponseGameStartOptionsGameView> GetPlayersStartOptions()
         {
-
             var result = new ResponseGameStartOptionsGameView();
             result.Players = _maping.MapPlayerToPlayerGameStartOptionsGameBiewItem(await _playerRepository.GetAllPlayersByRole(Role.Player));
             return result;
@@ -68,6 +64,8 @@ namespace BlackJack.BusinessLogic.Services
 
             List<PlayerRoundHand> playerRoundHandList = CreatePlayerRoundHands(playerList, roundId);
             await _playerRoundHandRepository.CreateManyAsync(playerRoundHandList);
+            playerRoundHandList = await _playerRoundHandRepository.GetPLayerRoundHandListByRoundId(roundId);
+
 
             var gameViewModel = new ResponseGameProcessGameView();
             gameViewModel.Game = _maping.MapGameToGameGameProcessGameViewItem(await _gameRepository.Get(gameId));
@@ -77,7 +75,6 @@ namespace BlackJack.BusinessLogic.Services
             gameViewModel.Bots = _maping.MapPlayerListToPlayerGameProccessGameViewItem(playerList.Where(x=>x.Role == Role.Bot).ToList(), playerRoundHandList);
             return gameViewModel;
         }
-
 
         public async Task<ResponseGetFirstDealGameView> GetFirstDeal(RequestGetFirstDealGameView model)
         {
@@ -103,21 +100,25 @@ namespace BlackJack.BusinessLogic.Services
 
         public async Task<ResponseGetCardGameView> GetCard(RequestGetCardGameView model)
         {
-            List<Card> cards = await _cardRepository.GetAll();
-            Random random = new Random((int)DateTime.Now.Ticks);
-            Stack<Card> mixCards = new Stack<Card>(cards.OrderBy(x => random.Next()));
-            PlayerRoundHand playerRoundHand = await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(model.Hand.PlayerId, model.Round.Id);
-            Card card = GetCard(mixCards);
-            playerRoundHand.Score += card.Value;
-            await SaveHands(card, playerRoundHand.Id);
-            await _playerRoundHandRepository.Update(playerRoundHand);
-
             var result = new ResponseGetCardGameView();
-            result.Hand = _maping.MapPlayerRoundHandToPlayerRoundHandGetCardGameViewItem(playerRoundHand, await _cardRepository.GetPlayerRoundHandCards(model.Round.Id));
+            if (await HandValidation(model.Hand.PlayerId))
+            {
+                List<Card> cards = await _cardRepository.GetAll();
+                Random random = new Random((int)DateTime.Now.Ticks);
+                Stack<Card> mixCards = new Stack<Card>(cards.OrderBy(x => random.Next()));
+                PlayerRoundHand playerRoundHand = await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(model.Hand.PlayerId, model.Round.Id);
+                Card card = GetCard(mixCards);
+                playerRoundHand.Score += card.Value;
+                await SaveHands(card, playerRoundHand.Id);
+                await _playerRoundHandRepository.Update(playerRoundHand);
+
+                result.Hand = _maping.MapPlayerRoundHandToPlayerRoundHandGetCardGameViewItem(playerRoundHand, await _cardRepository.GetPlayerRoundHandCards(model.Round.Id));
+                return result;
+            }
             return result;
         }
 
-        public async Task<ResponseBotLogicGameView> BotLogic (RequestBotLogicGameView model)
+        public async Task<ResponseBotLogicGameView> BotLogic(RequestBotLogicGameView model)
         {
             List<Card> cards = await _cardRepository.GetAll();
             Random random = new Random((int)DateTime.Now.Ticks);
@@ -125,7 +126,7 @@ namespace BlackJack.BusinessLogic.Services
             
             while (playerRoundHand.Score < 17)
             {
-            Stack<Card> mixCards = new Stack<Card>(cards.OrderBy(x=>random.Next()));
+                Stack<Card> mixCards = new Stack<Card>(cards.OrderBy(x => random.Next()));
                 Card card = GetCard(mixCards);
                 playerRoundHand.Score += card.Value;
                 await SaveHands(card, playerRoundHand.Id);    
@@ -204,45 +205,59 @@ namespace BlackJack.BusinessLogic.Services
         //    await _playerRoundHandRepository.UpdateManyAsync(botsProperties);
         //}
 
-
-        private async Task<Round> FindWinner(PlayerRoundHand playerHand, PlayerRoundHand dealerHand)
+        public async Task<ResponseFindWinnerGameView> FindWinner(RequestFindWinnerGameView item)
         {
-            Round round = await _roundRepository.Get(playerHand.RoundId);
-            Player player = await _playerRepository.Get(playerHand.PlayerId);
-            Player dealer = await _playerRepository.Get(dealerHand.PlayerId);
+            int score = 21;
+            var result = new ResponseFindWinnerGameView();
+            result.Round =  _maping.MapRoundToRoundFindWinnerGameViewItem(await _roundRepository.Get(item.PlayerHand.RoundId));
+            Player player = await _playerRepository.Get(item.PlayerHand.PlayerId);
+            Player dealer = await _playerRepository.Get(item.DealerHand.PlayerId);
+            PlayerRoundHand playerHand = await _playerRoundHandRepository.Get(item.PlayerHand.Id);
+            PlayerRoundHand dealerHand = await _playerRoundHandRepository.Get(item.DealerHand.Id);
 
-            if (playerHand.Score > 21 && dealerHand.Score < 21)
+            if (playerHand.Score > score && dealerHand.Score < score)
             {
-                round.Winner = dealer.Name;
-                round.WinnerScore = dealerHand.Score;
+                result.Round.Winner = dealer.Name;
+                result.Round.WinnerScore = dealerHand.Score;
             }
-            if (dealerHand.Score <= 21 && dealerHand.Score > playerHand.Score)
+            if (dealerHand.Score <= score && dealerHand.Score > playerHand.Score)
             {
-                round.Winner = dealer.Name;
-                round.WinnerScore = dealerHand.Score;
+                result.Round.Winner = dealer.Name;
+                result.Round.WinnerScore = dealerHand.Score;
             }
-            if (dealerHand.Score > 21 && playerHand.Score > 21)
+            if (dealerHand.Score > score && playerHand.Score > score)
             {
-                round.Winner = "Draw";
-                round.WinnerScore = 0;
+                result.Round.Winner = "Draw";
+                result.Round.WinnerScore = 0;
             }
             if (dealerHand.Score == playerHand.Score)
             {
-                round.Winner = "Draw";
-                round.WinnerScore = 0;
+                result.Round.Winner = "Draw";
+                result.Round.WinnerScore = 0;
             }
-            if (dealerHand.Score > 21 && playerHand.Score < 21)
+            if (dealerHand.Score > score && playerHand.Score < score)
             {
-                round.Winner = player.Name;
-                round.WinnerScore = playerHand.Score;
+                result.Round.Winner = player.Name;
+                result.Round.WinnerScore = playerHand.Score;
             }
-            if (playerHand.Score <= 21 && playerHand.Score > dealerHand.Score)
+            if (playerHand.Score <= score && playerHand.Score > dealerHand.Score)
             {
-                round.Winner = player.Name;
-                round.WinnerScore = playerHand.Score;
+                result.Round.Winner = player.Name;
+                result.Round.WinnerScore = playerHand.Score;
             }
-            return round;
+
+            return result;
         }
+
+        private async Task<bool> HandValidation(long playerId)
+        {
+            Player player = await _playerRepository.Get(playerId);
+            if(player.Role == Role.Player)
+            {
+                return true;
+            }
+            return false;
+        } 
 
         private Card GetCard(Stack<Card> cards)
         {
