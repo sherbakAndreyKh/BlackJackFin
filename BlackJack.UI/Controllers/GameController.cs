@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.ViewModels;
@@ -19,8 +20,15 @@ namespace BlackJack.UI.Controllers
         [HttpGet]
         public async Task<ActionResult> GameStartOptions()
         {
-            var model =  await _gameService.GetPlayersStartOptions();
+            try
+            {
+            ResponseGameStartOptionsGameView model =  await _gameService.GetPlayersStartOptions();
             return View(model);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         [HttpPost]
@@ -37,6 +45,7 @@ namespace BlackJack.UI.Controllers
             ResponseGetFirstDealGameView model = await _gameService.GetFirstDeal(item);
             return Json(model);
         }
+
         [HttpPost]
         public async Task<JsonResult> GetCard(RequestGetCardGameView item)
         {
@@ -55,7 +64,6 @@ namespace BlackJack.UI.Controllers
             ResponseFindWinnerGameView model = await _gameService.FindWinner(item);
             return Json(model);
         }
-
         public async Task<ActionResult> NewRound(RequestNewRoundGameView item)
         {
             ResponseNewRoundGameView model = await _gameService.NewRound(item);

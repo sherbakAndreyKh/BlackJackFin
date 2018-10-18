@@ -55,11 +55,11 @@ namespace BlackJack.BusinessLogic.Services
         public async Task<RoundListHistoryView> GetRoundsByGameId(int gameId)
         {
             List<Round> rounds = await _roundRepository.GetAll();
-            rounds.Where(x => x.GameId == gameId).ToList();
+           
             Game game = await _gameRepository.Get(gameId);
             var data = new RoundListHistoryView();
             data.PlayersAmount = game.PlayersAmount;
-            data.Rounds = _maping.MapListRoundToRoundRoundListHistoryViewItem(rounds);
+            data.Rounds = _maping.MapListRoundToRoundRoundListHistoryViewItem(rounds.Where(x => x.GameId == gameId).ToList());
             return data;
         }
 

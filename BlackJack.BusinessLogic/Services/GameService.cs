@@ -10,6 +10,7 @@ using BlackJack.ViewModels;
 using System.Threading.Tasks;
 using BlackJack.ViewModels.RequestModel;
 using BlackJack.ViewModels.ResponseModel;
+using BlackJack.BusinessLogic.Exceptions;
 
 namespace BlackJack.BusinessLogic.Services
 {
@@ -43,7 +44,10 @@ namespace BlackJack.BusinessLogic.Services
         public async Task<ResponseGameStartOptionsGameView> GetPlayersStartOptions()
         {
             var result = new ResponseGameStartOptionsGameView();
+
             result.Players = _maping.MapPlayerToPlayerGameStartOptionsGameBiewItem(await _playerRepository.GetAllPlayersByRole(Role.Player));
+
+
             return result;
         }
 
@@ -52,7 +56,7 @@ namespace BlackJack.BusinessLogic.Services
             long playerId = await CheckPLayerName(viewModel.PlayerName) ? await CreatePlayerAndReturnId(viewModel) : await _playerRepository.GetPlayerIdByPlayerName(viewModel.PlayerName);
             long gameId = await CreateGameAndReturnId(viewModel, playerId);
             long roundId = await CreateRoundAndReturnId(gameId);
-          
+
             Player player = await _playerRepository.Get(playerId);
             Player dealer = await _playerRepository.GetFirstPlayerByRole(Role.Dealer);
             List<Player> botList = await _playerRepository.GetQuantityByRole(viewModel.BotsAmount, (int)Role.Bot);
@@ -72,7 +76,7 @@ namespace BlackJack.BusinessLogic.Services
             gameViewModel.Round = _maping.MapRoundToRoundGameProcessGameViewItem(await _roundRepository.Get(roundId));
             gameViewModel.Player = _maping.MapPlayerToPlayerGameProccessGameViewItem(playerList.Where(x => x.Role == Role.Player).FirstOrDefault(), playerRoundHandList);
             gameViewModel.Dealer = _maping.MapPlayerToPlayerGameProccessGameViewItem(playerList.Where(x => x.Role == Role.Dealer).FirstOrDefault(), playerRoundHandList);
-            gameViewModel.Bots = _maping.MapPlayerListToPlayerGameProccessGameViewItem(playerList.Where(x=>x.Role == Role.Bot).ToList(), playerRoundHandList);
+            gameViewModel.Bots = _maping.MapPlayerListToPlayerGameProccessGameViewItem(playerList.Where(x => x.Role == Role.Bot).ToList(), playerRoundHandList);
             return gameViewModel;
         }
 
@@ -113,10 +117,10 @@ namespace BlackJack.BusinessLogic.Services
                 await SaveHands(cardHand, hand.Id);
             }
             await _playerRoundHandRepository.UpdateManyAsync(playerRoundHands);
-           
+
             var result = new ResponseGetFirstDealGameView();
             result.Hands = _maping.MapPlayerRouondHandGetFirstDealGameViewItem(playerRoundHands, await _cardRepository.GetPlayerRoundHandCards(model.Round.Id));
-            return  result;
+            return result;
         }
 
         public async Task<ResponseGetCardGameView> GetCard(RequestGetCardGameView model)
@@ -144,13 +148,13 @@ namespace BlackJack.BusinessLogic.Services
             List<Card> cards = await _cardRepository.GetAll();
             Random random = new Random((int)DateTime.Now.Ticks);
             PlayerRoundHand playerRoundHand = await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(model.Hand.PlayerId, model.Round.Id);
-            
+
             while (playerRoundHand.Score < 17)
             {
                 Stack<Card> mixCards = new Stack<Card>(cards.OrderBy(x => random.Next()));
                 Card card = GetCard(mixCards);
                 playerRoundHand.Score += card.Value;
-                await SaveHands(card, playerRoundHand.Id);    
+                await SaveHands(card, playerRoundHand.Id);
             }
             await _playerRoundHandRepository.Update(playerRoundHand);
 
@@ -199,7 +203,7 @@ namespace BlackJack.BusinessLogic.Services
                 round.WinnerScore = playerHand.Score;
             }
             await _roundRepository.Update(round);
-            
+
             var result = new ResponseFindWinnerGameView();
             result.Round = _maping.MapRoundToRoundFindWinnerGameViewItem(round);
             return result;
@@ -208,13 +212,13 @@ namespace BlackJack.BusinessLogic.Services
         private async Task<bool> HandValidation(long playerId)
         {
             Player player = await _playerRepository.Get(playerId);
-            if(player.Role == Role.Player)
+            if (player.Role == Role.Player)
             {
                 return true;
             }
             return false;
         }
-        
+
         private async Task<bool> CheckPLayerName(string playerName)
         {
             if (await _playerRepository.GetPlayerByPlayerName(playerName) != null)
@@ -228,7 +232,7 @@ namespace BlackJack.BusinessLogic.Services
         private Card GetCard(Stack<Card> cards)
         {
             var result = new Card();
-            result = cards.Pop();           
+            result = cards.Pop();
             return result;
         }
 
