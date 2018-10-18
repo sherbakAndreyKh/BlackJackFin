@@ -29,7 +29,7 @@ namespace BlackJack.Dependency.Config
             builder.RegisterType<RoundRepository>().As<IRoundRepository>();
             builder.RegisterType<PlayerRoundHandCardsRepository>().As<IPlayerRoundHandCardsRepository>();
 
-            builder.RegisterType<GameServiceResponseMapProvider>().AsSelf();
+            builder.RegisterType<GameServiceMapProvider>().AsSelf();
             builder.RegisterType<HistoryServiceMapProvider>().AsSelf();
 
             builder.RegisterType<GameService>().As<IGameService>().UsingConstructor(typeof(IPlayerRepository),
@@ -38,7 +38,7 @@ namespace BlackJack.Dependency.Config
                                                                                     typeof(ICardRepository),
                                                                                     typeof(IPlayerRoundHandRepository),
                                                                                     typeof(IPlayerRoundHandCardsRepository),
-                                                                                    typeof(GameServiceResponseMapProvider));
+                                                                                    typeof(GameServiceMapProvider));
 
             builder.RegisterType<HistoryService>().As<IHistoryService>().UsingConstructor(typeof(IPlayerRepository),
                                                                                           typeof(IGameRepository),

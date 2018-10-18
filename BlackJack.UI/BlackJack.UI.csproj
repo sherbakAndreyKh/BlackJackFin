@@ -245,6 +245,7 @@
     <Content Include="Views\Game\GameStartOptions.cshtml" />
     <Content Include="Views\Game\NewRound.cshtml" />
     <Content Include="Views\History\GetGamesByPlayerId.cshtml" />
+    <Content Include="Views\TestError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
