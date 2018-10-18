@@ -62,6 +62,12 @@ namespace BlackJack.UI.Controllers
                 var model = ex.Message;
                 return Json(model);
             }
+            catch (Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                var model = ex.Message;
+                return Json(model);
+            }
         }
         [HttpPost]
         public async Task<JsonResult> BotAnbdDealerLogic(RequestBotLogicGameView item)
