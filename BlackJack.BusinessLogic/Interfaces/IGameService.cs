@@ -13,7 +13,6 @@ namespace BlackJack.BusinessLogic.Interfaces
         Task<ResponseGetCardGameView> GetCard(RequestGetCardGameView model);
         Task<ResponseBotLogicGameView> BotLogic(RequestBotLogicGameView model);
         Task<ResponseFindWinnerGameView> FindWinner(RequestFindWinnerGameView item);
-        //Task SaveChanges(RequestGameProcessGameView viewModel);
-        //Task<NewRoundGameView> NewRound(RequestGameProcessGameView viewModel);
+        Task<ResponseNewRoundGameView> NewRound(RequestNewRoundGameView item);
     }
 }

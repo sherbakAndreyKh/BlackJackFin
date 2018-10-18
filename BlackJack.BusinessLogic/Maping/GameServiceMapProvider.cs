@@ -89,29 +89,11 @@ namespace BlackJack.BusinessLogic.Maping
             return result;
         }
 
-        public List<CardNewRoundGameViewItem> MapCardsToCardNewRoundGameViewItem(IEnumerable<Card> cardsList)
-        {
-            var result = new List<CardNewRoundGameViewItem>();
-
-            foreach (var card in cardsList)
-            {
-                var CardView = new CardNewRoundGameViewItem();
-                CardView.Id = card.Id;
-                CardView.Name = card.Name;
-                CardView.Suit = card.Suit;
-                CardView.Value = card.Value;
-                CardView.ImgPath = card.ImgPath;
-                result.Add(CardView);
-            }
-            return result;
-        }
-
-        public GameNewRoundGameViewItem MapGameToGameNewRoundGameViewItem(Game round)
+        public GameNewRoundGameViewItem MapGameToGameNewRoundGameViewItem(ViewModels.RequestModel.GameNewRoundGameViewItem game)
         {
             var result = new GameNewRoundGameViewItem();
-            result.Id = round.Id;
-            result.GameNumber = round.GameNumber;
-            result.PlayersAmount = round.PlayersAmount;
+            result.Id = game.Id;
+            result.GameNumber = game.GameNumber;
             return result;
         }
 
@@ -126,17 +108,17 @@ namespace BlackJack.BusinessLogic.Maping
             return result;
         }
 
-        public PlayerNewRoundGameViewItem MapPlayerToPlayerNewRoundGameViewItem(Player player, PlayerRoundHand playerRoundHand)
+        public PlayerNewRoundGameViewItem MapPlayerToPlayerNewRoundGameViewItem(ViewModels.RequestModel.PlayerNewRoundGameViewItem player, PlayerRoundHand playerRoundHand)
         {
             var result = new PlayerNewRoundGameViewItem();
             result.Id = player.Id;
             result.Name = player.Name;
             result.Role = (int)player.Role;
-            result.PlayerRoundHand.Add(MapRoundHandToPlayerRoundHandNewRoundGameViewItem(playerRoundHand));
+            result.PlayerRoundHand = MapRoundHandToPlayerRoundHandNewRoundGameViewItem(playerRoundHand);
             return result;
         }
 
-        public List<PlayerNewRoundGameViewItem> MapPlayersToPlayerNewRoundGameViewItem(List<Player> playerList, List<PlayerRoundHand> playerRoundHandList)
+        public List<PlayerNewRoundGameViewItem> MapPlayerListToPlayerNewRoundGameViewItem(List<ViewModels.RequestModel.PlayerNewRoundGameViewItem> playerList, List<PlayerRoundHand> playerRoundHandList)
         {
             var result = new List<PlayerNewRoundGameViewItem>();
             foreach (var player in playerList)
@@ -145,7 +127,7 @@ namespace BlackJack.BusinessLogic.Maping
                 playerViewModel.Id = player.Id;
                 playerViewModel.Name = player.Name;
                 playerViewModel.Role = (int)player.Role;
-                playerViewModel.PlayerRoundHand.Add(MapRoundHandToPlayerRoundHandNewRoundGameViewItem(playerRoundHandList.Where(x => x.PlayerId == player.Id).FirstOrDefault()));
+                playerViewModel.PlayerRoundHand = MapRoundHandToPlayerRoundHandNewRoundGameViewItem(playerRoundHandList.Where(x => x.PlayerId == player.Id).FirstOrDefault());
                 result.Add(playerViewModel);
             }
             return result;
@@ -154,6 +136,7 @@ namespace BlackJack.BusinessLogic.Maping
         public PlayerRoundHandNewRoundGameViewItem MapRoundHandToPlayerRoundHandNewRoundGameViewItem(PlayerRoundHand playerRoundHand)
         {
             var result = new PlayerRoundHandNewRoundGameViewItem();
+            result.Id = playerRoundHand.Id;
             result.PlayerId = playerRoundHand.PlayerId;
             result.RoundId = (int)playerRoundHand.RoundId;
             return result;

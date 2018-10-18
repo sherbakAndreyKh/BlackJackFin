@@ -18,11 +18,6 @@
     <h4>@Model.Player.Name</h4>
 </div>
 
-<div class="dealer Participant text-center">
-    <h4>@Model.Dealer.Name</h4>
-    <p>Score: <span class="Score">@Model.Dealer.PlayerRoundHand.Score</span></p>
-    <p class="Hand"></p>
-</div>
 
 @foreach (var bot in Model.Bots)
 {
@@ -33,19 +28,23 @@
     </div>
 }
 
+<div class="dealer Participant text-center">
+    <h4>@Model.Dealer.Name</h4>
+    <p>Score: <span class="Score">@Model.Dealer.PlayerRoundHand.Score</span></p>
+    <p class="Hand"></p>
+</div>
 <div class="Buttons text-right">
-    <button id="First">FirstDeal</button>
     <button id="Take">TakeOne</button>
     <button id="Stop">Stop</button>
-    <button id="History" data-path="@Url.Action("NewRound", "Game")" data-pathEnd="@Url.Action("EndGame", "Game")">End Round</button>
 </div>
 
+<input type="hidden" id="pathList"  data-get-First-Deal="@Url.Action("GetFirstDeal","Game")" 
+                                    data-new-Round="@Url.Action("NewRound","Game")" 
+                                    data-get-Card="@Url.Action("GetCard","Game")" 
+                                    data-bot-And-Dealer-Logic="@Url.Action("BotAnbdDealerLogic", "Game")"
+                                    data-find-Winner="@Url.Action("FindWinner", "Game")">
 
 <script src="~/Scripts/GameScript.js"></script>
 <script>
     var model = @Html.Raw(Json.Encode(Model));
-    var testPath = "@Url.Action("GetFirstDeal", "Game")"; 
-    var singleTestPath = "@Url.Action("GetCard", "Game")";
-    var botTestPath = "@Url.Action("BotLogic","Game")";
-    var pathTestTest = "@Url.Action("FindWinner", "Game")"
 </script>

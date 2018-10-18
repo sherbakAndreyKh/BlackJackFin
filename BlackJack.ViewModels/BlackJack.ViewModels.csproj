@@ -46,9 +46,9 @@
     <Compile Include="RequestModel\RequestGameStartOptionsGameView.cs" />
     <Compile Include="DetailsRoundHistoryView.cs" />
     <Compile Include="GameListHistoryView.cs" />
-    <Compile Include="NewRoundGameView.cs" />
     <Compile Include="RequestModel\RequestGetCardGameView.cs" />
     <Compile Include="RequestModel\RequestGetFirstDealGameView.cs" />
+    <Compile Include="RequestModel\RequestNewRoundGameView.cs" />
     <Compile Include="ResponseModel\ResponseBotLogicGameView.cs" />
     <Compile Include="ResponseModel\ResponseFindWinnerGameView.cs" />
     <Compile Include="ResponseModel\ResponseGameStartOptionsGameView.cs" />
@@ -58,6 +58,7 @@
     <Compile Include="IndexHistoryView.cs" />
     <Compile Include="ResponseModel\ResponseGetCardGameView.cs" />
     <Compile Include="ResponseModel\ResponseGetFirstDealGameView.cs" />
+    <Compile Include="ResponseModel\ResponseNewRoundGameView.cs" />
     <Compile Include="RoundListHistoryView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

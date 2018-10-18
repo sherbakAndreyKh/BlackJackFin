@@ -1,4 +1,4 @@
-﻿@model BlackJack.ViewModels.NewRoundGameView
+﻿@model BlackJack.ViewModels.ResponseModel.ResponseNewRoundGameView
 
 
 @{
@@ -8,15 +8,14 @@
 <div class="col-md-6"><h2 class="text-center">Game: @Model.Game.GameNumber</h2></div>
 <div class="col-md-6"><h3 class="text-center">Round: @Model.Round.RoundNumber</h3></div>
 
-
 <div class="field text-center">
-    <img src="~/Content/Img/bj.jpg" style="width:75%;height:70%;" alt="Alternate Text" />
+    <img src="~/Content/Img/bj.jpg" alt="Alternate Text" />
 </div>
 
 
 <div class="player col-md-2 Participant">
     <p class="Hand"></p>
-    <p>Score: <span class="Score">@Model.Player.PlayerRoundHand.SingleOrDefault().Score</span></p>
+    <p>Score: <span class="Score">@Model.Player.PlayerRoundHand.Score</span></p>
     <h4>@Model.Player.Name</h4>
 </div>
 
@@ -25,30 +24,28 @@
 {
     <div class="player col-md-2 Participant">
         <p class="Hand"></p>
-        <p>Score: <span class="Score">@Model.Player.PlayerRoundHand.SingleOrDefault().Score</span></p>
+        <p>Score: <span class="Score">@bot.PlayerRoundHand.Score</span></p>
         <h4>@bot.Name</h4>
     </div>
 }
 
 <div class="dealer Participant text-center">
     <h4>@Model.Dealer.Name</h4>
-    <p>Score: <span class="Score">@Model.Player.PlayerRoundHand.SingleOrDefault().Score</span></p>
+    <p>Score: <span class="Score">@Model.Dealer.PlayerRoundHand.Score</span></p>
     <p class="Hand"></p>
 </div>
-
 <div class="Buttons text-right">
-    <button id="First">FirstDeal</button>
     <button id="Take">TakeOne</button>
     <button id="Stop">Stop</button>
-    <button id="History">End Round</button>
 </div>
+
+<input type="hidden" id="pathList" data-get-First-Deal="@Url.Action("GetFirstDeal","Game")"
+                                   data-new-Round="@Url.Action("NewRound","Game")"
+                                   data-get-Card="@Url.Action("GetCard","Game")"
+                                   data-bot-And-Dealer-Logic="@Url.Action("BotAnbdDealerLogic", "Game")"
+                                   data-find-Winner="@Url.Action("FindWinner", "Game")">
 
 <script src="~/Scripts/GameScript.js"></script>
 <script>
-
-    var model = JSON.parse('@Html.Raw(Json.Encode(Model))');
-
-    var path = '@Url.Action("NewRound", "Game")';
-    var pathEnd = '@Url.Action("EndGame", "Game")';
-
+    var model = @Html.Raw(Json.Encode(Model));
 </script>

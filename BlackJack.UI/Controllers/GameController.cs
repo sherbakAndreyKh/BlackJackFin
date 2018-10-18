@@ -44,7 +44,7 @@ namespace BlackJack.UI.Controllers
             return Json(model);
         }
         [HttpPost]
-        public async Task<JsonResult> BotLogic(RequestBotLogicGameView item)
+        public async Task<JsonResult> BotAnbdDealerLogic(RequestBotLogicGameView item)
         {
             ResponseBotLogicGameView model = await _gameService.BotLogic(item);
             return Json(model);
@@ -56,24 +56,10 @@ namespace BlackJack.UI.Controllers
             return Json(model);
         }
 
-        //public async Task<ActionResult> NewRound(RequestGameProcessGameView item)
-        //{
-        //    await _gameService.SaveChanges(item);
-        //    NewRoundGameView roundData = await _gameService.NewRound(item);
-        //    return View(roundData);
-        //}
-
-        //public async Task<ActionResult> EndGame(RequestGameProcessGameView item)
-        //{
-        //    await _gameService.SaveChanges(item);
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public async Task<JsonResult> FindWinner(RequestFindWinnerGameView item)
-        //{
-        //    ResponseFindWinnerGameView model = await _gameService
-        //}
-
+        public async Task<ActionResult> NewRound(RequestNewRoundGameView item)
+        {
+            ResponseNewRoundGameView model = await _gameService.NewRound(item);
+            return View(model);
+        }
     }
 }
