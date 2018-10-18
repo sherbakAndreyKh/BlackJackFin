@@ -55,7 +55,6 @@ namespace BlackJack.BusinessLogic.Services
         public async Task<RoundListHistoryView> GetRoundsByGameId(int gameId)
         {
             List<Round> rounds = await _roundRepository.GetAll();
-           
             Game game = await _gameRepository.Get(gameId);
             var data = new RoundListHistoryView();
             data.PlayersAmount = game.PlayersAmount;

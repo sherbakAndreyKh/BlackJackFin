@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using BlackJack.BusinessLogic.Exceptions;
 using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.ViewModels;
 using BlackJack.ViewModels.RequestModel;
@@ -49,8 +51,17 @@ namespace BlackJack.UI.Controllers
         [HttpPost]
         public async Task<JsonResult> GetCard(RequestGetCardGameView item)
         {
-            ResponseGetCardGameView model = await _gameService.GetCard(item);
-            return Json(model);
+            try
+            {
+                ResponseGetCardGameView model = await _gameService.GetCard(item);
+                return Json(model);
+            }
+            catch (IncorrectDataException ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                var model = ex.Message;
+                return Json(model);
+            }
         }
         [HttpPost]
         public async Task<JsonResult> BotAnbdDealerLogic(RequestBotLogicGameView item)

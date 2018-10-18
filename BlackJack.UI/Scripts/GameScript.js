@@ -27,8 +27,11 @@ $(function () {
 $('#Take').on('click', function OneCard() {
     var Hand = model.Player.PlayerRoundHand;
 
-    $.post(getOneCardPath, { 'Round': model.Round, 'Hand': Hand })
-        .done(function (data) {
+    $.ajax({
+        type: 'POST',
+        url: getOneCardPath,
+        data: { 'Round': model.Round, 'Hand': Hand },
+        success: function (data) {
             var card = "";
             for (var i = 0; i < data.Hand.Hand.length; i++) {
                 var handI = data.Hand.Hand[i];
@@ -47,7 +50,12 @@ $('#Take').on('click', function OneCard() {
                 alert(model.Player.Name + " Have 21");
                 UseLogicOnBotAndDealer();
             }
-        });
+        },
+        error: function (data) {
+            alert(data.responseJSON);
+        }
+
+    });        
 });
 
 function UseLogicOnBotAndDealer() {

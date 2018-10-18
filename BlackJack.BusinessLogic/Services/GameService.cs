@@ -44,10 +44,7 @@ namespace BlackJack.BusinessLogic.Services
         public async Task<ResponseGameStartOptionsGameView> GetPlayersStartOptions()
         {
             var result = new ResponseGameStartOptionsGameView();
-
             result.Players = _maping.MapPlayerToPlayerGameStartOptionsGameBiewItem(await _playerRepository.GetAllPlayersByRole(Role.Player));
-
-
             return result;
         }
 
@@ -69,7 +66,6 @@ namespace BlackJack.BusinessLogic.Services
             List<PlayerRoundHand> playerRoundHandList = CreatePlayerRoundHands(playerList, roundId);
             await _playerRoundHandRepository.CreateManyAsync(playerRoundHandList);
             playerRoundHandList = await _playerRoundHandRepository.GetPLayerRoundHandListByRoundId(roundId);
-
 
             var gameViewModel = new ResponseGameProcessGameView();
             gameViewModel.Game = _maping.MapGameToGameGameProcessGameViewItem(await _gameRepository.Get(gameId));
@@ -126,20 +122,21 @@ namespace BlackJack.BusinessLogic.Services
         public async Task<ResponseGetCardGameView> GetCard(RequestGetCardGameView model)
         {
             var result = new ResponseGetCardGameView();
-            if (await HandValidation(model.Hand.PlayerId))
+            if (!(await HandValidation(model.Hand.PlayerId)))
             {
-                List<Card> cards = await _cardRepository.GetAll();
-                Random random = new Random((int)DateTime.Now.Ticks);
-                Stack<Card> mixCards = new Stack<Card>(cards.OrderBy(x => random.Next()));
-                PlayerRoundHand playerRoundHand = await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(model.Hand.PlayerId, model.Round.Id);
-                Card card = GetCard(mixCards);
-                playerRoundHand.Score += card.Value;
-                await SaveHands(card, playerRoundHand.Id);
-                await _playerRoundHandRepository.Update(playerRoundHand);
-
-                result.Hand = _maping.MapPlayerRoundHandToPlayerRoundHandGetCardGameViewItem(playerRoundHand, await _cardRepository.GetPlayerRoundHandCards(model.Round.Id));
-                return result;
+                throw new IncorrectDataException("Your model is incorrect");
             }
+
+            List<Card> cards = await _cardRepository.GetAll();
+            Random random = new Random((int)DateTime.Now.Ticks);
+            Stack<Card> mixCards = new Stack<Card>(cards.OrderBy(x => random.Next()));
+            PlayerRoundHand playerRoundHand = await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(model.Hand.PlayerId, model.Round.Id);
+            Card card = GetCard(mixCards);
+            playerRoundHand.Score += card.Value;
+            await SaveHands(card, playerRoundHand.Id);
+            await _playerRoundHandRepository.Update(playerRoundHand);
+
+            result.Hand = _maping.MapPlayerRoundHandToPlayerRoundHandGetCardGameViewItem(playerRoundHand, await _cardRepository.GetPlayerRoundHandCards(model.Round.Id));
             return result;
         }
 

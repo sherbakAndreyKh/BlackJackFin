@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\IncorectData.cs" />
+    <Compile Include="Exceptions\IncorrectDataException.cs" />
     <Compile Include="Interfaces\IGameService.cs" />
     <Compile Include="Interfaces\IHistoryService.cs" />
     <Compile Include="Maping\GameServiceMapProvider.cs" />
