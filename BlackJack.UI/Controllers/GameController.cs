@@ -13,6 +13,7 @@ namespace BlackJack.UI.Controllers
     public class GameController : Controller
     {
         IGameService _gameService;
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HomeController));  //Declaring Log4Net 
 
         public GameController(IGameService gameStartService)
         {
@@ -24,28 +25,48 @@ namespace BlackJack.UI.Controllers
         {
             try
             {
-            ResponseGameStartOptionsGameView model =  await _gameService.GetPlayersStartOptions();
-            return View(model);
+                ResponseGameStartOptionsGameView model = await _gameService.GetPlayersStartOptions();
+                return View(model);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                logger.Error(ex.ToString());
+                ResponseGameStartOptionsGameView model = await _gameService.GetPlayersStartOptions();
+                return View(model);
             }
         }
 
         [HttpPost]
         public async Task<ActionResult> GameStartOptions(RequestGameStartOptionsGameView item)
         {
-            ResponseGameProcessGameView startData = await _gameService.StartGame(item);
-
-            return View("GameProcess",  startData);
+            try
+            {
+                ResponseGameProcessGameView startData = await _gameService.StartGame(item);
+                return View("GameProcess", startData);
+            }
+            catch(Exception ex)
+            {
+                logger.Error(ex.ToString());
+                ResponseGameProcessGameView startData = await _gameService.StartGame(item);
+                return View("GameProcess", startData);
+            }
         }
 
         [HttpPost]
         public async Task<JsonResult> GetFirstDeal(RequestGetFirstDealGameView item)
         {
-            ResponseGetFirstDealGameView model = await _gameService.GetFirstDeal(item);
-            return Json(model);
+            try
+            {
+                ResponseGetFirstDealGameView model = await _gameService.GetFirstDeal(item);
+                return Json(model);
+            }
+            catch(Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                string model = ex.Message;
+                logger.Error(ex.ToString());
+                return Json(model);
+            }
         }
 
         [HttpPost]
@@ -56,35 +77,65 @@ namespace BlackJack.UI.Controllers
                 ResponseGetCardGameView model = await _gameService.GetCard(item);
                 return Json(model);
             }
-            catch (IncorrectDataException ex)
+            catch (WrongDataException ex)
             {
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                var model = ex.Message;
+                string model = ex.Message;
+                logger.Error(ex.ToString());
                 return Json(model);
             }
             catch (Exception ex)
             {
-                Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                var model = ex.Message;
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                string model = ex.Message;
+                logger.Error(ex.ToString());
                 return Json(model);
             }
         }
         [HttpPost]
         public async Task<JsonResult> BotAnbdDealerLogic(RequestBotLogicGameView item)
         {
+            try { 
             ResponseBotLogicGameView model = await _gameService.BotLogic(item);
             return Json(model);
+            }
+            catch(Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                string model = ex.Message;
+                logger.Error(ex.ToString());
+                return Json(model);
+            }
         }
         [HttpPost]
         public async Task<JsonResult> FindWinner(RequestFindWinnerGameView item)
         {
-            ResponseFindWinnerGameView model = await _gameService.FindWinner(item);
-            return Json(model);
+            try
+            {
+                ResponseFindWinnerGameView model = await _gameService.FindWinner(item);
+                return Json(model);
+            }
+            catch(Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                string model = ex.Message;
+                logger.Error(ex.ToString());
+                return Json(model);
+            }
         }
         public async Task<ActionResult> NewRound(RequestNewRoundGameView item)
         {
-            ResponseNewRoundGameView model = await _gameService.NewRound(item);
-            return View(model);
+            try
+            {
+                ResponseNewRoundGameView model = await _gameService.NewRound(item);
+                return View(model);
+            }
+            catch(Exception ex)
+            {
+                logger.Error(ex.ToString());
+                ResponseNewRoundGameView model = await _gameService.NewRound(item);
+                return View(model);
+            }
         }
     }
 }

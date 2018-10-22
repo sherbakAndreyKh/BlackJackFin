@@ -124,7 +124,7 @@ namespace BlackJack.BusinessLogic.Services
             var result = new ResponseGetCardGameView();
             if (!(await HandValidation(model.Hand.PlayerId)))
             {
-                throw new IncorrectDataException("Your model is incorrect");
+                throw new WrongDataException("Your Data is incorrect");
             }
 
             List<Card> cards = await _cardRepository.GetAll();
@@ -142,6 +142,7 @@ namespace BlackJack.BusinessLogic.Services
 
         public async Task<ResponseBotLogicGameView> BotLogic(RequestBotLogicGameView model)
         {
+
             List<Card> cards = await _cardRepository.GetAll();
             Random random = new Random((int)DateTime.Now.Ticks);
             PlayerRoundHand playerRoundHand = await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(model.Hand.PlayerId, model.Round.Id);
@@ -209,7 +210,7 @@ namespace BlackJack.BusinessLogic.Services
         private async Task<bool> HandValidation(long playerId)
         {
             Player player = await _playerRepository.Get(playerId);
-            if (player.Role == Role.Player)
+            if (player.Role == Role.Player )
             {
                 return true;
             }

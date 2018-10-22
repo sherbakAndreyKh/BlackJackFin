@@ -134,3 +134,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Z.Dapper.Plus.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccess.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccess.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccess.dll.config
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\log4net.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\log4net.xml

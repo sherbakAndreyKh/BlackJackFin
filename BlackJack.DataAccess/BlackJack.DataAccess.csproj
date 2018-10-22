@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201810081013457_add PlayerRoundHandsCard.Designer.cs">
       <DependentUpon>201810081013457_add PlayerRoundHandsCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810220945128_AddLog.cs" />
+    <Compile Include="Migrations\201810220945128_AddLog.Designer.cs">
+      <DependentUpon>201810220945128_AddLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -105,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810081013457_add PlayerRoundHandsCard.resx">
       <DependentUpon>201810081013457_add PlayerRoundHandsCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810220945128_AddLog.resx">
+      <DependentUpon>201810220945128_AddLog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
