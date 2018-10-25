@@ -125,8 +125,6 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.Integration.Owin.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.Integration.Owin.xml
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.Integration.Mvc.dll
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.Integration.Mvc.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Dapper.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Dapper.xml
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Z.Dapper.Plus.dll
@@ -136,3 +134,11 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAcces
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\BlackJack.DataAccess.dll.config
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\log4net.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\log4net.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\System.Web.Http.WebHost.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\System.Web.Http.WebHost.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.Integration.WebApi.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.Integration.WebApi.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.Integration.WebApi.Owin.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\System.Web.Http.Owin.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\Autofac.Integration.WebApi.Owin.xml
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bin\System.Web.Http.Owin.xml

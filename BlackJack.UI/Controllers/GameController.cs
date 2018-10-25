@@ -1,140 +1,147 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using System.Web.Http;
+using System.Web.Http.Results;
 using BlackJack.BusinessLogic.Exceptions;
 using BlackJack.BusinessLogic.Interfaces;
-using BlackJack.ViewModels;
 using BlackJack.ViewModels.RequestModel;
 using BlackJack.ViewModels.ResponseModel;
 
 namespace BlackJack.UI.Controllers
 {
-    public class GameController : Controller
+    [RoutePrefix("Game")]
+    public class GameController : ApiController
     {
         IGameService _gameService;
-        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HomeController));  //Declaring Log4Net 
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HomeController));
 
         public GameController(IGameService gameStartService)
         {
             _gameService = gameStartService;
         }
 
+        [Route("GameStartOptions")]
         [HttpGet]
-        public async Task<ActionResult> GameStartOptions()
+        public async Task<ResponseGameStartOptionsGameView> GameStartOptions()
         {
             try
             {
                 ResponseGameStartOptionsGameView model = await _gameService.GetPlayersStartOptions();
-                return View(model);
+                return model;
             }
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
                 ResponseGameStartOptionsGameView model = await _gameService.GetPlayersStartOptions();
-                return View(model);
+                return model;
             }
         }
-
         [HttpPost]
-        public async Task<ActionResult> GameStartOptions(RequestGameStartOptionsGameView item)
+        [Route("GameStartOptions")]
+        public async Task<ResponseGameProcessGameView> GameStartOptions(RequestGameStartOptionsGameView item)
         {
             try
             {
                 ResponseGameProcessGameView startData = await _gameService.StartGame(item);
-                return View("GameProcess", startData);
+                return startData;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Error(ex.ToString());
                 ResponseGameProcessGameView startData = await _gameService.StartGame(item);
-                return View("GameProcess", startData);
+                return startData;
             }
         }
 
         [HttpPost]
-        public async Task<JsonResult> GetFirstDeal(RequestGetFirstDealGameView item)
+        [Route("GetFirstDeal")]
+        public async Task<ResponseGetFirstDealGameView> GetFirstDeal(RequestGetFirstDealGameView item)
         {
             try
             {
                 ResponseGetFirstDealGameView model = await _gameService.GetFirstDeal(item);
-                return Json(model);
+                return model;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                string model = ex.Message;
                 logger.Error(ex.ToString());
-                return Json(model);
+                ResponseGetFirstDealGameView model = await _gameService.GetFirstDeal(item);
+                return model;
             }
         }
 
         [HttpPost]
-        public async Task<JsonResult> GetCard(RequestGetCardGameView item)
+        [Route("GetCard")]
+        public async Task<ResponseGetCardGameView> GetCard(RequestGetCardGameView item)
         {
             try
             {
                 ResponseGetCardGameView model = await _gameService.GetCard(item);
-                return Json(model);
+                return model;
             }
             catch (WrongDataException ex)
             {
-                Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                string model = ex.Message;
                 logger.Error(ex.ToString());
-                return Json(model);
+                ResponseGetCardGameView model = await _gameService.GetCard(item);
+                return model;
+               
             }
             catch (Exception ex)
             {
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                string model = ex.Message;
                 logger.Error(ex.ToString());
-                return Json(model);
+                ResponseGetCardGameView model = await _gameService.GetCard(item);
+                return model;
+              
             }
         }
         [HttpPost]
-        public async Task<JsonResult> BotAnbdDealerLogic(RequestBotLogicGameView item)
+        [Route("BotAndDealerLogic")]
+        public async Task<ResponseBotLogicGameView> BotAndDealerLogic(RequestBotLogicGameView item)
         {
-            try { 
-            ResponseBotLogicGameView model = await _gameService.BotLogic(item);
-            return Json(model);
-            }
-            catch(Exception ex)
+            try
             {
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                string model = ex.Message;
+                ResponseBotLogicGameView model = await _gameService.BotLogic(item);
+                return model;
+            }
+            catch (Exception ex)
+            {
                 logger.Error(ex.ToString());
-                return Json(model);
+                ResponseBotLogicGameView model = await _gameService.BotLogic(item);
+                return model;
             }
         }
         [HttpPost]
-        public async Task<JsonResult> FindWinner(RequestFindWinnerGameView item)
+        [Route("FindWinner")]
+        public async Task<ResponseFindWinnerGameView> FindWinner(RequestFindWinnerGameView item)
         {
             try
             {
                 ResponseFindWinnerGameView model = await _gameService.FindWinner(item);
-                return Json(model);
+                return model;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                string model = ex.Message;
                 logger.Error(ex.ToString());
-                return Json(model);
+                ResponseFindWinnerGameView model = await _gameService.FindWinner(item);
+                return model;
+                
             }
         }
-        public async Task<ActionResult> NewRound(RequestNewRoundGameView item)
+        [HttpPost]
+        [Route("NewRound")]
+        public async Task<ResponseNewRoundGameView> NewRound(RequestNewRoundGameView item)
         {
             try
             {
                 ResponseNewRoundGameView model = await _gameService.NewRound(item);
-                return View(model);
+                return model;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Error(ex.ToString());
                 ResponseNewRoundGameView model = await _gameService.NewRound(item);
-                return View(model);
+                return model;
             }
         }
     }

@@ -1,79 +1,84 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using System.Web.Http;
 using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.ViewModels;
 
 namespace BlackJack.UI.Controllers
 {
-    public class HistoryController : Controller
+    [RoutePrefix("History")]
+    public class HistoryController : ApiController
     {
         private IHistoryService _historyService;
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HomeController));  //Declaring Log4Net 
-
 
         public HistoryController(IHistoryService historyService)
         {
             _historyService = historyService;
         }
 
-        public async Task<ActionResult> Index()
+        [HttpGet]
+        [Route("Index")]
+        public async Task<IndexHistoryView> Index()
         {
             try
             {
                 IndexHistoryView model = await _historyService.GetAllPlayers();
-                return View(model);
+                return model;
             }
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
                 IndexHistoryView model = await _historyService.GetAllPlayers();
-                return View(model);
+                return model;
             }
         }
-
-        public async Task<ActionResult> GetGamesByPlayerId(int playerId)
+        [HttpGet]
+        [Route("GetGames/{playerId}")]
+        public async Task<GameListHistoryView> GetGamesByPlayerId(int playerId)
         {
             try
             {
                 GameListHistoryView model = await _historyService.GetGamesByPlayerId(playerId);
-                return View(model);
+                return model;
             }
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
                 GameListHistoryView model = await _historyService.GetGamesByPlayerId(playerId);
-                return View(model);
+                return model;
             }
         }
-
-        public async Task<ActionResult> GetRoundsByGameId(int gameId)
+        [HttpGet]
+        [Route("GetRounds/{gameId}")]
+        public async Task<RoundListHistoryView> GetRoundsByGameId(int gameId)
         {
             try
             {
                 RoundListHistoryView model = await _historyService.GetRoundsByGameId(gameId);
-                return View(model);
+                return model;
             }
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
                 RoundListHistoryView model = await _historyService.GetRoundsByGameId(gameId);
-                return View(model);
+                return model;
             }
         }
-
-        public async Task<ActionResult> GetRoundsDetailsByRoundId(int roundId)
+        [HttpGet]
+        [Route("GetRoundsDetail/{roundId}")]
+        public async Task<DetailsRoundHistoryView> GetRoundsDetailsByRoundId(int roundId)
         {
             try
             {
                 DetailsRoundHistoryView model = await _historyService.GetRoundsDetailsByRoundId(roundId);
-                return View(model);
+                return model;
             }
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
                 DetailsRoundHistoryView model = await _historyService.GetRoundsDetailsByRoundId(roundId);
-                return View(model);
+                return model;
             }
         }
     }

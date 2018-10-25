@@ -5,7 +5,10 @@ using BlackJack.Dependency.Config;
 using Microsoft.Owin;
 using Owin;
 using Autofac;
-using Autofac.Integration.Mvc;
+using System.Web.Http;
+using BlackJack.UI.App_Start;
+using Autofac.Integration.WebApi;
+using System.Reflection;
 
 [assembly: OwinStartup(typeof(BlackJack.UI.Startup))]
 
@@ -16,17 +19,31 @@ namespace BlackJack.UI
         public void Configuration(IAppBuilder app)
         {
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             log4net.Config.XmlConfigurator.Configure();
 
-            var builder = new ContainerBuilder();
-            builder.RegisterControllers(typeof(Startup).Assembly).PropertiesAutowired();
-            builder.RegisterModule(new AutofacConfig("DefaultConnection"));
-            var container = builder.Build();
 
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));          
+
+
+            var builder = new ContainerBuilder();
+            var config = GlobalConfiguration.Configuration;
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterWebApiFilterProvider(config);
+            builder.RegisterWebApiModelBinderProvider();
+            builder.RegisterModule(new AutofacConfig("DefaultConnection"));
+
+          
+
+
+            var container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            app.UseAutofacMiddleware(container);
+            app.UseAutofacWebApi(config);
+            app.UseWebApi(config);
         } 
     }
 }
