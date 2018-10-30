@@ -20,7 +20,7 @@ namespace BlackJack.ViewModels
 
     public class PlayerRoundHandDetailsRoundHistoryViewItem
     {
-        public virtual List<CardDetailsRoundHistoryViewItem> Hand { get; set; }
+        public List<CardDetailsRoundHistoryViewItem> Hand { get; set; }
         public int Score { get; set; }
         public long PlayerId { get; set; }
         public PlayerDetailsRoundHistoryViewItem Player { get; set; }
