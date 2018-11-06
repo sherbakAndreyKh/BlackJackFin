@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { StartGameOptionsRoutingModule } from './start-game-options-routing.module';
 import { StartGameOptionsComponent } from './start-game-options.component';
-import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule, AppRoutingModule 
+    CommonModule,
+    StartGameOptionsRoutingModule
   ],
-    declarations: [StartGameOptionsComponent],
-    providers: []
+  declarations: [StartGameOptionsComponent]
 })
-export class StartGameOptionsModule {
-}
+export class StartGameOptionsModule { }
