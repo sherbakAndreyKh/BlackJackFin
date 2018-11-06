@@ -5,10 +5,11 @@ import { WelcomeScreenComponent } from './welcomeScreen/welcomeScreen.component'
 import { GameProcessComponent } from './game-process/game-process.component';
 
 
+
 const routes: Routes =[
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-    {path: 'welcome', component: WelcomeScreenComponent},
-    {path: 'startOptions', component: StartGameOptionsComponent},
+    { path: 'welcome', component: WelcomeScreenComponent },
+    { path: 'startOptions', component: StartGameOptionsComponent },
     {path: 'gameProcess', component: GameProcessComponent}, 
 ];
 

@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Results;
 using BlackJack.BusinessLogic.Exceptions;
 using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.ViewModels.RequestModel;
 using BlackJack.ViewModels.ResponseModel;
+using System.Web.Http.Cors;
 
 namespace BlackJack.UI.Controllers
 {
     [RoutePrefix("Game")]
+    [EnableCors(origins:"*",headers:"*",methods:"*")]
     public class GameController : ApiController
     {
         IGameService _gameService;
@@ -37,8 +37,8 @@ namespace BlackJack.UI.Controllers
                 return model;
             }
         }
-        [HttpPost]
         [Route("GameStartOptions")]
+        [HttpPost]
         public async Task<ResponseGameProcessGameView> GameStartOptions(RequestGameStartOptionsGameView item)
         {
             try
