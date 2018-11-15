@@ -15,12 +15,12 @@ namespace BlackJack.ViewModels.RequestModel
     public class PlayerRoundHandGetCardGameViewItem
     {
         public long Id { get; set; }
-        public List<CardGetFirstDealGameViewItem> Hand { get; set; }
+        public List<CardGetCardGameViewItem> Hand { get; set; }
         public int Score { get; set; }
         public long PlayerId { get; set; }
         public PlayerRoundHandGetCardGameViewItem()
         {
-            Hand = new List<CardGetFirstDealGameViewItem>();
+            Hand = new List<CardGetCardGameViewItem>();
         }
     }
 

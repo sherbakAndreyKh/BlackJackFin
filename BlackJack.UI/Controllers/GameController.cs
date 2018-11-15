@@ -37,6 +37,7 @@ namespace BlackJack.UI.Controllers
                 return model;
             }
         }
+
         [Route("GameStartOptions")]
         [HttpPost]
         public async Task<ResponseGameProcessGameView> GameStartOptions(RequestGameStartOptionsGameView item)
@@ -95,6 +96,7 @@ namespace BlackJack.UI.Controllers
               
             }
         }
+
         [HttpPost]
         [Route("BotAndDealerLogic")]
         public async Task<ResponseBotLogicGameView> BotAndDealerLogic(RequestBotLogicGameView item)
@@ -111,6 +113,7 @@ namespace BlackJack.UI.Controllers
                 return model;
             }
         }
+
         [HttpPost]
         [Route("FindWinner")]
         public async Task<ResponseFindWinnerGameView> FindWinner(RequestFindWinnerGameView item)
@@ -128,6 +131,7 @@ namespace BlackJack.UI.Controllers
                 
             }
         }
+
         [HttpPost]
         [Route("NewRound")]
         public async Task<ResponseNewRoundGameView> NewRound(RequestNewRoundGameView item)

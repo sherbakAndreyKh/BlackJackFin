@@ -218,6 +218,41 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="black-jack-ui\.editorconfig" />
+    <Content Include="black-jack-ui\.gitignore" />
+    <Content Include="black-jack-ui\angular.json" />
+    <Content Include="black-jack-ui\e2e\protractor.conf.js" />
+    <Content Include="black-jack-ui\e2e\tsconfig.e2e.json" />
+    <Content Include="black-jack-ui\package-lock.json" />
+    <Content Include="black-jack-ui\package.json" />
+    <Content Include="black-jack-ui\README.md" />
+    <Content Include="black-jack-ui\src\app\app.component.css" />
+    <Content Include="black-jack-ui\src\app\app.component.html" />
+    <Content Include="black-jack-ui\src\app\test\test.component.css" />
+    <Content Include="black-jack-ui\src\app\test\test.component.html" />
+    <Content Include="black-jack-ui\src\assets\.gitkeep" />
+    <Content Include="black-jack-ui\src\browserslist" />
+    <Content Include="black-jack-ui\src\favicon.ico" />
+    <Content Include="black-jack-ui\src\index.html" />
+    <Content Include="black-jack-ui\src\karma.conf.js" />
+    <Content Include="black-jack-ui\src\styles.css" />
+    <Content Include="black-jack-ui\src\tsconfig.app.json" />
+    <Content Include="black-jack-ui\src\tsconfig.spec.json" />
+    <Content Include="black-jack-ui\src\tslint.json" />
+    <Content Include="black-jack-ui\tsconfig.json" />
+    <Content Include="black-jack-ui\tslint.json" />
+    <Content Include="bundles\common.js" />
+    <Content Include="bundles\favicon.ico" />
+    <Content Include="bundles\game-process-game-process-module.js" />
+    <Content Include="bundles\history-player-list-history-player-list-module.js" />
+    <Content Include="bundles\index.html" />
+    <Content Include="bundles\main.js" />
+    <Content Include="bundles\polyfills.js" />
+    <Content Include="bundles\runtime.js" />
+    <Content Include="bundles\start-game-options-start-game-options-module.js" />
+    <Content Include="bundles\styles.js" />
+    <Content Include="bundles\vendor.js" />
+    <Content Include="bundles\welcome-screen-welcome-screen-module.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -232,9 +267,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="libman.json" />
-    <Content Include="package.json" />
-    <Content Include="angular.json" />
-    <Content Include="package-lock.json" />
+    <Content Include="bundles\common.js.map" />
+    <Content Include="bundles\game-process-game-process-module.js.map" />
+    <Content Include="bundles\history-player-list-history-player-list-module.js.map" />
+    <Content Include="bundles\main.js.map" />
+    <Content Include="bundles\polyfills.js.map" />
+    <Content Include="bundles\runtime.js.map" />
+    <Content Include="bundles\start-game-options-start-game-options-module.js.map" />
+    <Content Include="bundles\styles.js.map" />
+    <Content Include="bundles\vendor.js.map" />
+    <Content Include="bundles\welcome-screen-welcome-screen-module.js.map" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\GameScript.js" />
@@ -249,18 +291,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\RoundDetailsScript.js" />
-    <Content Include="src\app\app.component.css" />
-    <Content Include="src\app\app.component.html" />
-    <Content Include="src\app\game-process\game-process.component.css" />
-    <Content Include="src\app\game-process\game-process.component.html" />
-    <Content Include="src\app\start-game-options\start-game-options.component.css" />
-    <Content Include="src\app\start-game-options\start-game-options.component.html" />
-    <Content Include="src\app\welcomeScreen\welcomeScreen.component.css" />
-    <Content Include="src\app\welcomeScreen\welcomeScreen.component.html" />
-    <Content Include="src\favicon.ico" />
-    <Content Include="src\index.html" />
-    <Content Include="src\karma.conf.js" />
-    <Content Include="src\styles.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -283,17 +313,12 @@
     <Content Include="Views\Game\NewRound.cshtml" />
     <Content Include="Views\History\GetGamesByPlayerId.cshtml" />
     <Content Include="Views\TestError.cshtml" />
-    <Content Include="src\assets\.gitkeep" />
-    <Content Include="src\browserslist" />
-    <Content Include="src\tsconfig.app.json" />
-    <Content Include="src\tsconfig.spec.json" />
-    <Content Include="src\tslint.json" />
-    <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\libs\" />
+    <Folder Include="Scripts\ng2\" />
     <Folder Include="Scripts\out-tsc\" />
   </ItemGroup>
   <ItemGroup>
@@ -330,36 +355,23 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\app\app-routing.module.ts" />
-    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\app.component.ts" />
-    <TypeScriptCompile Include="src\app\app.module.ts" />
-    <TypeScriptCompile Include="src\app\game-process\game-process.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\game-process\game-process.component.ts" />
-    <TypeScriptCompile Include="src\app\game-process\game-process.module.spec.ts" />
-    <TypeScriptCompile Include="src\app\game-process\game-process.module.ts" />
-    <TypeScriptCompile Include="src\app\start-game-options\start-game-options.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\start-game-options\start-game-options.component.ts" />
-    <TypeScriptCompile Include="src\app\start-game-options\start-game-options.module.spec.ts" />
-    <TypeScriptCompile Include="src\app\start-game-options\start-game-options.module.ts" />
-    <TypeScriptCompile Include="src\app\welcomeScreen\welcomeScreen.component.ts" />
-    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
-    <TypeScriptCompile Include="src\environments\environment.ts" />
-    <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="src\models\details-round-history.model.ts" />
-    <TypeScriptCompile Include="src\models\game-list-history.model.ts" />
-    <TypeScriptCompile Include="src\models\index-history.model.ts" />
-    <TypeScriptCompile Include="src\models\request-game-start-options-game.model.ts" />
-    <TypeScriptCompile Include="src\models\responseModels\response-bot-logic-game.model.ts" />
-    <TypeScriptCompile Include="src\models\responseModels\response-find-winner-game.model.ts" />
-    <TypeScriptCompile Include="src\models\responseModels\response-game-process-game.model.ts" />
-    <TypeScriptCompile Include="src\models\responseModels\response-game-start-options-game.model.ts" />
-    <TypeScriptCompile Include="src\models\responseModels\response-get-card-game.model.ts" />
-    <TypeScriptCompile Include="src\models\responseModels\response-get-first-deal-game.model.ts" />
-    <TypeScriptCompile Include="src\models\responseModels\response-new-round-game.model.ts" />
-    <TypeScriptCompile Include="src\models\round-list-history.model.ts" />
-    <TypeScriptCompile Include="src\polyfills.ts" />
-    <TypeScriptCompile Include="src\test.ts" />
+    <TypeScriptCompile Include="black-jack-ui\e2e\src\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="black-jack-ui\e2e\src\app.po.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\app-routing.module.spec.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\app.component.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\app.module.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\test\test-routing.module.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\test\test.component.spec.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\test\test.component.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\test\test.module.spec.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\app\test\test.module.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\environments\environment.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\main.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\polyfills.ts" />
+    <TypeScriptCompile Include="black-jack-ui\src\test.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -398,8 +410,12 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>ng build
-</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
