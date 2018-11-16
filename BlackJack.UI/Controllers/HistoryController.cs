@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using BlackJack.BusinessLogic.Interfaces;
 using BlackJack.ViewModels;
 
 namespace BlackJack.UI.Controllers
 {
     [RoutePrefix("History")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class HistoryController : ApiController
     {
         private IHistoryService _historyService;
-        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HomeController));  //Declaring Log4Net 
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HistoryController));
 
         public HistoryController(IHistoryService historyService)
         {

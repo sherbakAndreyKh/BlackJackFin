@@ -91,7 +91,11 @@ namespace BlackJack.BusinessLogic.Services
             var result = new ResponseNewRoundGameView();
             result.Game = _maping.MapGameToGameNewRoundGameViewItem(item.Game);
             result.Round = _maping.MapRoundToRoundNewRoundGameViewItem(await _roundRepository.Get(roundId));
-            result.Player = _maping.MapPlayerToPlayerNewRoundGameViewItem(playerList.Where(x => x.Role == (int)Role.Player).FirstOrDefault(), playerRoundHandList.Where(x => x.PlayerId == item.Player.Id).SingleOrDefault());
+            result.Player = _maping.MapPlayerToPlayerNewRoundGameViewItem(playerList
+                .Where(x => x.Role == (int)Role.Player)
+                .FirstOrDefault(),
+                playerRoundHandList.Where(x => x.PlayerId == item.Player.Id)
+                .SingleOrDefault());
             result.Dealer = _maping.MapPlayerToPlayerNewRoundGameViewItem(playerList.Where(x => x.Role == (int)Role.Dealer).FirstOrDefault(), playerRoundHandList.Where(x => x.PlayerId == item.Dealer.Id).SingleOrDefault());
             result.Bots = _maping.MapPlayerListToPlayerNewRoundGameViewItem(playerList.Where(x => x.Role == (int)Role.Bot).ToList(), playerRoundHandList);
             return result;

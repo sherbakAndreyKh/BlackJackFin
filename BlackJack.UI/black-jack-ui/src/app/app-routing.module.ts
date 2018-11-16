@@ -6,7 +6,8 @@ const routes:Routes =[
   {path: 'welcome', loadChildren: './welcome-screen/welcome-screen.module#WelcomeScreenModule'},
   {path: 'startOptions', loadChildren: './start-game-options/start-game-options.module#StartGameOptionsModule'},
   {path: 'gameProcess', loadChildren: './game-process/game-process.module#GameProcessModule'},
-  {path: 'history', loadChildren: './history-player-list/history-player-list.module#HistoryPlayerListModule'}
+  {path: 'history', loadChildren: './history-player-list/history-player-list.module#HistoryPlayerListModule'},
+  {path: 'getGames', loadChildren: './history-player-games-list/history-player-games-list.module#HistoryPlayerGamesListModule'}
 ]
 
 

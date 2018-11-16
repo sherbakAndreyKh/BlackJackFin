@@ -7,6 +7,8 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { GridModule } from '@progress/kendo-angular-grid';
+
 
 
 
@@ -22,7 +24,8 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
     DropDownsModule,
     BrowserAnimationsModule,
     DialogsModule,
-    ButtonsModule
+    ButtonsModule,
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

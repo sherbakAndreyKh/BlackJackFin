@@ -1,3 +1,12 @@
-<p>
-  history-player-list works!
-</p>
+<div class="container">
+<kendo-grid [data]="model?.Players">
+
+<kendo-grid-column  field="Name" title="Name" width="30"></kendo-grid-column>
+<kendo-grid-column field="GameAmount" title="Games" width="30"></kendo-grid-column>
+<kendo-grid-command-column title="Command" width="30">
+    <ng-template kendoGridCellTemplate>
+  <button routerLink="/getGames/{{Id}}">Details</button>
+  </ng-template>
+</kendo-grid-command-column>
+</kendo-grid>
+</div>

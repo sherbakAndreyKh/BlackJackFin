@@ -14,7 +14,7 @@ namespace BlackJack.UI.Controllers
     public class GameController : ApiController
     {
         IGameService _gameService;
-        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HomeController));
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(GameController));
 
         public GameController(IGameService gameStartService)
         {
