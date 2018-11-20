@@ -15,7 +15,7 @@ var HistoryPlayerListComponent = /** @class */ (function () {
     }
     HistoryPlayerListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.service.HttpGetPlayerList().subscribe(function (data) { return _this.model = data; });
+        this.service.httpGetPlayerList().subscribe(function (data) { return _this.model = data; });
     };
     HistoryPlayerListComponent.prototype.buttonClick = function (id) {
         debugger;

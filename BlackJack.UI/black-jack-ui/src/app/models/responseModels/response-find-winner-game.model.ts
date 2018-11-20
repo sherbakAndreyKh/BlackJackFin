@@ -1,8 +1,8 @@
-export class ResponseFindWinnerGameView{
+export class ResponseFindWinnerGameView {
     Round: RoundFindWinnerGameViewItem;
 }
 
-export class RoundFindWinnerGameViewItem{
+export class RoundFindWinnerGameViewItem {
     Id: number;
     Winner: string;
     WinnerScore: number;

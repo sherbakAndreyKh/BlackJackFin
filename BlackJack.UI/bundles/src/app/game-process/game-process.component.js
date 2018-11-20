@@ -13,12 +13,14 @@ import { HttpGameProcessService } from '../services/http-game-process.servise';
 import { RequestGetCardGameView } from '../models/requestModels/request-get-card-game-view';
 import { RequestGetFirstDealGameView } from '../models/requestModels/request-get-first-deal-game-view';
 import { RequestBotLogicGameView } from '../models/requestModels/request-bot-logic-game-view';
+import { RequestFindWinnerGameView } from '../models/requestModels/request-find-winner-game-view';
 var GameProcessComponent = /** @class */ (function () {
     function GameProcessComponent(service) {
         this.service = service;
         this.getCardRequest = new RequestGetCardGameView();
         this.getFirstDealRequest = new RequestGetFirstDealGameView();
         this.getBotAndDealerLogicRequest = new RequestBotLogicGameView();
+        this.findWinner = new RequestFindWinnerGameView();
     }
     GameProcessComponent.prototype.ngOnInit = function () {
     };
@@ -42,7 +44,27 @@ var GameProcessComponent = /** @class */ (function () {
     };
     GameProcessComponent.prototype.getBotAndDealerLogic = function (count) {
         var _this = this;
-        this.service.HttpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe(function (data) { return _this.model.Bots[count].PlayerRoundHand = data.Hand; });
+        this.service.HttpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe(function (data) { return _this.getHand(count).PlayerRoundHand = data.Hand; });
+    };
+    GameProcessComponent.prototype.addFindWinnerRequest = function () {
+        this.findWinner.DealerHand = this.model.Dealer.PlayerRoundHand;
+        this.findWinner.PlayerHand = this.model.Player.PlayerRoundHand;
+        return this.findWinner;
+    };
+    GameProcessComponent.prototype.getWinner = function () {
+        var _this = this;
+        debugger;
+        this.UseLogicOnBotAndDealer();
+        debugger;
+        this.service.HttpGetWinner(this.addFindWinnerRequest()).subscribe(function (data) { return _this.model.Round = data.Round; });
+    };
+    GameProcessComponent.prototype.getHand = function (count) {
+        if (count < this.model.Bots.length) {
+            return this.model.Bots[count];
+        }
+        if (count == this.model.Bots.length) {
+            return this.model.Dealer;
+        }
     };
     GameProcessComponent.prototype.UseLogicOnBotAndDealer = function () {
         for (var i = 0; i <= this.model.Bots.length; i++) {
@@ -60,9 +82,6 @@ var GameProcessComponent = /** @class */ (function () {
         this.getBotAndDealerLogicRequest.Round = this.model.Round;
         this.getBotAndDealerLogicRequest.Hand = hand;
         return this.getBotAndDealerLogicRequest;
-    };
-    GameProcessComponent.prototype.getWinner = function () {
-        this.UseLogicOnBotAndDealer();
     };
     GameProcessComponent.prototype.addFirstDealResponse = function (data) {
         debugger;

@@ -7,26 +7,27 @@ import { RequestBotLogicGameView } from '../models/requestModels/request-bot-log
 import { RequestFindWinnerGameView } from '../models/requestModels/request-find-winner-game-view';
 
 @Injectable()
-export class HttpGameProcessService{
-    
+export class HttpGameProcessService {
     urlGetCard = 'http://localhost:50219/Game/GetCard';
     urlGetFirstDeal = 'http://localhost:50219/Game/GetFirstDeal';
     urlGetBotLogic = 'http://localhost:50219/Game/BotAndDealerLogic';
     urlGetWinner = 'http://localhost:50219/Game/FindWinner';
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) { }
 
-    HttpGetCard(model: RequestGetCardGameView){     
-       return this.http.post(this.urlGetCard, model);
+    HttpGetCard(model: RequestGetCardGameView) {
+        return this.http.post(this.urlGetCard, model);
     }
 
-    HttpGetFirstDeal(model: RequestGetFirstDealGameView){
+    HttpGetFirstDeal(model: RequestGetFirstDealGameView) {
         return this.http.post(this.urlGetFirstDeal, model);
     }
-    HttpGetBotAndDealerLogic(model: RequestBotLogicGameView){
+
+    HttpGetBotAndDealerLogic(model: RequestBotLogicGameView) {
         return this.http.post(this.urlGetBotLogic, model);
     }
-    HttpGetWinner(model: RequestFindWinnerGameView){
+
+    HttpGetWinner(model: RequestFindWinnerGameView) {
         return this.http.post(this.urlGetWinner, model);
     }
 }

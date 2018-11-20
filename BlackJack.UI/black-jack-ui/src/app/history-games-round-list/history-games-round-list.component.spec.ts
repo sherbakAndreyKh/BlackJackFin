@@ -1,25 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HistoryGamesRoundListComponent } from './history-games-round-list.component';
 
 describe('HistoryGamesRoundListComponent', () => {
-  let component: HistoryGamesRoundListComponent;
-  let fixture: ComponentFixture<HistoryGamesRoundListComponent>;
+    let component: HistoryGamesRoundListComponent;
+    let fixture: ComponentFixture<HistoryGamesRoundListComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HistoryGamesRoundListComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [HistoryGamesRoundListComponent]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HistoryGamesRoundListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(HistoryGamesRoundListComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

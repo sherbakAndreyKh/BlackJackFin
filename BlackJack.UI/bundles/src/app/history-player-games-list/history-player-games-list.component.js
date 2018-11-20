@@ -11,11 +11,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { HttpHistoryPlayerGamesListService } from '../services/http-history-player-games-list.service';
 var HistoryPlayerGamesListComponent = /** @class */ (function () {
-    function HistoryPlayerGamesListComponent(route, http, location) {
+    function HistoryPlayerGamesListComponent(route, http, location, service) {
         this.route = route;
         this.http = http;
         this.location = location;
+        this.service = service;
     }
     HistoryPlayerGamesListComponent.prototype.ngOnInit = function () {
         this.getPlayerGames();
@@ -23,17 +25,19 @@ var HistoryPlayerGamesListComponent = /** @class */ (function () {
     HistoryPlayerGamesListComponent.prototype.getPlayerGames = function () {
         var _this = this;
         var id = +this.route.snapshot.paramMap.get('id');
-        this.http.get("http://localhost:50219/history/getgames/" + id).subscribe(function (data) { return _this.model = data; });
+        this.service.HttpGetPlayerGames(id).subscribe(function (data) { return _this.model = data; }, function (error) { return console.log(error); });
     };
     HistoryPlayerGamesListComponent = __decorate([
         Component({
             selector: 'app-history-player-games-list',
             templateUrl: './history-player-games-list.component.html',
-            styleUrls: ['./history-player-games-list.component.css']
+            styleUrls: ['./history-player-games-list.component.css'],
+            providers: [HttpHistoryPlayerGamesListService]
         }),
         __metadata("design:paramtypes", [ActivatedRoute,
             HttpClient,
-            Location])
+            Location,
+            HttpHistoryPlayerGamesListService])
     ], HistoryPlayerGamesListComponent);
     return HistoryPlayerGamesListComponent;
 }());

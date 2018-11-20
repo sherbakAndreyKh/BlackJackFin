@@ -20,7 +20,9 @@ var StartGameOptionsComponent = /** @class */ (function () {
     }
     StartGameOptionsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.service.HttpGet().subscribe(function (data) { return _this.listPlayersName = _this.getNames(data); });
+        this.service.HttpGet().subscribe(function (data) {
+            _this.listPlayersName = _this.getNames(data);
+        });
     };
     StartGameOptionsComponent.prototype.getNames = function (test) {
         var result = new Array();
@@ -39,7 +41,9 @@ var StartGameOptionsComponent = /** @class */ (function () {
         var _this = this;
         this.reqModel.PlayerName = playerName;
         this.reqModel.BotsAmount = botsAmount;
-        this.service.HttpPost(this.reqModel).subscribe(function (data) { return _this.responseModel = data; });
+        this.service.HttpPost(this.reqModel).subscribe(function (data) {
+            _this.responseModel = data;
+        });
         this.close();
     };
     StartGameOptionsComponent = __decorate([

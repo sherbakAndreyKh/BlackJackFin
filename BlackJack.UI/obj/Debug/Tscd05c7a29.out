@@ -32,12 +32,16 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\requestModels\request-get-first-deal-game-view.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\requestModels\request-bot-logic-game-view.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\requestModels\request-bot-logic-game-view.js.map
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\requestModels\request-find-winner-game-view.js
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\requestModels\request-find-winner-game-view.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\services\http-game-process.servise.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\services\http-game-process.servise.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-get-first-deal-game.model.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-get-first-deal-game.model.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-bot-logic-game.model.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-bot-logic-game.model.js.map
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-find-winner-game.model.js
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-find-winner-game.model.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\game-process\game-process.component.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\game-process\game-process.component.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\game-process\game-process-routing.module.js
@@ -52,6 +56,8 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\round-list-history.model.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\details-round-history.model.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\details-round-history.model.js.map
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\services\http-history-games-round-list.service.js
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\services\http-history-games-round-list.service.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\history-games-round-list\history-games-round-list.component.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\history-games-round-list\history-games-round-list.component.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\history-games-round-list\history-games-round-list-routing.module.js
@@ -66,6 +72,8 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\history
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\history-games-round-list\history-games-round-list.module.spec.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\game-list-history.model.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\game-list-history.model.js.map
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\services\http-history-player-games-list.service.js
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\services\http-history-player-games-list.service.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\history-player-games-list\history-player-games-list.component.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\history-player-games-list\history-player-games-list.component.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\history-player-games-list\history-player-games-list-routing.module.js
@@ -126,7 +134,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\welcome
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\welcome-screen\welcome-screen.module.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\welcome-screen\welcome-screen.module.spec.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\welcome-screen\welcome-screen.module.spec.js.map
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-find-winner-game.model.js
-C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-find-winner-game.model.js.map
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-new-round-game.model.js
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.UI\bundles\src\app\models\responseModels\response-new-round-game.model.js.map

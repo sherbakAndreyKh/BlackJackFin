@@ -1,13 +1,13 @@
 import { HistoryPlayerGamesListModule } from './history-player-games-list.module';
 
 describe('HistoryPlayerGamesListModule', () => {
-  let historyPlayerGamesListModule: HistoryPlayerGamesListModule;
+    let historyPlayerGamesListModule: HistoryPlayerGamesListModule;
 
-  beforeEach(() => {
-    historyPlayerGamesListModule = new HistoryPlayerGamesListModule();
-  });
+    beforeEach(() => {
+        historyPlayerGamesListModule = new HistoryPlayerGamesListModule();
+    });
 
-  it('should create an instance', () => {
-    expect(historyPlayerGamesListModule).toBeTruthy();
-  });
+    it('should create an instance', () => {
+        expect(historyPlayerGamesListModule).toBeTruthy();
+    });
 });

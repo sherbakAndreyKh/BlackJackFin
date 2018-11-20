@@ -7,12 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    WindowModule,
-    HttpClientModule,
-    ButtonsModule
-  ],
-  declarations: []
+    imports: [
+        CommonModule,
+        WindowModule,
+        HttpClientModule,
+        ButtonsModule
+    ],
+    declarations: []
 })
 export class HistoryRoundDetailsModalModule { }

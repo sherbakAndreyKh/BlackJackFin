@@ -1,4 +1,4 @@
-export class RequestGameStartOptionsView{
+export class RequestGameStartOptionsView {
     PlayerName: string;
     BotsAmount: number;
 }

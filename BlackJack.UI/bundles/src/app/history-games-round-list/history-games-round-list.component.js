@@ -11,11 +11,13 @@ import { Component, } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpClient } from "@angular/common/http";
+import { HttpHistoryGamesRoundListService } from "../services/http-history-games-round-list.service";
 var HistoryGamesRoundListComponent = /** @class */ (function () {
-    function HistoryGamesRoundListComponent(route, http, location) {
+    function HistoryGamesRoundListComponent(route, http, location, service) {
         this.route = route;
         this.http = http;
         this.location = location;
+        this.service = service;
         this.opened = false;
     }
     HistoryGamesRoundListComponent.prototype.ngOnInit = function () {
@@ -24,27 +26,29 @@ var HistoryGamesRoundListComponent = /** @class */ (function () {
     HistoryGamesRoundListComponent.prototype.getRoundGames = function () {
         var _this = this;
         var id = +this.route.snapshot.paramMap.get('id');
-        this.http.get("http://localhost:50219/history/getrounds/" + id).subscribe(function (data) { return _this.model = data; });
+        this.service.HttpGetRoundsWithId(id).subscribe(function (data) { return _this.model = data; });
     };
     HistoryGamesRoundListComponent.prototype.getModal = function (id) {
         var _this = this;
-        if (!this.opened) {
+        if (this.opened) {
             this.opened = false;
         }
         else {
             this.opened = true;
-            this.http.get("http://localhost:50219/history/GetRoundsDetail/" + id).subscribe(function (data) { return _this.modalModel = data; });
+            this.service.HttpGetRoundsDetail(id).subscribe(function (data) { return _this.modalModel = data; });
         }
     };
     HistoryGamesRoundListComponent = __decorate([
         Component({
             selector: 'app-history-games-round-list',
             templateUrl: './history-games-round-list.component.html',
-            styleUrls: ['./history-games-round-list.component.css']
+            styleUrls: ['./history-games-round-list.component.css'],
+            providers: [HttpHistoryGamesRoundListService]
         }),
         __metadata("design:paramtypes", [ActivatedRoute,
             HttpClient,
-            Location])
+            Location,
+            HttpHistoryGamesRoundListService])
     ], HistoryGamesRoundListComponent);
     return HistoryGamesRoundListComponent;
 }());

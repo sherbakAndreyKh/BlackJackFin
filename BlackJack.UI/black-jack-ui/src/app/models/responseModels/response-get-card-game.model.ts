@@ -1,8 +1,8 @@
-export class ResponseGetCardGameView{
+export class ResponseGetCardGameView {
     Hand: PlayerRoundHandGetCardGameViewItem;
 }
 
-export class PlayerRoundHandGetCardGameViewItem{
+export class PlayerRoundHandGetCardGameViewItem {
     Id: number;
     Hand: CardGetCardGameViewItem[];
     Score: number;
@@ -10,7 +10,7 @@ export class PlayerRoundHandGetCardGameViewItem{
     RoundId: number;
 }
 
-export class CardGetCardGameViewItem{
+export class CardGetCardGameViewItem {
     Id: number;
     Name: string;
     Suit: string;

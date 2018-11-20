@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
-
 @Injectable()
-export class HttpHistoryPlayerListService{
-
+export class HttpHistoryPlayerListService {
     urlGet = 'http://localhost:50219/history/index';
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) { }
 
-    HttpGetPlayerList(){
+    httpGetPlayerList() {
         return this.http.get(this.urlGet);
     }
 }

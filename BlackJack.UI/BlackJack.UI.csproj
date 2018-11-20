@@ -228,8 +228,6 @@
     <Content Include="black-jack-ui\README.md" />
     <Content Include="black-jack-ui\src\app\app.component.css" />
     <Content Include="black-jack-ui\src\app\app.component.html" />
-    <Content Include="black-jack-ui\src\app\test\test.component.css" />
-    <Content Include="black-jack-ui\src\app\test\test.component.html" />
     <Content Include="black-jack-ui\src\assets\.gitkeep" />
     <Content Include="black-jack-ui\src\browserslist" />
     <Content Include="black-jack-ui\src\favicon.ico" />
@@ -362,11 +360,6 @@
     <TypeScriptCompile Include="black-jack-ui\src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="black-jack-ui\src\app\app.component.ts" />
     <TypeScriptCompile Include="black-jack-ui\src\app\app.module.ts" />
-    <TypeScriptCompile Include="black-jack-ui\src\app\test\test-routing.module.ts" />
-    <TypeScriptCompile Include="black-jack-ui\src\app\test\test.component.spec.ts" />
-    <TypeScriptCompile Include="black-jack-ui\src\app\test\test.component.ts" />
-    <TypeScriptCompile Include="black-jack-ui\src\app\test\test.module.spec.ts" />
-    <TypeScriptCompile Include="black-jack-ui\src\app\test\test.module.ts" />
     <TypeScriptCompile Include="black-jack-ui\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="black-jack-ui\src\environments\environment.ts" />
     <TypeScriptCompile Include="black-jack-ui\src\main.ts" />

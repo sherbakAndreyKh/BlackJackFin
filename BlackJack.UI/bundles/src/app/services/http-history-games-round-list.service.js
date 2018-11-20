@@ -9,19 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-var HttpHistoryPlayerListService = /** @class */ (function () {
-    function HttpHistoryPlayerListService(http) {
+var HttpHistoryGamesRoundListService = /** @class */ (function () {
+    function HttpHistoryGamesRoundListService(http) {
         this.http = http;
-        this.urlGet = 'http://localhost:50219/history/index';
+        this.urlGetRounds = "http://localhost:50219/history/getrounds/";
+        this.urlGetRoundsDetail = "http://localhost:50219/history/GetRoundsDetail/";
     }
-    HttpHistoryPlayerListService.prototype.httpGetPlayerList = function () {
-        return this.http.get(this.urlGet);
+    HttpHistoryGamesRoundListService.prototype.HttpGetRoundsWithId = function (id) {
+        return this.http.get(this.urlGetRounds + id);
     };
-    HttpHistoryPlayerListService = __decorate([
+    HttpHistoryGamesRoundListService.prototype.HttpGetRoundsDetail = function (id) {
+        return this.http.get(this.urlGetRoundsDetail + id);
+    };
+    HttpHistoryGamesRoundListService = __decorate([
         Injectable(),
         __metadata("design:paramtypes", [HttpClient])
-    ], HttpHistoryPlayerListService);
-    return HttpHistoryPlayerListService;
+    ], HttpHistoryGamesRoundListService);
+    return HttpHistoryGamesRoundListService;
 }());
-export { HttpHistoryPlayerListService };
-//# sourceMappingURL=http-history-player-list.service.js.map
+export { HttpHistoryGamesRoundListService };
+//# sourceMappingURL=http-history-games-round-list.service.js.map

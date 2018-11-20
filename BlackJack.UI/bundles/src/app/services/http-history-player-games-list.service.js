@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-var HttpHistoryPlayerListService = /** @class */ (function () {
-    function HttpHistoryPlayerListService(http) {
+var HttpHistoryPlayerGamesListService = /** @class */ (function () {
+    function HttpHistoryPlayerGamesListService(http) {
         this.http = http;
-        this.urlGet = 'http://localhost:50219/history/index';
+        this.urlGetPlayerGames = "http://localhost:50219/history/getgames/";
     }
-    HttpHistoryPlayerListService.prototype.httpGetPlayerList = function () {
-        return this.http.get(this.urlGet);
+    HttpHistoryPlayerGamesListService.prototype.HttpGetPlayerGames = function (id) {
+        return this.http.get(this.urlGetPlayerGames + id);
     };
-    HttpHistoryPlayerListService = __decorate([
+    HttpHistoryPlayerGamesListService = __decorate([
         Injectable(),
         __metadata("design:paramtypes", [HttpClient])
-    ], HttpHistoryPlayerListService);
-    return HttpHistoryPlayerListService;
+    ], HttpHistoryPlayerGamesListService);
+    return HttpHistoryPlayerGamesListService;
 }());
-export { HttpHistoryPlayerListService };
-//# sourceMappingURL=http-history-player-list.service.js.map
+export { HttpHistoryPlayerGamesListService };
+//# sourceMappingURL=http-history-player-games-list.service.js.map

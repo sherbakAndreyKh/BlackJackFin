@@ -7,18 +7,18 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { WindowModule } from '@progress/kendo-angular-dialog';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { GameProcessComponent } from '../game-process/game-process.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    StartGameOptionsRoutingModule,
-    FormsModule,
-    DropDownsModule,
-    WindowModule,
-    ButtonsModule,
-    HttpClientModule
-  ],
-  declarations: [StartGameOptionsComponent,GameProcessComponent]
+    imports: [
+        CommonModule,
+        StartGameOptionsRoutingModule,
+        FormsModule,
+        DropDownsModule,
+        WindowModule,
+        ButtonsModule,
+        HttpClientModule
+    ],
+    declarations: [StartGameOptionsComponent, GameProcessComponent]
 })
 export class StartGameOptionsModule { }

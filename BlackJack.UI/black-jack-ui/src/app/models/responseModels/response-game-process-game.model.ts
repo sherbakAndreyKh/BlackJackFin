@@ -1,4 +1,4 @@
-export class ResponseGameProcessGameView{
+export class ResponseGameProcessGameView {
     Game: GameGameProcessGameViewItem;
     Round: RoundGameProcessGameViewItem;
     Player: PlayerGameProcessGameViewItem;
@@ -6,34 +6,34 @@ export class ResponseGameProcessGameView{
     Bots: PlayerGameProcessGameViewItem[];
 }
 
-export class PlayerGameProcessGameViewItem{
+export class PlayerGameProcessGameViewItem {
     Id: number;
     Name: string;
     Role: number;
     PlayerRoundHand: PlayerRoundHandGameProcessGameViewItem;
 }
 
-export class PlayerRoundHandGameProcessGameViewItem{
+export class PlayerRoundHandGameProcessGameViewItem {
     Id: number;
     Hand: CardGameProcessGameViewItem[];
     Score: number;
     PlayerId: number;
-    RoundId: number;    
+    RoundId: number;
 }
 
-export class CardGameProcessGameViewItem{
+export class CardGameProcessGameViewItem {
     Id: number;
     Name: string;
     Suit: string;
-    ImgPath: string; 
+    ImgPath: string;
 }
 
-export class GameGameProcessGameViewItem{
+export class GameGameProcessGameViewItem {
     Id: number;
     GameNumber: number;
 }
 
-export class RoundGameProcessGameViewItem{
+export class RoundGameProcessGameViewItem {
     Id: number;
     RoundNumber: number;
     Winner: string;
