@@ -18,7 +18,7 @@ module.exports = ".field {\r\n    margin-top: 150px;\r\n    width: 100%;\r\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"text-center container \">\r\n\r\n    <h2>Player Name: {{model?.player.name}}</h2>\r\n\r\n    <h3>{{model?.round.winner}}</h3>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-6\">\r\n            <h3>Game Number: {{model?.game.gameNumber}}</h3>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n            <h3>Round Number: {{model?.round.roundNumber}}</h3>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"field text-center\">\r\n        <img src=\"~/Content/Img/bj.jpg\" alt=\"Alternate Text\" />\r\n    </div>\r\n    \r\n\r\n    <div class=\"row\">\r\n    <div class=\"player col-md-2\">\r\n        <p><span *ngFor=\"let card of model?.player.playerRoundHand.hand\">{{card.name}} {{card.suit}}, </span> </p>\r\n        <p>{{model?.player.playerRoundHand.score}}</p>\r\n        <h4>{{model?.player.name}}</h4>\r\n    </div>\r\n    <hr>\r\n\r\n    <div *ngFor=\"let bot of model?.bots \" class=\"player col-md-2\">\r\n        <p><span *ngFor=\"let card of bot?.playerRoundHand.hand\">{{card.name}} {{card.suit}},</span> </p>\r\n        <p>{{bot.playerRoundHand.score}}</p>\r\n        <h4>{{bot.name}}</h4>\r\n    </div>\r\n    <hr>\r\n</div>\r\n    <div class=\"dealer col-md-2\">\r\n        <h4>{{model?.dealer.name}}</h4>\r\n        <p>{{model?.dealer.playerRoundHand.score}}</p>\r\n        <p><span *ngFor=\"let card of model?.dealer.playerRoundHand.hand\">{{card.name}} {{card.suit}},</span></p>\r\n    </div>\r\n\r\n    <div class=\"text-right\">\r\n        <button kendoButton (click)=\"getFirstDealClick()\">Start Game</button>\r\n        <button kendoButton (click)=\"getCardClick()\">Get Card</button>\r\n        <button kendoButton (click)=\"getWinner()\">Stop</button>\r\n        <button kendoButton (click)=\"newRound()\">End Round</button>\r\n    </div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"text-center container \">\r\n\r\n    <h2>Player Name: {{model?.player.name}}</h2>\r\n\r\n    <h3>{{model?.round.winner}}</h3>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-6\">\r\n            <h3>Game Number: {{model?.game.gameNumber}}</h3>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n            <h3>Round Number: {{model?.round.roundNumber}}</h3>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"field text-center\">\r\n        <img src=\"/Content/Img/bj.jpg\" alt=\"Alternate Text\" />\r\n    </div>\r\n    \r\n\r\n    <div class=\"row\">\r\n    <div class=\"player col-md-2\">\r\n        <p><span *ngFor=\"let card of model?.player.playerRoundHand.hand\">{{card.name}} {{card.suit}}, </span> </p>\r\n        <p>{{model?.player.playerRoundHand.score}}</p>\r\n        <h4>{{model?.player.name}}</h4>\r\n    </div>\r\n    <hr>\r\n\r\n    <div *ngFor=\"let bot of model?.bots \" class=\"player col-md-2\">\r\n        <p><span *ngFor=\"let card of bot?.playerRoundHand.hand\">{{card.name}} {{card.suit}},</span> </p>\r\n        <p>{{bot.playerRoundHand.score}}</p>\r\n        <h4>{{bot.name}}</h4>\r\n    </div>\r\n    <hr>\r\n</div>\r\n    <div class=\"dealer col-md-2\">\r\n        <h4>{{model?.dealer.name}}</h4>\r\n        <p>{{model?.dealer.playerRoundHand.score}}</p>\r\n        <p><span *ngFor=\"let card of model?.dealer.playerRoundHand.hand\">{{card.name}} {{card.suit}},</span></p>\r\n    </div>\r\n\r\n    <div class=\"text-right\">\r\n        <button kendoButton (click)=\"getFirstDealClick()\">Start Game</button>\r\n        <button kendoButton (click)=\"getCardClick()\">Get Card</button>\r\n        <button kendoButton (click)=\"getWinner()\">Stop</button>\r\n        <button kendoButton (click)=\"newRound()\">End Round</button>\r\n    </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -72,6 +72,10 @@ var GameProcessComponent = /** @class */ (function () {
     GameProcessComponent.prototype.addFirstDealRequest = function () {
         this.getFirstDealRequest.hands = this.getAllHands();
         this.getFirstDealRequest.round = this.model.round;
+    };
+    GameProcessComponent.prototype.newRound = function () {
+        var _this = this;
+        this.service.httpNewRound(this.model).subscribe(function (data) { return _this.model = data; });
     };
     GameProcessComponent.prototype.getCardClick = function () {
         var _this = this;
@@ -399,6 +403,7 @@ var HttpGameProcessService = /** @class */ (function () {
         this.urlGetFirstDeal = 'Game/GetFirstDeal';
         this.urlGetBotLogic = 'Game/BotAndDealerLogic';
         this.urlGetWinner = 'Game/FindWinner';
+        this.urlGetNewRound = 'Game/NewRound';
     }
     HttpGameProcessService.prototype.httpGetCard = function (model) {
         return this.http.post(this.urlGetCard, model);
@@ -411,6 +416,9 @@ var HttpGameProcessService = /** @class */ (function () {
     };
     HttpGameProcessService.prototype.httpGetWinner = function (model) {
         return this.http.post(this.urlGetWinner, model);
+    };
+    HttpGameProcessService.prototype.httpNewRound = function (model) {
+        return this.http.post(this.urlGetNewRound, model);
     };
     HttpGameProcessService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),

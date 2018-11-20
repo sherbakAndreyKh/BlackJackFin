@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["start-game-options-start-game-options-module"],{
 
-/***/ "./src/app/models/request-game-start-options-game.model.ts":
-/*!*****************************************************************!*\
-  !*** ./src/app/models/request-game-start-options-game.model.ts ***!
-  \*****************************************************************/
+/***/ "./src/app/models/requestModels/request-game-start-options-game.model.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/models/requestModels/request-game-start-options-game.model.ts ***!
+  \*******************************************************************************/
 /*! exports provided: RequestGameStartOptionsView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -141,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartGameOptionsComponent", function() { return StartGameOptionsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_services_http_start_game_options_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/http-start-game-options.service */ "./src/app/services/http-start-game-options.service.ts");
-/* harmony import */ var src_app_models_request_game_start_options_game_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/request-game-start-options-game.model */ "./src/app/models/request-game-start-options-game.model.ts");
+/* harmony import */ var src_app_models_requestModels_request_game_start_options_game_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/requestModels/request-game-start-options-game.model */ "./src/app/models/requestModels/request-game-start-options-game.model.ts");
 /* harmony import */ var src_app_services_http_game_process_servise__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/http-game-process.servise */ "./src/app/services/http-game-process.servise.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -161,7 +161,7 @@ var StartGameOptionsComponent = /** @class */ (function () {
         this.service = service;
         this.botsAmount = [0, 1, 2, 3, 4, 5];
         this.opened = true;
-        this.reqModel = new src_app_models_request_game_start_options_game_model__WEBPACK_IMPORTED_MODULE_2__["RequestGameStartOptionsView"]();
+        this.reqModel = new src_app_models_requestModels_request_game_start_options_game_model__WEBPACK_IMPORTED_MODULE_2__["RequestGameStartOptionsView"]();
     }
     StartGameOptionsComponent.prototype.ngOnInit = function () {
         var _this = this;

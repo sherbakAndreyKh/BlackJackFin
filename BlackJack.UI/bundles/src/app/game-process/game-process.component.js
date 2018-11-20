@@ -32,6 +32,10 @@ var GameProcessComponent = /** @class */ (function () {
         this.getFirstDealRequest.hands = this.getAllHands();
         this.getFirstDealRequest.round = this.model.round;
     };
+    GameProcessComponent.prototype.newRound = function () {
+        var _this = this;
+        this.service.httpNewRound(this.model).subscribe(function (data) { return _this.model = data; });
+    };
     GameProcessComponent.prototype.getCardClick = function () {
         var _this = this;
         this.addGetCardRequest();

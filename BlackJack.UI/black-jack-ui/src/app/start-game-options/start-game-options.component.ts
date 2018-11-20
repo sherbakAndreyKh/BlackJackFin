@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpStartGameOptionsService } from 'src/app/services/http-start-game-options.service';
 import { ResponseGameStartOptionsGameView } from 'src/app/models/responseModels/response-game-start-options-game.model';
-import { RequestGameStartOptionsView } from 'src/app/models/request-game-start-options-game.model';
+import { RequestGameStartOptionsView } from 'src/app/models/requestModels/request-game-start-options-game.model';
 import { ResponseGameProcessGameView } from 'src/app/models/responseModels/response-game-process-game.model';
 import { HttpGameProcessService } from 'src/app/services/http-game-process.servise';
 
