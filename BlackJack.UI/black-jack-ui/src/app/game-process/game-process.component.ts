@@ -39,16 +39,16 @@ export class GameProcessComponent implements OnInit {
 
     getCardClick() {
         this.addGetCardRequest();
-        this.service.HttpGetCard(this.getCardRequest).subscribe((data: ResponseGetCardGameView) => this.model.player.playerRoundHand = data.hand);
+        this.service.httpGetCard(this.getCardRequest).subscribe((data: ResponseGetCardGameView) => this.model.player.playerRoundHand = data.hand);
     }
 
     getFirstDealClick() {
         this.addFirstDealRequest();
-        this.service.HttpGetFirstDeal(this.getFirstDealRequest).subscribe((data: ResponseGetFirstDealGameView) => this.addFirstDealResponse(data));
+        this.service.httpGetFirstDeal(this.getFirstDealRequest).subscribe((data: ResponseGetFirstDealGameView) => this.addFirstDealResponse(data));
     }
 
     getBotAndDealerLogic(count: number) {
-        this.service.HttpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe((data: ResponseBotLogicGameView) => this.getHand(count).playerRoundHand = data.hand)
+        this.service.httpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe((data: ResponseBotLogicGameView) => this.getHand(count).playerRoundHand = data.hand)
     }
 
     addFindWinnerRequest() {
@@ -58,7 +58,7 @@ export class GameProcessComponent implements OnInit {
     }
     getWinner() {
         this.useLogicOnBotAndDealer();
-        this.service.HttpGetWinner(this.addFindWinnerRequest()).subscribe((data: ResponseFindWinnerGameView) => this.model.round = data.round)
+        this.service.httpGetWinner(this.addFindWinnerRequest()).subscribe((data: ResponseFindWinnerGameView) => this.model.round = data.round)
     }
 
     getHand(count) {
@@ -96,11 +96,11 @@ export class GameProcessComponent implements OnInit {
                 this.model.player.playerRoundHand = data.hands[i];
             }
 
-            if (i == data.Hands.length - 1) {
+            if (i == data.hands.length - 1) {
                 this.model.dealer.playerRoundHand = data.hands[i];
             }
 
-            if (i != 0 && i != data.hands.length) {
+            if (i != 0 && i != data.hands.length-1) {
                 this.model.bots[i - 1].playerRoundHand = data.hands[i];
             }
         }

@@ -27,7 +27,7 @@ export class HistoryGamesRoundListComponent implements OnInit {
     }
     getRoundGames() {
         const id = +this.route.snapshot.paramMap.get('id');
-        this.service.HttpGetRoundsWithId(id).subscribe((data: RoundListHistoryView) => this.model = data);
+        this.service.httpGetRoundsWithId(id).subscribe((data: RoundListHistoryView) => this.model = data);
     }
 
     getModal(id: number) {
@@ -36,7 +36,7 @@ export class HistoryGamesRoundListComponent implements OnInit {
         }
         else {
             this.opened = true;
-            this.service.HttpGetRoundsDetail(id).subscribe((data: DetailRoundHistoryView) => this.modalModel = data);
+            this.service.httpGetRoundsDetail(id).subscribe((data: DetailRoundHistoryView) => this.modalModel = data);
         }
     }
 }

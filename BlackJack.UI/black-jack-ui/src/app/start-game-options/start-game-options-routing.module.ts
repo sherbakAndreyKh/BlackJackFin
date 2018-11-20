@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { StartGameOptionsComponent } from './start-game-options.component';
+import { StartGameOptionsComponent } from 'src/app/start-game-options/start-game-options.component';
 
 const routes: Routes = [
   {path:'', component: StartGameOptionsComponent}

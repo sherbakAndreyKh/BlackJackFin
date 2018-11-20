@@ -9,14 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component, } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { HttpClient } from "@angular/common/http";
-import { HttpHistoryGamesRoundListService } from "../services/http-history-games-round-list.service";
+import { HttpHistoryGamesRoundListService } from "src/app/services/http-history-games-round-list.service";
 var HistoryGamesRoundListComponent = /** @class */ (function () {
-    function HistoryGamesRoundListComponent(route, http, location, service) {
+    function HistoryGamesRoundListComponent(route, service) {
         this.route = route;
-        this.http = http;
-        this.location = location;
         this.service = service;
         this.opened = false;
     }
@@ -46,8 +42,6 @@ var HistoryGamesRoundListComponent = /** @class */ (function () {
             providers: [HttpHistoryGamesRoundListService]
         }),
         __metadata("design:paramtypes", [ActivatedRoute,
-            HttpClient,
-            Location,
             HttpHistoryGamesRoundListService])
     ], HistoryGamesRoundListComponent);
     return HistoryGamesRoundListComponent;

@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { HttpHistoryPlayerListService } from '../services/http-history-player-list.service';
+import { HttpHistoryPlayerListService } from 'src/app/services/http-history-player-list.service';
 var HistoryPlayerListComponent = /** @class */ (function () {
     function HistoryPlayerListComponent(service) {
         this.service = service;

@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HistoryGamesRoundListComponent } from './history-games-round-list.component';
+import { HistoryGamesRoundListComponent } from 'src/app/history-games-round-list/history-games-round-list.component';
 var routes = [
     { path: '', component: HistoryGamesRoundListComponent }
 ];

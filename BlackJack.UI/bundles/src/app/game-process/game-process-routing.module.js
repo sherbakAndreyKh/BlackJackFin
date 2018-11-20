@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { GameProcessComponent } from './game-process.component';
+import { GameProcessComponent } from 'src/app/game-process/game-process.component';
 var routes = [
     { path: '', component: GameProcessComponent }
 ];

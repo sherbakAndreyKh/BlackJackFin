@@ -6,13 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HistoryGamesRoundListRoutingModule } from './history-games-round-list-routing.module';
-import { HistoryGamesRoundListComponent } from './history-games-round-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { WindowModule } from '@progress/kendo-angular-dialog';
-import { HistoryRoundDetailsModalComponent } from '../history-round-details-modal/history-round-details-modal.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { HistoryGamesRoundListComponent } from 'src/app/history-games-round-list/history-games-round-list.component';
+import { HistoryGamesRoundListRoutingModule } from 'src/app/history-games-round-list/history-games-round-list-routing.module';
+import { HistoryRoundDetailsModalComponent } from 'src/app/history-round-details-modal/history-round-details-modal.component';
 var HistoryGamesRoundListModule = /** @class */ (function () {
     function HistoryGamesRoundListModule() {
     }

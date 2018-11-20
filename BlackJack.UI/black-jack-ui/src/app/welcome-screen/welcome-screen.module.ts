@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WelcomeScreenRoutingModule } from './welcome-screen-routing.module';
-import { WelcomeScreenComponent } from './welcome-screen.component';
+import { WelcomeScreenRoutingModule } from 'src/app/welcome-screen/welcome-screen-routing.module';
+import { WelcomeScreenComponent } from 'src/app/welcome-screen/welcome-screen.component';
 
 @NgModule({
     imports: [

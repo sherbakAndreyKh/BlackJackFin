@@ -26,8 +26,8 @@ var StartGameOptionsComponent = /** @class */ (function () {
     };
     StartGameOptionsComponent.prototype.getNames = function (test) {
         var result = new Array();
-        for (var i = 0; i < test.Players.length; i++) {
-            result.push(test.Players[i].PlayerName);
+        for (var i = 0; i < test.players.length; i++) {
+            result.push(test.players[i].playerName);
         }
         return result;
     };
@@ -39,8 +39,8 @@ var StartGameOptionsComponent = /** @class */ (function () {
     };
     StartGameOptionsComponent.prototype.submit = function (playerName, botsAmount) {
         var _this = this;
-        this.reqModel.PlayerName = playerName;
-        this.reqModel.BotsAmount = botsAmount;
+        this.reqModel.playerName = playerName;
+        this.reqModel.botsAmount = botsAmount;
         this.service.HttpPost(this.reqModel).subscribe(function (data) {
             _this.responseModel = data;
         });

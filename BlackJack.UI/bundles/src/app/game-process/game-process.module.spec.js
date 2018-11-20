@@ -1,4 +1,4 @@
-import { GameProcessModule } from './game-process.module';
+import { GameProcessModule } from 'src/app/game-process/game-process.module';
 describe('GameProcessModule', function () {
     var gameProcessModule;
     beforeEach(function () {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpStartGameOptionsService } from '../services/http-start-game-options.service';
-import { ResponseGameStartOptionsGameView } from '../models/responseModels/response-game-start-options-game.model';
-import { RequestGameStartOptionsView } from '../models/request-game-start-options-game.model';
-import { ResponseGameProcessGameView } from '../models/responseModels/response-game-process-game.model';
-import { HttpGameProcessService } from '../services/http-game-process.servise';
+import { HttpStartGameOptionsService } from 'src/app/services/http-start-game-options.service';
+import { ResponseGameStartOptionsGameView } from 'src/app/models/responseModels/response-game-start-options-game.model';
+import { RequestGameStartOptionsView } from 'src/app/models/request-game-start-options-game.model';
+import { ResponseGameProcessGameView } from 'src/app/models/responseModels/response-game-process-game.model';
+import { HttpGameProcessService } from 'src/app/services/http-game-process.servise';
 
 @Component({
     selector: 'app-start-game-options',
@@ -24,7 +24,7 @@ export class StartGameOptionsComponent implements OnInit {
     constructor(private service: HttpStartGameOptionsService) { }
 
     ngOnInit() {
-        this.service.HttpGet().subscribe((data: ResponseGameStartOptionsGameView) => {
+        this.service.HttpGetStartOptions().subscribe((data: ResponseGameStartOptionsGameView) => {
             this.listPlayersName = this.getNames(data);
         });
     }
@@ -51,7 +51,7 @@ export class StartGameOptionsComponent implements OnInit {
         this.reqModel.playerName = playerName;
         this.reqModel.botsAmount = botsAmount;
 
-        this.service.HttpPost(this.reqModel).subscribe((data: ResponseGameProcessGameView) => {
+        this.service.HttpPostStartOptions(this.reqModel).subscribe((data: ResponseGameProcessGameView) => {
             this.responseModel = data;
         });
 

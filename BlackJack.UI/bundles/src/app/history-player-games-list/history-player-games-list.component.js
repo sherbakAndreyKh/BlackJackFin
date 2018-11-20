@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { HttpHistoryPlayerGamesListService } from '../services/http-history-player-games-list.service';
+import { HttpHistoryPlayerGamesListService } from 'src/app/services/http-history-player-games-list.service';
 var HistoryPlayerGamesListComponent = /** @class */ (function () {
     function HistoryPlayerGamesListComponent(route, http, location, service) {
         this.route = route;

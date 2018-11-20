@@ -1,11 +1,11 @@
 <div class="container">
-    <kendo-grid [data]="model?.Games" (details)="editHandler($event)">
-        <kendo-grid-column field="Id" width="10"></kendo-grid-column>
-        <kendo-grid-column field="Number" title="GameNumber" width="30"></kendo-grid-column>
-        <kendo-grid-column field="RoundsAmount" title="Rounds Amount" width="30"></kendo-grid-column>
+    <kendo-grid [data]="model?.games" (details)="editHandler($event)">
+        <kendo-grid-column field="id" width="10"></kendo-grid-column>
+        <kendo-grid-column field="number" title="GameNumber" width="30"></kendo-grid-column>
+        <kendo-grid-column field="roundsAmount" title="Rounds Amount" width="30"></kendo-grid-column>
         <kendo-grid-command-column title="Command" width="30">
             <ng-template kendoGridCellTemplate let-data>
-                <a routerLink="/getRounds/{{data.Id}}">Details</a>
+                <a routerLink="/getRounds/{{data.id}}">Details</a>
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>

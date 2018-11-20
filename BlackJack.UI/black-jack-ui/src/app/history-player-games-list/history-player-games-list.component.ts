@@ -26,7 +26,7 @@ export class HistoryPlayerGamesListComponent implements OnInit {
     }
     getPlayerGames() {
         const id = +this.route.snapshot.paramMap.get('id');
-        this.service.HttpGetPlayerGames(id).subscribe((data: GameListHistoryView) => this.model = data, error => console.log(error));
+        this.service.httpGetPlayerGames(id).subscribe((data: GameListHistoryView) => this.model = data, error => console.log(error));
     }
 }
 

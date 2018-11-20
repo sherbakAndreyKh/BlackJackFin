@@ -1,11 +1,11 @@
 <div class="container">
-    <kendo-grid [data]="model?.Rounds" (details)="editHandler($event)">
-        <kendo-grid-column field="Id" width="10"></kendo-grid-column>
-        <kendo-grid-column field="RoundNumber" title="RoundNumber" width="30"></kendo-grid-column>
-        <kendo-grid-column field="Winner" title="Winner Name" width="30"></kendo-grid-column>
+    <kendo-grid [data]="model?.rounds" (details)="editHandler($event)">
+        <kendo-grid-column field="id" width="10"></kendo-grid-column>
+        <kendo-grid-column field="roundNumber" title="RoundNumber" width="30"></kendo-grid-column>
+        <kendo-grid-column field="winner" title="Winner Name" width="30"></kendo-grid-column>
         <kendo-grid-command-column title="Command" width="30">
             <ng-template kendoGridCellTemplate let-data>
-                <button (click)="getModal(data.Id)">Get</button>
+                <button (click)="getModal(data.id)">Get</button>
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>

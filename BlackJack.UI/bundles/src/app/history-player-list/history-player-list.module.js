@@ -6,10 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HistoryPlayerListRoutingModule } from './history-player-list-routing.module';
-import { HistoryPlayerListComponent } from './history-player-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { HistoryPlayerListRoutingModule } from 'src/app/history-player-list/history-player-list-routing.module';
+import { HistoryPlayerListComponent } from 'src/app/history-player-list/history-player-list.component';
 var HistoryPlayerListModule = /** @class */ (function () {
     function HistoryPlayerListModule() {
     }

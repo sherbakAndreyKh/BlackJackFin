@@ -1,5 +1,5 @@
 import { async, TestBed } from '@angular/core/testing';
-import { HistoryRoundDetailsModalComponent } from './history-round-details-modal.component';
+import { HistoryRoundDetailsModalComponent } from 'src/app/history-round-details-modal/history-round-details-modal.component';
 describe('HistoryRoundDetailsModalComponent', function () {
     var component;
     var fixture;

@@ -3,16 +3,16 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class HttpHistoryGamesRoundListService {
-    urlGetRounds = "http://localhost:50219/history/getrounds/";
-    urlGetRoundsDetail = "http://localhost:50219/history/GetRoundsDetail/";
+    private urlGetRounds = "http://localhost:50219/history/getrounds/";
+    private urlGetRoundsDetail = "http://localhost:50219/history/GetRoundsDetail/";
 
     constructor(private http: HttpClient) { }
 
-    HttpGetRoundsWithId(id: number) {
+    httpGetRoundsWithId(id: number) {
         return this.http.get(this.urlGetRounds + id);
     }
 
-    HttpGetRoundsDetail(id: number) {
+    httpGetRoundsDetail(id: number) {
         return this.http.get(this.urlGetRoundsDetail + id);
     }
 }

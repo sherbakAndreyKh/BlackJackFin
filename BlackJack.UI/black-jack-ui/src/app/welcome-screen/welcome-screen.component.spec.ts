@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WelcomeScreenComponent } from './welcome-screen.component';
+import { WelcomeScreenComponent } from 'src/app/welcome-screen/welcome-screen.component';
 
 describe('WelcomeScreenComponent', () => {
     let component: WelcomeScreenComponent;

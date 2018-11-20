@@ -1,5 +1,5 @@
 import { async, TestBed } from '@angular/core/testing';
-import { HistoryGamesRoundListComponent } from './history-games-round-list.component';
+import { HistoryGamesRoundListComponent } from 'src/app/history-games-round-list/history-games-round-list.component';
 describe('HistoryGamesRoundListComponent', function () {
     var component;
     var fixture;

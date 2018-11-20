@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component, Input } from '@angular/core';
-import { DetailRoundHistoryView } from '../models/details-round-history.model';
+import { DetailRoundHistoryView } from 'src/app/models/details-round-history.model';
 var HistoryRoundDetailsModalComponent = /** @class */ (function () {
     function HistoryRoundDetailsModalComponent() {
     }
