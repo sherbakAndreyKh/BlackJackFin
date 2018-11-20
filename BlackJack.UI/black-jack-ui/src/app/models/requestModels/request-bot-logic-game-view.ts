@@ -1,22 +1,22 @@
 export class RequestBotLogicGameView {
-    Round: RoundRoundHandBotLogicGameViewItem;
-    Hand: PlayerRoundHandBotLogicGameViewItem;
+    round: RoundRoundHandBotLogicGameViewItem;
+    hand: PlayerRoundHandBotLogicGameViewItem;
 }
 
 export class PlayerRoundHandBotLogicGameViewItem {
-    Id: number;
-    Hand: CardBotLogicGameViewItem[];
-    Score: number;
-    PlayerId: number;
+    id: number;
+    hand: CardBotLogicGameViewItem[];
+    score: number;
+    playerId: number;
 }
 
 export class CardBotLogicGameViewItem {
-    Id: number;
-    Name: string;
-    Suit: string;
-    IMgPath: string;
+    id: number;
+    name: string;
+    suit: string;
+    imgPath: string;
 }
 
 export class RoundRoundHandBotLogicGameViewItem {
-    Id: number;
+    id: number;
 }

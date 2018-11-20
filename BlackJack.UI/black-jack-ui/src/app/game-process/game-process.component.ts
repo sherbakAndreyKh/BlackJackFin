@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ResponseGameProcessGameView } from '../models/responseModels/response-game-process-game.model';
-import { HttpGameProcessService } from '../services/http-game-process.servise';
-import { RequestGetCardGameView } from '../models/requestModels/request-get-card-game-view';
-import { ResponseGetCardGameView } from '../models/responseModels/response-get-card-game.model';
-import { RequestGetFirstDealGameView } from '../models/requestModels/request-get-first-deal-game-view';
-import { ResponseGetFirstDealGameView } from '../models/responseModels/response-get-first-deal-game.model';
-import { RequestBotLogicGameView } from '../models/requestModels/request-bot-logic-game-view';
-import { ResponseBotLogicGameView } from '../models/responseModels/response-bot-logic-game.model';
-import { RequestFindWinnerGameView } from '../models/requestModels/request-find-winner-game-view';
-import { ResponseFindWinnerGameView } from '../models/responseModels/response-find-winner-game.model';
+import { ResponseGameProcessGameView } from 'src/app/models/responseModels/response-game-process-game.model';
+import { HttpGameProcessService } from 'src/app/services/http-game-process.servise';
+import { RequestGetCardGameView } from 'src/app/models/requestModels/request-get-card-game-view';
+import { ResponseGetCardGameView } from 'src/app/models/responseModels/response-get-card-game.model';
+import { RequestGetFirstDealGameView } from 'src/app/models/requestModels/request-get-first-deal-game-view';
+import { ResponseGetFirstDealGameView } from 'src/app/models/responseModels/response-get-first-deal-game.model';
+import { RequestBotLogicGameView } from 'src/app/models/requestModels/request-bot-logic-game-view';
+import { ResponseBotLogicGameView } from 'src/app/models/responseModels/response-bot-logic-game.model';
+import { RequestFindWinnerGameView } from 'src/app/models/requestModels/request-find-winner-game-view';
+import { ResponseFindWinnerGameView } from 'src/app/models/responseModels/response-find-winner-game.model';
 
 @Component({
     selector: 'app-game-process',
@@ -27,20 +27,19 @@ export class GameProcessComponent implements OnInit {
     ngOnInit() {
     }
 
-
     addGetCardRequest() {
-        this.getCardRequest.Hand = this.model.Player.PlayerRoundHand;
-        this.getCardRequest.Round = this.model.Round;
+        this.getCardRequest.hand = this.model.player.playerRoundHand;
+        this.getCardRequest.round = this.model.round;
     }
 
     addFirstDealRequest() {
-        this.getFirstDealRequest.Hands = this.getAllHands();
-        this.getFirstDealRequest.Round = this.model.Round;
+        this.getFirstDealRequest.hands = this.getAllHands();
+        this.getFirstDealRequest.round = this.model.round;
     }
 
     getCardClick() {
         this.addGetCardRequest();
-        this.service.HttpGetCard(this.getCardRequest).subscribe((data: ResponseGetCardGameView) => this.model.Player.PlayerRoundHand = data.Hand);
+        this.service.HttpGetCard(this.getCardRequest).subscribe((data: ResponseGetCardGameView) => this.model.player.playerRoundHand = data.hand);
     }
 
     getFirstDealClick() {
@@ -49,72 +48,70 @@ export class GameProcessComponent implements OnInit {
     }
 
     getBotAndDealerLogic(count: number) {
-        this.service.HttpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe((data: ResponseBotLogicGameView) => this.getHand(count).PlayerRoundHand = data.Hand)
+        this.service.HttpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe((data: ResponseBotLogicGameView) => this.getHand(count).playerRoundHand = data.hand)
     }
 
     addFindWinnerRequest() {
-        this.findWinner.DealerHand = this.model.Dealer.PlayerRoundHand;
-        this.findWinner.PlayerHand = this.model.Player.PlayerRoundHand;
+        this.findWinner.dealerHand = this.model.dealer.playerRoundHand;
+        this.findWinner.playerHand = this.model.player.playerRoundHand;
         return this.findWinner;
     }
     getWinner() {
-        debugger;
-        this.UseLogicOnBotAndDealer();
-        debugger;
-        this.service.HttpGetWinner(this.addFindWinnerRequest()).subscribe((data: ResponseFindWinnerGameView) => this.model.Round = data.Round)
+        this.useLogicOnBotAndDealer();
+        this.service.HttpGetWinner(this.addFindWinnerRequest()).subscribe((data: ResponseFindWinnerGameView) => this.model.round = data.round)
     }
 
     getHand(count) {
-        if (count < this.model.Bots.length) {
-            return this.model.Bots[count];
+        if (count < this.model.bots.length) {
+            return this.model.bots[count];
         }
-        if (count == this.model.Bots.length) {
-            return this.model.Dealer;
+        if (count == this.model.bots.length) {
+            return this.model.dealer;
         }
     }
 
-    UseLogicOnBotAndDealer() {
-        for (var i = 0; i <= this.model.Bots.length; i++) {
+    useLogicOnBotAndDealer() {
+        for (var i = 0; i <= this.model.bots.length; i++) {
             this.getBotAndDealerLogic(i);
         }
     }
 
     addBotAndDealerRequest(count: number) {
         var hand;
-        if (count < this.model.Bots.length) {
-            hand = this.model.Bots[count].PlayerRoundHand;
+        if (count < this.model.bots.length) {
+            hand = this.model.bots[count].playerRoundHand;
         }
-        if (count == this.model.Bots.length) {
-            hand = this.model.Dealer.PlayerRoundHand;
+        if (count == this.model.bots.length) {
+            hand = this.model.dealer.playerRoundHand;
         }
-        this.getBotAndDealerLogicRequest.Round = this.model.Round;
-        this.getBotAndDealerLogicRequest.Hand = hand;
+        this.getBotAndDealerLogicRequest.round = this.model.round;
+        this.getBotAndDealerLogicRequest.hand = hand;
         return this.getBotAndDealerLogicRequest;
     }
 
     addFirstDealResponse(data) {
         debugger;
-        for (var i = 0; i < data.Hands.length; i++) {
+        for (var i = 0; i < data.hands.length; i++) {
             if (i == 0) {
-                this.model.Player.PlayerRoundHand = data.Hands[i];
+                this.model.player.playerRoundHand = data.hands[i];
             }
 
             if (i == data.Hands.length - 1) {
-                this.model.Dealer.PlayerRoundHand = data.Hands[i];
+                this.model.dealer.playerRoundHand = data.hands[i];
             }
 
-            if (i != 0 && i != data.Hands.length) {
-                this.model.Bots[i - 1].PlayerRoundHand = data.Hands[i];
+            if (i != 0 && i != data.hands.length) {
+                this.model.bots[i - 1].playerRoundHand = data.hands[i];
             }
         }
     }
 
     getAllHands() {
         var Hands = new Array();
-        Hands.push(this.model.Dealer.PlayerRoundHand);
-        Hands.push(this.model.Player.PlayerRoundHand);
-        for (var i = 0; i < this.model.Bots.length; i++) {
-            Hands.push(this.model.Bots[i].PlayerRoundHand);
+        Hands.push(this.model.dealer.playerRoundHand);
+        Hands.push(this.model.player.playerRoundHand);
+        for (var i = 0; i < this.model.bots.length; i++) {
+            Hands.push(this.model.bots[i].playerRoundHand);
         }
         return Hands
     }

@@ -1,40 +1,40 @@
 export class ResponseGameProcessGameView {
-    Game: GameGameProcessGameViewItem;
-    Round: RoundGameProcessGameViewItem;
-    Player: PlayerGameProcessGameViewItem;
-    Dealer: PlayerGameProcessGameViewItem;
-    Bots: PlayerGameProcessGameViewItem[];
+    game: GameGameProcessGameViewItem;
+    round: RoundGameProcessGameViewItem;
+    player: PlayerGameProcessGameViewItem;
+    dealer: PlayerGameProcessGameViewItem;
+    bots: PlayerGameProcessGameViewItem[];
 }
 
 export class PlayerGameProcessGameViewItem {
-    Id: number;
-    Name: string;
-    Role: number;
-    PlayerRoundHand: PlayerRoundHandGameProcessGameViewItem;
+    id: number;
+    name: string;
+    role: number;
+    playerRoundHand: PlayerRoundHandGameProcessGameViewItem;
 }
 
 export class PlayerRoundHandGameProcessGameViewItem {
-    Id: number;
-    Hand: CardGameProcessGameViewItem[];
-    Score: number;
-    PlayerId: number;
-    RoundId: number;
+    id: number;
+    hand: CardGameProcessGameViewItem[];
+    score: number;
+    playerId: number;
+    roundId: number;
 }
 
 export class CardGameProcessGameViewItem {
-    Id: number;
-    Name: string;
-    Suit: string;
-    ImgPath: string;
+    id: number;
+    name: string;
+    suit: string;
+    imgPath: string;
 }
 
 export class GameGameProcessGameViewItem {
-    Id: number;
-    GameNumber: number;
+    id: number;
+    gameNumber: number;
 }
 
 export class RoundGameProcessGameViewItem {
-    Id: number;
-    RoundNumber: number;
-    Winner: string;
+    id: number;
+    roundNumber: number;
+    winner: string;
 }

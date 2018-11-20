@@ -1,15 +1,15 @@
 export class GameListHistoryView {
-    Player: PlayerGameListHistoryViewItem;
-    Games: GameGameListHistoryViewItem[];
+    player: PlayerGameListHistoryViewItem;
+    games: GameGameListHistoryViewItem[];
 }
 
 export class PlayerGameListHistoryViewItem {
-    Id: number;
-    Name: string;
+    id: number;
+    name: string;
 }
 
 export class GameGameListHistoryViewItem {
-    Id: number;
-    Number: number;
-    RoundsAmount: number;
+    id: number;
+    number: number;
+    roundsAmount: number;
 }

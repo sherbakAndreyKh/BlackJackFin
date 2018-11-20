@@ -1,10 +1,10 @@
 export class RequestFindWinnerGameView {
-    PlayerHand: PlayerRoundHandFindWinnerGameViewItem;
-    DealerHand: PlayerRoundHandFindWinnerGameViewItem;
+    playerHand: PlayerRoundHandFindWinnerGameViewItem;
+    dealerHand: PlayerRoundHandFindWinnerGameViewItem;
 }
 export class PlayerRoundHandFindWinnerGameViewItem {
-    Id: number;
-    Score: number;
-    PlayerId: number;
-    RoundId: number;
+    id: number;
+    score: number;
+    playerId: number;
+    roundId: number;
 }

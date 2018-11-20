@@ -33,8 +33,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                ResponseGameStartOptionsGameView model = await _gameService.GetPlayersStartOptions();
-                return model;
+                throw;
             }
         }
 
@@ -50,8 +49,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                ResponseGameProcessGameView startData = await _gameService.StartGame(item);
-                return startData;
+                throw;
             }
         }
 
@@ -67,8 +65,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                ResponseGetFirstDealGameView model = await _gameService.GetFirstDeal(item);
-                return model;
+                throw;
             }
         }
 
@@ -84,16 +81,14 @@ namespace BlackJack.UI.Controllers
             catch (WrongDataException ex)
             {
                 logger.Error(ex.ToString());
-                ResponseGetCardGameView model = await _gameService.GetCard(item);
-                return model;
-               
+                throw;
+
             }
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                ResponseGetCardGameView model = await _gameService.GetCard(item);
-                return model;
-              
+                throw;
+
             }
         }
 
@@ -109,8 +104,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                ResponseBotLogicGameView model = await _gameService.BotLogic(item);
-                return model;
+                throw;
             }
         }
 
@@ -126,9 +120,8 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                ResponseFindWinnerGameView model = await _gameService.FindWinner(item);
-                return model;
-                
+                throw;
+
             }
         }
 
@@ -144,8 +137,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                ResponseNewRoundGameView model = await _gameService.NewRound(item);
-                return model;
+                throw;
             }
         }
     }

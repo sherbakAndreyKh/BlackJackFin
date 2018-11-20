@@ -1,43 +1,43 @@
 export class ResponseNewRoundGameView {
-    Game: GameNewRoundGameViewItem;
-    Round: RoundNewRoundGameViewItem;
-    Player: PlayerNewRoundGameViewItem;
-    Dealer: PlayerNewRoundGameViewItem
-    Bots: PlayerNewRoundGameViewItem[];
-    Winner: string;
+    game: GameNewRoundGameViewItem;
+    round: RoundNewRoundGameViewItem;
+    player: PlayerNewRoundGameViewItem;
+    dealer: PlayerNewRoundGameViewItem
+    bots: PlayerNewRoundGameViewItem[];
+    winner: string;
 }
 
 export class PlayerNewRoundGameViewItem {
-    Id: number;
-    Name: string;
-    Role: number;
-    PlayerRoundHand: PlayerRoundHandNewRoundGameViewItem;
+    id: number;
+    name: string;
+    role: number;
+    playerRoundHand: PlayerRoundHandNewRoundGameViewItem;
 }
 
 export class PlayerRoundHandNewRoundGameViewItem {
-    Id: number;
-    Hand: CardNewRoundGameViewItem[];
-    Score: number;
-    PlayerId: number;
-    RoundId: number;
+    id: number;
+    hand: CardNewRoundGameViewItem[];
+    score: number;
+    playerId: number;
+    roundId: number;
 }
 
 export class CardNewRoundGameViewItem {
-    Id: number;
-    Name: string;
-    Suit: string;
-    ImgPath: string;
+    id: number;
+    name: string;
+    suit: string;
+    imgPath: string;
 }
 
 export class GameNewRoundGameViewItem {
-    Id: number;
-    GameNumber: number;
+    id: number;
+    gameNumber: number;
 }
 
 export class RoundNewRoundGameViewItem {
-    Id: number;
-    RoundNumber: number;
-    Winner: string;
-    GameId: number;
-    WinnerScore: number;
+    id: number;
+    roundNumber: number;
+    winner: string;
+    gameId: number;
+    winnerScore: number;
 }

@@ -1,11 +1,11 @@
 export class ResponseFindWinnerGameView {
-    Round: RoundFindWinnerGameViewItem;
+    round: RoundFindWinnerGameViewItem;
 }
 
 export class RoundFindWinnerGameViewItem {
-    Id: number;
-    Winner: string;
-    WinnerScore: number;
-    RoundNumber: number;
-    GameId: number;
+    id: number;
+    winner: string;
+    winnerScore: number;
+    roundNumber: number;
+    gameId: number;
 }

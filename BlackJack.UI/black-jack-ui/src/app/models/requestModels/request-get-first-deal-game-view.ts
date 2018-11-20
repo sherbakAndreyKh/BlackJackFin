@@ -1,22 +1,22 @@
 export class RequestGetFirstDealGameView {
-    Round: RoundRoundHandGetFirstDealGameViewItem;
-    Hands: PlayerRoundHandGetFirstDealGameViewItem[];
+    round: RoundRoundHandGetFirstDealGameViewItem;
+    hands: PlayerRoundHandGetFirstDealGameViewItem[];
 }
 
 export class PlayerRoundHandGetFirstDealGameViewItem {
-    Id: number;
-    Hand: CardGetFirstDealGameViewItem[];
-    Score: number;
-    PlayerId: number;
+    id: number;
+    hand: CardGetFirstDealGameViewItem[];
+    score: number;
+    playerId: number;
 }
 
 export class CardGetFirstDealGameViewItem {
-    Id: number;
-    Name: string;
-    Suit: string;
-    ImgPath: string;
+    id: number;
+    name: string;
+    suit: string;
+    imgPath: string;
 }
 
 export class RoundRoundHandGetFirstDealGameViewItem {
-    Id: number;
+    id: number;
 }

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
 import { WindowModule } from '@progress/kendo-angular-dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';

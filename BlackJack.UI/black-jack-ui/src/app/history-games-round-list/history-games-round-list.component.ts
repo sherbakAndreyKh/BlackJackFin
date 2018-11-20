@@ -1,10 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
-import { RoundListHistoryView } from '../models/round-list-history.model';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { HttpClient } from "@angular/common/http";
-import { DetailRoundHistoryView } from "../models/details-round-history.model";
-import { HttpHistoryGamesRoundListService } from "../services/http-history-games-round-list.service";
+
+import { RoundListHistoryView } from 'src/app/models/round-list-history.model';
+import { DetailRoundHistoryView } from "src/app/models/details-round-history.model";
+import { HttpHistoryGamesRoundListService } from "src/app/services/http-history-games-round-list.service";
 
 @Component({
     selector: 'app-history-games-round-list',
@@ -20,8 +19,6 @@ export class HistoryGamesRoundListComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private http: HttpClient,
-        private location: Location,
         private service: HttpHistoryGamesRoundListService
     ) { }
 

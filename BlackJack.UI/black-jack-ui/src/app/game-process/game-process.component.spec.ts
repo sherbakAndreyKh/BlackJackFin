@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GameProcessComponent } from './game-process.component';
+import { GameProcessComponent } from 'src/app/game-process/game-process.component';
 
 describe('GameProcessComponent', () => {
     let component: GameProcessComponent;

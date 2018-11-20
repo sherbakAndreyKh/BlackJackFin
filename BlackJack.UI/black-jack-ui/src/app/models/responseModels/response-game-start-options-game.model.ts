@@ -1,9 +1,9 @@
 export class ResponseGameStartOptionsGameView {
-    PlayerName: string;
-    BotsAmount: number;
-    Players: PlayerGameStartOptionsViewItem[];
+    playerName: string;
+    botsAmount: number;
+    players: PlayerGameStartOptionsViewItem[];
 }
 
 export class PlayerGameStartOptionsViewItem {
-    PlayerName: string;
+    playerName: string;
 }

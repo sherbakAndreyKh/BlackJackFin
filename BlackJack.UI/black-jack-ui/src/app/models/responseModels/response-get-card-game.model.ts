@@ -1,18 +1,18 @@
 export class ResponseGetCardGameView {
-    Hand: PlayerRoundHandGetCardGameViewItem;
+    hand: PlayerRoundHandGetCardGameViewItem;
 }
 
 export class PlayerRoundHandGetCardGameViewItem {
-    Id: number;
-    Hand: CardGetCardGameViewItem[];
-    Score: number;
-    PlayerId: number;
-    RoundId: number;
+    id: number;
+    hand: CardGetCardGameViewItem[];
+    score: number;
+    playerId: number;
+    roundId: number;
 }
 
 export class CardGetCardGameViewItem {
-    Id: number;
-    Name: string;
-    Suit: string;
-    ImgPath: string;
+    id: number;
+    name: string;
+    suit: string;
+    imgPath: string;
 }

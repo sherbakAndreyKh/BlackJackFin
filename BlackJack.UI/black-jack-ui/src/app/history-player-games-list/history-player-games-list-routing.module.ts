@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HistoryPlayerGamesListComponent } from './history-player-games-list.component';
+import { HistoryPlayerGamesListComponent } from 'src/app/history-player-games-list/history-player-games-list.component';
 
 const routes: Routes = [
     { path: '', component: HistoryPlayerGamesListComponent }

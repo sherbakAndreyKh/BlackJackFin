@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpHistoryPlayerListService } from '../services/http-history-player-list.service';
-import { IndexHistoryView } from '../models/index-history.model';
+
+import { HttpHistoryPlayerListService } from 'src/app/services/http-history-player-list.service';
+import { IndexHistoryView } from 'src/app/models/index-history.model';
 
 @Component({
     selector: 'app-history-player-list',

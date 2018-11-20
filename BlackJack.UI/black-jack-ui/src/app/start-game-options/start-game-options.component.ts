@@ -32,8 +32,8 @@ export class StartGameOptionsComponent implements OnInit {
     public getNames(test: ResponseGameStartOptionsGameView): string[] {
         var result: string[] = new Array();
 
-        for (var i = 0; i < test.Players.length; i++) {
-            result.push(test.Players[i].PlayerName);
+        for (var i = 0; i < test.players.length; i++) {
+            result.push(test.players[i].playerName);
         }
 
         return result;
@@ -48,8 +48,8 @@ export class StartGameOptionsComponent implements OnInit {
     }
 
     public submit(playerName: string, botsAmount: number) {
-        this.reqModel.PlayerName = playerName;
-        this.reqModel.BotsAmount = botsAmount;
+        this.reqModel.playerName = playerName;
+        this.reqModel.botsAmount = botsAmount;
 
         this.service.HttpPost(this.reqModel).subscribe((data: ResponseGameProcessGameView) => {
             this.responseModel = data;

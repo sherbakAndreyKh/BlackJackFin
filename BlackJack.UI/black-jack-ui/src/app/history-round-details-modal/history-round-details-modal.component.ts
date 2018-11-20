@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DetailRoundHistoryView } from '../models/details-round-history.model';
+import { DetailRoundHistoryView } from 'src/app/models/details-round-history.model';
 
 @Component({
     selector: 'app-history-round-details-modal',

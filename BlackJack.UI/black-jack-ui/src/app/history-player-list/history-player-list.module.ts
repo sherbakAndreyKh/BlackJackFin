@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { HistoryPlayerListRoutingModule } from './history-player-list-routing.module';
-import { HistoryPlayerListComponent } from './history-player-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridModule } from '@progress/kendo-angular-grid';
+
+import { HistoryPlayerListRoutingModule } from 'src/app/history-player-list/history-player-list-routing.module';
+import { HistoryPlayerListComponent } from 'src/app/history-player-list/history-player-list.component';
 
 
 @NgModule({

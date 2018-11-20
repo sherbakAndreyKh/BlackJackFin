@@ -1,9 +1,9 @@
 export class IndexHistoryView {
-    Players: PlayerIndexHistoryViewItem[];
+    players: PlayerIndexHistoryViewItem[];
 }
 
 export class PlayerIndexHistoryViewItem {
-    Id: number;
-    Name: string;
-    GameAmount: number;
+    id: number;
+    name: string;
+    gameAmount: number;
 }

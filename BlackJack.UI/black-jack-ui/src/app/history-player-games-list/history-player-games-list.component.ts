@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GameListHistoryView } from '../models/game-list-history.model';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { HttpHistoryPlayerGamesListService } from '../services/http-history-player-games-list.service';
+
+import { GameListHistoryView } from 'src/app/models/game-list-history.model';
+import { HttpHistoryPlayerGamesListService } from 'src/app/services/http-history-player-games-list.service';
 
 @Component({
     selector: 'app-history-player-games-list',

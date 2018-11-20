@@ -31,8 +31,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                IndexHistoryView model = await _historyService.GetAllPlayers();
-                return model;
+                throw;
             }
         }
         [HttpGet]
@@ -47,8 +46,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                GameListHistoryView model = await _historyService.GetGamesByPlayerId(playerId);
-                return model;
+                throw;
             }
         }
         [HttpGet]
@@ -63,8 +61,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                RoundListHistoryView model = await _historyService.GetRoundsByGameId(gameId);
-                return model;
+                throw;
             }
         }
         [HttpGet]
@@ -79,8 +76,7 @@ namespace BlackJack.UI.Controllers
             catch (Exception ex)
             {
                 logger.Error(ex.ToString());
-                DetailsRoundHistoryView model = await _historyService.GetRoundsDetailsByRoundId(roundId);
-                return model;
+                throw;
             }
         }
     }

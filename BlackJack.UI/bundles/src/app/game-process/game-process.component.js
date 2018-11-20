@@ -54,7 +54,7 @@ var GameProcessComponent = /** @class */ (function () {
     GameProcessComponent.prototype.getWinner = function () {
         var _this = this;
         debugger;
-        this.UseLogicOnBotAndDealer();
+        this.useLogicOnBotAndDealer();
         debugger;
         this.service.HttpGetWinner(this.addFindWinnerRequest()).subscribe(function (data) { return _this.model.Round = data.Round; });
     };
@@ -66,7 +66,7 @@ var GameProcessComponent = /** @class */ (function () {
             return this.model.Dealer;
         }
     };
-    GameProcessComponent.prototype.UseLogicOnBotAndDealer = function () {
+    GameProcessComponent.prototype.useLogicOnBotAndDealer = function () {
         for (var i = 0; i <= this.model.Bots.length; i++) {
             this.getBotAndDealerLogic(i);
         }
