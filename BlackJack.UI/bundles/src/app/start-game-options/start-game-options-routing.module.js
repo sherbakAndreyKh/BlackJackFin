@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { StartGameOptionsComponent } from './start-game-options.component';
+import { StartGameOptionsComponent } from 'src/app/start-game-options/start-game-options.component';
 var routes = [
     { path: '', component: StartGameOptionsComponent }
 ];

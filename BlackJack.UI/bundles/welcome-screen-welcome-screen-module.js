@@ -12,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WelcomeScreenRoutingModule", function() { return WelcomeScreenRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _welcome_screen_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./welcome-screen.component */ "./src/app/welcome-screen/welcome-screen.component.ts");
+/* harmony import */ var src_app_welcome_screen_welcome_screen_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/welcome-screen/welcome-screen.component */ "./src/app/welcome-screen/welcome-screen.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -23,7 +23,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
-    { path: '', component: _welcome_screen_component__WEBPACK_IMPORTED_MODULE_2__["WelcomeScreenComponent"] }
+    { path: '', component: src_app_welcome_screen_welcome_screen_component__WEBPACK_IMPORTED_MODULE_2__["WelcomeScreenComponent"] }
 ];
 var WelcomeScreenRoutingModule = /** @class */ (function () {
     function WelcomeScreenRoutingModule() {
@@ -59,7 +59,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"text-center container\">\n<h1 class=\"text-center\">Welcome to Black-Jack game</h1>\n\n<a routerLink=\"/startOptions\">StartGame</a>\n</div>"
+module.exports = "<div class=\"text-center container\">\r\n    <h1 class=\"text-center\">Welcome to Black-Jack game</h1>\r\n    <a routerLink=\"/startOptions\">StartGame</a>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -116,8 +116,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WelcomeScreenModule", function() { return WelcomeScreenModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _welcome_screen_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./welcome-screen-routing.module */ "./src/app/welcome-screen/welcome-screen-routing.module.ts");
-/* harmony import */ var _welcome_screen_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./welcome-screen.component */ "./src/app/welcome-screen/welcome-screen.component.ts");
+/* harmony import */ var src_app_welcome_screen_welcome_screen_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/welcome-screen/welcome-screen-routing.module */ "./src/app/welcome-screen/welcome-screen-routing.module.ts");
+/* harmony import */ var src_app_welcome_screen_welcome_screen_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/welcome-screen/welcome-screen.component */ "./src/app/welcome-screen/welcome-screen.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -135,9 +135,9 @@ var WelcomeScreenModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-                _welcome_screen_routing_module__WEBPACK_IMPORTED_MODULE_2__["WelcomeScreenRoutingModule"]
+                src_app_welcome_screen_welcome_screen_routing_module__WEBPACK_IMPORTED_MODULE_2__["WelcomeScreenRoutingModule"]
             ],
-            declarations: [_welcome_screen_component__WEBPACK_IMPORTED_MODULE_3__["WelcomeScreenComponent"]]
+            declarations: [src_app_welcome_screen_welcome_screen_component__WEBPACK_IMPORTED_MODULE_3__["WelcomeScreenComponent"]]
         })
     ], WelcomeScreenModule);
     return WelcomeScreenModule;

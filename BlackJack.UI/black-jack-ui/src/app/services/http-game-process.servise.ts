@@ -7,10 +7,10 @@ import { RequestFindWinnerGameView } from 'src/app/models/requestModels/request-
 
 @Injectable()
 export class HttpGameProcessService {
-    private urlGetCard = 'http://localhost:50219/Game/GetCard';
-    private urlGetFirstDeal = 'http://localhost:50219/Game/GetFirstDeal';
-    private urlGetBotLogic = 'http://localhost:50219/Game/BotAndDealerLogic';
-    private urlGetWinner = 'http://localhost:50219/Game/FindWinner';
+    private urlGetCard = '/Game/GetCard';
+    private urlGetFirstDeal = 'Game/GetFirstDeal';
+    private urlGetBotLogic = 'Game/BotAndDealerLogic';
+    private urlGetWinner = 'Game/FindWinner';
 
     constructor(private http: HttpClient) { }
 

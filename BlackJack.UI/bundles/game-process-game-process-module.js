@@ -12,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameProcessRoutingModule", function() { return GameProcessRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _game_process_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game-process.component */ "./src/app/game-process/game-process.component.ts");
+/* harmony import */ var src_app_game_process_game_process_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/game-process/game-process.component */ "./src/app/game-process/game-process.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -23,7 +23,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
-    { path: '', component: _game_process_component__WEBPACK_IMPORTED_MODULE_2__["GameProcessComponent"] }
+    { path: '', component: src_app_game_process_game_process_component__WEBPACK_IMPORTED_MODULE_2__["GameProcessComponent"] }
 ];
 var GameProcessRoutingModule = /** @class */ (function () {
     function GameProcessRoutingModule() {
@@ -53,7 +53,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameProcessModule", function() { return GameProcessModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _game_process_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game-process-routing.module */ "./src/app/game-process/game-process-routing.module.ts");
+/* harmony import */ var src_app_game_process_game_process_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/game-process/game-process-routing.module */ "./src/app/game-process/game-process-routing.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,7 +70,7 @@ var GameProcessModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-                _game_process_routing_module__WEBPACK_IMPORTED_MODULE_2__["GameProcessRoutingModule"]
+                src_app_game_process_game_process_routing_module__WEBPACK_IMPORTED_MODULE_2__["GameProcessRoutingModule"]
             ],
             declarations: []
         })

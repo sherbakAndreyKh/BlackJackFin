@@ -12,13 +12,13 @@ import { HttpClient } from '@angular/common/http';
 var HttpHistoryGamesRoundListService = /** @class */ (function () {
     function HttpHistoryGamesRoundListService(http) {
         this.http = http;
-        this.urlGetRounds = "http://localhost:50219/history/getrounds/";
-        this.urlGetRoundsDetail = "http://localhost:50219/history/GetRoundsDetail/";
+        this.urlGetRounds = "history/getrounds/";
+        this.urlGetRoundsDetail = "history/GetRoundsDetail/";
     }
-    HttpHistoryGamesRoundListService.prototype.HttpGetRoundsWithId = function (id) {
+    HttpHistoryGamesRoundListService.prototype.httpGetRoundsWithId = function (id) {
         return this.http.get(this.urlGetRounds + id);
     };
-    HttpHistoryGamesRoundListService.prototype.HttpGetRoundsDetail = function (id) {
+    HttpHistoryGamesRoundListService.prototype.httpGetRoundsDetail = function (id) {
         return this.http.get(this.urlGetRoundsDetail + id);
     };
     HttpHistoryGamesRoundListService = __decorate([

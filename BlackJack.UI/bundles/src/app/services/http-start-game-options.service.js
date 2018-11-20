@@ -12,14 +12,14 @@ import { HttpClient } from '@angular/common/http';
 var HttpStartGameOptionsService = /** @class */ (function () {
     function HttpStartGameOptionsService(http) {
         this.http = http;
-        this.urlGet = 'http://localhost:50219/Game/GameStartoptions';
-        this.urlPost = 'http://localhost:50219/Game/GameStartoptions';
+        this.urlGetStartOptions = '/Game/GameStartoptions';
+        this.urlPostStartOptions = '/Game/GameStartoptions';
     }
-    HttpStartGameOptionsService.prototype.HttpGet = function () {
-        return this.http.get(this.urlGet);
+    HttpStartGameOptionsService.prototype.HttpGetStartOptions = function () {
+        return this.http.get(this.urlGetStartOptions);
     };
-    HttpStartGameOptionsService.prototype.HttpPost = function (model) {
-        return this.http.post(this.urlPost, model);
+    HttpStartGameOptionsService.prototype.HttpPostStartOptions = function (model) {
+        return this.http.post(this.urlPostStartOptions, model);
     };
     HttpStartGameOptionsService = __decorate([
         Injectable(),

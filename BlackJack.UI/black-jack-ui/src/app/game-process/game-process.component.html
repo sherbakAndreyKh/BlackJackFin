@@ -12,6 +12,12 @@
         </div>
     </div>
 
+    <div class="field text-center">
+        <img src="~/Content/Img/bj.jpg" alt="Alternate Text" />
+    </div>
+    
+
+    <div class="row">
     <div class="player col-md-2">
         <p><span *ngFor="let card of model?.player.playerRoundHand.hand">{{card.name}} {{card.suit}}, </span> </p>
         <p>{{model?.player.playerRoundHand.score}}</p>
@@ -25,10 +31,11 @@
         <h4>{{bot.name}}</h4>
     </div>
     <hr>
+</div>
     <div class="dealer col-md-2">
-        <p><span *ngFor="let card of model?.dealer.playerRoundHand.hand">{{card.name}} {{card.suit}},</span></p>
-        <p>{{model?.dealer.playerRoundHand.score}}</p>
         <h4>{{model?.dealer.name}}</h4>
+        <p>{{model?.dealer.playerRoundHand.score}}</p>
+        <p><span *ngFor="let card of model?.dealer.playerRoundHand.hand">{{card.name}} {{card.suit}},</span></p>
     </div>
 
     <div class="text-right">

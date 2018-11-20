@@ -4,8 +4,8 @@ import { RequestGameStartOptionsView } from 'src/app/models/request-game-start-o
 
 @Injectable()
 export class HttpStartGameOptionsService {
-    private urlGetStartOptions = 'http://localhost:50219/Game/GameStartoptions';
-    private urlPostStartOptions = 'http://localhost:50219/Game/GameStartoptions'
+    private urlGetStartOptions = '/Game/GameStartoptions';
+    private urlPostStartOptions = '/Game/GameStartoptions'
     constructor(private http: HttpClient) { }
 
     HttpGetStartOptions() {

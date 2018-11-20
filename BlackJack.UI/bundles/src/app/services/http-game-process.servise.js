@@ -12,21 +12,21 @@ import { HttpClient } from '@angular/common/http';
 var HttpGameProcessService = /** @class */ (function () {
     function HttpGameProcessService(http) {
         this.http = http;
-        this.urlGetCard = 'http://localhost:50219/Game/GetCard';
-        this.urlGetFirstDeal = 'http://localhost:50219/Game/GetFirstDeal';
-        this.urlGetBotLogic = 'http://localhost:50219/Game/BotAndDealerLogic';
-        this.urlGetWinner = 'http://localhost:50219/Game/FindWinner';
+        this.urlGetCard = '/Game/GetCard';
+        this.urlGetFirstDeal = 'Game/GetFirstDeal';
+        this.urlGetBotLogic = 'Game/BotAndDealerLogic';
+        this.urlGetWinner = 'Game/FindWinner';
     }
-    HttpGameProcessService.prototype.HttpGetCard = function (model) {
+    HttpGameProcessService.prototype.httpGetCard = function (model) {
         return this.http.post(this.urlGetCard, model);
     };
-    HttpGameProcessService.prototype.HttpGetFirstDeal = function (model) {
+    HttpGameProcessService.prototype.httpGetFirstDeal = function (model) {
         return this.http.post(this.urlGetFirstDeal, model);
     };
-    HttpGameProcessService.prototype.HttpGetBotAndDealerLogic = function (model) {
+    HttpGameProcessService.prototype.httpGetBotAndDealerLogic = function (model) {
         return this.http.post(this.urlGetBotLogic, model);
     };
-    HttpGameProcessService.prototype.HttpGetWinner = function (model) {
+    HttpGameProcessService.prototype.httpGetWinner = function (model) {
         return this.http.post(this.urlGetWinner, model);
     };
     HttpGameProcessService = __decorate([

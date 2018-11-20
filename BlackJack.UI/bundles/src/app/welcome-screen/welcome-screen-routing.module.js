@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { WelcomeScreenComponent } from './welcome-screen.component';
+import { WelcomeScreenComponent } from 'src/app/welcome-screen/welcome-screen.component';
 var routes = [
     { path: '', component: WelcomeScreenComponent }
 ];

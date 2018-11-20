@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~game-process-game-process-module~history-games-round-list-history-games-round-list-module~hi~86f0fd27"],{
 
 /***/ "./node_modules/@angular/common/fesm5/http.js":
 /*!****************************************************!*\
@@ -1985,4 +1985,4 @@ var HttpClientJsonpModule = /** @class */ (function () {
 /***/ })
 
 }]);
-//# sourceMappingURL=default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b.js.map
+//# sourceMappingURL=default~game-process-game-process-module~history-games-round-list-history-games-round-list-module~hi~86f0fd27.js.map

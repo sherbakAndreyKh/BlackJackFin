@@ -35,16 +35,16 @@ var GameProcessComponent = /** @class */ (function () {
     GameProcessComponent.prototype.getCardClick = function () {
         var _this = this;
         this.addGetCardRequest();
-        this.service.HttpGetCard(this.getCardRequest).subscribe(function (data) { return _this.model.player.playerRoundHand = data.hand; });
+        this.service.httpGetCard(this.getCardRequest).subscribe(function (data) { return _this.model.player.playerRoundHand = data.hand; });
     };
     GameProcessComponent.prototype.getFirstDealClick = function () {
         var _this = this;
         this.addFirstDealRequest();
-        this.service.HttpGetFirstDeal(this.getFirstDealRequest).subscribe(function (data) { return _this.addFirstDealResponse(data); });
+        this.service.httpGetFirstDeal(this.getFirstDealRequest).subscribe(function (data) { return _this.addFirstDealResponse(data); });
     };
     GameProcessComponent.prototype.getBotAndDealerLogic = function (count) {
         var _this = this;
-        this.service.HttpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe(function (data) { return _this.getHand(count).playerRoundHand = data.hand; });
+        this.service.httpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe(function (data) { return _this.getHand(count).playerRoundHand = data.hand; });
     };
     GameProcessComponent.prototype.addFindWinnerRequest = function () {
         this.findWinner.dealerHand = this.model.dealer.playerRoundHand;
@@ -54,7 +54,7 @@ var GameProcessComponent = /** @class */ (function () {
     GameProcessComponent.prototype.getWinner = function () {
         var _this = this;
         this.useLogicOnBotAndDealer();
-        this.service.HttpGetWinner(this.addFindWinnerRequest()).subscribe(function (data) { return _this.model.round = data.round; });
+        this.service.httpGetWinner(this.addFindWinnerRequest()).subscribe(function (data) { return _this.model.round = data.round; });
     };
     GameProcessComponent.prototype.getHand = function (count) {
         if (count < this.model.bots.length) {
@@ -87,10 +87,10 @@ var GameProcessComponent = /** @class */ (function () {
             if (i == 0) {
                 this.model.player.playerRoundHand = data.hands[i];
             }
-            if (i == data.Hands.length - 1) {
+            if (i == data.hands.length - 1) {
                 this.model.dealer.playerRoundHand = data.hands[i];
             }
-            if (i != 0 && i != data.hands.length) {
+            if (i != 0 && i != data.hands.length - 1) {
                 this.model.bots[i - 1].playerRoundHand = data.hands[i];
             }
         }

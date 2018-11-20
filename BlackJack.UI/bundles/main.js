@@ -10,26 +10,29 @@
 var map = {
 	"./game-process/game-process.module": [
 		"./src/app/game-process/game-process.module.ts",
-		"default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b",
-		"common",
+		"default~game-process-game-process-module~history-games-round-list-history-games-round-list-module~hi~86f0fd27",
+		"default~game-process-game-process-module~start-game-options-start-game-options-module",
 		"game-process-game-process-module"
+	],
+	"./history-games-round-list/history-games-round-list.module": [
+		"./src/app/history-games-round-list/history-games-round-list.module.ts",
+		"default~game-process-game-process-module~history-games-round-list-history-games-round-list-module~hi~86f0fd27",
+		"history-games-round-list-history-games-round-list-module"
 	],
 	"./history-player-games-list/history-player-games-list.module": [
 		"./src/app/history-player-games-list/history-player-games-list.module.ts",
-		"default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b",
-		"common",
+		"default~game-process-game-process-module~history-games-round-list-history-games-round-list-module~hi~86f0fd27",
 		"history-player-games-list-history-player-games-list-module"
 	],
 	"./history-player-list/history-player-list.module": [
 		"./src/app/history-player-list/history-player-list.module.ts",
-		"default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b",
-		"common",
+		"default~game-process-game-process-module~history-games-round-list-history-games-round-list-module~hi~86f0fd27",
 		"history-player-list-history-player-list-module"
 	],
 	"./start-game-options/start-game-options.module": [
 		"./src/app/start-game-options/start-game-options.module.ts",
-		"default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b",
-		"common",
+		"default~game-process-game-process-module~history-games-round-list-history-games-round-list-module~hi~86f0fd27",
+		"default~game-process-game-process-module~start-game-options-start-game-options-module",
 		"start-game-options-start-game-options-module"
 	],
 	"./welcome-screen/welcome-screen.module": [
@@ -85,7 +88,8 @@ var routes = [
     { path: 'startOptions', loadChildren: './start-game-options/start-game-options.module#StartGameOptionsModule' },
     { path: 'gameProcess', loadChildren: './game-process/game-process.module#GameProcessModule' },
     { path: 'history', loadChildren: './history-player-list/history-player-list.module#HistoryPlayerListModule' },
-    { path: 'getGames', loadChildren: './history-player-games-list/history-player-games-list.module#HistoryPlayerGamesListModule' }
+    { path: 'getGames/:id', loadChildren: './history-player-games-list/history-player-games-list.module#HistoryPlayerGamesListModule' },
+    { path: 'getRounds/:id', loadChildren: './history-games-round-list/history-games-round-list.module#HistoryGamesRoundListModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -115,7 +119,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.Menu{\r\n    list-style-type: none;\r\n    background-color:#111; \r\n}\r\n.Menu li {\r\n    display: inline-block;\r\n}\r\n.Menu li a{\r\n    font-family: Arial, Helvetica, sans-serif;\r\n    color: white;\r\n    text-decoration: none;\r\n    padding: 20px;\r\n    display: block;\r\n}\r\n.Menu li:hover{\r\n    background-color: #333;\r\n\r\n}"
+module.exports = ".Menu {\r\n    list-style-type: none;\r\n    background-color: #111;\r\n}\r\n\r\n    .Menu li {\r\n        display: inline-block;\r\n    }\r\n\r\n    .Menu li a {\r\n            font-family: Arial, Helvetica, sans-serif;\r\n            color: white;\r\n            text-decoration: none;\r\n            padding: 20px;\r\n            display: block;\r\n        }\r\n\r\n    .Menu li:hover {\r\n            background-color: #333;\r\n        }\r\n"
 
 /***/ }),
 
@@ -126,7 +130,7 @@ module.exports = "\r\n.Menu{\r\n    list-style-type: none;\r\n    background-col
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<ul class=\"Menu\">\n    <li><a routerLink=''>Main</a></li>\n    <li><a routerLink=\"/startOptions\">StartGame</a></li>\n    <li><a routerLink=\"history\">History</a></li>\n</ul>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<ul class=\"Menu\">\r\n    <li><a routerLink=''>Main</a></li>\r\n    <li><a routerLink=\"/startOptions\">StartGame</a></li>\r\n    <li><a routerLink=\"history\">History</a></li>\r\n</ul>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 

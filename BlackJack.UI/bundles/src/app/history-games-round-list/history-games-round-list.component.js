@@ -22,7 +22,7 @@ var HistoryGamesRoundListComponent = /** @class */ (function () {
     HistoryGamesRoundListComponent.prototype.getRoundGames = function () {
         var _this = this;
         var id = +this.route.snapshot.paramMap.get('id');
-        this.service.HttpGetRoundsWithId(id).subscribe(function (data) { return _this.model = data; });
+        this.service.httpGetRoundsWithId(id).subscribe(function (data) { return _this.model = data; });
     };
     HistoryGamesRoundListComponent.prototype.getModal = function (id) {
         var _this = this;
@@ -31,7 +31,7 @@ var HistoryGamesRoundListComponent = /** @class */ (function () {
         }
         else {
             this.opened = true;
-            this.service.HttpGetRoundsDetail(id).subscribe(function (data) { return _this.modalModel = data; });
+            this.service.httpGetRoundsDetail(id).subscribe(function (data) { return _this.modalModel = data; });
         }
     };
     HistoryGamesRoundListComponent = __decorate([

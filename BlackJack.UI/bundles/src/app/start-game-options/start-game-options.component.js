@@ -8,9 +8,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { HttpStartGameOptionsService } from '../services/http-start-game-options.service';
-import { RequestGameStartOptionsView } from '../models/request-game-start-options-game.model';
-import { HttpGameProcessService } from '../services/http-game-process.servise';
+import { HttpStartGameOptionsService } from 'src/app/services/http-start-game-options.service';
+import { RequestGameStartOptionsView } from 'src/app/models/request-game-start-options-game.model';
+import { HttpGameProcessService } from 'src/app/services/http-game-process.servise';
 var StartGameOptionsComponent = /** @class */ (function () {
     function StartGameOptionsComponent(service) {
         this.service = service;
@@ -20,7 +20,7 @@ var StartGameOptionsComponent = /** @class */ (function () {
     }
     StartGameOptionsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.service.HttpGet().subscribe(function (data) {
+        this.service.HttpGetStartOptions().subscribe(function (data) {
             _this.listPlayersName = _this.getNames(data);
         });
     };
@@ -41,7 +41,7 @@ var StartGameOptionsComponent = /** @class */ (function () {
         var _this = this;
         this.reqModel.playerName = playerName;
         this.reqModel.botsAmount = botsAmount;
-        this.service.HttpPost(this.reqModel).subscribe(function (data) {
+        this.service.HttpPostStartOptions(this.reqModel).subscribe(function (data) {
             _this.responseModel = data;
         });
         this.close();

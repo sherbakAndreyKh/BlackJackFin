@@ -25,7 +25,7 @@ var HistoryPlayerGamesListComponent = /** @class */ (function () {
     HistoryPlayerGamesListComponent.prototype.getPlayerGames = function () {
         var _this = this;
         var id = +this.route.snapshot.paramMap.get('id');
-        this.service.HttpGetPlayerGames(id).subscribe(function (data) { return _this.model = data; }, function (error) { return console.log(error); });
+        this.service.httpGetPlayerGames(id).subscribe(function (data) { return _this.model = data; }, function (error) { return console.log(error); });
     };
     HistoryPlayerGamesListComponent = __decorate([
         Component({

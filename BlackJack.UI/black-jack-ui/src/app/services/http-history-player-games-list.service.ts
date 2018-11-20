@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class HttpHistoryPlayerGamesListService {
-    private urlGetPlayerGames = "http://localhost:50219/history/getgames/";
+    private urlGetPlayerGames = "history/getgames/";
 
     constructor(private http: HttpClient) { }
 

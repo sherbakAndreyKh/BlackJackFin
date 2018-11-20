@@ -239,7 +239,6 @@
     <Content Include="black-jack-ui\src\tslint.json" />
     <Content Include="black-jack-ui\tsconfig.json" />
     <Content Include="black-jack-ui\tslint.json" />
-    <Content Include="bundles\common.js" />
     <Content Include="bundles\favicon.ico" />
     <Content Include="bundles\game-process-game-process-module.js" />
     <Content Include="bundles\history-player-list-history-player-list-module.js" />
@@ -265,7 +264,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="libman.json" />
-    <Content Include="bundles\common.js.map" />
     <Content Include="bundles\game-process-game-process-module.js.map" />
     <Content Include="bundles\history-player-list-history-player-list-module.js.map" />
     <Content Include="bundles\main.js.map" />

@@ -1,5 +1,5 @@
 import { async, TestBed } from '@angular/core/testing';
-import { WelcomeScreenComponent } from './welcome-screen.component';
+import { WelcomeScreenComponent } from 'src/app/welcome-screen/welcome-screen.component';
 describe('WelcomeScreenComponent', function () {
     var component;
     var fixture;
