@@ -12,11 +12,13 @@ import { ResponseGameProcessGameView } from '../models/responseModels/response-g
 import { HttpGameProcessService } from '../services/http-game-process.servise';
 import { RequestGetCardGameView } from '../models/requestModels/request-get-card-game-view';
 import { RequestGetFirstDealGameView } from '../models/requestModels/request-get-first-deal-game-view';
+import { RequestBotLogicGameView } from '../models/requestModels/request-bot-logic-game-view';
 var GameProcessComponent = /** @class */ (function () {
     function GameProcessComponent(service) {
         this.service = service;
         this.getCardRequest = new RequestGetCardGameView();
         this.getFirstDealRequest = new RequestGetFirstDealGameView();
+        this.getBotAndDealerLogicRequest = new RequestBotLogicGameView();
     }
     GameProcessComponent.prototype.ngOnInit = function () {
     };
@@ -37,6 +39,30 @@ var GameProcessComponent = /** @class */ (function () {
         var _this = this;
         this.addFirstDealRequest();
         this.service.HttpGetFirstDeal(this.getFirstDealRequest).subscribe(function (data) { return _this.addFirstDealResponse(data); });
+    };
+    GameProcessComponent.prototype.getBotAndDealerLogic = function (count) {
+        var _this = this;
+        this.service.HttpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe(function (data) { return _this.model.Bots[count].PlayerRoundHand = data.Hand; });
+    };
+    GameProcessComponent.prototype.UseLogicOnBotAndDealer = function () {
+        for (var i = 0; i <= this.model.Bots.length; i++) {
+            this.getBotAndDealerLogic(i);
+        }
+    };
+    GameProcessComponent.prototype.addBotAndDealerRequest = function (count) {
+        var hand;
+        if (count < this.model.Bots.length) {
+            hand = this.model.Bots[count].PlayerRoundHand;
+        }
+        if (count == this.model.Bots.length) {
+            hand = this.model.Dealer.PlayerRoundHand;
+        }
+        this.getBotAndDealerLogicRequest.Round = this.model.Round;
+        this.getBotAndDealerLogicRequest.Hand = hand;
+        return this.getBotAndDealerLogicRequest;
+    };
+    GameProcessComponent.prototype.getWinner = function () {
+        this.UseLogicOnBotAndDealer();
     };
     GameProcessComponent.prototype.addFirstDealResponse = function (data) {
         debugger;

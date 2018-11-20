@@ -1,22 +1,22 @@
 export class DetailRoundHistoryView{
-    players: PlayerDetailsRoundHistoryViewItem[];
+    Players: PlayerDetailsRoundHistoryViewItem[];
 }
 
 export class PlayerDetailsRoundHistoryViewItem{
-    name: string;
-    playerRoundHand: PlayerRoundHandDetailsRoundHistoryViewItem[];
+    Name: string;
+    PlayerRoundHand: PlayerRoundHandDetailsRoundHistoryViewItem[];
 }
 
 export class PlayerRoundHandDetailsRoundHistoryViewItem{
-    score: number;
-    playerId: number;
-    roundId: number;
-    hand: CardDetailsRoundHistoryViewItem[];
+    Score: number;
+    PlayerId: number;
+    RoundId: number;
+    Hand: CardDetailsRoundHistoryViewItem[];
 }
 
 export class CardDetailsRoundHistoryViewItem{
-    name: string;
-    suit: string;
-    value: number;
-    imgPath: string;
+    Name: string;
+    Suit: string;
+    Value: number;
+    ImgPath: string;
 }

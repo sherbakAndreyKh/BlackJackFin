@@ -19,4 +19,10 @@ export class HistoryPlayerListComponent implements OnInit {
   ngOnInit() {   
     this.service.HttpGetPlayerList().subscribe((data: IndexHistoryView)=> this.model = data);
   }
+
+  buttonClick(id:number) {
+    debugger;
+  
+  }
+  
 }

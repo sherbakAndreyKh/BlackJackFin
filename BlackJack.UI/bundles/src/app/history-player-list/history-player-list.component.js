@@ -17,6 +17,9 @@ var HistoryPlayerListComponent = /** @class */ (function () {
         var _this = this;
         this.service.HttpGetPlayerList().subscribe(function (data) { return _this.model = data; });
     };
+    HistoryPlayerListComponent.prototype.buttonClick = function (id) {
+        debugger;
+    };
     HistoryPlayerListComponent = __decorate([
         Component({
             selector: 'app-history-player-list',

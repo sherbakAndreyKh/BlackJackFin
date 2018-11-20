@@ -1,11 +1,11 @@
 export class RoundListHistoryView{
-    playersAmount: number;
-    rounds: RoundRoundListHistoryViewItem[];
+    PlayersAmount: number;
+    Rounds: RoundRoundListHistoryViewItem[];
 }
 
 export class RoundRoundListHistoryViewItem{
-    id: number;
-    winner: string;
-    winnerScore: number;
-    roundNumber: number;
+    Id: number;
+    Winner: string;
+    WinnerScore: number;
+    RoundNumber: number;
 }

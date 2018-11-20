@@ -8,8 +8,8 @@ namespace BlackJack.ViewModels.RequestModel
 {
     public class RequestBotLogicGameView
     {
-        public RoundRoundHandGetCardGameViewItem Round { get; set; }
-        public PlayerRoundHandGetCardGameViewItem Hand { get; set; }
+        public RoundRoundHandBotLogicGameViewItem Round { get; set; }
+        public PlayerRoundHandBotLogicGameViewItem Hand { get; set; }
     }
 
     public class PlayerRoundHandBotLogicGameViewItem

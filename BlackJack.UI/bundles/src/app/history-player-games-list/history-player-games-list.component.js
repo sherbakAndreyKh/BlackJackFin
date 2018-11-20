@@ -23,7 +23,6 @@ var HistoryPlayerGamesListComponent = /** @class */ (function () {
     HistoryPlayerGamesListComponent.prototype.getPlayerGames = function () {
         var _this = this;
         var id = +this.route.snapshot.paramMap.get('id');
-        debugger;
         this.http.get("http://localhost:50219/history/getgames/" + id).subscribe(function (data) { return _this.model = data; });
     };
     HistoryPlayerGamesListComponent = __decorate([

@@ -8,7 +8,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HistoryPlayerGamesListComponent } from './history-player-games-list.component';
 var routes = [
-    { path: '', component: HistoryPlayerGamesListComponent },
     { path: '', component: HistoryPlayerGamesListComponent }
 ];
 var HistoryPlayerGamesListRoutingModule = /** @class */ (function () {

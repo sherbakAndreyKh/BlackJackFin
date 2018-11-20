@@ -14,12 +14,16 @@ var HttpGameProcessService = /** @class */ (function () {
         this.http = http;
         this.urlGetCard = 'http://localhost:50219/Game/GetCard';
         this.urlGetFirstDeal = 'http://localhost:50219/Game/GetFirstDeal';
+        this.urlGetBotLogic = 'http://localhost:50219/Game/BotAndDealerLogic';
     }
     HttpGameProcessService.prototype.HttpGetCard = function (model) {
         return this.http.post(this.urlGetCard, model);
     };
     HttpGameProcessService.prototype.HttpGetFirstDeal = function (model) {
         return this.http.post(this.urlGetFirstDeal, model);
+    };
+    HttpGameProcessService.prototype.HttpGetBotAndDealerLogic = function (model) {
+        return this.http.post(this.urlGetBotLogic, model);
     };
     HttpGameProcessService = __decorate([
         Injectable(),

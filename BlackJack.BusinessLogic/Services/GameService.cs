@@ -172,7 +172,7 @@ namespace BlackJack.BusinessLogic.Services
             Player dealer = await _playerRepository.Get(item.DealerHand.PlayerId);
             PlayerRoundHand playerHand = await _playerRoundHandRepository.Get(item.PlayerHand.Id);
             PlayerRoundHand dealerHand = await _playerRoundHandRepository.Get(item.DealerHand.Id);
-            Round round = await _roundRepository.Get(item.PlayerHand.RoundId);
+            Round round = await _roundRepository.Get(playerHand.RoundId);
 
             if (playerHand.Score > score && dealerHand.Score <= score)
             {

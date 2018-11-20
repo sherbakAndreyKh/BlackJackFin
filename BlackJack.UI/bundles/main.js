@@ -10,16 +10,26 @@
 var map = {
 	"./game-process/game-process.module": [
 		"./src/app/game-process/game-process.module.ts",
-		"default~game-process-game-process-module~start-game-options-start-game-options-module",
+		"default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b",
+		"common",
 		"game-process-game-process-module"
+	],
+	"./history-player-games-list/history-player-games-list.module": [
+		"./src/app/history-player-games-list/history-player-games-list.module.ts",
+		"default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b",
+		"common",
+		"history-player-games-list-history-player-games-list-module"
 	],
 	"./history-player-list/history-player-list.module": [
 		"./src/app/history-player-list/history-player-list.module.ts",
+		"default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b",
+		"common",
 		"history-player-list-history-player-list-module"
 	],
 	"./start-game-options/start-game-options.module": [
 		"./src/app/start-game-options/start-game-options.module.ts",
-		"default~game-process-game-process-module~start-game-options-start-game-options-module",
+		"default~game-process-game-process-module~history-player-games-list-history-player-games-list-module~~8d7db32b",
+		"common",
 		"start-game-options-start-game-options-module"
 	],
 	"./welcome-screen/welcome-screen.module": [
@@ -74,7 +84,8 @@ var routes = [
     { path: 'welcome', loadChildren: './welcome-screen/welcome-screen.module#WelcomeScreenModule' },
     { path: 'startOptions', loadChildren: './start-game-options/start-game-options.module#StartGameOptionsModule' },
     { path: 'gameProcess', loadChildren: './game-process/game-process.module#GameProcessModule' },
-    { path: 'history', loadChildren: './history-player-list/history-player-list.module#HistoryPlayerListModule' }
+    { path: 'history', loadChildren: './history-player-list/history-player-list.module#HistoryPlayerListModule' },
+    { path: 'getGames', loadChildren: './history-player-games-list/history-player-games-list.module#HistoryPlayerGamesListModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -173,12 +184,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _progress_kendo_angular_dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @progress/kendo-angular-dialog */ "./node_modules/@progress/kendo-angular-dialog/dist/es/index.js");
 /* harmony import */ var _progress_kendo_angular_buttons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @progress/kendo-angular-buttons */ "./node_modules/@progress/kendo-angular-buttons/dist/es/index.js");
+/* harmony import */ var _progress_kendo_angular_grid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @progress/kendo-angular-grid */ "./node_modules/@progress/kendo-angular-grid/dist/es/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -201,7 +214,8 @@ var AppModule = /** @class */ (function () {
                 _progress_kendo_angular_dropdowns__WEBPACK_IMPORTED_MODULE_4__["DropDownsModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
                 _progress_kendo_angular_dialog__WEBPACK_IMPORTED_MODULE_6__["DialogsModule"],
-                _progress_kendo_angular_buttons__WEBPACK_IMPORTED_MODULE_7__["ButtonsModule"]
+                _progress_kendo_angular_buttons__WEBPACK_IMPORTED_MODULE_7__["ButtonsModule"],
+                _progress_kendo_angular_grid__WEBPACK_IMPORTED_MODULE_8__["GridModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]

@@ -1,17 +1,19 @@
+
 export class ResponseBotLogicGameView{
-    hand: PlayerRoundHandBotLogicGameViewItem[];
+    Hand: PlayerRoundHandBotLogicGameViewItem;
 }
 
 export class PlayerRoundHandBotLogicGameViewItem{
-    id: number;
-    hand: CardBotLogicGameViewItem[];
-    score: number;
-    playerId: number;
+    Id: number;
+    Hand: CardBotLogicGameViewItem[];
+    Score: number;
+    PlayerId: number;
+    RoundId: number;
 } 
 
 export class CardBotLogicGameViewItem{
-    id: number;
-    name: string;
-    suit: string;
-    imgPath: string;
+    Id: number;
+    Name: string;
+    Suit: string;
+    ImgPath: string;
 }
