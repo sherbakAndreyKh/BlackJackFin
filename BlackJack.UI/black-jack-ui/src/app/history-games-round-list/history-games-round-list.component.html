@@ -1,0 +1,13 @@
+<div class="container">
+    <kendo-grid [data]="model?.rounds" (details)="editHandler($event)">
+        <kendo-grid-column field="id" width="10"></kendo-grid-column>
+        <kendo-grid-column field="roundNumber" title="RoundNumber" width="30"></kendo-grid-column>
+        <kendo-grid-column field="winner" title="Winner Name" width="30"></kendo-grid-column>
+        <kendo-grid-command-column title="Command" width="30">
+            <ng-template kendoGridCellTemplate let-data>
+                <button (click)="getModal(data.id)">Get</button>
+            </ng-template>
+        </kendo-grid-command-column>
+    </kendo-grid>
+</div>
+<app-history-round-details-modal [model]="modalModel" [opened]="opened"></app-history-round-details-modal>

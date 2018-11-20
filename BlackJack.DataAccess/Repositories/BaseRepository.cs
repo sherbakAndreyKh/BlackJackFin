@@ -8,6 +8,7 @@ using BlackJack.Entities;
 using Z.Dapper.Plus;
 using BlackJack.DataAccess.Interfaces;
 using System.Threading.Tasks;
+using Dapper.Contrib.Extensions;
 
 namespace BlackJack.DataAccess.Repositories
 {

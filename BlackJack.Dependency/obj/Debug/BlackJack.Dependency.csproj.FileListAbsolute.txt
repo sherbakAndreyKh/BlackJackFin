@@ -51,3 +51,5 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\Z.Dap
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccess.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccess.pdb
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\BlackJack.DataAccess.dll.config
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\Autofac.Integration.WebApi.dll
+C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.Dependency\bin\Debug\Autofac.Integration.WebApi.xml

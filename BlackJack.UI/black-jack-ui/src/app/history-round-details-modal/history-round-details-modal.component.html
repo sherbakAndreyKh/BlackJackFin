@@ -1,0 +1,20 @@
+<div class="example-wrapper">
+    <kendo-window title="Details Round" *ngIf="opened" (close)="close()" [top]="50" [minWidth]="250" [width]="600">
+        <form class="k-form">
+            <fieldset>
+                {{model?.round}}
+                <div class="col-md-12" *ngFor="let player of model?.players">
+                    <h4>{{player.name}}</h4>
+                    <p *ngFor="let prop of player.playerRoundHands">
+                        Score: {{prop.score}} <br>
+                        <span *ngFor="let card of prop.hand">
+                            {{card.name}} {{card.suit}},
+                        </span>
+                    </p>
+                </div>
+            </fieldset>
+        </form>
+    </kendo-window>
+</div>
+
+

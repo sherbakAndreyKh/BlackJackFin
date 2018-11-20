@@ -7,7 +7,7 @@ namespace BlackJack.UI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return new FilePathResult("~/bundles/index.html","text/html");
         }
     }
 }

@@ -91,7 +91,11 @@ namespace BlackJack.BusinessLogic.Services
             var result = new ResponseNewRoundGameView();
             result.Game = _maping.MapGameToGameNewRoundGameViewItem(item.Game);
             result.Round = _maping.MapRoundToRoundNewRoundGameViewItem(await _roundRepository.Get(roundId));
-            result.Player = _maping.MapPlayerToPlayerNewRoundGameViewItem(playerList.Where(x => x.Role == (int)Role.Player).FirstOrDefault(), playerRoundHandList.Where(x => x.PlayerId == item.Player.Id).SingleOrDefault());
+            result.Player = _maping.MapPlayerToPlayerNewRoundGameViewItem(playerList
+                .Where(x => x.Role == (int)Role.Player)
+                .FirstOrDefault(),
+                playerRoundHandList.Where(x => x.PlayerId == item.Player.Id)
+                .SingleOrDefault());
             result.Dealer = _maping.MapPlayerToPlayerNewRoundGameViewItem(playerList.Where(x => x.Role == (int)Role.Dealer).FirstOrDefault(), playerRoundHandList.Where(x => x.PlayerId == item.Dealer.Id).SingleOrDefault());
             result.Bots = _maping.MapPlayerListToPlayerNewRoundGameViewItem(playerList.Where(x => x.Role == (int)Role.Bot).ToList(), playerRoundHandList);
             return result;
@@ -124,7 +128,7 @@ namespace BlackJack.BusinessLogic.Services
             var result = new ResponseGetCardGameView();
             if (!(await HandValidation(model.Hand.PlayerId)))
             {
-                throw new IncorrectDataException("Your model is incorrect");
+                throw new WrongDataException("Your Data is incorrect");
             }
 
             List<Card> cards = await _cardRepository.GetAll();
@@ -142,6 +146,7 @@ namespace BlackJack.BusinessLogic.Services
 
         public async Task<ResponseBotLogicGameView> BotLogic(RequestBotLogicGameView model)
         {
+
             List<Card> cards = await _cardRepository.GetAll();
             Random random = new Random((int)DateTime.Now.Ticks);
             PlayerRoundHand playerRoundHand = await _playerRoundHandRepository.GetPlayerRoundHandByPlayerAndRoundId(model.Hand.PlayerId, model.Round.Id);
@@ -167,7 +172,7 @@ namespace BlackJack.BusinessLogic.Services
             Player dealer = await _playerRepository.Get(item.DealerHand.PlayerId);
             PlayerRoundHand playerHand = await _playerRoundHandRepository.Get(item.PlayerHand.Id);
             PlayerRoundHand dealerHand = await _playerRoundHandRepository.Get(item.DealerHand.Id);
-            Round round = await _roundRepository.Get(item.PlayerHand.RoundId);
+            Round round = await _roundRepository.Get(playerHand.RoundId);
 
             if (playerHand.Score > score && dealerHand.Score <= score)
             {
@@ -209,7 +214,7 @@ namespace BlackJack.BusinessLogic.Services
         private async Task<bool> HandValidation(long playerId)
         {
             Player player = await _playerRepository.Get(playerId);
-            if (player.Role == Role.Player)
+            if (player.Role == Role.Player )
             {
                 return true;
             }

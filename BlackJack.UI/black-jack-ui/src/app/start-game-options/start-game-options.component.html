@@ -1,0 +1,26 @@
+<div class="text-center container">
+    <br>
+    <kendo-window title="Please enter game options" *ngIf="opened" [minWidth]="250" [width]="450">
+        <form class="k-form">
+            <fieldset>
+                <legend>Game Options</legend>
+                <div class="k-form-field text-center">
+                    <label for="Names">PlayerName</label>
+                    <kendo-combobox class="DropDownWidth" #playerNameInput [data]="listPlayersName" [value]='' [allowCustom]='true' id="Names">
+                    </kendo-combobox>
+                </div>
+                <hr>
+                <div class="k-form-field">
+                    <label for="BotsAmount">Bots Amount</label>
+                    <kendo-dropdownlist class="DropDownWidth" #botsAmountInput [data]="botsAmount" [value]="" id="BotsAmount">
+                    </kendo-dropdownlist>
+                </div>
+            </fieldset>
+            <div class="text-right">
+                <button type="button" class="k-button k-primary" (click)="submit(playerNameInput.value, botsAmountInput.value)">Submit</button>
+            </div>
+        </form>
+    </kendo-window>
+    <br>
+</div>
+<app-game-process [model]='responseModel'></app-game-process>
