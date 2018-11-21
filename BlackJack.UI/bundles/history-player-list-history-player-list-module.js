@@ -188,7 +188,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var HttpHistoryPlayerListService = /** @class */ (function () {
     function HttpHistoryPlayerListService(http) {
         this.http = http;
-        this.urlGet = 'history/index';
+        this.urlGet = '/history/index';
     }
     HttpHistoryPlayerListService.prototype.httpGetPlayerList = function () {
         return this.http.get(this.urlGet);

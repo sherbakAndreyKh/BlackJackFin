@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { HttpStartGameOptionsService } from 'src/app/services/http-start-game-options.service';
-import { RequestGameStartOptionsView } from 'src/app/models/request-game-start-options-game.model';
+import { RequestGameStartOptionsView } from 'src/app/models/requestModels/request-game-start-options-game.model';
 import { HttpGameProcessService } from 'src/app/services/http-game-process.servise';
 var StartGameOptionsComponent = /** @class */ (function () {
     function StartGameOptionsComponent(service) {

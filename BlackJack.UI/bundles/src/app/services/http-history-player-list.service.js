@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 var HttpHistoryPlayerListService = /** @class */ (function () {
     function HttpHistoryPlayerListService(http) {
         this.http = http;
-        this.urlGet = 'history/index';
+        this.urlGet = '/history/index';
     }
     HttpHistoryPlayerListService.prototype.httpGetPlayerList = function () {
         return this.http.get(this.urlGet);

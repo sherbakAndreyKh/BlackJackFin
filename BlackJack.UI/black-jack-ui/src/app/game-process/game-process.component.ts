@@ -9,6 +9,7 @@ import { RequestBotLogicGameView } from 'src/app/models/requestModels/request-bo
 import { ResponseBotLogicGameView } from 'src/app/models/responseModels/response-bot-logic-game.model';
 import { RequestFindWinnerGameView } from 'src/app/models/requestModels/request-find-winner-game-view';
 import { ResponseFindWinnerGameView } from 'src/app/models/responseModels/response-find-winner-game.model';
+import { ResponseNewRoundGameView } from '../models/responseModels/response-new-round-game.model';
 
 @Component({
     selector: 'app-game-process',
@@ -37,6 +38,10 @@ export class GameProcessComponent implements OnInit {
         this.getFirstDealRequest.round = this.model.round;
     }
 
+    newRound(){
+        this.service.httpNewRound(this.model).subscribe((data: ResponseNewRoundGameView) => this.model = data);
+        }
+        
     getCardClick() {
         this.addGetCardRequest();
         this.service.httpGetCard(this.getCardRequest).subscribe((data: ResponseGetCardGameView) => this.model.player.playerRoundHand = data.hand);
@@ -56,6 +61,7 @@ export class GameProcessComponent implements OnInit {
         this.findWinner.playerHand = this.model.player.playerRoundHand;
         return this.findWinner;
     }
+
     getWinner() {
         this.useLogicOnBotAndDealer();
         this.service.httpGetWinner(this.addFindWinnerRequest()).subscribe((data: ResponseFindWinnerGameView) => this.model.round = data.round)

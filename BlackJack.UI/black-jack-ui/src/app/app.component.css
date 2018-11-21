@@ -1,6 +1,8 @@
 .Menu {
     list-style-type: none;
     background-color: #111;
+    margin-bottom: 0;
+    border-bottom: 1px solid red;
 }
 
     .Menu li {

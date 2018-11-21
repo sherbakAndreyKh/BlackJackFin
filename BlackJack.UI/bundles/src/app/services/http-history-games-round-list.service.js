@@ -12,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
 var HttpHistoryGamesRoundListService = /** @class */ (function () {
     function HttpHistoryGamesRoundListService(http) {
         this.http = http;
-        this.urlGetRounds = "history/getrounds/";
-        this.urlGetRoundsDetail = "history/GetRoundsDetail/";
+        this.urlGetRounds = "/history/getrounds/";
+        this.urlGetRoundsDetail = "/history/GetRoundsDetail/";
     }
     HttpHistoryGamesRoundListService.prototype.httpGetRoundsWithId = function (id) {
         return this.http.get(this.urlGetRounds + id);

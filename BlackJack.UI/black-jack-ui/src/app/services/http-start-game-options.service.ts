@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RequestGameStartOptionsView } from 'src/app/models/request-game-start-options-game.model';
+import { RequestGameStartOptionsView } from 'src/app/models/requestModels/request-game-start-options-game.model';
 
 @Injectable()
 export class HttpStartGameOptionsService {
