@@ -114,7 +114,7 @@ var StartGameOptionsRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".DropDownWidth{\r\n    width: 350px;\r\n}\r\n"
+module.exports = ".DropDownWidth{\r\n    width: 350px;\r\n}\r\n\r\nbody{\r\n    background-color: black;\r\n}"
 
 /***/ }),
 

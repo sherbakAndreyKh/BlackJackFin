@@ -9,10 +9,10 @@ import { RequestNewRoundGameView } from 'src/app/models/requestModels/request-ne
 @Injectable()
 export class HttpGameProcessService {
     private urlGetCard = '/Game/GetCard';
-    private urlGetFirstDeal = 'Game/GetFirstDeal';
-    private urlGetBotLogic = 'Game/BotAndDealerLogic';
-    private urlGetWinner = 'Game/FindWinner';
-    private urlGetNewRound = 'Game/NewRound';
+    private urlGetFirstDeal = '/Game/GetFirstDeal';
+    private urlGetBotLogic = '/Game/BotAndDealerLogic';
+    private urlGetWinner = '/Game/FindWinner';
+    private urlGetNewRound = '/Game/NewRound';
 
     constructor(private http: HttpClient) { }
 

@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class HttpHistoryGamesRoundListService {
-    private urlGetRounds = "history/getrounds/";
-    private urlGetRoundsDetail = "history/GetRoundsDetail/";
+    private urlGetRounds = "/history/getrounds/";
+    private urlGetRoundsDetail = "/history/GetRoundsDetail/";
 
     constructor(private http: HttpClient) { }
 

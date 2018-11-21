@@ -165,6 +165,7 @@ namespace BlackJack.BusinessLogic.Maping
                 var viewItem = new CardGetFirstDealGameViewItem();
                 viewItem.Name = card.Name;
                 viewItem.Suit = card.Suit;
+                viewItem.ImgPath = card.ImgPath;
                 result.Add(viewItem);
             }
             return result;
@@ -188,6 +189,7 @@ namespace BlackJack.BusinessLogic.Maping
                 var viewItem = new CardGetCardGameViewItem();
                 viewItem.Name = card.Name;
                 viewItem.Suit = card.Suit;
+                viewItem.ImgPath = card.ImgPath;
                 result.Add(viewItem);
             }
             return result;
@@ -211,6 +213,7 @@ namespace BlackJack.BusinessLogic.Maping
                 var viewItem = new CardBotLogicGameViewItem();
                 viewItem.Name = card.Name;
                 viewItem.Suit = card.Suit;
+                viewItem.ImgPath = card.ImgPath;
                 result.Add(viewItem);
             }
             return result;

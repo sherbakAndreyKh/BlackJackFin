@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 var HttpHistoryPlayerGamesListService = /** @class */ (function () {
     function HttpHistoryPlayerGamesListService(http) {
         this.http = http;
-        this.urlGetPlayerGames = "history/getgames/";
+        this.urlGetPlayerGames = "/history/getgames/";
     }
     HttpHistoryPlayerGamesListService.prototype.httpGetPlayerGames = function (id) {
         return this.http.get(this.urlGetPlayerGames + id);

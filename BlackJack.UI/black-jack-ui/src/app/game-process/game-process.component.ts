@@ -41,6 +41,7 @@ export class GameProcessComponent implements OnInit {
     newRound(){
         this.service.httpNewRound(this.model).subscribe((data: ResponseNewRoundGameView) => this.model = data);
         }
+        
     getCardClick() {
         this.addGetCardRequest();
         this.service.httpGetCard(this.getCardRequest).subscribe((data: ResponseGetCardGameView) => this.model.player.playerRoundHand = data.hand);
@@ -60,7 +61,7 @@ export class GameProcessComponent implements OnInit {
         this.findWinner.playerHand = this.model.player.playerRoundHand;
         return this.findWinner;
     }
-    
+
     getWinner() {
         this.useLogicOnBotAndDealer();
         this.service.httpGetWinner(this.addFindWinnerRequest()).subscribe((data: ResponseFindWinnerGameView) => this.model.round = data.round)

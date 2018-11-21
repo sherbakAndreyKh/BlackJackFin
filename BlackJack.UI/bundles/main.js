@@ -119,7 +119,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".Menu {\r\n    list-style-type: none;\r\n    background-color: #111;\r\n}\r\n\r\n    .Menu li {\r\n        display: inline-block;\r\n    }\r\n\r\n    .Menu li a {\r\n            font-family: Arial, Helvetica, sans-serif;\r\n            color: white;\r\n            text-decoration: none;\r\n            padding: 20px;\r\n            display: block;\r\n        }\r\n\r\n    .Menu li:hover {\r\n            background-color: #333;\r\n        }\r\n"
+module.exports = ".Menu {\r\n    list-style-type: none;\r\n    background-color: #111;\r\n    margin-bottom: 0;\r\n    border-bottom: 1px solid red;\r\n}\r\n\r\n    .Menu li {\r\n        display: inline-block;\r\n    }\r\n\r\n    .Menu li a {\r\n            font-family: Arial, Helvetica, sans-serif;\r\n            color: white;\r\n            text-decoration: none;\r\n            padding: 20px;\r\n            display: block;\r\n        }\r\n\r\n    .Menu li:hover {\r\n            background-color: #333;\r\n        }\r\n"
 
 /***/ }),
 
@@ -130,7 +130,7 @@ module.exports = ".Menu {\r\n    list-style-type: none;\r\n    background-color:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"Menu\">\r\n    <li><a routerLink=''>Main</a></li>\r\n    <li><a routerLink=\"/startOptions\">StartGame</a></li>\r\n    <li><a routerLink=\"history\">History</a></li>\r\n</ul>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "\r\n    <ul class=\"Menu\">\r\n        <li><a routerLink=''>Main</a></li>\r\n        <li><a routerLink=\"/startOptions\">StartGame</a></li>\r\n        <li><a routerLink=\"history\">History</a></li>\r\n    </ul>\r\n    <div class=\"main-element\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 

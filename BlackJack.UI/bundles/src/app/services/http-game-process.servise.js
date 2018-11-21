@@ -13,10 +13,10 @@ var HttpGameProcessService = /** @class */ (function () {
     function HttpGameProcessService(http) {
         this.http = http;
         this.urlGetCard = '/Game/GetCard';
-        this.urlGetFirstDeal = 'Game/GetFirstDeal';
-        this.urlGetBotLogic = 'Game/BotAndDealerLogic';
-        this.urlGetWinner = 'Game/FindWinner';
-        this.urlGetNewRound = 'Game/NewRound';
+        this.urlGetFirstDeal = '/Game/GetFirstDeal';
+        this.urlGetBotLogic = '/Game/BotAndDealerLogic';
+        this.urlGetWinner = '/Game/FindWinner';
+        this.urlGetNewRound = '/Game/NewRound';
     }
     HttpGameProcessService.prototype.httpGetCard = function (model) {
         return this.http.post(this.urlGetCard, model);
