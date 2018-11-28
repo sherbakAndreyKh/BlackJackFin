@@ -3,4 +3,14 @@
 ################################################################################
 
 /.vs
-/BlackJack.BusinessLogic/bin/Debug
+/BlackJack.BusinessLogic/bin
+/BlackJack.BusinessLogic/obj
+/BlackJack.DataAccess/bin
+/BlackJack.DataAccess/obj
+/BlackJack.Entities/bin
+/BlackJack.Entities/obj
+/BlackJack.UI/bin
+/BlackJack.UI/obj
+/BlackJack.UI/black-jack-ui/node_modules
+/BlackJack.ViewModels/bin
+/BlackJack.ViewModels/obj
