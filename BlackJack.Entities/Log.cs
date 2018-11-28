@@ -14,7 +14,8 @@ namespace BlackJack.Entities
         public string Thread { get; set; }
         public string Level { get; set; }
         public string Logger { get; set; }
-        public string Message { get; set; }
+        public string StackTrace { get; set; }
         public string Exception { get; set; }
+		//TODO: where is stacktrace? +
     }
 }

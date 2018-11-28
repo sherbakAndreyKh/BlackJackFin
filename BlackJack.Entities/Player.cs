@@ -8,6 +8,6 @@ namespace BlackJack.Entities
     public class Player : BaseEntity
     {
         public string Name { get; set; }
-        public  Role  Role { get; set; }
+        public  PlayerRole  Role { get; set; }
     }
 }

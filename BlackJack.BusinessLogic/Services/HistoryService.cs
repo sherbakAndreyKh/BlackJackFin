@@ -36,7 +36,7 @@ namespace BlackJack.BusinessLogic.Services
 
         public async Task<IndexHistoryView> GetAllPlayers()
         {
-            List<Player> players = await _playerRepository.GetAllPlayersByRole(Role.Player);
+            List<Player> players = await _playerRepository.GetAllPlayersByRole(PlayerRole.Player);
             IndexHistoryView data = new IndexHistoryView();
             data.Players = _maping.MapPlayersToPlayerIndexHistoryViewItem(players);
             return data;
@@ -67,15 +67,21 @@ namespace BlackJack.BusinessLogic.Services
             Round round = await _roundRepository.Get(roundId);
             Game game = await _gameRepository.Get(round.GameId);
             Player player =await _playerRepository.Get(game.PlayerId);
-            Player dealer =await _playerRepository.GetFirstPlayerByRole(Role.Dealer);
-            List<Player> bots =await _playerRepository.GetQuantityByRole(game.PlayersAmount - 1, (int)Role.Bot);
+            Player dealer =await _playerRepository.GetFirstPlayerByRole(PlayerRole.Dealer);
+            List<Player> bots =await _playerRepository.GetQuantityByRole(game.PlayersAmount - 1, (int)PlayerRole.Bot);
             var players = new List<Player>();
             players.Add(player);
             players.Add(dealer);
             players.AddRange(bots);
 
             List<PlayerRoundHand> hands = await _playerRoundHandRepository.GetPLayerRoundHandListByRoundId(round.Id);
-            List<Card> cards = await _cardRepository.GetPlayerRoundHandCards(round.Id);
+            var playerRoundHandId = new List<long>();
+            foreach(var hand in hands)
+            {
+                playerRoundHandId.Add(hand.Id);
+            }
+
+            List<Card> cards = await _cardRepository.GetPlayerRoundHandCards(playerRoundHandId);
 
             var data = new DetailsRoundHistoryView();
             data.Players = _maping.MapPlayersToPlayerDetailsRoundHistoryViewItem(players, hands, cards);

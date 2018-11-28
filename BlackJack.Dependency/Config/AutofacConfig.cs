@@ -8,6 +8,7 @@ using BlackJack.DataAccess.Repositories;
 
 namespace BlackJack.Dependency.Config
 {
+	//TODO: удали этот проект и перенеси зависимости в services
     public class AutofacConfig : Autofac.Module
     {
         string connectionString;

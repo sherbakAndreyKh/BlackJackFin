@@ -4,3 +4,9 @@ C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.ViewModels\obj\Debug\Black
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.ViewModels\obj\Debug\BlackJack.ViewModels.csproj.CoreCompileInputs.cache
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.ViewModels\obj\Debug\BlackJack.ViewModels.dll
 C:\Users\Anuitex-103\source\repos\BlackJack\BlackJack.ViewModels\obj\Debug\BlackJack.ViewModels.pdb
+C:\Users\Anuitex-103\Downloads\BlackJackFin\BlackJackFin\BlackJack.ViewModels\bin\Debug\BlackJack.ViewModels.dll
+C:\Users\Anuitex-103\Downloads\BlackJackFin\BlackJackFin\BlackJack.ViewModels\bin\Debug\BlackJack.ViewModels.pdb
+C:\Users\Anuitex-103\Downloads\BlackJackFin\BlackJackFin\BlackJack.ViewModels\obj\Debug\BlackJack.ViewModels.csprojAssemblyReference.cache
+C:\Users\Anuitex-103\Downloads\BlackJackFin\BlackJackFin\BlackJack.ViewModels\obj\Debug\BlackJack.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex-103\Downloads\BlackJackFin\BlackJackFin\BlackJack.ViewModels\obj\Debug\BlackJack.ViewModels.dll
+C:\Users\Anuitex-103\Downloads\BlackJackFin\BlackJackFin\BlackJack.ViewModels\obj\Debug\BlackJack.ViewModels.pdb

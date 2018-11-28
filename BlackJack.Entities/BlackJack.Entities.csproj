@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper.Contrib">
+      <HintPath>..\BlackJack.DataAccess\bin\Debug\Dapper.Contrib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,15 +45,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
-    <Compile Include="Enums\Role.cs" />
+    <Compile Include="Enums\CardName.cs" />
+    <Compile Include="Enums\CardValue.cs" />
+    <Compile Include="Enums\PlayerRole.cs" />
+    <Compile Include="Enums\CardSuit.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="PlayerRoundHandCards.cs" />
     <Compile Include="Round.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerRoundHand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper">
+      <Version>1.50.5</Version>
+    </PackageReference>
+    <PackageReference Include="Dapper.Contrib">
+      <Version>1.50.5</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

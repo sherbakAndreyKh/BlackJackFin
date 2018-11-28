@@ -11,6 +11,7 @@ import { RequestFindWinnerGameView } from 'src/app/models/requestModels/request-
 import { ResponseFindWinnerGameView } from 'src/app/models/responseModels/response-find-winner-game.model';
 import { ResponseNewRoundGameView } from '../models/responseModels/response-new-round-game.model';
 
+
 @Component({
     selector: 'app-game-process',
     templateUrl: './game-process.component.html',
@@ -28,41 +29,41 @@ export class GameProcessComponent implements OnInit {
     ngOnInit() {
     }
 
-    addGetCardRequest() {
+    addGetCardRequest(): void {
         this.getCardRequest.hand = this.model.player.playerRoundHand;
         this.getCardRequest.round = this.model.round;
     }
 
-    addFirstDealRequest() {
+    addFirstDealRequest(): void {
         this.getFirstDealRequest.hands = this.getAllHands();
         this.getFirstDealRequest.round = this.model.round;
     }
 
-    newRound(){
+    newRound(): void {
         this.service.httpNewRound(this.model).subscribe((data: ResponseNewRoundGameView) => this.model = data);
-        }
-        
-    getCardClick() {
+    }
+
+    getCardClick(): void {
         this.addGetCardRequest();
         this.service.httpGetCard(this.getCardRequest).subscribe((data: ResponseGetCardGameView) => this.model.player.playerRoundHand = data.hand);
     }
 
-    getFirstDealClick() {
+    getFirstDealClick(): void {
         this.addFirstDealRequest();
         this.service.httpGetFirstDeal(this.getFirstDealRequest).subscribe((data: ResponseGetFirstDealGameView) => this.addFirstDealResponse(data));
     }
 
-    getBotAndDealerLogic(count: number) {
+    getBotAndDealerLogic(count: number): void {
         this.service.httpGetBotAndDealerLogic(this.addBotAndDealerRequest(count)).subscribe((data: ResponseBotLogicGameView) => this.getHand(count).playerRoundHand = data.hand)
     }
 
-    addFindWinnerRequest() {
+    addFindWinnerRequest(): RequestFindWinnerGameView {
         this.findWinner.dealerHand = this.model.dealer.playerRoundHand;
         this.findWinner.playerHand = this.model.player.playerRoundHand;
         return this.findWinner;
     }
 
-    getWinner() {
+    getWinner(): void {
         this.useLogicOnBotAndDealer();
         this.service.httpGetWinner(this.addFindWinnerRequest()).subscribe((data: ResponseFindWinnerGameView) => this.model.round = data.round)
     }
@@ -76,7 +77,7 @@ export class GameProcessComponent implements OnInit {
         }
     }
 
-    useLogicOnBotAndDealer() {
+    useLogicOnBotAndDealer(): void {
         for (var i = 0; i <= this.model.bots.length; i++) {
             this.getBotAndDealerLogic(i);
         }
@@ -95,8 +96,7 @@ export class GameProcessComponent implements OnInit {
         return this.getBotAndDealerLogicRequest;
     }
 
-    addFirstDealResponse(data) {
-        debugger;
+    addFirstDealResponse(data): void {
         for (var i = 0; i < data.hands.length; i++) {
             if (i == 0) {
                 this.model.player.playerRoundHand = data.hands[i];
@@ -106,7 +106,7 @@ export class GameProcessComponent implements OnInit {
                 this.model.dealer.playerRoundHand = data.hands[i];
             }
 
-            if (i != 0 && i != data.hands.length-1) {
+            if (i != 0 && i != data.hands.length - 1) {
                 this.model.bots[i - 1].playerRoundHand = data.hands[i];
             }
         }

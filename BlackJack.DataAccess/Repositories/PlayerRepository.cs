@@ -5,6 +5,7 @@ using BlackJack.Entities.Enums;
 using Dapper;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,18 +13,18 @@ namespace BlackJack.DataAccess.Repositories
 {
     public class PlayerRepository : BaseRepository<Player>, IPlayerRepository
     {
-        public PlayerRepository(BlackJackConnection connection) : base(connection)
+        public PlayerRepository(string connectionString) : base(connectionString)
         {
         }
 
         public async Task<List<Player>> GetQuantityByRole(int quantity, int role)
         {
             IEnumerable<Player> result;
-            string query = $"SELECT TOP {quantity} * FROM Player WHERE Role={role} ";
+            string query = $"SELECT TOP {quantity} * FROM Player WHERE Role = @Role";
 
-            using (IDbConnection db = _connection.CreateConnection())
+            using (IDbConnection db = CreateConnection(_connectionString))
             {
-                result = await db.QueryAsync<Player>(query);
+                result = await db.QueryAsync<Player>(query, new { Role = role });
             }
             return result.ToList();
         }
@@ -31,34 +32,34 @@ namespace BlackJack.DataAccess.Repositories
         public async Task<Player> GetPlayerByPlayerName(string playerName)
         {
             Player result;
-            string query = $"SELECT * FROM Player WHERE Name ='{playerName}'";
+            string query = $"SELECT TOP 1 * FROM Player WHERE Name = @Name";
 
-            using (IDbConnection db = _connection.CreateConnection())
+            using (IDbConnection db = CreateConnection(_connectionString))
             {
-                result = await db.QueryFirstOrDefaultAsync<Player>(query);
+                result = await db.QueryFirstOrDefaultAsync<Player>(query, new { Name = playerName});
             }
             return result;
         }
 
-        public async Task<List<Player>> GetAllPlayersByRole(Role role)
+        public async Task<List<Player>> GetAllPlayersByRole(PlayerRole role)
         {
             IEnumerable<Player> result;
-            string query = $"SELECT * FROM Player WHERE Role = {(int)role}";
+            string query = $"SELECT * FROM Player WHERE Role = @Role";
 
-            using (IDbConnection db = _connection.CreateConnection())
+            using (IDbConnection db = CreateConnection(_connectionString))
             {
-                result = await db.QueryAsync<Player>(query);
+                result = await db.QueryAsync<Player>(query, new { Role = (int)role});
             }
             return result.ToList();
         }
 
-        public async Task<Player> GetFirstPlayerByRole(Role role)
+        public async Task<Player> GetFirstPlayerByRole(PlayerRole role)
         {
             Player result;
-            string query = $"SELECT * FROM Player WHERE Role = {(int)role}";
-            using (IDbConnection db = _connection.CreateConnection())
+            string query = $"SELECT TOP 1 * FROM Player WHERE Role = @Role";
+            using (IDbConnection db = CreateConnection(_connectionString))
             {
-                result = await db.QueryFirstOrDefaultAsync<Player>(query);
+                result = await db.QueryFirstOrDefaultAsync<Player>(query, new { Role = (int)role });
             }
             return result;
         }
@@ -66,10 +67,11 @@ namespace BlackJack.DataAccess.Repositories
         public async Task<long> GetPlayerIdByPlayerName(string playerName)
         {
             long result;
-            string query = $"SELECT Id FROM Player WHERE Name = '{playerName}'";
-            using (IDbConnection db = _connection.CreateConnection())
+			//TODO: передаешь параметр не безопасно +
+            string query = $"SELECT TOP 1 Id FROM Player WHERE Name = @playerName";
+            using (IDbConnection db = CreateConnection(_connectionString))
             {
-                result = await db.QueryFirstOrDefaultAsync<long>(query);
+                result = await db.QueryFirstOrDefaultAsync<long>(query, new { playerName });
             }
             return result;
         }

@@ -3,12 +3,14 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using BlackJack.BusinessLogic.Interfaces;
+using BlackJack.UI.ExceptionFilters;
 using BlackJack.ViewModels;
 
 namespace BlackJack.UI.Controllers
 {
     [RoutePrefix("History")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [StandartExceptions]
     public class HistoryController : ApiController
     {
         private IHistoryService _historyService;
@@ -23,16 +25,8 @@ namespace BlackJack.UI.Controllers
         [Route("Index")]
         public async Task<IndexHistoryView> Index()
         {
-            try
-            {
-                IndexHistoryView model = await _historyService.GetAllPlayers();
-                return model;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex.ToString());
-                throw;
-            }
+            IndexHistoryView model = await _historyService.GetAllPlayers();
+            return model;
         }
         [HttpGet]
         [Route("GetGames/{playerId}")]

@@ -63,7 +63,8 @@ namespace BlackJack.BusinessLogic.Maping
             {
                 var DetailsViewModel = new PlayerDetailsRoundHistoryViewItem();
                 DetailsViewModel.Name = details.Name;
-                DetailsViewModel.PlayerRoundHands = MapPlayersRoundHandToPlayerRoundHandDetailsRoundHistoryViewItem(plyerRoundHandsList.Where(x=>x.PlayerId==details.Id).ToList(), cardsList);
+                DetailsViewModel.PlayerRoundHands = MapPlayersRoundHandToPlayerRoundHandDetailsRoundHistoryViewItem(
+                                                    plyerRoundHandsList.Where(x=>x.PlayerId==details.Id).ToList(), cardsList);
                 result.Add(DetailsViewModel);
             }
             return result;
@@ -77,7 +78,7 @@ namespace BlackJack.BusinessLogic.Maping
                 var PropertiesViewModel = new PlayerRoundHandDetailsRoundHistoryViewItem();
                 PropertiesViewModel.Score = properties.Score;
                 PropertiesViewModel.PlayerId = (int)properties.PlayerId;
-                PropertiesViewModel.Hand = MapCardsToCardDetailsRoundHistoryViewItem(cardsList.Where(x=>x.Id==properties.Id).ToList());
+                PropertiesViewModel.Hand = MapCardsToCardDetailsRoundHistoryViewItem(cardsList.Where(x=>x.PlayerRoundHandId==properties.Id).ToList());
                 result.Add(PropertiesViewModel);
             }
             return result;
@@ -89,8 +90,8 @@ namespace BlackJack.BusinessLogic.Maping
             foreach(var card in cardsList)
             {
                 var CardViewItem = new CardDetailsRoundHistoryViewItem();
-                CardViewItem.Name = card.Name;
-                CardViewItem.Suit = card.Suit;
+                CardViewItem.Name = card.Name.ToString();
+                CardViewItem.Suit = card.Suit.ToString();
                 result.Add(CardViewItem);
             }
             return result;

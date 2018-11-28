@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlackJack.Entities
 {
-    public class BaseEntity
+	//TODO: абстрактным классом сделать +
+    public abstract class BaseEntity
     {
         [Key]
         public long Id { get; set; }

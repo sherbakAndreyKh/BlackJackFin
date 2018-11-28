@@ -59,7 +59,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\BlackJackConnection.cs" />
     <Compile Include="Context\BlackJackContext.cs" />
     <Compile Include="Migrations\201810080931403_adjustment models.cs" />
     <Compile Include="Migrations\201810080931403_adjustment models.Designer.cs">
@@ -77,6 +76,18 @@
     <Compile Include="Migrations\201810220945128_AddLog.Designer.cs">
       <DependentUpon>201810220945128_AddLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811211158051_Log.cs" />
+    <Compile Include="Migrations\201811211158051_Log.Designer.cs">
+      <DependentUpon>201811211158051_Log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221206560_CardWithEnums.cs" />
+    <Compile Include="Migrations\201811221206560_CardWithEnums.Designer.cs">
+      <DependentUpon>201811221206560_CardWithEnums.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221211593_PlayerId.cs" />
+    <Compile Include="Migrations\201811221211593_PlayerId.Designer.cs">
+      <DependentUpon>201811221211593_PlayerId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -88,9 +99,7 @@
     <Compile Include="Interfaces\IPlayerRepository.cs" />
     <Compile Include="Interfaces\IPlayerRoundHandRepository.cs" />
     <Compile Include="Interfaces\IRoundRepository.cs" />
-    <Compile Include="Interfaces\IPlayerRoundHandCardsRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
-    <Compile Include="Repositories\PlayerRoundHandCardsRepository.cs" />
     <Compile Include="Repositories\PlayerRoundHandRepository.cs" />
     <Compile Include="Repositories\RoundRepository.cs" />
   </ItemGroup>
@@ -116,6 +125,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810220945128_AddLog.resx">
       <DependentUpon>201810220945128_AddLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811211158051_Log.resx">
+      <DependentUpon>201811211158051_Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221206560_CardWithEnums.resx">
+      <DependentUpon>201811221206560_CardWithEnums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221211593_PlayerId.resx">
+      <DependentUpon>201811221211593_PlayerId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Dapper.Contrib.Extensions;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlackJack.Entities
 {
-    [Table("PlayerRoundHand")]
+    [System.ComponentModel.DataAnnotations.Schema.Table("PlayerRoundHand")]
     public class PlayerRoundHand : BaseEntity
     {
         public int Score { get; set; }

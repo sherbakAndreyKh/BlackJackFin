@@ -19,7 +19,7 @@ export class HttpGameProcessService {
     httpGetCard(model: RequestGetCardGameView) {
         return this.http.post(this.urlGetCard, model);
     }
-
+    
     httpGetFirstDeal(model: RequestGetFirstDealGameView) {
         return this.http.post(this.urlGetFirstDeal, model);
     }

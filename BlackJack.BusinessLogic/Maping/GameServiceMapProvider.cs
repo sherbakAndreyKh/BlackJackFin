@@ -64,9 +64,8 @@ namespace BlackJack.BusinessLogic.Maping
             {
                 var CardView = new CardGameProcessGameViewItem();
                 CardView.Id = card.Id;
-                CardView.Name = card.Name;
-                CardView.Suit = card.Suit;
-                CardView.ImgPath = card.ImgPath;
+                CardView.Name = card.Name.ToString();
+                CardView.Suit = card.Suit.ToString();
                 result.Add(CardView);
             }
             return result;
@@ -151,7 +150,7 @@ namespace BlackJack.BusinessLogic.Maping
                 viewItem.Id = hand.Id;
                 viewItem.Score = hand.Score;
                 viewItem.PlayerId = hand.PlayerId;
-                viewItem.Hand = MapCardToCardGetFirstDealGameViewItem(cards.Where(x=>x.Id==hand.Id).ToList());
+                viewItem.Hand = MapCardToCardGetFirstDealGameViewItem(cards.Where(x=>x.PlayerRoundHandId==hand.Id).ToList());
                 result.Add(viewItem);
             }
             return result;
@@ -163,9 +162,9 @@ namespace BlackJack.BusinessLogic.Maping
             foreach(var card in cards)
             {
                 var viewItem = new CardGetFirstDealGameViewItem();
-                viewItem.Name = card.Name;
-                viewItem.Suit = card.Suit;
-                viewItem.ImgPath = card.ImgPath;
+                viewItem.Name = card.Name.ToString();
+                viewItem.Suit = card.Suit.ToString();
+                viewItem.Value = (int)card.Value;
                 result.Add(viewItem);
             }
             return result;
@@ -177,7 +176,7 @@ namespace BlackJack.BusinessLogic.Maping
             result.Id = hand.Id;
             result.Score = hand.Score;
             result.PlayerId = hand.PlayerId;
-            result.Hand = MapCardToCardGetCardGameViewItem(cards.Where(x => x.Id == hand.Id).ToList());
+            result.Hand = MapCardToCardGetCardGameViewItem(cards);
             return result;
         }
 
@@ -187,9 +186,8 @@ namespace BlackJack.BusinessLogic.Maping
             foreach (var card in cards)
             {
                 var viewItem = new CardGetCardGameViewItem();
-                viewItem.Name = card.Name;
-                viewItem.Suit = card.Suit;
-                viewItem.ImgPath = card.ImgPath;
+                viewItem.Name = card.Name.ToString();
+                viewItem.Suit = card.Suit.ToString();
                 result.Add(viewItem);
             }
             return result;
@@ -201,7 +199,7 @@ namespace BlackJack.BusinessLogic.Maping
             result.Id = hand.Id;
             result.Score = hand.Score;
             result.PlayerId = hand.PlayerId;
-            result.Hand = MapCardToCardBotLogicGameViewItem(cards.Where(x => x.Id == hand.Id).ToList());
+            result.Hand = MapCardToCardBotLogicGameViewItem(cards);
             return result;
         }
 
@@ -211,9 +209,8 @@ namespace BlackJack.BusinessLogic.Maping
             foreach (var card in cards)
             {
                 var viewItem = new CardBotLogicGameViewItem();
-                viewItem.Name = card.Name;
-                viewItem.Suit = card.Suit;
-                viewItem.ImgPath = card.ImgPath;
+                viewItem.Name = card.Name.ToString();
+                viewItem.Suit = card.Suit.ToString();
                 result.Add(viewItem);
             }
             return result;

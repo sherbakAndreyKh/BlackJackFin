@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using BlackJack.Dependency.Config;
 using Microsoft.Owin;
 using Owin;
 using Autofac;
@@ -9,6 +8,7 @@ using System.Web.Http;
 using BlackJack.UI.App_Start;
 using Autofac.Integration.WebApi;
 using System.Reflection;
+using BlackJack.BusinessLogic.Dependency;
 
 [assembly: OwinStartup(typeof(BlackJack.UI.Startup))]
 

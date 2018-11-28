@@ -9,8 +9,8 @@ namespace BlackJack.DataAccess.Interfaces
     {
         Task<Player> GetPlayerByPlayerName(string playerName);
         Task<List<Player>> GetQuantityByRole(int quantity, int role);
-        Task<List<Player>> GetAllPlayersByRole(Role role);
-        Task<Player> GetFirstPlayerByRole(Role role);
+        Task<List<Player>> GetAllPlayersByRole(PlayerRole role);
+        Task<Player> GetFirstPlayerByRole(PlayerRole role);
         Task<long> GetPlayerIdByPlayerName(string playerName);
     }
 }
